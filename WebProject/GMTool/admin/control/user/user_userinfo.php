@@ -305,7 +305,7 @@ if ($type) {
 //		$item['invite']=$result_cat7[0]['invite']==null?0:$result_cat7[0]['invite'];
 		$item['name']=str_replace(' ', '&nbsp;', $item['name']);
 
-		$uidmy = $item['useruid'];
+		$uidmy = $useruid;
 		$item['name'] = $item['name']."<input class='input-medium' id='changename' name='changename' type='text' value='COK". intval(microtime(true)*1000)
 				        ."' size='50' /><input class='btn js-btn btn-primary' type='button' value='修改' name='btn_view' onclick='dochangename(\"".$uidmy."\");' />";
 		$item['regTime'] = date('Y-m-d H:i:s',$item['regTime']/1000);
