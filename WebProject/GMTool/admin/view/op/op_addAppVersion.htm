@@ -1,0 +1,46 @@
+<!--{template header}-->
+<div class="alert alert-info">编辑游戏版本号&nbsp;&nbsp;&nbsp;&nbsp;<font color="red"></font></div>
+<form action="admincp.php?mod=op&act=addAppVersion" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+游戏版本号:
+<input type="text" style="width: 70px;" value="" id="appVersion" name="appVersion"/>
+<input class="btn js-btn btn-primary" type="button" value="添加" id="btn_add" name="btn_add" onclick="edit('add')" />
+<input class="btn js-btn btn-primary" type="button" value="删除" id="btn_del" name="btn_del" onclick="edit('del')" />
+</div>
+</div>
+
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var appVersion = $('#appVersion').val();
+	appVersion = jQuery.trim(appVersion);
+	if(isEmpty(appVersion)){
+		alert("游戏版本号不能为空!");
+		$("#appVersion").focus();
+		return false;
+	}
+	return true;
+}
+function edit(type) {
+	if(isCommit()){
+		document.getElementById('btn_add').disabled=true;
+		document.getElementById('btn_del').disabled=true;
+		$.get('admincp.php?mod=op&act=addAppVersion&event='+type+'&appVersion='+$('#appVersion').val(),function(data){
+			alert(data);
+			document.getElementById('btn_add').disabled=false;
+			document.getElementById('btn_del').disabled=false;
+		});
+	}
+}
+
+</script>
+<!--{template footer}-->

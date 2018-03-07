@@ -1,0 +1,72 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "每天注册用户付费数据统计(包括迁服和重玩)";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">$mesg</font></div>
+<form action="admincp.php?mod=pay&act=roi&getData=true&server={$selectServer}" method="post" name="getaccount">
+$serverDiv
+注册起始<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+
+<!-- {else} -->
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!-- {/if} -->
+平台
+<select id="platForm" name="platForm" onchange="">
+<?php echo $pfOptions;?>
+</select>
+渠道
+<select id="selectReferrer" name="selectReferrer" onchange="">
+	<!--{loop $referrerList $referrer $referrername}-->
+	<!--{if ($currReferrer == $referrer)}-->
+	<option value="{$referrer}" selected="selected">{$referrername}</option>
+	<!-- {else} -->
+	<option value="{$referrer}">{$referrername}</option>
+	<!-- {/if} -->
+	<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询详情">
+
+</form>
+<div id='display' style="display:none;position:fixed;z-index:1; right:350px; top:100px; height:600px; width:300px; background-color:#708090; color:#FFF; line-height:30px;">
+	<a href="#" onclick="javascript:turnoff()">点击关闭</a>&nbsp;&nbsp;
+	<div id='displayinner' style="height:95%;width:100%;overflow: scroll;"></div>
+</div>
+<div>
+	{$html}-
+</div>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+function edit(serverDate) {
+	var url = 'admincp.php?mod=pay&act=roi&serverDate='+serverDate+'&clickDisplay=true';
+	url += "&getData=true&server="+$selectServer;
+	$.get(url,function(data){
+		//document.getElementById('display').style.display="block";
+		var div = document.getElementById('display');
+		div.style.display="block";
+		/* div.style.left=event.clientX+10;
+		 div.style.top=event.clientY+5;   */
+		div.style.position="fixed";
+		$("#displayinner").html(data);
+	},'html');
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+</script>
+<!--{template footer}-->

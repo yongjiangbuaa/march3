@@ -1,0 +1,302 @@
+<!--{template header}-->
+<br/>
+<div>
+<a href="javascript:void(changeType2(1))">已发送列表</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeType2(2))">添加新邮件</a>
+</div>
+<div id="manageDiv">
+	<!--{if $dbData }-->
+		<table class="listTable" cellspacing=1 padding=0 style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<th width=2%>标题</th>
+			<th width=10%>内容</th>
+			<th width=3%>预计<br>发送时间</th>
+			<th width=2%>发送状态</th>
+			<th width=3%>注册<br>起始时间</th>
+			<th width=3%>注册<br>结束时间</th>
+			<th width=3%>最后<br>在线时间</th>
+			<th width=2%>等级<br>&lt;=</th>
+			<th width=2%>等级<br>&gt;=</th>
+			<th width=4%>PUSH消息</th>
+			<th width=2%>奖励</th>
+<!--			<th width=2%>推送人数</th>
+			<th width=2%>领取人数</th>
+		-->
+			<th width=2%>操作</th>
+		</tr>
+		<!--{loop $dbData $key $value}-->
+		<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+			onMouseOut="this.style.background='#fff';">
+			<td width="2%">$value['title']</td>
+			<!--{if (strlen($value['contents']) < 80) }-->
+			<td width="2%">$value['contents']</td>
+			<!--{else}-->
+			<td width="2%"><span title="$value['contents']">{php echo substr(str_replace("\r\n",'',$value['contents']),0,80).'...'}</span></td>
+			<!--{/if}-->
+			<!--{if $value['state'] }-->
+				<td width="2%">$value['startTime']</td>
+				<td width="2%">$value['state']</td>
+				<td width="2%">$value['regStartTime']</td>
+				<td width="2%">$value['regEndTime']</td>
+				<td width="2%">$value['lastOnlineTime']</td>
+				<td width="2%">$value['levelMin']</td>
+				<td width="2%">$value['levelMax']</td>
+			<!--{else}-->
+				<td width="2%" id="$value['uid']_startTime"><a href="javascript:void(edit('{$value['uid']}_startTime','{$value['startTime']}'))">$value['startTime']</a></td>
+				<td width="2%">$value['state']</td>
+				<td width="2%" id="$value['uid']_regStartTime"><a href="javascript:void(edit('{$value['uid']}_regStartTime','{$value['regStartTime']}'))">$value['regStartTime']</a></td>
+				<td width="2%" id="$value['uid']_regEndTime"><a href="javascript:void(edit('{$value['uid']}_regEndTime','{$value['regEndTime']}'))">$value['regEndTime']</a></td>
+				<td width="2%" id="$value['uid']_lastOnlineTime"><a href="javascript:void(edit('{$value['uid']}_lastOnlineTime','{$value['lastOnlineTime']}'))">$value['lastOnlineTime']</a></td>
+				<td width="2%" id="$value['uid']_levelMin"><a href="javascript:void(edit('{$value['uid']}_levelMin','{$value['levelMin']}'))">$value['levelMin']</a></td>
+				<td width="2%" id="$value['uid']_levelMax"><a href="javascript:void(edit('{$value['uid']}_levelMax','{$value['levelMax']}'))">$value['levelMax']</a></td>
+			<!--{/if}-->
+			<td width="2%">$value['notification']</td>
+			<!--{if $value['reward'] }-->
+			<td width="2%"><div id="rewardTd{$key}">$value['reward']</div></td>
+			<!--{else}-->
+			<td width="2%"></td>
+			<!--{/if}-->
+			<!--{if $value['state'] }-->
+			<!--<td width="2%">$value['pushCount']</td>
+			<td width="2%">$value['rewardCount']</td>
+			<td width="2%"></td>
+		-->
+			<td width="2%"></td>
+			<!--{else}-->
+			<!--<td width="2%"></td>
+			<td width="2%"></td>
+	-->
+			<td width="2%"><a href="javascript:void(deleteLine('{$value['uid']}'))">删除</a></td>
+			<!--{/if}-->
+		</tr>
+		<!--{/loop}-->
+		</table>
+	<!--{else}-->
+		
+	<!--{/if}-->
+</div>
+<div id="addDiv" style="display:none">
+	<form action="admincp.php?mod=op&act=outer_mail" method="post" name="getaccount" enctype="multipart/form-data">
+		<input class="display:none;" type="hidden" value="" id="type" name="type" />
+		<br>
+		<div class="container" style="width: auto;">
+			<ul class="nav nav-tabs">
+			<li>
+			<input type='checkbox' id="all_server" name="all_server"  onClick="serverall()"  />
+			<label for="all_server">ALL &nbsp;&nbsp;</label>
+			</li>
+			<!--{loop $servers $server $serverSettings}-->
+				<li>
+					<!-- {if $server==getCurrServer()} -->
+						<input type='checkbox' id="server_{$server}" name="{$server}"  onClick="checkserverall()" checked />
+					<!-- {else} -->
+						<input type='checkbox' id="server_{$server}" name="{$server}" onClick="checkserverall()" />
+					<!-- {/if} -->
+					<label for="server_{$server}">$server &nbsp;&nbsp;</label>
+				</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<table class="listTable" cellspacing=1 padding=0 style="width: 50%; text-align: left">
+			<tr><td>预计发送时间</td><td><input class="input-large focused" id="startTime" name="startTime" type="text" value="" onchange="document.getElementById('regEndTime').value=this.value;document.getElementById('lastOnlineTime').value=this.value"/></td></tr>
+			<!--<tr><td>推送结束时间</td><td><input class="input-large focused" id="endTime" name="endTime" type="text" value="" /></td></tr>
+		-->
+			<tr><td>发送给</td><td>
+			<select id="target" name="target" class="input-medium" onchange="changeTarget()">
+				<option value="all" selected>==全员==</option>
+				<option value="segment">指定条件</option>
+			</select>
+			<br>
+			<div id="divsegment" style="display:none">
+				<table>
+				<tr><td>注册起始时间</td><td><input class="input-large focused" id="regStartTime" name="regStartTime" type="text" value="" /></td></tr>
+				<tr><td>注册结束时间</td><td><input class="input-large focused" id="regEndTime" name="regEndTime" type="text" value="" /></td></tr>
+				<tr><td>最后在线时间</td><td><input class="input-large focused" id="lastOnlineTime" name="lastOnlineTime" type="text" value="" /></td></tr>
+				<tr><td>等级不低于</td><td><input class="input-large focused" id="levelMin" name="levelMin" type="text" value="1" maxlength=40 /></td></tr>
+				<tr><td>等级不高于</td><td><input class="input-large focused" id="levelMax" name="levelMax" type="text" value="99" maxlength=40 /></td></tr>
+				</table>
+			</div>
+			</td></tr>
+			<tr><td>标题</td><td><input class="input-large focused" id="title" name="title" type="text" value="" maxlength=40 /></td></tr>
+			<tr><td>内容</td><td><textarea class="input-xlarge" id="contents" name="contents" rows="6"></textarea></td></tr>
+			<tr><td>PUSH消息<br>(36字符内)</td><td><textarea class="input-xlarge" id="notification" name="notification" rows="2"></textarea></td></tr>
+			<tr><td>奖励</td>
+			<td>
+				<table id="rewardTable" class="smallTable">
+					<tr><td>金币</td><td><input name="reward_gold" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>木材</td><td><input name="reward_wood" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>粮食</td><td><input name="reward_food" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>秘银</td><td><input name="reward_stone" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>铁矿</td><td><input name="reward_iron" type="text" value="" maxlength=40 /></td></tr>
+					<!-- <tr><td>将军ID</td><td><input name="reward_general" type="text" value="" maxlength=40 /></td></tr>  -->
+					<!-- <tr><td>数量</td><td><input name="reward_genNum" type="text" value="" maxlength=40 /></td></tr> -->
+				</table>
+			</td>
+			</tr>
+			<tr><td>奖励-道具<br/><font color="red">多个ID用'|'分隔<br/>数量也对应用'|'分开</font></td>
+			<td>
+				<table id="rewardTable2" class="smallTable2">
+					<tr><td>道具ID</td><td><input name="reward_goods" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>数量</td><td><input name="reward_goodsNum" type="text" value="" maxlength=40 /></td></tr>
+				</table>
+			</td>
+			</tr>
+		<tr>
+		<td></td><td>
+		<button type="button" class="btn btn-info" name="btn_set" onclick="checksubmit('add')">确定</button>
+		<button type="reset" class="btn">重置</button></td></tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+$("#startTime,#regStartTime,#regEndTime,#lastOnlineTime").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function showReward(buttonId,showId){
+	document.getElementById(buttonId).style.display = 'none';
+	document.getElementById(showId).style.display = 'block';
+}
+function changeType(){
+	if(document.getElementById('add').checked)
+	{
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+	if(document.getElementById('manage').checked)
+	{
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+}
+function changeType2(type){
+	if(type == 1){
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(type == 2){
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+}
+function changeTarget(){
+	if(document.getElementById('target').value =="all"){
+		document.getElementById('divsegment').style.display = 'none';
+	}
+	if(document.getElementById('target').value == 'segment'){
+		document.getElementById('divsegment').style.display = 'block';
+	}
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+var uuid = null;
+function edit(uid,now) {
+	doClear();
+	uuid = uid;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+uid+'" value="'+now+'"><br/>当前:'+now+' <input type="button" id="savebtn" value="保存" onclick=save(new'+uid+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(uid);
+	right.innerHTML=str;
+	setDateFomate();
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function save(num){
+	self.location = 'admincp.php?mod=op&act=outer_mail&type=modify&uid='+uuid+'&newDate='+num.value;
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=outer_mail';
+}
+function checksubmit(type){
+	if(type == 'add'){
+		var startTime= $('#startTime').val();
+		var inputTitle = $('#title').val();
+		var inputContents = $('#contents').val();
+		startTime=jQuery.trim(startTime);
+		inputContents = jQuery.trim(inputContents);
+		if(isEmpty(startTime)){
+			alert("<?php echo "please input start time";?>");
+			$("#startTime").focus();
+			return false;
+		}
+		if(isEmpty(inputTitle)){
+			alert("<?php echo "please input title";?>");
+			$("#title").focus();
+			return false;
+		}
+		if(isEmpty(inputContents)){
+			alert("<?php echo "please input contents";?>");
+			$("#contents").focus();
+			return false;
+		}
+	}
+	document.getElementById('type').value = type;
+	document.getaccount.submit();
+}
+function deleteLine(uid){
+	if(confirm('是否确定删除'))
+	{
+		rmve(uid);	
+	}
+}
+function rmve(uid){
+	 self.location = "admincp.php?mod=op&act=outer_mail&type=delete&uid="+uid;
+}
+function changeType(){
+	if(document.getElementById('manage').checked)
+	{
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(document.getElementById('add').checked)
+	{
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+}
+function setDateFomate(){
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[1]=='startTime' || objId[1]=='regStartTime' || objId[1]=='regEndTime' || objId[1]=='lastOnlineTime')
+		{
+			$("#"+objs[i].id).datetimepicker();
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,141 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=stat&act=fiveonlinedata" method="post" name="getaccount" style="display: inline-table;">
+<div class="container" style="width: auto;">
+<br>
+服编号<input type="text" id="selectServer" name="selectServer" value="{$sttt}" style="width: 400px;" placeholder="逗号横杠分隔，如：1,3,8-22；留空则查询全服"/>
+	<br>
+日期<input id="date" name='date' type="text" value='{$rDate}' class="input-medium"/>
+<!--{if $compare}-->
+	<input type='checkbox' id="compare" name="compare" checked />
+<!--{else}-->
+	<input type='checkbox' id="compare" name="compare" />
+<!--{/if}-->
+<label for="compare">对比往日数据</label>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="search()" />
+</div>
+</form>
+<div id="chart" style="min-width: 400px; height: 600px; margin: 0 auto"></div>
+<!--{if $data}-->
+	<script type="text/javascript">
+		var timeFix = new Date().getTimezoneOffset()*60;
+		var showData = [];
+	</script>
+	<!--{loop $data  $server $serverData}-->
+		<script type="text/javascript">
+			var svData = [];
+		<!--{loop $serverData  $key $value}-->
+			svData.push($value['y']);
+		<!--{/loop}-->
+			showData.push({
+						"type":"spline",
+						"name":"$server",
+						"pointInterval": 300 * 1000,
+		                "pointStart": $dayStart*1000 + $timeFix*1000,
+						"data":svData,
+						"lineWidth": 2,});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart',
+			type: 'area',
+			plotBorderWidth: 1
+		},
+		title: {
+			text: ''
+		},
+		subtitle: {
+			text: ''
+		},
+        xAxis: {
+            type: 'datetime',
+            maxZoom: 24 * 3600000,
+            title: {
+                text: null
+            }
+        },
+		yAxis: {
+			title: {
+				text: '在线人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+			minPadding:1,
+		},
+		tooltip: {
+			formatter: function() {
+			var d = new Date(this.x + timeFix*1000);
+			var s = '<b>'+d.getFullYear() + "-";
+				s += ("0"+(d.getMonth()+1)).slice(-2) + "-";
+				s += ("0"+d.getDate()).slice(-2) + " ";
+				s += ("0"+d.getHours()).slice(-2) + ":";
+				s += ("0"+d.getMinutes()).slice(-2);
+				s += '</b>';
+				$.each(this.points, function(i, point) {
+				    s += '<br/>'+ '<tspan style="fill:'+ point.series.color + '" dy="16" x="5">' + point.series.name +'</tspan>';
+				    s += '<b>: </b>'+ point.y;
+				});
+				return s;
+            },
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			},
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+	
+<!--{/if}-->
+
+
+<script type="text/javascript">
+$("#date").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+			document.getaccount.submit();
+			return;
+}
+</script>
+
+<!--{template footer}-->

@@ -1,0 +1,109 @@
+<!--{template header}-->
+<form action="admincp.php?mod=stat&act=regremain_country&server={$selectServer}" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "每日注册留存按国家分析";?><font color="red"></font></div>
+<div class="container" style="width: auto;">
+	<input type="hidden" name="server" id="server" value={$selectServer}>
+	<ul class="nav nav-tabs">
+	<li>
+	<input type='checkbox' id="all_server" name="all_server"  onClick="serverall()"  />
+	all 
+	</li>
+	<!--{loop $servers $server $serverSettings}-->
+		<li>
+		<!-- {if ($selectServer && in_array($server,$selectServer)) || (!$selectServer && $server==getCurrServer())} -->
+			<input type='checkbox' id="server_{$server}" name="{$server}"  onClick="checkserverall()" checked />
+		<!-- {else} -->
+			<input type='checkbox' id="server_{$server}" name="{$server}" onClick="checkserverall()" />
+		<!-- {/if} -->
+		$server</li>
+	<!--{/loop}-->
+	</ul>
+</div>
+<div class="row-fluid">
+<div class="span11">
+请选择注册日期
+<input id="start" name='start' type="text" value='{$start}' class="input-medium" onchange="changeDate()" />
+<input id="end" name='end' type="text" value='{$end}' class="input-medium" onchange="changeDate()" />
+<input class="btn js-btn btn-primary" type="button" value="点击开始查询" name="btn_view" onclick="search()" />
+<br />
+<input id="reconnect" name='reconnect' type="hidden" value='{$reconnect}' class="input-large" placeholder="" />
+<!--请输入再登陆天数
+<span class="help-inline">默认为1,3,7,30，支持x,y,z和x-y格式的查询，填写x~y可查询区间的总数</span>
+-->
+</div>
+</div>
+<!-- {if $registerUser} -->
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+	<tr class="listTr">
+		<th width=2%>日期</th>
+		<th width=2%>语言</th>
+		<th width=2%>注册</th>
+		<!--{for $i=0;$i<count($dayArr);$i++}-->
+		<th width=2%>第$dayArr[$i]天登陆</th>
+		<th width=2%>留存(%)</th>
+		<!--{/for}-->
+	</tr>
+	<!--{loop $registerUser  $regDate $temp}-->
+		<!--{loop $temp  $server $serverReg}-->
+		<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+			onMouseOut="this.style.background='#fff';">
+			<td width="2%">$regDate</td>
+			<td width="2%">$server</td>
+			<td width="2%">$serverReg</td>
+			<!--{loop $dayArr  $key $day}-->
+				<!-- {if $remainData[$server][$regDate][$day]['count'] > 0} -->
+				<td width="2%">$remainData[$server][$regDate][$day]['count']</td>
+				<td width="2%">$remainData[$server][$regDate][$day]['rate']</td>
+				<!-- {else} -->
+				<td width="2%">-</td>
+				<td width="2%">-</td>
+				<!-- {/if} -->
+			<!--{/loop}-->
+		</tr>
+		<!--{/loop}-->
+	<!--{/loop}-->
+	</table>
+<!-- {/if} -->
+</form>
+
+
+<script type="text/javascript">
+$("#start,#end").datetimepicker();
+function changeDate(){
+	$("#reconnect").val(''); 
+}
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+	var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			document.getaccount.submit();
+			return;
+		}
+	}
+	alert("请选择需要查询的服");
+}
+</script>
+<!--{template footer}-->

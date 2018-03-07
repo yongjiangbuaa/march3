@@ -1,0 +1,105 @@
+<!--{template header}-->
+<div class="alert alert-info">根据用户Id和物品Id查询物品变化明细(获得与消费只能选其一)<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=goodsChange" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<br>
+<span>用户Id</span>
+<span><input type="text" id="userId" name="userId" value='{$userId}'></input></span>
+<span>物品Id</span>
+<span><input type="text" id="itemId" name="itemId" value='{$itemId}'></input></span>
+<?php echo $selectEventCtl2;?>
+<?php echo $selectEventCtl;?>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center">编号</th>
+	<th align="center">时间</th>
+	<th align="center">用户Id</th>
+	<th align="center">物品Id</th>
+	<th align="center">原始值</th>
+	<th align="center">操作</th>
+	<th align="center">变化值</th>
+	<th align="center">结果值</th>
+	<th align="center">趋势</th>
+	<th align="center">类型</th>
+	<th align="center">货币类型</th>
+	</tr>
+	<!--{loop $data $key $dbData}-->
+		<tr>
+			<td>$key</td>
+			<td>$dbData['time']</td>
+			<td>$dbData['userId']</td>
+			<td>$dbData['itemId']</td>
+			<td>$dbData['original']</td>
+			<td><font color="$dbData['typeColor']">$dbData['type']</font></td>
+			<td>$dbData['cost']</td>
+			<td>$dbData['remain']</td>
+			<td><font color="$dbData['trendColor']">$dbData['trend']</font></td>
+			<td>$dbData['param1']</td>
+			<td>$dbData['param2']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputUid = $('#userId').val();
+	var inputItemId = $('#itemId').val();
+	var param1 = $('#param1').val();
+	inputUid = jQuery.trim(inputUid);
+	inputItemId = jQuery.trim(inputItemId);
+	param1 = jQuery.trim(param1);
+	
+	if(isEmpty(inputUid)){
+		alert("用户Id不能为空!");
+		$("#userId").focus();
+		return false;
+	}
+	
+	/**
+	// if inputItemId is null, select all the goods of this user.
+	if(isEmpty(inputItemId) && !isEmpty(param1)){
+		alert("输入物品Id后才能选择消费类型查询!");
+		$("#itemId").focus();
+		return false;
+	}
+	**/
+	
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

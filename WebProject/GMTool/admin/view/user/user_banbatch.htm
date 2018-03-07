@@ -1,0 +1,31 @@
+<!--{template header}-->
+<div class="alert alert-info">冻结账号(不分服)<font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=banbatch" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>禁言uid;分隔</span>
+<br>
+<textarea id="contents" name="contents" rows="6" cols="80"></textarea>
+	<br>
+
+<span>禁言理由</span>
+	<br>
+	<textarea id="reason" name="reason" rows="6" cols="80"></textarea>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" value="禁言" name="btn_view" onclick="check_submit()" />
+</div>
+</div><br/>
+
+</form>
+<script type="text/javascript">
+
+function check_submit() {
+	var uids= $("#contents").val();
+	if(uids != null && uids.length !=0) {
+		document.getaccount.submit();
+	}else {
+		alert('批量uid 不能为空');
+	}
+}
+</script>
+<!--{template footer}-->

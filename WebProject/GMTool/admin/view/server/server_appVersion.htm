@@ -1,0 +1,57 @@
+<!--{template header}-->
+
+<br>
+<span><font color="red">$alertHeader</font></span>
+<form action="admincp.php?mod=server&act=appVersion&type=save" method="post" name="luaVersion">
+	操作<select id="add" name="add">
+		<option value="1" >修改</option>
+		<option value="2">新增</option>
+		<option value="3">强更</option>
+	</select>
+	版本<input class="input-medium" id="version" name="version" type="text">
+	值<input class="input-medium" id="value" name="value" type="text">
+
+	<input class="btn js-btn btn-primary" type="button" onclick="save()" id="btn_view" name="btn_view" value="提交">
+</form>
+<table class="listTable" style="text-align:center">
+	<tbody>
+	<tr>
+		<th style="text-align: center;">版本</th>
+		<th style="text-align: center;">值</th>
+	</tr>
+	<!--{loop $data $key $value}-->
+	<tr class='listTr'>
+		<td>$key</td>
+		<td>$value</td>
+	</tr>
+	<!--{/loop}-->
+
+	</tbody>
+</table>
+
+<script type="text/javascript">
+
+
+	function save(){
+		document.luaVersion.submit();
+
+	}
+	function del(version_id){
+		if(confirm('是否确定删除'))
+		{
+			var url ='admincp.php?mod=server&act=luaVersion&type=del&id='+version_id;
+			xmlHttp=getAjax();
+			xmlHttp.onreadystatechange = back;
+			xmlHttp.open("GET",url,true);
+			xmlHttp.send(null);
+		}
+	}
+
+	function back(){
+		if(xmlHttp.readyState==4 && xmlHttp.status==200){
+			self.location='admincp.php?mod=server&act=luaVersion';
+		}
+	}
+
+</script>
+<!--{template footer}-->

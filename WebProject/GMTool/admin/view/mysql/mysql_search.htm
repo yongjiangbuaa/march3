@@ -1,0 +1,161 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询数据库内容";?><font color="red"></font></div>
+<form action="admincp.php?mod=mysql&act=search&type=output" method="post" name="getaccount">
+<div class="span11" style='TEXT-ALIGN:center;float:left;'>
+	表名: <select id="selectTable" onchange="changeTable()" class="input-medium"></select>
+	每页数据: <input class="input-mini" style='' type='text' name='pagelimit' id='pagelimit' value='100'><br/>
+	查询条件1 <select id="_where1" class="input-medium"></select>
+	<select id="_condition1" class="input-mini">
+		<option id='='>=</option>
+		<option id='<'><</option>
+		<option id='>'>></option>
+		<option id='>='>>=</option>
+		<option id='<='><=</option>
+		<option id='<>'>!=</option>
+	</select>
+	<input class="input-medium" type='text' name='_num1' id='_num1' value=''>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+	查询条件2 <select id="_where2" class="input-medium"></select>
+	<select id="_condition2" class="input-mini">
+		<option id='='>=</option>
+		<option id='<'><</option>
+		<option id='>'>></option>
+		<option id='>='>>=</option>
+		<option id='<='><=</option>
+		<option id='<>'>!=</option>
+	</select> 
+	<input class="input-medium" type='text' name='_num2' id='_num2' value=''>&nbsp; &nbsp; 
+	<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询">
+	<input class="btn js-btn btn-primary" type="button" onclick="outPut()" name="btn_view" value="导出当前页">
+	<input class="display:none;" type="hidden" value="" id="tablename" name="tablename"/>
+	<input class="display:none;" type="hidden" value="" id="where1" name="where1"/>
+	<input class="display:none;" type="hidden" value="" id="condition1" name="condition1"/>
+	<input class="display:none;" type="hidden" value="" id="num1" name="num1"/>
+	<input class="display:none;" type="hidden" value="" id="where2" name="where2"/>
+	<input class="display:none;" type="hidden" value="" id="condition2" name="condition2"/>	
+	<input class="display:none;" type="hidden" value="" id="num2" name="num2"/>
+	<input class="display:none;" type="hidden" value="" id="page" name="page"/>
+</div>
+</form>
+
+<div id='show' style="float:left;width:110%;height:auto;"></div>
+	
+<script type="text/javascript">
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+var currentPage = 1;
+function getData(page) {
+	var typeValue=document.getElementsByName("btn_view");
+	for(var i=0;i<typeValue.length;i++)
+	{
+		   typeValue[i].disabled=true;
+  	}
+	currentPage = page;
+	showData();
+}
+function showData(){
+	tableSelect = document.getElementById("selectTable");
+	var tablename = tableSelect.options[tableSelect.selectedIndex].id;
+	var pagelimit = $("#pagelimit").val();
+	whereSelect1 = document.getElementById("_where1");
+	var where1 = whereSelect1.options[whereSelect1.selectedIndex].id;
+	conditionSelect1 = document.getElementById("_condition1");
+	var condition1 = conditionSelect1.options[conditionSelect1.selectedIndex].id;
+	var num1 = $("#_num1").val();
+	whereSelect2 = document.getElementById("_where2");
+	var where2 = whereSelect2.options[whereSelect2.selectedIndex].id;
+	conditionSelect2 = document.getElementById("_condition2");
+	var condition2 = conditionSelect2.options[conditionSelect2.selectedIndex].id;
+	var num2 = $("#_num2").val();
+	if(tablename == null || tablename ==""){
+		alert("<?php echo 请选择一个表进行查询;?>");
+		$("#tablename").focus();
+		return;
+	}
+	var url ='admincp.php?mod=mysql&act=search&tablename='+tablename+'&page='+currentPage+'&pagelimit='+pagelimit+'&where1='+where1+'&condition1='+condition1+'&num1='+num1+'&where2='+where2+'&condition2='+condition2+'&num2='+num2;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function outPut() {
+	tableSelect = document.getElementById("selectTable");
+	var tableName = tableSelect.options[tableSelect.selectedIndex].id;
+	$("#tablename").val(tableName);
+	whereSelect1 = document.getElementById("_where1");
+	var where1 = whereSelect1.options[whereSelect1.selectedIndex].id;
+	$("#where1").val(where1);
+	conditionSelect1 = document.getElementById("_condition1");
+	var condition1 = conditionSelect1.options[conditionSelect1.selectedIndex].id;
+	$("#condition1").val(condition1);
+	$("#num1").val($("#_num1").val());
+	whereSelect2 = document.getElementById("_where2");
+	var where2 = whereSelect2.options[whereSelect2.selectedIndex].id;
+	$("#where2").val(where2);
+	conditionSelect2 = document.getElementById("_condition2");
+	var condition2 = conditionSelect2.options[conditionSelect2.selectedIndex].id;
+	$("#condition2").val(condition2);
+	$("#num2").val($("#_num2").val());
+	$("#page").val(currentPage);
+	document.getaccount.submit();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			var typeValue=document.getElementsByName("btn_view");
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=false;
+		  	}
+			return;
+		}
+	}
+}
+tableList();
+function tableList() {
+	var url ='getstruct.php?tableList=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTable;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTable(){
+	right=document.getElementById('selectTable');
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(tableList);
+			return;
+		}
+		right.innerHTML=xmlHttp.responseText;
+		changeTable();
+		return;
+	}
+}
+function changeTable(){
+	tableSelect = document.getElementById("selectTable");
+	var url ='getstruct.php?struct=true&table='+tableSelect.options[tableSelect.selectedIndex].id;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTableStruct;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTableStruct(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(changeTable);
+			return;
+		}
+		document.getElementById('_where1').innerHTML=xmlHttp.responseText;
+		document.getElementById('_where2').innerHTML=xmlHttp.responseText;
+		return;
+	}
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,89 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "全服新手引导流失统计[2日期选同一天是当天查询]";?><font color="red"></font></div>
+<form action="admincp.php?mod=stat&act=tutorialStatistics&analyze=user" method="post" name="getaccount">
+	$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+版本号
+<select class="input-medium focused" id="zone" name="appVersionName">
+		<!--{loop $appVersionList $appKey $appVal}-->
+			<!--{if ($appVersion == $appKey)}-->
+				<option id="{$appKey}" selected="selected">{$appVal}</option>
+			<!-- {else} -->
+				<option id="{$appKey}">{$appVal}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+
+<!--{else}-->
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{/if}-->
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+渠道
+<select id="selectReferrer" name="selectReferrer" onchange="">
+		<!--{loop $referrerList $referrer $referrername}-->
+		<!--{if ($currReferrer == $referrer)}-->
+		<option value="{$referrer}" selected="selected">{$referrername}</option>
+		<!-- {else} -->
+		<option value="{$referrer}">{$referrername}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+/* 	url = 'getstruct.php?getdata=column&table=userprofile&column=appVersion&server='+getCurrentServer()+'&blank=false';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getEventStruct;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+ */
+}
+/* function getEventStruct(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(init);
+			return;
+		}
+		document.getElementById('zone').innerHTML=xmlHttp.responseText;
+		return;
+	}
+} */
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

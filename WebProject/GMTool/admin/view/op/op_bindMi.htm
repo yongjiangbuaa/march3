@@ -1,0 +1,51 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "小米帐号绑定";?><font color="red"></font></div>
+小米帐号<input class="input-large focused" id="user" name="user" type="text" placeholder="输入需要查询的小米帐号" value="">
+<input class="btn js-btn btn-primary" type="button" onclick="getBindData()" id="btn_view" name="btn_view" value="查询小米帐号当前绑定角色">
+<div id='show' style="float:left;width:95%;height:auto"></div>
+<div id='dis' style="float:left;display:none;z-index:99999;position:absolute;left:50px; top:70px; border-radius:20px;background-color:#708090;width:1024px;height:700px"><h2 align="center">正在加载数据，请稍后...</h2></div>
+
+<script type="text/javascript">
+process = false;
+function getBindData(){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;		
+	}
+	process = true;
+	document.getElementById('show').innerHTML='正在读取数据';
+	url = 'admincp.php?mod=op&act=bindMi&action=query&user='+$('#user').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function changeBindData(fromUid,miUid,inputId){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;	
+	}
+	process = true;
+	url = 'admincp.php?mod=op&act=bindMi&action=bind&fromUid='+fromUid+'&miUid='+miUid+'&targetUid='+$('#'+inputId).val();
+	document.getElementById('show').innerHTML='正在读取数据';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			process = false;
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="goods">
+    <ItemSpec id="10001" type="1" level="1" color="1" price_sell="100" price_buy="10" islock="1" overlap="1" destroy="1" order_num="10001"/>
+    <ItemSpec id="10002" type="1" level="2" color="2" price_sell="200" price_buy="20" islock="1" overlap="1" destroy="1" order_num="10002"/>
+    <ItemSpec id="10003" type="1" level="3" color="3" price_sell="300" price_buy="30" order_num="10003"/>
+    <ItemSpec id="10004" type="1" level="4" color="4" price_sell="400" price_buy="40" order_num="10004"/>
+    <ItemSpec id="10005" type="1" level="5" color="5" price_sell="500" price_buy="50" order_num="10005"/>
+    <ItemSpec id="101001" type="10" level="1" operate_type="1" color="2" require_level="1" effect1="1" value1="10" para1="1" price_sell="100" price_buy="10" overlap="1" order_num="101001" shop="1"/>
+    <ItemSpec id="101002" type="10" level="1" operate_type="1" color="3" require_level="1" effect1="2" value1="10" para1="1" price_sell="200" price_buy="20" overlap="1" order_num="101002" shop="1"/>
+    <ItemSpec id="101003" type="10" level="10" operate_type="1" color="4" require_level="10" effect1="3" value1="10" para1="1" price_sell="300" price_buy="30" overlap="1" order_num="101003" shop="1"/>
+    <ItemSpec id="101004" type="10" level="10" operate_type="1" color="5" require_level="10" effect1="4" value1="10" para1="1" price_sell="400" price_buy="40" overlap="1" order_num="101004" shop="1"/>
+    <ItemSpec id="101005" type="10" level="20" operate_type="1" color="6" require_level="20" effect1="5" value1="10" para1="1" price_sell="500" price_buy="50" overlap="1" order_num="101005" shop="1"/>
+    <ItemSpec id="102001" type="10" level="1" operate_type="1" color="2" require_level="1" effect1="1" value1="10" effect2="2" value2="10" para1="2" price_sell="100" price_buy="10" overlap="1" order_num="102001" shop="1"/>
+    <ItemSpec id="102002" type="10" level="1" operate_type="1" color="3" require_level="1" effect1="3" value1="10" effect2="4" value2="10" effect3="5" value3="10" para1="2" price_sell="200" price_buy="20" overlap="1" order_num="102002" shop="1"/>
+    <ItemSpec id="102003" type="10" level="10" operate_type="1" color="4" require_level="10" effect1="5" value1="10" effect2="5" value2="10" para1="2" price_sell="300" price_buy="30" overlap="1" order_num="102003" shop="1"/>
+    <ItemSpec id="102004" type="10" level="10" operate_type="1" color="5" require_level="10" effect1="5" value1="10" effect2="5" value2="10" effect3="5" value3="10" para1="2" price_sell="400" price_buy="40" overlap="1" order_num="102004" shop="1"/>
+    <ItemSpec id="102005" type="10" level="20" operate_type="1" color="6" require_level="20" effect1="1" value1="10" effect2="2" value2="10" effect3="2" value3="10" para1="2" price_sell="500" price_buy="50" overlap="1" order_num="102005" shop="1"/>
+    <ItemSpec id="103001" type="10" level="1" operate_type="1" color="2" require_level="1" effect1="1" value1="10" para1="3" price_sell="100" price_buy="10" overlap="1" order_num="103001" shop="1"/>
+    <ItemSpec id="103002" type="10" level="1" operate_type="1" color="3" require_level="1" effect1="2" value1="10" para1="3" price_sell="200" price_buy="20" overlap="1" order_num="103002" shop="1"/>
+    <ItemSpec id="103003" type="10" level="10" operate_type="1" color="4" require_level="10" effect1="3" value1="10" para1="3" price_sell="300" price_buy="30" overlap="1" order_num="103003" shop="1"/>
+    <ItemSpec id="103004" type="10" level="10" operate_type="1" color="5" require_level="10" effect1="4" value1="10" para1="3" price_sell="400" price_buy="40" overlap="1" order_num="103004" shop="1"/>
+    <ItemSpec id="103005" type="10" level="20" operate_type="1" color="6" require_level="20" effect1="5" value1="10" para1="3" price_sell="500" price_buy="50" overlap="1" order_num="103005" shop="1"/>
+    <ItemSpec id="104001" type="10" level="1" operate_type="1" color="2" require_level="1" effect1="1" value1="10" para1="4" price_sell="100" price_buy="10" overlap="1" order_num="104001" shop="1"/>
+    <ItemSpec id="104002" type="10" level="1" operate_type="1" color="3" require_level="1" effect1="2" value1="10" para1="4" price_sell="200" price_buy="20" overlap="1" order_num="104002" shop="1"/>
+    <ItemSpec id="104003" type="10" level="10" operate_type="1" color="4" require_level="10" effect1="3" value1="10" para1="4" price_sell="300" price_buy="30" overlap="1" order_num="104003" shop="1"/>
+    <ItemSpec id="104004" type="10" level="10" operate_type="1" color="5" require_level="10" effect1="4" value1="10" para1="4" price_sell="400" price_buy="40" overlap="1" order_num="104004" shop="1"/>
+    <ItemSpec id="104005" type="10" level="20" operate_type="1" color="6" require_level="20" effect1="5" value1="10" para1="4" price_sell="500" price_buy="50" overlap="1" order_num="104005" shop="1"/>
+    <ItemSpec id="105001" type="10" level="1" operate_type="1" color="2" require_level="1" effect1="1" value1="10" para1="5" price_sell="100" price_buy="10" overlap="1" order_num="105001" shop="1"/>
+    <ItemSpec id="105002" type="10" level="1" operate_type="1" color="3" require_level="1" effect1="2" value1="10" para1="5" price_sell="200" price_buy="20" overlap="1" order_num="105002" shop="1"/>
+    <ItemSpec id="105003" type="10" level="10" operate_type="1" color="4" require_level="10" effect1="3" value1="10" para1="5" price_sell="300" price_buy="30" overlap="1" order_num="105003" shop="1"/>
+    <ItemSpec id="105004" type="10" level="10" operate_type="1" color="5" require_level="10" effect1="4" value1="10" para1="5" price_sell="400" price_buy="40" overlap="1" order_num="105004" shop="1"/>
+    <ItemSpec id="105005" type="10" level="20" operate_type="1" color="6" require_level="20" effect1="5" value1="10" para1="5" price_sell="500" price_buy="50" overlap="1" order_num="105005" shop="1"/>
+    <ItemSpec id="111001" type="11" level="1" color="2" status="1" effect1="1" value1="10" para1="1" para2="1" para3="1" price_sell="100" price_buy="10" order_num="111001"/>
+    <ItemSpec id="201001" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="50" value1="1000" price_sell="100" price_buy="10" order_num="201001"/>
+    <ItemSpec id="201002" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="51" value1="1000" price_sell="100" price_buy="10" order_num="201002"/>
+    <ItemSpec id="201003" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="52" value1="1000" price_sell="100" price_buy="10" order_num="201003"/>
+    <ItemSpec id="201004" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="53" value1="1000" price_sell="100" price_buy="10" order_num="201004"/>
+    <ItemSpec id="201005" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="54" value1="1000" price_sell="100" price_buy="10" order_num="201005"/>
+    <ItemSpec id="201006" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="55" value1="1000" price_sell="100" price_buy="10" order_num="201006"/>
+    <ItemSpec id="201007" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="56" value1="1000" price_sell="100" price_buy="10" order_num="201007"/>
+    <ItemSpec id="201008" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="54" value1="1000" effect2="55" value2="1000" effect3="56" value3="1000" price_sell="100" price_buy="10" order_num="201008"/>
+    <ItemSpec id="201008" type="20" level="1" operate_type="2" color="2" require_level="1" effect1="54" value1="1000" effect2="55" value2="1000" effect3="56" value3="1000" price_sell="100" price_buy="10" order_num="201008"/>
+    <ItemSpec id="202001" type="20" level="1" operate_type="3" color="3" require_level="1" price_sell="100" price_buy="10" order_num="202001"/>
+    <ItemSpec id="203001" type="20" level="1" operate_type="3" color="2" require_level="1" status="100001" price_sell="100" price_buy="10" order_num="203001"/>
+    <ItemSpec id="203002" type="20" level="1" operate_type="3" color="2" require_level="1" status="101001" price_sell="100" price_buy="10" order_num="203002"/>
+    <ItemSpec id="203003" type="20" level="1" operate_type="3" color="2" require_level="1" status="120001" price_sell="100" price_buy="10" order_num="203003"/>
+    <ItemSpec id="203004" type="20" level="1" operate_type="3" color="2" require_level="1" status="121001" price_sell="100" price_buy="10" order_num="203004"/>
+    <ItemSpec id="210001" type="21" level="1" operate_type="2" color="1" require_level="1" para1="1" para2="1" price_sell="100" price_buy="10" order_num="210001"/>
+    <ItemSpec id="210002" type="21" level="2" operate_type="2" color="2" require_level="1" para1="2" para2="3" price_sell="100" price_buy="10" order_num="210002"/>
+    <ItemSpec id="210003" type="21" level="3" operate_type="2" color="3" require_level="1" para1="3" para2="7" price_sell="100" price_buy="10" order_num="210003"/>
+    <ItemSpec id="210004" type="21" level="4" operate_type="2" color="4" require_level="1" para1="4" para2="10" price_sell="100" price_buy="10" order_num="210004"/>
+    <ItemSpec id="210005" type="21" level="5" operate_type="2" color="5" require_level="1" para1="5" para2="5" price_sell="100" price_buy="10" order_num="210005"/>
+    <ItemSpec id="210006" type="21" level="6" operate_type="2" color="6" require_level="1" para1="6" para2="1" price_sell="100" price_buy="10" order_num="210006"/>
+    <ItemSpec id="300001" type="30" operate_type="3" price_sell="100" price_buy="10" order_num="300001"/>
+    <ItemSpec id="311001" type="31" level="1" color="1" para1="1" price_sell="100" price_buy="10" islock="1" order_num="311001"/>
+    <ItemSpec id="311002" type="31" level="1" color="1" para1="1" price_sell="100" price_buy="10" order_num="311002"/>
+    <ItemSpec id="312001" type="31" level="1" color="1" para1="2" price_sell="200" price_buy="20" islock="1" order_num="312001"/>
+    <ItemSpec id="312002" type="31" level="1" color="1" para1="2" price_sell="200" price_buy="20" order_num="312002"/>
+    <ItemSpec id="313001" type="31" level="1" color="2" para1="3" price_sell="300" price_buy="30" order_num="313001"/>
+    <ItemSpec id="320001" type="32" level="1" color="2" price_sell="100" price_buy="10" islock="1" order_num="320001"/>
+    <ItemSpec id="320002" type="32" level="1" color="2" price_sell="100" price_buy="10" order_num="320002"/>
+    <ItemSpec id="330001" type="33" level="1" color="2" price_sell="100" price_buy="10" islock="1" order_num="330001"/>
+    <ItemSpec id="330002" type="33" level="1" color="2" price_sell="100" price_buy="10" order_num="330002"/>
+  </Group>
+  <Group id="gift">
+    <ItemSpec id="1" number="1" item="10001" level_min="0" level_max="100" rate="10" desc="礼包1"/>
+    <ItemSpec id="2" number="3" item="10002" level_min="10" level_max="20" rate="10" desc="礼包2"/>
+    <ItemSpec id="3" number="3|4" item="10003,10004|10005" level_min="0,21|0" level_max="20,100|20" rate="10,10|10" desc="礼包3"/>
+    <ItemSpec id="4" number="5|5" item="10001,10002,10003,10004,10005|101001,101002,101003,101004,101005" level_min="0,11,21,31,41|0,0,0,0,0" level_max="10,20,30,40,50|100,100,100,100,100" rate="10,10,10,10,10|10,20,30,40,50" desc="礼包4"/>
+    <ItemSpec id="5" number="1|1|1|1|1" item="10001,10002,10003,10004,10005|101001,101002,101003,101004,101005|102001,102002,102003,102004,102005|103001,103002,103003,103004,103005|104001,104002,104003,104004,104005|105001,105002,105003,105004,105005" level_min="0,11,21,31,41|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0" level_max="10,20,30,40,50|100,100,100,100,100|100,100,100,100,100|100,100,100,100,100|100,100,100,100,100" rate="10,10,10,10,10|10,10,10,10,10|10,10,10,10,10|10,10,10,10,10|10,10,10,10,10" desc="礼包5"/>
+    <ItemSpec id="6" number="1" item="210005" level_min="0" level_max="100" rate="10" desc="礼包6"/>
+  </Group>
+</tns:database>

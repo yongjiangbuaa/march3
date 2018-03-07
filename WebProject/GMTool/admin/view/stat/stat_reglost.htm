@@ -1,0 +1,36 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "充值统计";?><font color="red"></font></div>
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view" value="查询注册数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+function getData(page){
+	url = 'admincp.php?mod=stat&act=reglost&analyze=user&page='+page+'&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML='loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

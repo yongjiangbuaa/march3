@@ -1,0 +1,88 @@
+<!--{template header}-->
+<div class="alert alert-info">新注册留存<font color="red">(迁服之后再登录算作留存)&nbsp;&nbsp;&nbsp;&nbsp;$alertHead</font></div>
+<form action="admincp.php?mod=ad&act=newRetention" method="post" name="getaccount" style="display: inline-table;">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<!--{if ($showData)}-->
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr>
+		<!--{loop $titleArray $tKey $tVal}-->
+			<!--{if ($tKey == 'date')}-->
+				<th width=10%>$tVal</th>
+			<!--{else}-->
+				<th width=4%>$tVal</th>
+			<!--{/if}-->
+			
+		<!--{/loop}-->
+			<th width=12%></th>
+		</tr>
+		<tbody id='adDataTable'>
+		<!--{loop $total $dbData}-->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';"style="font-weight: bold; color: rgb(119, 125, 237);">
+				<!--{loop $titleArray $tKey $tVal}-->
+					<td>$dbData[$tKey]</td>
+				<!--{/loop}-->
+				<td>
+					<a href="javascript:void(viewDailyData('{$dbData['date']}','country'))">国家</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:void(viewDailyData('{$dbData['date']}','pf'))">平台</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="javascript:void(viewDailyData('{$dbData['date']}','server'))">分服</a>
+				</td>
+			</tr>
+		<!--{/loop}-->
+		</tbody>
+	</table>
+<!--{/if}-->
+
+</form>
+<div id='display' style="display:none;position:fixed;z-index:1; right:initial; top:100px; height:80%; width:80%; background-color:whitesmoke; color:black; line-height:30px;">
+	<div style="background-color: darkgray;">
+	<input class="btn js-btn btn-primary" type="button" onclick="turnoff()" id="btn_off" name="btn_off" value="点击关闭">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input class="btn js-btn btn-primary" type="button" onclick="getXlsPage()" id="btn_page" name="btn_page" value="导出EXCEL">
+	</div>
+	<div id='displayinner' style="height:95%;width:100%;overflow: scroll;overflow:auto;"></div>
+</div>
+
+
+<script type="text/javascript">
+function viewDailyData(date,param) {
+	var url = 'admincp.php?mod=ad&act=newRetention&date='+date+'&param='+param+'&display=true';
+	$.get(url,function(data){
+			var div = document.getElementById('display'); 
+			div.style.display="block"; 
+			div.style.position="fixed"; 
+			$("#displayinner").html(data);
+	},'html');
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+function getXlsPage(){
+	 window.location.href='admincp.php?mod=ad&act=newRetention&date='+$('#display_date').val()+'&param='+$('#display_param').val()+'&display=true&event=output'; 
+}
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

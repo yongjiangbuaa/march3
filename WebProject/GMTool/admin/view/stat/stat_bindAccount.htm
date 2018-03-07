@@ -1,0 +1,67 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "账号绑定信息";?><font color="red" id="showtips"></font></div>
+注册起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="$dateMin">
+注册结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="$dateMax">
+大本等级范围 : <input class="input-small" id="buildMin" name='buildMin' type="text" value='1' style="width: 50px;" /> - 
+<input class="input-small" id="buildMax" name='buildMax' type="text" value='99' style="width: 50px;" />
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view"  id="btn_submit" value="查看统计信息">
+<div id='show' style="width:100%;float:left;height:auto"></div>
+
+<script type="text/javascript">
+
+var thisPage;
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	document.getElementById('btn_submit').disabled=true;
+	thisPage = page;
+	showData();
+}
+function showData(){
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	url = 'admincp.php?mod=stat&act=bindAccount&getData=true&start='+$('#start_time').val()+'&end='+$('#end_time').val()
+			+ '&buildMin='+$("#buildMin").val()+'&buildMax='+$("#buildMax").val()+'&page='+thisPage;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_submit').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+
+
+
+
+
+
+
+<!--{template footer}-->

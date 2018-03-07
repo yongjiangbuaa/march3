@@ -1,0 +1,48 @@
+<!--{template header}-->
+<div class="alert alert-info">多城修复( all 或者 33 或者 78...)<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=gmPay" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>服(all 或者 serverid)</span>
+<span><input placeholder="服编号 或者 all" type="text" id="serverid" name="serverid" value='{$serverid}'/></span>
+
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" value="修复" id="btn_view" name="btn_view" onclick="repair()" />
+</div>
+</div><br/>
+
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var serverid=$('#serverid').val();
+	serverid = jQuery.trim(serverid);
+	if(isEmpty(serverid)){
+		alert("serverid不能为空!");
+		$("#uid").focus();
+		return false;
+	}
+	return true;
+}
+function repair(){
+	if(isCommit()){
+		if(confirm('是否确认要修复功能'))
+		{
+			document.getElementById('btn_view').disabled=true;
+			$.get('admincp.php?mod=server&act=multiCity&type=repair&serverid='+$('#serverid').val(),function(data){
+				alert(data);
+				document.getElementById('btn_view').disabled=false;
+			});
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

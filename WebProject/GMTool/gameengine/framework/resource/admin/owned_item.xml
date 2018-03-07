@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" cellSize="1" id="1" packages="1" src="1">
+	<class id="scene" class="sceneItem" label="场景类物品">
+		<attribute name='level' label='等级' description='等级' visible='true' editable='true'>
+		</attribute>
+	</class>
+</tns:database>

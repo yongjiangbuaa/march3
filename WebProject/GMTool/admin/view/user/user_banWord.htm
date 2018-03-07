@@ -1,0 +1,62 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo 请输入要禁言的玩家Uid;?><font color="red"></font></div>
+<form action="admincp.php?mod=user&act=banWord" method="post" name="getaccount">
+    <div class="row-fluid">
+        <div class="span11">
+            <span>UID</span>
+            <span>
+                <input type="text" id="useruid" name="useruid" value='{$useruid}' />
+            </span>
+            <hr/>
+            <span>禁言理由(必填,至少6字) </span>
+                <input type="text" id="userreason" name="userreason" value='{$userreason}'/>
+            </span>
+            <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+            <input class="btn js-btn btn-primary" type="button" value="banWord" name="btn_view"
+                   onclick="check_submit('process')"/>
+        </div>
+    </div>
+    <br/>
+    <div>
+        $html
+    </div>
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputUid = $('#useruid').val();
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputUid)){
+		alert("<?php echo" uid can not be empty";?>");
+		$("#useruid").focus();
+		return false;
+	}
+
+    var inputreason = $('#userreason').val();
+    inputreason = jQuery.trim(inputreason);
+    if(isEmpty(inputreason) ||inputreason.length < 6 ){
+        alert("<?php echo"禁言理由不能为空 或 少于6个字 ";?>");
+        $("#userreason").focus();
+        return false;
+    }
+
+	return true;
+}
+function check_submit(type) {
+	if(isCommit()){
+		var inputUid = $('#useruid').val();
+		if(confirm('是否确定对Uid为'+inputUid+'的玩家进行禁言?'))
+		{
+			 document.getElementById('action').value = type;
+			 document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

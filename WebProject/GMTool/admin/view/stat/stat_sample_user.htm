@@ -1,0 +1,50 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "抽样统计";?><font color="red" id="showtips"></font></div>
+<!-- <input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view"  id="btn_submit" value="统计数据"> -->
+样本选择 : <select id="eventType" name="eventType" onclick="changeEvemt()" >$eventOptions</select>
+<input class="btn js-btn btn-primary" type="button" id="viewInfo" onclick="showData(1)" name="btn_view" value="查询信息">
+<div id='show' style="width:100%;float:left;height:auto"></div>
+
+
+<script type="text/javascript">
+function showData(type){
+	document.getElementById('viewInfo').disabled=true;
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var objs = document.getElementsByName('server');
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			selectServer = objs[i].value;
+			break;
+		}
+	}
+	url = 'admincp.php?mod=stat&act=sample_user&getData=true'+'&type='+type+'&tag='+$("#eventType").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	//$("#start_time").datetimepicker();
+    //$("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('viewInfo').disabled=false;
+			return;
+		}
+	}
+}
+
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,129 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=userinfo" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>用户名</span>
+<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span><br/>
+<span>FaceBookId</span>
+<span><input type="text" id="facebookid" name="facebookid" value='{$facebookid}'></input></span>
+<span>FaceBookName</span>
+<span><input type="text" id="facebook" name="facebook" value='{$facebook}'></input></span>
+<span>GoogleEmail</span>
+<span><input type="text" id="googleAccountName" name="googleAccountName" value='{$googleAccountName}'></input></span>
+	<span>GameCenter</span>
+	<span><input type="text" id="gameCenter" name="gameCenter" value='{$gameCenter}'></input></span>
+
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+</form>
+	{$html};
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  width="30%">属性</th>
+	<th align="center"  width="30%">值</th>
+	</tr>
+	<!--{loop $dbArray $dbName $dbData}-->
+		<tr>
+			<td><input type="text" id="key_{$dbName}" value="{$dbData['name']}" size="20" class="input-xlarge disabled uneditable-input" readonly="readonly"></td>
+			<td>$item[$dbName]</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputGameCenter = $('#gameCenter').val();
+	var inputFacebookid = $('#facebookid').val();
+	var inputFacebook = $('#facebook').val();
+	var inputGoogleEmail = $('#googleAccountName').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputGameCenter = jQuery.trim(inputGameCenter);
+	inputFacebookid = jQuery.trim(inputFacebookid);
+	inputFacebook = jQuery.trim(inputFacebook);
+	inputGoogleEmail = jQuery.trim(inputGoogleEmail);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputGameCenter)&&isEmpty(inputFacebookid)&&isEmpty(inputFacebook)&&isEmpty(inputGoogleEmail)){
+		alert("UID不能为空!");
+		$("#useruid").val(" ");
+		$("#useruid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view' || type=='viewmaster')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+//禁言时间
+function dochatban(uid, type) {
+	if (isreasonLength()) {
+		alert('当前facebook账号下有' + $sum + "个角色：");
+		if(document.getElementById('userreason')){
+			var userreason = $('#userreason').val();
+			$.get('admincp.php?mod=user&act=userinfo&dochatban=1&banuid=' + uid + '&bantime=' + $("#dateMax").val() + '&dotype=' + type + '&userreason=' + userreason, function (data) {
+				alert('Success');
+				check_submit('viewmaster');
+			});
+		}else {
+			$.get('admincp.php?mod=user&act=userinfo&dochatban=1&banuid=' + uid + '&bantime=' + $("#dateMax").val() + '&dotype=' + type , function (data) {
+				alert('Success');
+				check_submit('viewmaster');
+			});
+		}
+	}
+}
+function isreasonLength(){
+	if(!document.getElementById('userreason'))
+		return true;
+
+	var inputreason = $('#userreason').val();
+	inputreason = jQuery.trim(inputreason);
+	if(isEmpty(inputreason) ||inputreason.length < 6 ){
+		alert("<?php echo'禁言理由不能为空 或 少于6个字 ';?>");
+		$("#userreason").focus();
+		return false;
+	}
+
+	return true;
+}
+//禁止大喇叭时间
+function donoticeban(uid,type){
+	$.get('admincp.php?mod=user&act=userinfo&donoticeban=1&banuid='+uid+'&bantime='+$("#dateNoticeMax").val()+'&dotype='+type,function(){
+		alert('Success!');
+		check_submit('viewmaster');
+	});
+}
+//修改名字
+function dochangename(uid){
+	var url = 'admincp.php?mod=user&act=userinfo&dochangename=true&changeuid='+uid+'&changename='+$("#changename").val();
+	$.get(url,function(data){
+		alert(data);
+		check_submit('viewmaster');
+	});
+}
+$("#dateMax,#dateNoticeMax").datetimepicker();
+</script>
+<!--{template footer}-->

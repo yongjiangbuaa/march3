@@ -1,0 +1,184 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<style type="text/css">
+	.trTitle{
+		line-height: 20px;
+		font-family: verdana;
+		border-bottom: 1px solid #e8e8e8;
+		background-color: #39434e;
+		color: #f5f6f8;
+		font-size: 13px;
+	}
+</style>
+<form action="admincp.php?mod=stat&act=dayreport" method="post" name="getaccount">
+	<span style="font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;font-family: verdana;">起始</span><input class="input-large focused" id="start_time"
+														  name="start_time" type="text" style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;"
+														  placeholder="起始日期" value="{$start}">
+	<span style="font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;font-family: verdana;">结束</span><input
+		class="input-large focused" id="end_time" name="end_time" type="text"
+		style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;" placeholder="点击选择日期" value="{$end}">
+    <span style="font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;font-family: verdana;">国家</span>
+	<select id="selectCountry" name="selectCountry" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;font-family: verdana;">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+		<option value="{$country}" selected="selected">{$countryname}</option>
+		<!--{else}-->
+		<option value="{$country}">{$countryname}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+
+     <span style="font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;font-family: verdana;">平台</span>
+	<select id="selectPf" name="selectPf" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;font-family: verdana;">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+		<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+		<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+
+	<span style="font-family: 'verdana';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">维度</span> <select id="dimension" name="dimension" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+	<!--{loop $dimensionArray $dimeKey $dimeVal}-->
+	<!--{if ($currdimension == $dimeKey)}-->
+	<option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+	<!--{else}-->
+	<option value="{$dimeKey}">{$dimeVal}</option>
+	<!--{/if}-->
+	<!--{/loop}-->
+</select>
+
+	<!--{if $allServerFlag}-->
+	<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />
+			 <span style="font-style: normal;
+					    font-weight: 300;
+					    line-height: 1;
+					    font-size: 16px;
+					    color: #08a0e1;font-family: verdana;">分服显示数据</span>
+	<!--{else}-->
+	<input class="" type="checkbox" name="allServers" id="allServers"   />
+		<span style="font-style: normal;
+					    font-weight: 300;
+					    line-height: 1;
+					    font-size: 16px;
+					    color: #08a0e1;font-family: verdana;">分服显示数据</span>
+	<!--{/if}-->
+
+	<input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc;
+    cursor: pointer;font-family: verdana;" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+	<input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc;
+    cursor: pointer;" type="button" onclick="getXlsPage()" id="btn_page" name="btn_view" value="导出">
+	<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+</form>
+
+<table style="text-align: center;border-collapse: collapse;margin: 0 auto;width: 99%;"  border="1">
+	<thead>
+	<tr class="trTitle">
+		<!--{if ($allServerFlag)}-->
+		<th style="word-break: keep-all;white-space:nowrap; padding: 10px; text-align: -webkit-center;font-family: verdana;">服</th>
+		<!--{/if}-->
+		<!--{loop $titleArray $tKey $tVal}-->
+		<th style="word-break: keep-all;white-space:nowrap; padding: 10px; text-align: -webkit-center;font-family: verdana;">$tVal</th>
+		<!--{/loop}-->
+	</tr>
+	</thead>
+	<tbody>
+	<!--{if ($allServerFlag)}-->
+	<!--{loop $total $datek $dbData}-->
+	<!--{loop $dbData $sKey $dbVal}-->
+	<tr class="listTr" onMouseOver="this.style.background='#5CACEE'"
+		onMouseOut="this.style.background='#fff';">
+		<!--{if ($serverrows[$datek][$sKey] == 2)}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;font-family: verdana;background-color: slategray;">$datek</td>
+		<!--{else}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;font-family: verdana;">$datek</td>
+		<!--{/if}-->
+		<!--{loop $titleArray $tKey $tVal}-->
+		<!--{if ($tKey == 'date')}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;font-family: verdana;">$dbVal[$tKey]</td>
+		<!--{else}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;font-family: verdana;">$dbVal[$tKey]</td>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</tr>
+	<!--{/loop}-->
+	<!--{/loop}-->
+	<!--{else}-->
+	<!--{loop $total $datek $dbData}-->
+	<tr class="listTr" onMouseOver="this.style.background='#5CACEE'"
+		onMouseOut="this.style.background='#fff';">
+		<!--{loop $titleArray $tKey $tVal}-->
+		<!--{if ($tKey == 'date')}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;font-family: verdana;">$dbData[$tKey]</td>
+		<!--{else}-->
+		<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;font-family: verdana;">$dbData[$tKey]</td>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</tr>
+	<!--{/loop}-->
+	<!--{/if}-->
+	</tbody>
+</table>
+<script type="text/javascript">
+	init();
+	function init() {
+		$("#start_time,#end_time").datetimepicker();
+	}
+	function search() {
+		document.getElementById('btn_view').disabled = true;
+		document.getElementById('event').value = 'view';
+		document.getaccount.submit();
+	}
+	function getXlsPage(){
+		document.getElementById('event').value = 'output';
+		document.getaccount.submit();
+	}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,53 @@
+<!--{template header}-->
+<form action="admincp.php?mod=global&act=uidexport" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+<span>用户名列表</span>
+<span><textarea id="username" name="username" value='{$username}'></textarea><font color="red" >(英文逗号分割，如名字中有符号或者特殊字符的，请使用单个查询)</font></span>
+<br>
+<span>UID列表：</span>
+<span><textarea  id="useruid" name="useruid" value='{$useruid}'></textarea><font color="red" >(英文逗号分割)</font></span>
+<br>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+<div><?php echo $html;?></div>
+</div><br/>
+
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputPlat = $('#userplat').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputPlat = jQuery.trim(inputPlat);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputPlat)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#username").val(" ");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+
+
+</script>
+<!--{template footer}-->

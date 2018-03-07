@@ -1,0 +1,153 @@
+<!--{template header}-->
+<div class="alert alert-info" ><?php echo "执行数据库语句，查询语句会展示结果";?><font color="red"></font></div>
+<style type="text/css">
+    .pie {
+  background-color: #ffffff;
+  font: 15px sans-serif;
+  font-weight: normal;
+  height: 300px;
+}
+.pie .total{
+  font-size: 18px;
+  font-weight: bold;
+}
+.pie .units{
+  fill: gray;
+  font-size: 12px;
+}
+.pie .label{
+  fill: #CCC;
+  font-size: 12px;
+  font-weight: bold;
+}
+.pie .value{
+  font-size: 12px;
+  font-weight: bold;
+}
+.pie .key{
+  fill: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+</style>
+<div class="span11">
+起始时间<input class="input-medium focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-medium focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+     <input class="btn js-btn btn-primary" type="button" onclick="getData()" name="btn_view"  id="btn_submit" value="统计数据">
+</div>
+<div class="container" style="width: auto;">
+	<input type="hidden" name="server" id="server" value={$selectServer}>
+	<ul class="nav nav-tabs">
+	<li>
+	<input type='checkbox' id="all_server" name="all_server"  onClick="serverall()"  />
+	all 
+	</li>
+	<!--{loop $servers $server $serverSettings}-->
+		<li>
+		<!-- {if ($selectServer && in_array($server,$selectServer)) || (!$selectServer && $server==getCurrServer())} -->
+			<input type='checkbox' id="server_{$server}" name="{$server}"  onClick="checkserverall()" checked />
+		<!-- {else} -->
+			<input type='checkbox' id="server_{$server}" name="{$server}" onClick="checkserverall()" />
+		<!-- {/if} -->
+		$server</li>
+	<!--{/loop}-->
+	</ul>
+</div>
+<div id = 'loading'><p style="font-size:20px; color:red">Loading...</p></div>
+<table>
+<tr>
+<th width="450"><div class="pie" id="servers" style="width:450;" align="left"></div></th>
+<th width="250"><div class="pie" id="date" style="width:250;font-size:10px"></div></th>
+<th width="1000"><div id="graph" style="width:700;"></div></th>
+</tr>
+</table>
+<div id='show' style="width:400;float:center;height:auto;align:left;"></div>
+<script src="include/d3.js" charset="utf-8"></script>
+<script src="include/hotgoods.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    init();
+});
+
+function init(){
+	document.getElementById('loading').style.display='none';
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+    pie1 = new HotGoods();
+	pie1.draw('servers');
+}
+
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+
+function getData(){
+	$("#loading").show();
+	var params="";
+	var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			params = params +  "&" + objs[i].name + "=on" ;
+		}
+	}
+	params = params+'&start='+$('#start_time').val()+'&end='+$('#end_time').val();
+  var url = 'admincp.php?mod=stat&act=hotgoods&ispost=1'+params;
+  var url2 = 'admincp.php?mod=stat&act=hotgoods&requestdata=1'+params;
+  pie1.clear();
+  $.ajax({  
+	  type: "get",  
+	  url: url,  
+	  dataType: "json",
+	  success: function(msg){  
+	  	var content = msg.content;
+	  	$("#show").html(content);
+	  	$.ajax({  
+		  	  type: "get",  
+		  	  url: url2,  
+		  	  dataType: "json",
+		  	  success: function(msg){  
+		  	  var data = msg.data;
+		  	  	pie1.update(data);
+			  	  document.getElementById('loading').style.display='none';
+		  	  }
+		  	});
+	  },
+  	  error: function(e){
+		  alert(e);
+	  }  
+	});  
+}
+function find(obj, str){
+	str += "{";
+	for(var i in obj){
+  	  	if(obj[i]!=null&&typeof(obj[i])!="function"&&typeof(obj[i])=="object"){
+			str = find(obj[i], str); 
+  	  	}else{
+  	  	  	str = str + i + ":" + obj[i] + ", ";
+  	  	}
+  	}
+  	str += "}";
+  	return str;
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,57 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "领主技能使用情况的查询";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=userSkillStatistics&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!--{if $showData}-->
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr class="listTr">
+			<th></th>
+			<th colspan="2">合计</th>
+			<!--{loop $selectServer  $serverValue $serverInfo}-->
+			<th colspan="2">$serverValue</th>
+			<!--{/loop}-->
+		</tr>
+		<tr class="listTr">
+			<th width=4%>日期</th>
+			<th width=4%>人数</th>
+			<th width=4%>次数</th>
+			<!--{loop $selectServer  $serverValue $serverInfo}-->
+			<th width=4%>人数</th>
+			<th width=4%>次数</th>
+			<!--{/loop}-->
+		</tr>
+		<!--{loop $dates  $dKey $dateValue}-->
+			<tr class="listTr">
+				<td width=4%> $dateValue</td>
+				<td width=4%> $total[$dateValue]['users']</td>
+				<td width=4%> $total[$dateValue]['times']</td>
+				<!--{loop $selectServer  $serverValue $serverInfo}-->
+				<td width=4%> $data[$serverValue][$dateValue]['users']</td>
+				<td width=4%> $data[$serverValue][$dateValue]['times']</td>
+				<!--{/loop}-->
+			</tr>
+		<!--{/loop}-->
+	</table>
+<!--{else}-->
+
+<!--{/if}-->
+
+</form>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

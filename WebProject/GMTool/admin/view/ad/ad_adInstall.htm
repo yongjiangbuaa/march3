@@ -1,0 +1,172 @@
+<!--{template header}-->
+<div>
+<div class="alert alert-info"><font color="red">提示:starttime &lt;=time&lt;endtime;&nbsp;&nbsp;查看维度选择“二级渠道”的时候，只显示install>10的渠道。&nbsp;&nbsp;&nbsp;&nbsp;$alertHead</font></div>
+<form action="admincp.php?mod=ad&act=adInstall" method="post" name="getaccount" style="display: inline-table;">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+查看维度
+<select id="dimension" name="dimension" onchange="">
+		<!--{loop $dimensionArray $dimeKey $dimeVal}-->
+		<!--{if ($currdimension == $dimeKey)}-->
+			<option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+		<!-- {else} -->
+			<option value="{$dimeKey}">{$dimeVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+<div id='display' style="display:none;position:fixed;z-index:1; right:initial; top:100px; height:80%; width:80%; background-color:whitesmoke; color:black; line-height:30px;">
+	<div style="background-color: darkgray;">
+	<input class="btn js-btn btn-primary" type="button" onclick="turnoff()" id="btn_off" name="btn_off" value="点击关闭">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input class="btn js-btn btn-primary" type="button" onclick="getXlsPage()" id="btn_page" name="btn_page" value="导出EXCEL">
+	</div>
+	<div id='displayinner' style="height:95%;width:100%;overflow: scroll;overflow:auto;"></div>
+</div>
+<!--{if ($showData)}-->
+<div>
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr>
+		<!--{loop $addTitle $aKey $aVal}-->
+			<!--{if ($aKey=='country')}-->
+				<th width=7%>$aVal</th>
+			<!--{else}-->
+				<th width=2%>$aVal</th>
+			<!--{/if}-->
+		<!--{/loop}-->
+			{php $index=$instalCol}
+		<!--{loop $titleArray $tKey $tVal}-->
+			<!--{if ($tKey=='install')}-->
+				<th width=2%><a href="#" onclick="sort_table(people, '{$instalCol}', asc1); asc1 *= -1; asc2 = 1; asc3 = 1;">$tVal</a></th>
+			<!--{else}-->
+				<th width=2%><a href="#" onclick="sort_table(people, '{$index}', asc1); asc1 *= -1; asc2 = 1; asc3 = 1;">$tVal</a></th>
+			<!--{/if}-->
+			{php ++$index;}
+		<!--{/loop}-->
+			<th width=4%></th>
+		</tr>
+		<tbody id='adDataTable'>
+		<!--{loop $total $dbData}-->
+			<tr>
+				<!--{loop $addTitle $aKey $aVal}-->
+				<!--这是循环的国家列-->
+					<!--{if ($aKey=='country' && $countryList[$dbData[$aKey]])}-->
+						<td width=2%>$countryList[$dbData[$aKey]]</td>
+					<!--{else}-->
+						<td width=2%>$dbData[$aKey]</td>
+					<!--{/if}-->
+				<!--{/loop}-->
+
+				<!--{loop $titleArray $tKey $tVal}-->
+					<td width=2%>$dbData[$tKey]</td>
+				<!--{/loop}-->
+
+				<!--{if ($currdimension==0)}-->
+					<td><a href="javascript:void(viewDailyData('{$dbData['os']}','','','','{$start}','{$end}'))">查看日数据</a></td>
+				<!--{elseif ($currdimension==1)}-->
+					<td><a href="javascript:void(viewDailyData('{$dbData['os']}','{$dbData['country']}','','','{$start}','{$end}'))">查看日数据</a></td>
+				<!--{elseif ($currdimension==2)}-->
+					<td><a href="javascript:void(viewDailyData('{$dbData['os']}','{$dbData['country']}','{$dbData['channelTop']}','','{$start}','{$end}'))">查看日数据</a></td>
+				<!--{else}-->
+					<td><a href="javascript:void(viewDailyData('{$dbData['os']}','{$dbData['country']}','{$dbData['channelTop']}','{$dbData['channelSecond']}','{$start}','{$end}'))">查看日数据</a></td>
+				<!--{/if}-->
+			</tr>
+		<!--{/loop}-->
+		</tbody>
+	</table>
+</div>
+<!--{/if}-->
+</div>
+
+<script type="text/javascript">
+        var people, asc1 = 1,
+            asc2 = 1,
+            asc3 = 1;
+        window.onload = function () {
+            people = document.getElementById("adDataTable");
+        }
+//		tr是行，th或者td是列，
+        function sort_table(tbody, col, asc) {
+            var rows = tbody.rows,    //获取行
+                rlen = rows.length,   //一共多少行
+                arr = new Array(),
+                i, j, cells, clen;
+            // fill the array with values from the table
+            for (i = 0; i < rlen; i++) {
+                cells = rows[i].cells;   //每一行所有单元格
+                clen = cells.length;    //每行多少个单元格
+                arr[i] = new Array();
+                for (j = 0; j < clen; j++) {
+                    arr[i][j] = cells[j].innerHTML;
+                }
+            }
+            // sort the array by the specified column number (col) and order (asc)
+            arr.sort(function (a, b) {
+                return (a[col] == b[col]) ? 0 : ((Number(a[col]) > Number(b[col])) ? asc : -1 * asc);
+            });
+            // replace existing rows with new rows created from the sorted array
+            for (i = 0; i < rlen; i++) {
+                rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+            }
+        }
+</script>
+
+<script type="text/javascript">
+function viewDailyData(os,country,channelTop,channelSecond,start,end) {
+	var url = 'admincp.php?mod=ad&act=adInstall&os='+os+'&country='+country+'&channelTop='+channelTop+'&channelSecond='+channelSecond+'&start='+start+'&end='+end+'&display=true';
+	$.get(url,function(data){
+			var div = document.getElementById('display'); 
+			div.style.display="block"; 
+			div.style.position="fixed"; 
+			$("#displayinner").html(data);
+	},'html');
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+function getXlsPage(){
+	/* var url = 'admincp.php?mod=pay&act=adInstall&os='+os+'&country='+country+'&channelTop='+channelTop+'&channelSecond='+channelSecond+'&start='+start+'&end='+end+'&display=true&event=output';
+	$.get(url); */
+	/*
+	$.post("admincp.php", 
+			{	
+				mod: "pay", 
+				act: "adInstall",
+				os: $('#display_os').val(),
+				country: $('#display_country').val(),
+				channelTop: $('#display_channelTop').val(),
+				channelSecond: $('#display_channelSecond').val(),
+				start: $('#display_start').val(),
+				end: $('#display_end').val(),
+				display: true,
+				event: "output"
+			},function(data){
+			     alert('OK');
+			   }
+	);
+	*/
+	 window.location.href='admincp.php?mod=ad&act=adInstall&os='+$('#display_os').val()+'&country='+$('#display_country').val()+'&channelTop='+$('#display_channelTop').val()+'&channelSecond='+$('#display_channelSecond').val()+'&start='+$('#display_start').val()+'&end='+$('#display_end').val()+'&display=true&event=output'; 
+}
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

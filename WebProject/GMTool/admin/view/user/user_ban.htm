@@ -1,0 +1,50 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "禁言记录管理";?><font color="red"></font></div>
+起始时间<input class="input-medium focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-medium focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+管理员<input class="input-medium focused" id="gmuser" name="gmuser" type="text" placeholder="输入管理员名字（可以为空）" value="">
+用户<input class="input-medium focused" id="banuser" name="banuser" type="text" placeholder="输入用户Id（可以为空）" value="">
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view" value="查询禁言记录">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+function getData(page){
+	url = 'admincp.php?mod=user&act=ban&page='+page+'&start='+$('#start_time').val()+'&banuser='+$('#banuser').val()+'&gmuser='+$('#gmuser').val()+'&end='+$('#end_time').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

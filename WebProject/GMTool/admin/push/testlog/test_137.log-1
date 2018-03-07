@@ -1,0 +1,338 @@
+[2014-10-18 13:56:51] /data/htdocs/ifadmin/admin/push/cron_137.php START.
+PROCESS----------- db=cokdb2 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=1875
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('4483221b99c6553bd544a6cf039f3fbd', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb2 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=20
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('f5a329d30328421f8b943eff93e39155', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb2 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=24
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('96c142918702bd29f26929f139ac9d05', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdbs2 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=74
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('c5506f071f0bc33d722edbfefa7a7e48', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdbs2 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=47
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('b67db8030cd786d14f8f1ff9b1af0435', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdbs2 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=92
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('29c4a0dec2e97f43a6c00a45c5252fe3', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640611000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb3 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=57
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('9c6a6e1892025625b572bd99fd68fb75', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb3 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=33
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('f375b25a1414358db35d2702a8576b76', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb3 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=36
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('96f7a128bbae8be3e67fc1e7203a0fcc', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb4 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=48
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('9d4a36b6b881f65395b026ea4258b528', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb4 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=51
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('76b5395a26972cef6a0adfb73e28f0a1', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb4 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=62
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('c99ec156035df4edfedd39f4bfd128e8', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb5 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=53
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('15194cbc3d8c3f65f51e68dcd206841d', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb5 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=71
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('75a87279d5f88c0b2ff44ddca1b47900', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb5 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=790
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('52339af830520526aaecde2e29065229', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb6 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=1210
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('80befd104a3634ad3d06bbad273232c8', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb6 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=8874
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('83ee176b183b4208a9e4c53e8b66dc9c', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb6 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=16848
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('4a943aacf746ef6e7dabdfc040abc6c3', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb7 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=2460
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('c3d7d0b743f1b2c46bd9a3023f14a3d0', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb7 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=2827
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('67fe981e4e5aa4e0f794876feea0bcfc', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb7 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=16630
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('b14b6def8fbf8fbea1131700457ede00', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb8 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=10980
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('7689fc0a28e601fa70adae8e16e9d467', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb8 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=12559
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('eab9b257a860223b031cefe61ae99219', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640612000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb8 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=1882
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('9a46de1c36e81f8fb00878c6d93b42b3', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb9 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=12258
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('d89feafdd7c72f68c0dd0627dd70fe15', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb9 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=6446
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('3ad57e8b8807275634d0c980bb4d6ece', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb9 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=1241
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('58263eaf9b07429748e47e1fcaaa5a69', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,500', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb10 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=1176
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('e1a2465562a9deb652d138db21e3db0e', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb10 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=1433
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('a1775b499920482e531097d16af035c0', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb10 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb11 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=1188
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('96069a8ef46d74a26168ef99e51cf990', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb11 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=1439
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('ab5d434e187dc6c2ad70d9d3b597310e', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb11 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb12 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=1170
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('f4f34b5b932b76ab674f5e182efbaf26', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,200', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb12 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=1419
+insert into mail_contents(id, title, contents, rewardId, createTime) values ('137bbd6b9adeb4867d5ca3219f308b29', 'Online Reward', 'Dear My Lord，See you come back, I was very glad.Send you gold, hope you can better the development of the empire.', 'gold,0,300', 1413640613000)
+ret=1
+
+
+
+PROCESS----------- db=cokdb12 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb13 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb13 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb13 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb14 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb14 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb14 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb15 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb15 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb15 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb16 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb16 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb16 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb17 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb17 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb17 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb18 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb18 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb18 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+PROCESS----------- db=cokdb19 regday=1 
+select uid,parseRegisterId from userprofile where regTime>1413504000000 and regTime<=1413590400000
+count=0
+PROCESS----------- db=cokdb19 regday=3 
+select uid,parseRegisterId from userprofile where regTime>1413331200000 and regTime<=1413417600000
+count=0
+PROCESS----------- db=cokdb19 regday=7 
+select uid,parseRegisterId from userprofile where regTime>1412985600000 and regTime<=1413072000000
+count=0
+[2014-10-18 13:56:53] /data/htdocs/ifadmin/admin/push/cron_137.php END.

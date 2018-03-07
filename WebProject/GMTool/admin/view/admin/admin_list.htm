@@ -1,0 +1,203 @@
+<!--{template header}--> 
+
+<br />
+<!--{if $op == "edit" || $op == "add"}-->
+<form action="admincp.php?mod=admin&act=list&random=random()" method="post" id="editadmin" name="editadmin">
+<table cellspacing="2" cellpadding="0">
+	<tr>
+		<td width="120" align="right" style="padding:10px 0;">{$MALANG['admin_list_username']}</td>
+		<td><input name='username' id="username" type="text" value="{$admin_user['username']}" size="20" /></td>
+	</tr>
+	<!--{if $op == "add"}-->
+	<tr>
+		<td align="right" style="padding:10px 0;">{$MALANG['password_Password']}</td>
+		<td><input  name="password" id="password" type="text"  size="20" /></td>
+	</tr>
+	<!--{/if}-->
+	<tr>
+		<td align="right" style="padding:10px 0;">语言</td>
+		<td><select name="language" class="text" >
+			<option value ="zh_CN">中文</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" style="padding:10px 0;">管理组</td>
+		<td><select name="admingroup" class="text" >
+            <!--{loop $allGroupPermission $groupid $onegroup}-->
+            <option value="{$groupid}" {if $groupid == $admin_user['groupid'] }selected{/if}>{$onegroup['name']}</option>
+            <!--{/loop}-->
+			<!--&lt;!&ndash;{if $admin_user[groupid] == 1}&ndash;&gt;-->
+			<!--<option value ="1" selected>超级管理员</option>-->
+			<!--&lt;!&ndash;{else}&ndash;&gt; -->
+			<!--<option value ="0" &lt;!&ndash;{if $admin_user[groupid] == 0}&ndash;&gt;selected &lt;!&ndash;{/if}&ndash;&gt;>普通管理员</option>-->
+			<!--<option value ="2" &lt;!&ndash;{if $admin_user[groupid] == 2}&ndash;&gt;selected &lt;!&ndash;{/if}&ndash;&gt;>高级管理员</option>-->
+			<!--&lt;!&ndash;{/if}&ndash;&gt;-->
+			</select>
+            当前组默认权限<input type="checkbox" name="resetAuth" value="resetAuth"/>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" valign="top" style="padding:10px 0;">{$MALANG['admin_list_permission']}</td>
+		<td>
+		<table cellspacing="0" cellpadding="0">
+		<!--{loop $menu $k $mod}-->
+		<!--{if (isset($mod[sub_menu]) && ($k != "admin" || $k != "list")) }-->
+		<tr>
+			<td height="25" align="right" valign="top" style="padding:10px 0;">
+			
+			<input type="checkbox" name="auth[]" value="{$mod[permit]}" {php if( $admin_user[auth][$mod[permit]]) echo 'checked'} />
+			
+			{$mod[name]} </td>
+			<td valign="top" style="padding:10px 10px;">
+			<!--{loop $mod[sub_menu] $p $act}-->
+				<input type="checkbox" name="auth[]" value="{$act[permit]}" {php if($admin_user[auth][$act[permit]]) echo checked }/>
+				<!--{if ($act[hide]) }-->
+				<font color = 'gray'>{$act[name]}</font>
+				<!--{else}-->
+				{$act[name]}
+				<!--{/if}-->
+				<br />
+			<!--{/loop}-->
+			</td>
+		</tr>
+		<!--{/if}-->
+		<!--{/loop}-->
+		</table>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+		<input type="hidden" name="adminuid"  value='{$admin_user[uid]}'>
+		<input type="hidden" name="op" id="op" value="{$op}">
+		</td>
+		<td>
+		<input type="button" value="{$MALANG['btn_submit']}" name="btn_submit" onclick="check_submit('{$op}');" />&nbsp;&nbsp;
+		<input type="button" value="{$MALANG['btn_cancel']}" name="btn_cancel" onclick="cancel();" />
+		</td>
+	</tr>
+</table>
+</form>
+<!--{/if}-->
+
+<!--{if $op != "edit" && $op != "add"}-->
+<form id="adminform" name="userdel" action="admincp.php?mod=admin&act=list" method="post" class="form-horizontal" >
+<table class="table table-striped">
+	<tr>
+		<td align="left">
+		<input type="button" value="{$MALANG['admin_list_del']}" onclick="delUser();"/>
+		&nbsp;&nbsp;
+		<input type="button" value="{$MALANG['admin_list_add']}" onclick="addUser();"/>
+		</td>
+	</tr>
+	<tr>
+		<td><hr/>
+			<table  class="list" width="100%" border="0" cellspacing="0" cellpadding="5">
+				<tr>
+					<td width=50>&nbsp;</td>
+					<td width=100>{$MALANG['admin_list_username']}</td>
+					<!--
+					<td width=150>{$MALANG['admin_list_mail']}</td>
+					-->
+					<td width=50>语言</td>
+					<td width=100>{$MALANG['admin_list_lastlogin']}</td>
+					<!--
+					<td style="word-wrap:break-word;overflow:hidden">{$MALANG['admin_list_permission']}</td>
+					 -->
+					<td width=150>角色</td>
+					<td width=100>{$MALANG['admin_list_create_time']}</td>
+					<td align="center" width=150>{$MALANG['admin_user_comment']}</td>
+					<td align="center" width=150>{$MALANG['admin_user_action']}</td>
+				</tr>
+
+				<!--{loop $ADMINLIST $user $admin}-->
+				<tr>
+
+					<td><input type="checkbox" value="{$admin['uid']}" name="uid[]" /></td>
+					<td><a href="admincp.php?mod=admin&act=list&op=edit&adminuid={$admin['uid']}">{$admin['username']}</a></td>
+					<td>{$admin['language']}</td>
+					<td><!--{if $admin[lastactive]}-->{php echo date("Y-m-d H:i:s",$admin[lastactive])}<!--{else}-->0<!--{/if}--></td>
+
+
+                    <td>{php echo $allGroupPermission[$admin['groupid']]['name']}</td>
+					<td><!--{if $admin[addtime]}-->{php echo date("Y-m-d H:i:s",$admin[addtime])}<!--{else}-->0<!--{/if}--></td>
+
+
+					<td id="uid$admin['uid']"><a href="javascript:void(edit('uid$admin[uid]','$admin[admincomment]'))">
+						<!--{if $admin[admincomment]}-->$admin[admincomment]	<!--{else}-->	空<!--{/if}-->	</a></td>
+
+					<td align="center">
+						<a href="admincp.php?mod=admin&act=list&op=edit&adminuid={$admin['uid']}">{$MALANG['admin_user_edit']}</a>&nbsp;&nbsp;
+					</td>
+				</tr>
+				<!--{/loop}-->
+			</table>
+			<input type="hidden" name="op" id="op" value="edit">
+		</td>
+	</tr>
+	</table>
+</form>
+<!--{/if}-->
+
+<script>
+	function addUser(){
+		$("#op").val("add");
+		$("#adminform").submit();
+	}
+	function delUser(){
+		if(confirm("{$MALANG['admin_list_delete_question']}"))
+		{
+			$("#op").val("delete");
+			$("#adminform").submit();
+		}
+	}
+	function check_submit(op){
+		$("#op").val(op+"_submit");
+		$("#editadmin").submit();
+		return true;
+	}
+	function cancel(){
+		$("#op").val("");
+		$("#op").val("");
+		$("#editadmin").submit();
+		return true;
+	}
+
+
+
+	function edit(idx, content) {
+
+		right  = document.getElementById(idx);
+		if(!content) content = "空";
+		var htmltmp = "<form id='form1' style='margin:0'>输入值: <input class='input-mini' name='num' type='text' value =" + content + " id='num" + idx +
+				"'><br/> <input type='button' id='savebtn' value='保存' onclick=save('" +idx+ "')> <input type='button' id='cancelbtn' value='取消' onclick='rightinfo()'></form>";
+
+		right.innerHTML = htmltmp;
+	}
+	function save(idx){
+		$("#op").val("addcomment");
+		var idtmp  = "num" + idx;
+		var content = document.getElementById(idtmp).value;
+
+		if(1) {
+			var url = 'admincp.php?mod=admin&act=list&addcomment=addcomment&uid=' + idx + '&content=';
+		//			num+  .value+'&date='+$('#date').val();
+
+			url += content;
+			alert(url);
+			xmlHttp = getAjax();
+			xmlHttp.onreadystatechange = rightinfo;
+				xmlHttp.open("GET",url,true);
+				xmlHttp.send(null);
+		}
+
+	}
+	function rightinfo() {
+		if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		self.location='admincp.php?mod=admin&act=list';
+		}
+	}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,201 @@
+
+=====================
+=====================
+=====================
+===================== 从内部机器 72（$sfsb） 上发布到外网测试机 ===============================================================
+=====================
+=====================
+=====================
+!!!!!!!!!! ($sfsb)
+cd /IF/branches/smartfoxserver/SFS2X
+
+＝＝＝＝＝＝＝＝＝＝＝＝72大版本升级＝＝＝＝＝＝＝＝＝＝＝＝
+【手工处理升级】：
+diff $sfsb/extensions/COK1/config.properties $SFS2X/extensions/COK1/config.properties 
+db_struct_changes.sql
+【脚本执行】：
+cd /IF/branches/smartfoxserver/SFS2X && sh versionup_prepare.sh 1.1.11
+
+// fangkai在72trunk测试中的功能。。。。。。。。。
+svn up ../../ClashOfKingProject/
+svn status ../../ClashOfKingProject/
+svn ci ../../ClashOfKingProject/ -m "dubo: revert GameEngine.java Constants.java"
+＝＝＝＝＝＝＝＝＝＝＝＝72大版本升级＝＝＝＝＝＝＝＝＝＝＝＝
+
+# 常规发布。
+cd $sfsb
+fab -P startTestSfs
+fab -P stopTestSfs startTestSfs
+fab -P package upload
+fab -P package upload startTestSfs
+cd /IF/branches/smartfoxserver/SFS2X && fab -P stopTestSfs package upload startTestSfs
+
+
+# 补丁发布。（相对应的，需要在107执行 publish_control deployPatch）
+cd $sfsb && fab -P stopTestSfs uploadPatchFromMainBranch:gameversion=1.1.14 startTestSfs
+cd $sfsb && fab uploadPatchFromMainBranch:gameversion=1.1.14 startTestSfs
+
+# 老版本的bugfix：创建小分支
+fab createPatch:gameversion=1.1.8,svnrevision=69623
+
+# 老版本的bugfix：发布小分支补丁到107服（相对应的，需要在107执行 publish_control deployPatch）
+fab uploadPatch:gameversion=1.1.8,svnrevision=69623
+
+
+# 更新后台xml
+cd $sfsb && svn up
+fab -P uploadResourceXml:xmlfiles="goods.xml|reward.xml|activity_panel.xml"
+fab -P uploadResourceXml:xmlfiles="drconfig1.1.6.xml"
+
+=====================
+=====================
+=====================
+===================== 发布 107 config统一修改、然后同步到各服 =========================================================================
+=====================
+=====================
+=====================
+
+#0 事先准备 确认脚本执行是否正常：
+php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+php /publish/scripts/generate_mybatis-cross.xml.php output_config_dir=/publish/update/config
+php /publish/scripts/generate_rmiClient.xml.php output_config_dir=/publish/update/config
+php /publish/scripts/generate_config.properties.php output_config_dir=/usr/local/cok/SFS2X/onlineconfig
+
+## 预处理
+fab changeDbStructTemplate
+fab changeDbStructGlobal
+
+#1 停服公告
+GM
+
+#2 发布实施：deploy|deploywithdb|deployPatch
+
+【～～～～～真的需要用这个？～～～～～】
+# 常规发布-有数据库表变更。(命令格式 ./publish_control deploywithdb 多服号)
+#./publish_control deploywithdb 1
+#./publish_control deploywithdb 2-150
+#./publish_control deploywithdb 301-456
+#./publish_control deploywithdb 151-300
+#./publish_control deploywithdb 456-480
+#
+# 常规发布-无数据库表变更。(命令格式 ./publish_control deploy 多服号)
+#./publish_control deploy 1
+#./publish_control deploy 2-150
+#./publish_control deploy 301-456
+#./publish_control deploy 151-300
+#./publish_control deploy 456-480
+#
+# 补丁发布。(命令格式 ./publish_control deployPatch 多服号 游戏版本号)
+#./publish_control deployPatch 301-456 1.0.96
+#./publish_control deployPatch 1-150 1.0.96
+#./publish_control deployPatch 151-300 1.0.96
+
+
+#X 临时发布补丁 #####
+
+# 添加新版本
+fab -P updateGameconfigAddNewVersion:appVer=1.1.9,clientVer="0|1.0.2103"
+fab -P updateGameconfigAddNewVersion:appVer=1.1.10,clientVer="0|1.0.2129"
+
+# 更新后台xml（个别服，各个服顺次逐个执行）
+./publish_control uploadXml 1,152 "item.xml|reward.xml|activity_panel.xml"
+./publish_control uploadXml 1,152 "drconfig1.1.9.xml"
+./publish_control uploadXml 1-10,900001 "quest.xml"
+./publish_control uploadXml 1-100,532 "item.xml"
+./publish_control uploadXml 651-700,900021-900050 "item.xml|quest.xml"
+./publish_control uploadXml 900001-900020 "item.xml|exchange.xml|field_monster.xml|reward.xml"
+./publish_control uploadXml 1 "package.xml"
+./publish_control uploadXml 1-200,900001-900020 "activity_panel.xml"
+
+# 更新后台xml（全服，并发执行）
+fab -P uploadResourceXml:xmlfiles="item.xml|reward.xml|activity_panel.xml"
+fab -P uploadResourceXml:xmlfiles="equipment.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|exchange.xml|alliancescience.xml"
+fab -P uploadResourceXml:xmlfiles="field_monster.xml|reward.xml|goods.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|reward.xml|building.xml"
+fab -P uploadResourceXml:xmlfiles="gold_price.xml|mail.xml|reward.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|reward.xml|field_monster.xml"
+fab -P uploadResourceXml:xmlfiles="reward.xml|quest.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|package.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|activity_panel.xml|reward.xml"
+fab -P uploadResourceXml:xmlfiles="item.xml|position.xml"
+fab -P uploadResourceXml:xmlfiles="reward.xml|field_monster.xml"
+fab -P uploadResourceXml:xmlfiles="drconfig1.1.6.xml"
+
+
+fab -P uploadResourceXml:xmlfiles="drconfig1.1.9.xml",fromsid=1,tosid=1
+fab -P uploadResourceXml:xmlfiles="exchange.xml",fromsid=900001,tosid=900050
+
+==========================
+fab -P uploadPatchResourceXml:xmlfiles="item.xml|field_monster.xml|reward.xml|goods.xml"
+fab -P uploadPatchResourceXml:xmlfiles="item.xml",fromsid=532,tosid=532
+fab -P uploadPatchResourceXml:xmlfiles="exchange.xml",fromsid=601,tosid=800
+
+==========================
+添加屏蔽词：阻止消息发送。
+fab -P add_forbidden_words:key=forbidden_words_strict,val=.*ocean.*knight.*
+
+
+# 更新前台配置版本号（个别服，事先测试用）
+fab updateGameconfigClientVersion:host=10.41.163.10,appVer=1.0.96,clientVer="0|1.0.1739"
+
+fab -P updateGameconfigClientVersion:appVer=1.1.4,clientVer="0|1.0.1980"
+fab -P updateGameconfigClientVersion:appVer=1.1.5,clientVer="0|1.0.2032"
+fab -P updateGameconfigClientVersion:appVer=1.1.6,clientVer="0|1.0.2052"
+
+
+# 更新Lua版本号
+fab updateRedisProperty:host=10.41.163.10,key=realtime_lua_code,val=c5180bad5d604a3778d81febf48d653d
+fab updateRedisProperty:host=10.41.163.10,key=realtime_lua_version,val=1.0.31
+
+fab -P updateRedisProperty:key=realtime_lua_code,val=cc28d396a58da6aaed3b6c6de6df745a
+fab -P updateRedisProperty:key=realtime_lua_version,val=1.0.66
+
+fab -P updateRedisProperty:key=realtime_goods_md5_android,val=a12af70c64c070b9645571927e96fcf9
+fab -P updateRedisProperty:key=realtime_goods_md5_ios,val=2d352e1088b6fc1aeb13c4145c58c372
+fab -P updateRedisProperty:key=realtime_goods_version,val=1.0.25
+
+fab -P updateRedisProperty:key=realtime_codis_open,val=true
+
+
+
+## 其他使用
+fab -P uploadScript:files=ReadLog.class
+fab -P changeLoginKey:secret=XxG-BCwp9W2us6dDzg+NkvC0lVLeR0w6O++kT6Bx
+
+
+=====================
+=====================
+=====================
+===================== 开服 ==============================================================================================
+===================== (已经交给运维执行)
+=====================
+=====================
+开服时，需要
+php /publish/kaifu/prepare.php ref_server_id=600
+·从excel里复制出开服用php命令。统一放到/publish/*.sh里，批量执行。
+  cd /publish
+  sh xxx.sh
+·sfs启动[~=8']
+  cd $SFS2X
+  ./publish_control syncCrossFile 701-730
+  ./publish_control start 701-730
+·上传 servers.xml 到php getserverlist服务器
+  php /publish/tools/check_xml_farmat.php
+  fab uploadServersXml2PhpServer
+·上传 servers.xml/rmiClient.xml/mybatis-cross.xml 到所有SFS服
+  fab -P uploadMybatisCross
+  fab -P uploadServersXml
+·xml生效触发->可以迁服
+  redis-cli -h GLOBAL_REDIS_IP publish CrossRefreshMybatisChannel 701
+    fab checkCrossRefreshMybatis:sid=701
+  redis-cli -h GLOBAL_REDIS_IP publish CrossRefreshRMIChannel 1006
+    fab checkCrossRefreshRMI:sid=701
+·107 修改fab文件，添加新服ip。
+
+·新服 部署ccsa
+   fab -P deployCCSA:fromsid=701,tosid=730
+   fab -P startCCSA:fromsid=701,tosid=730
+   fab -P add_forbidden_words
+
+

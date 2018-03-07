@@ -1,0 +1,142 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查看并修改PVE进度，只能新开关卡，已开关卡不可关闭";?><font color="red"> 
+</font></div>
+<div id="tip" style="width:200px;height:auto;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form style="display: inline-table;">
+	<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+	<span>用户名</span>
+	<span><input id="username" name="username" type="text" value='{$username}' /></span>
+	<span>UID</span>
+	<span><input id="useruid" name="useruid" type="text" value='{$useruid}' /></span>
+	<input class="btn js-btn btn-primary " type="button" value="{$MALANG['btn_view']}" onclick="getStatus()" />
+	<input id='modifybutton' class='btn js-btn btn-primary' type='button' value='确认修改' onclick='confirm_modify()' style="visibility:hidden" />
+	<div id='show' style="float:left;width:110%;">
+	</div>
+</form>
+<script type="text/javascript">
+function checkall(id){
+	var currentObj = document.getElementById(id);
+	var currentObjId = currentObj.name.split('_');
+	document.getElementById(currentObjId[0]).checked = true;
+	var boxId = currentObjId[0]+'_'+currentObjId[1];
+	document.getElementById(boxId).checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].name.split('_');
+		if(objId[0]==currentObjId[0] && !objs[i].checked)
+		{
+			document.getElementById(currentObjId[0]).checked = false;
+		}
+		if(objId[1]==currentObjId[1] && !objs[i].checked)
+		{
+			document.getElementById(boxId).checked = false;
+		}
+	}
+	document.getElementById(-1).checked = true;
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].name.split('_');
+		if(objId[0]>0 && objId[0]>0 && !objs[i].checked)
+		{
+			document.getElementById(-1).checked = false;
+			break;
+		}
+	}
+}
+function chooseall(id){
+	var currentObj = document.getElementById(id);
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].name.split('_');
+		if(objId[0]==id||objId[0]+'_'+objId[1]==id)
+		{
+			objs[i].checked = currentObj.checked;
+		}
+	}
+	document.getElementById(-1).checked = true;
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].name.split('_');
+		if(objId[0]>0 && objId[0]>0 && !objs[i].checked)
+		{
+			document.getElementById(-1).checked = false;
+			break;
+		}
+	}
+}
+function openall(){
+	var currentObj = document.getElementById(-1);
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		objs[i].checked = currentObj.checked;
+	}
+}
+function confirm_modify() {
+	var url = 'admincp.php?mod=modify&act=pve&action=modify&username='+$("#username").val()+'&useruid='+$("#useruid").val()+'&userplat='+$("#userplat").val();
+	var objs = document.getElementsByTagName("input");
+	var list = new Object();
+	for(i=0;i<objs.length;i++){
+		if(objs[i].name && objs[i].checked)
+		{
+			var objId = objs[i].name.split('_');
+			if(objId[0]>0&&objId[1]>0&&objId[2]>0)
+			{
+				list[objId[2]] = 1;
+			}
+		}
+	}
+	var str = '';
+	var flag = false;
+	for(var i in list)
+	{
+		str += i+',';
+	}
+	url += '&newList='+str;
+	closeLogin();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = modifyList;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getStatus() {
+	var url ='admincp.php?mod=modify&act=pve&action=view&username='+$("#username").val()+'&useruid='+$("#useruid").val()+'&userplat='+$("#userplat").val();
+	closeLogin();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getList;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getList(){
+	document.getElementById('modifybutton').style.visibility = "hidden";
+	right=document.getElementById('show');
+	right.innerHTML='';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getStatus);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			if(document.getElementById(-1))
+				document.getElementById('modifybutton').style.visibility = "visible";
+			return;
+		}
+	}
+}
+function modifyList(){
+	document.getElementById('modifybutton').style.visibility = "hidden";
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(confirm_modify);
+				return;
+			}
+			alert('保存成功');
+			right.innerHTML=xmlHttp.responseText;
+			if(document.getElementById(-1))
+				document.getElementById('modifybutton').style.visibility = "visible";
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

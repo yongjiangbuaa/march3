@@ -1,0 +1,42 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "图片数量查询";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=user&act=undoAuditPicture" method="post" name="getaccount">
+<div class="row-fluid">
+$serverDiv
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search('view')" />
+</div>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  width="4%">服</th>
+	<th align="center"  width="6%">未审核图片数量</th>
+	<tr>
+		<td>合计</td>
+		<td>$totalNum</td>
+	</tr>
+	</tr>
+	<!--{loop $data $serverKey $num}-->
+		<tr>
+			<td>$serverKey</td>
+			<td>$num</td>
+		</tr>
+	<!--{/loop}-->
+	
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+
+<script type="text/javascript">
+
+function search(type){
+	document.getElementById('btn_view').disabled = true;
+	document.getElementById('action').value = type;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

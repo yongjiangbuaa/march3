@@ -1,0 +1,125 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "金币消费点统计 已去掉GM";?></div>
+<form action="admincp.php?mod=pay&act=goldStatistics&server={$selectServer}" method="POST" name="getaccount" >
+	
+	$serverDiv
+	
+	<div class="row-fluid">
+		<div class="span11">
+			起始时间<input class="input-large focused" id="start" name="start" type="text" placeholder="点击选择日期" value="{$_REQUEST['start']}">
+			结束时间<input class="input-large focused" id="end" name="end" type="text" placeholder="点击选择日期" value="{$_REQUEST['end']}">
+			<input class="display:none;" type="hidden" value="" id="analyze" name="analyze"/>	
+			<input class="btn js-btn btn-primary" type="button" onclick="getLogData('platform')" id="btn_view" name="btn_view" value="统计数据">
+			<br />
+			消费类型
+			<select id="event" name="event" onchange="ifSelectBuyItem(this.value)">
+					$eventOptions
+			</select>
+
+			<!--{if $payUser}-->
+				<input class="" type="checkbox" name="payuser" id="payuser" checked="checked" />只看付费用户数据
+			<!--{else}-->
+				<input class="" type="checkbox" name="payuser" id="payuser" />只看付费用户数据
+			<!--{/if}-->
+			
+			<!--{if $costg}-->
+				<input type='checkbox' id="costGold" name="costGold" value="costg" checked="checked"/>消耗金币
+			<!--{else}-->
+				<input type='checkbox' id="costGold" name="costGold" value="costg" />消耗金币
+			<!--{/if}-->
+			
+			<!--{if $allServerFlag}-->
+				<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+			<!--{else}-->
+				<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+			<!--{/if}-->
+			
+			<span id="groupbyitemspan" {if $showgroupby} {else}style="display:none;"{/if}>
+				<input class="" type="checkbox" name="groupbyitem" id="groupbyitem" {if $groupSelected} checked="checked" {/if}  />按购买物品显示
+			</span>
+			<span id="groupByResourceSpan" {if $showResource} {else}style="display:none;"{/if}>
+				<input class="" type="checkbox" name="groupByWood" id="groupByWood" {if $groupWoodSelected} checked="checked" {/if}  />木头
+				<input class="" type="checkbox" name="groupByFood" id="groupByFood" {if $groupFoodSelected} checked="checked" {/if}  />粮食
+				<input class="" type="checkbox" name="groupByIron" id="groupByIron" {if $groupIronSelected} checked="checked" {/if}  />铁矿
+				<input class="" type="checkbox" name="groupByStone" id="groupByStone" {if $groupStoneSelected} checked="checked" {/if}  />秘银
+				<input class="" type="checkbox" name="groupBySilver" id="groupBySilver" {if $groupSilverSelected} checked="checked" {/if}  />钢材
+			</span>
+			<br />
+		</div>
+	</div>
+</form>
+	<div id='show' style="float:left;width:105%;height:auto;">$html</div>
+	<div id='display' style="display:none;width:105%;height:auto;">
+		<div id='displayinner'></div>
+	</div>
+<script type="text/javascript">
+function ifSelectBuyItem(value){
+	if(value == 12){
+		document.getElementById("groupbyitemspan").style.display = "inline-block";
+	}else{
+		document.getElementById("groupbyitemspan").style.display = "none";
+	}
+	if(value == 55){
+		document.getElementById("groupByResourceSpan").style.display = "inline-block";
+	}else{
+		document.getElementById("groupByResourceSpan").style.display = "none";
+	}
+}
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+
+function edit(serverDate,sids,pFlag,typeCondition) {
+	document.getElementById('btn_view').disabled=true;
+	$("#displayinner").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url = 'admincp.php?mod=pay&act=goldStatistics&serverDate='+serverDate+'&display=true'+'&sids='+sids+'&pFlag='+pFlag+'&typeCondition='+typeCondition;
+	$.get(url,function(data){
+			//document.getElementById('display').style.display="block";
+			var div = document.getElementById('display'); 
+			div.style.display="block"; 
+			$("#displayinner").html(data);
+			document.getElementById('btn_view').disabled=false;
+	},'html');
+}
+
+function getLogData(type){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('analyze').value = type;
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{ */
+			document.getaccount.submit();
+			/* return;
+		}
+	}
+	alert("请选择需要查询的服"); */
+}
+init();
+function init(){
+	$("#start").datetimepicker();
+    $("#end").datetimepicker();
+}
+
+
+</script>
+<!--{template footer}-->

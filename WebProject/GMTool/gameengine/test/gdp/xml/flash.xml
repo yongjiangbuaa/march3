@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<messages>
+		<message>
+			<id>1</id>
+			<title>friend invited</title>
+			<title_link></title_link>
+			<body>{0} want to be your friend!</body>
+		</message>
+	</messages>
+	<feeds>
+		<feed>
+			<id>0</id>
+			<title>Level Up on Tropical Island</title>
+			<title_link></title_link>
+			<body>{0}has reached level {1} on Tropical Island. Be the first to celebrate together with your friend? {2}</body>
+			<img></img>
+			<img_link></img_link>
+		</feed>
+		
+		<feed>
+			<id>2</id>
+			<title>Lost {0}</title>
+			<title_link></title_link>
+			<body>My {0} is lost! Could any body help me find it back? By helping me finding my {0} back, you will also be rewarded a small bonus!</body>
+			<img></img>
+			<img_link></img_link>
+		</feed>
+		
+		<feed>
+			<id>3</id>
+			<title>Adopt {0}</title>
+			<title_link></title_link>
+			<body>A {0} has turned up on {1}'s island. Be the first to adopt this lovely creature!</body>
+			<img></img>
+			<img_link></img_link>
+		</feed>
+		
+		<feed>
+			<id>4</id>
+			<title>Unlock {0}</title>
+			<title_link></title_link>
+			<body>{1} has found the rare {0} growing on their island. Be the first to visit and you will learn how to grow it yourself!</body>
+			<img></img>
+			<img_link></img_link>
+		</feed>
+	</feeds>
+
+	<adsense>		
+		<adContent>
+			<type>window</type>
+			<url>http://platform.elex-tech.com/site/static/ads/adsense.swf?v=1</url>	
+		</adContent>
+			<adContent>
+			<type>banner</type>
+			<url>http://platform.elex-tech.com/site/static/ads/adsense.swf?v=1</url>	
+		</adContent>
+	</adsense>
+	<game>
+		<!-- 游戏自定义的配置部分 -->
+		<web_base>http://hyves.farm.elex-tech.us/myfarm/</web_base>
+		<host>http://hyves.farm.elex-tech.us/myfarm/static/</host>
+		<loadingPath>http://hyves.farm.elex-tech.us/myfarm/static/</loadingPath>
+		<database>http://hyves.farm.elex-tech.us/myfarm/static/database/item.xml?1</database>
+		<helpPath>http://hyves.farm.elex-tech.us/myfarm/static/database/en/help.swf?3</helpPath>
+		<ga_account>UA-11729502-31</ga_account>
+		<ga_path>http://hyves.farm.elex-tech.us/myfarm/static/library.swf</ga_path>
+		<mod>hyves</mod>
+	</game>
+</config>	

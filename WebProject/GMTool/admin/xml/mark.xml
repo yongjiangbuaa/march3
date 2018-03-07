@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Group id="Market">
+		<ItemSpec what="点击游戏主icon，开始loading" id="4000000" item="4"/>
+		<ItemSpec what="loading成功，进入游戏" id="4000001" item="5"/>
+		<!-- <ItemSpec what="——————【开场动画】——————" id="4000002" item="3000000"/>
+    <ItemSpec doing="看见" what="加载动画" id="4000003" item="3070100"/>
+    <ItemSpec doing="看见" what="动画加载1" id="4000004" item="3070089"/>
+    <ItemSpec doing="看见" what="动画加载2" id="4000005" item="3070090"/>
+    <ItemSpec doing="看见" what="动画加载3" id="4000006" item="3070091"/>
+    <ItemSpec doing="看见" what="动画加载4" id="4000007" item="3070092"/>
+    <ItemSpec doing="看见" what="动画加载5" id="4000008" item="3070093"/>
+    <ItemSpec doing="看见" what="动画：传令兵送信" id="4000009" item="3070101"/>
+    <ItemSpec doing="点击" what="动画：传令兵送信" id="4000010" item="3070102"/>
+    <ItemSpec doing="看见" what="剧情：传令兵说" id="4000011" item="3070201"/>
+    <ItemSpec doing="点击" what="剧情：传令兵说" id="4000012" item="3070202"/>
+    <ItemSpec doing="看见" what="剧情：领主说" id="4000013" item="3070301"/>
+    <ItemSpec doing="点击" what="剧情：领主说" id="4000014" item="3070302"/>
+    <ItemSpec doing="看见" what="剧情：众将领说" id="4000015" item="3070401"/>
+    <ItemSpec doing="点击" what="剧情：众将领说" id="4000016" item="3070402"/>
+    <ItemSpec doing="看见" what="剧情：领主说" id="4000017" item="3070501"/>
+    <ItemSpec doing="点击" what="剧情：领主说" id="4000018" item="3070502"/>
+    <ItemSpec doing="看见" what="动画：攻城动画" id="4000019" item="3070601"/>
+    <ItemSpec doing="点击" what="动画：攻城动画" id="4000020" item="3070602"/>
+    <ItemSpec doing="看见" what="剧情：黑屏白字：1天后" id="4000021" item="3070701"/>
+    <ItemSpec doing="点击" what="剧情：黑屏白字：1天后" id="4000022" item="3070702"/>
+    <ItemSpec doing="看见" what="剧情：欢迎【Continue】" id="4000023" item="3010101"/>
+    <ItemSpec doing="点击" what="剧情：欢迎【Continue】" id="4000024" item="3010102"/>
+    <ItemSpec what="——————【建造伐木场】——————" id="4000025" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：需要木材" id="4000026" item="3070901"/>
+    <ItemSpec doing="点击" what="剧情：需要木材" id="4000027" item="3070902"/>
+    <ItemSpec doing="看见" what="引导：点击地块" id="4000028" item="3071001"/>
+    <ItemSpec doing="点击" what="引导：点击地块" id="4000029" item="3071002"/>
+    <ItemSpec doing="看见" what="自动：选中伐木场" id="4000030" item="3071101"/>
+    <ItemSpec doing="点击" what="自动：选中伐木场" id="4000031" item="3071102"/>
+    <ItemSpec doing="看见" what="引导：转盘界面，点击【Build】按钮" id="4000032" item="3071201"/>
+    <ItemSpec doing="点击" what="引导：转盘界面，点击【Build】按钮" id="4000033" item="3071202"/>
+    <ItemSpec doing="看见" what="引导：建造界面，点击【Build】按钮" id="4000034" item="3071301"/>
+    <ItemSpec doing="点击" what="引导：建造界面，点击【Build】按钮" id="4000035" item="3071302"/>
+    <ItemSpec doing="看见" what="等待7s：建筑建造、奖励动画" id="4000036" item="3071401"/>
+    <ItemSpec doing="点击" what="等待7s：建筑建造、奖励动画" id="4000037" item="3071402"/>
+    <ItemSpec what="——————【建造马厩】——————" id="4000038" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：建造马厩" id="4000039" item="3071801"/>
+    <ItemSpec doing="点击" what="剧情：建造马厩" id="4000040" item="3071802"/>
+    <ItemSpec doing="看见" what="引导：点击地块" id="4000041" item="3071901"/>
+    <ItemSpec doing="点击" what="引导：点击地块" id="4000042" item="3071902"/>
+    <ItemSpec doing="看见" what="自动：选中马厩" id="4000043" item="3072001"/>
+    <ItemSpec doing="点击" what="自动：选中马厩" id="4000044" item="3072002"/>
+    <ItemSpec doing="看见" what="引导：转盘界面，点击【Build】按钮" id="4000045" item="3072101"/>
+    <ItemSpec doing="点击" what="引导：转盘界面，点击【Build】按钮" id="4000046" item="3072102"/>
+    <ItemSpec doing="看见" what="引导：建筑建造界面，点击【Build】按钮" id="4000047" item="3072201"/>
+    <ItemSpec doing="点击" what="引导：建筑建造界面，点击【Build】按钮" id="4000048" item="3072202"/>
+    <ItemSpec doing="看见" what="等待7s：建筑建造、奖励动画" id="4000049" item="3072301"/>
+    <ItemSpec doing="点击" what="等待8s：建筑建造、奖励动画" id="4000050" item="3072302"/>
+    <ItemSpec what="——————【建造农田】——————" id="4000051" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：需要粮食" id="4000052" item="3072401"/>
+    <ItemSpec doing="点击" what="剧情：需要粮食" id="4000053" item="3072402"/>
+    <ItemSpec doing="看见" what="引导：点击地块" id="4000054" item="3072501"/>
+    <ItemSpec doing="点击" what="引导：点击地块" id="4000055" item="3072502"/>
+    <ItemSpec doing="看见" what="引导：转盘界面，点击【Build】按钮" id="4000056" item="3072601"/>
+    <ItemSpec doing="点击" what="引导：转盘界面，点击【Build】按钮" id="4000057" item="3072602"/>
+    <ItemSpec doing="看见" what="引导：建造界面，点击【Build】按钮" id="4000058" item="3072701"/>
+    <ItemSpec doing="点击" what="引导：建造界面，点击【Build】按钮" id="4000059" item="3072702"/>
+    <ItemSpec doing="看见" what="等待7s：建筑建造、奖励动画" id="4000060" item="3072801"/>
+    <ItemSpec doing="点击" what="等待7s：建筑建造、奖励动画" id="4000061" item="3072802"/>
+    <ItemSpec what="——————【训练骑兵】——————" id="4000062" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：训练骑兵" id="4000063" item="3073201"/>
+    <ItemSpec doing="点击" what="剧情：训练骑兵" id="4000064" item="3073202"/> -->
+		<!-- <ItemSpec doing="看见" what="新手剧情第一句话" id="4000010" item="3170301"/>
+		<ItemSpec doing="点击" what="新手剧情第一句话" id="4000011" item="3170302"/>
+		<ItemSpec doing="看见" what="新手剧情第二句话" id="4000012" item="3170401"/>
+		<ItemSpec doing="点击" what="新手剧情第二句话" id="4000013" item="3170402"/> -->
+		<!-- <ItemSpec doing="看见" what="新手剧情第三句话" id="4000014" item="3170501"/>
+		<ItemSpec doing="点击" what="新手剧情第三句话" id="4000015" item="3170502"/>
+		<ItemSpec doing="看见" what="引导：点击马厩" id="4000016" item="3073301"/>
+		<ItemSpec doing="点击" what="引导：点击马厩" id="4000017" item="3073302"/>
+		<ItemSpec doing="看见" what="引导：点击造兵按钮" id="4000018" item="3073401"/>
+		<ItemSpec doing="点击" what="引导：点击造兵按钮" id="4000019" item="3073402"/>
+		<ItemSpec doing="看见" what="引导：马厩转盘界面，点击【训练】按钮" id="4000020" item="3073501"/>
+		<ItemSpec doing="点击" what="引导：马厩转盘界面，点击【训练】按钮" id="4000021" item="3073502"/>
+		<ItemSpec doing="看见" what="等待4s：训练动画" id="4000022" item="3073601"/>
+		<ItemSpec doing="点击" what="等待4s：训练动画" id="4000023" item="3073602"/>
+		<ItemSpec doing="看见" what="引导：点击【收兵按钮】" id="4000024" item="14010601"/>
+		<ItemSpec doing="点击" what="引导：点击【收兵按钮】" id="4000025" item="14010602"/>
+		<ItemSpec doing="看见" what="等待3s" id="4000026" item="3200101"/>
+		<ItemSpec doing="点击" what="等待3s" id="4000027" item="3200102"/> -->
+		<!--  <ItemSpec doing="看见" what="剧情：秒兵" id="4000073" item="3073701"/>
+    <ItemSpec doing="点击" what="剧情：秒兵" id="4000074" item="3073702"/>
+    <ItemSpec doing="看见" what="引导：点击马厩" id="4000075" item="3073801"/>
+    <ItemSpec doing="点击" what="引导：点击马厩" id="4000076" item="3073802"/>
+    <ItemSpec doing="看见" what="引导：点击【秒兵】按钮" id="4000077" item="3073901"/>
+    <ItemSpec doing="点击" what="引导：点击【秒兵】按钮" id="4000078" item="3073902"/>
+    <ItemSpec doing="看见" what="引导：点击【收兵】按钮" id="4000079" item="3074001"/>
+    <ItemSpec doing="点击" what="引导：点击【收兵】按钮" id="4000080" item="3074002"/>
+    <ItemSpec doing="看见" what="动画：骑兵移动" id="4000081" item="3074101"/>
+    <ItemSpec doing="点击" what="动画：骑兵移动" id="4000082" item="3074102"/>
+    <ItemSpec doing="看见" what="剧情：骑兵集结完毕" id="4000083" item="3074201"/>
+    <ItemSpec doing="点击" what="剧情：骑兵集结完毕" id="4000084" item="3074202"/>
+    <ItemSpec what="——————【建造步兵营】——————" id="4000085" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：建造步兵营" id="4000086" item="3074301"/>
+    <ItemSpec doing="点击" what="剧情：建造步兵营" id="4000087" item="3074302"/>
+    <ItemSpec doing="看见" what="引导：点击地块" id="4000088" item="3074401"/>
+    <ItemSpec doing="点击" what="引导：点击地块" id="4000089" item="3074402"/>
+    <ItemSpec doing="看见" what="自动：选中步兵营" id="4000090" item="3074501"/>
+    <ItemSpec doing="点击" what="自动：选中步兵营" id="4000091" item="3074502"/>
+    <ItemSpec doing="看见" what="引导：转盘界面，点击【Build】按钮" id="4000092" item="3074601"/>
+    <ItemSpec doing="点击" what="引导：转盘界面，点击【Build】按钮" id="4000093" item="3074602"/>
+    <ItemSpec doing="看见" what="引导：建造界面，点击【Build】按钮" id="4000094" item="3074701"/>
+    <ItemSpec doing="点击" what="引导：建造界面，点击【Build】按钮" id="4000095" item="3074702"/>
+    <ItemSpec doing="看见" what="等待7s：建筑建造、奖励动画" id="4000096" item="3074801"/>
+    <ItemSpec doing="点击" what="等待7s：建筑建造、奖励动画" id="4000097" item="3074802"/> -->
+        <ItemSpec what="——————【开场动画】——————" id="4000002" item="3000000"/>
+        <ItemSpec doing="看见" what="开动战斗动画" id="4000003" item="3230101"/>
+		<ItemSpec doing="点击" what="开动战斗动画" id="4000004" item="3230102"/>
+		<ItemSpec doing="看见" what="剧情：大家坚持住" id="4000005" item="3230201"/>
+		<ItemSpec doing="点击" what="剧情：大家坚持住" id="4000006" item="3230202"/>
+		<ItemSpec doing="看见" what="剧情：我的龙要来了" id="4000007" item="3230301"/>
+		<ItemSpec doing="点击" what="剧情：我的龙要来了" id="4000008" item="3230302"/>
+		<ItemSpec doing="看见" what="加载动画火球" id="4000009" item="3230401"/>
+		<ItemSpec doing="点击" what="加载动画火球" id="4000010" item="3230402"/>
+		<ItemSpec doing="看见" what="切黑屏过场动画" id="4000011" item="3230501"/>
+		<ItemSpec doing="点击" what="切黑屏过场动画" id="4000012" item="3230502"/>
+		<ItemSpec doing="看见" what="剧情：这个城堡留给你了" id="4000013" item="3230601"/>
+		<ItemSpec doing="点击" what="剧情：这个城堡留给你了" id="4000014" item="3230602"/>
+		<ItemSpec doing="看见" what="移动镜头到龙蛋" id="4000015" item="3230701"/>
+		<ItemSpec doing="点击" what="移动镜头到龙蛋" id="4000016" item="3230702"/>
+		<ItemSpec doing="看见" what="剧情：去点龙蛋吧" id="4000017" item="3230801"/>
+		<ItemSpec doing="点击" what="剧情：去点龙蛋吧" id="4000018" item="3230802"/>
+		<ItemSpec doing="看见" what="引导：点击龙蛋icon" id="4000019" item="3230901"/>
+		<ItemSpec doing="点击" what="引导：点击龙蛋icon" id="4000020" item="3230902"/>
+		<ItemSpec doing="看见" what="剧情：你是被认可的人" id="4000021" item="3231001"/>
+		<ItemSpec doing="点击" what="剧情：你是被认可的人" id="4000022" item="3231002"/>
+		<ItemSpec what="——————【世界探险】——————" id="4000030" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：世界探险" id="4000031" item="3030101"/>
+		<ItemSpec doing="点击" what="剧情：世界探险" id="4000032" item="3030102"/>
+		<ItemSpec doing="看见" what="引导：点击【世界】按钮" id="4000033" item="3030201"/>
+		<ItemSpec doing="点击" what="引导：点击【世界】按钮" id="4000034" item="3030202"/>
+		<ItemSpec doing="看见" what="剧情：三队列首领说话" id="4000035" item="3031301"/>
+		<ItemSpec doing="点击" what="剧情：三队列首领说话" id="4000036" item="3031302"/>
+		<ItemSpec doing="看见" what="剧情：领主说" id="4000037" item="3031401"/>
+		<ItemSpec doing="点击" what="剧情：领主说" id="4000038" item="3031402"/>
+		<ItemSpec doing="看见" what="动画：三队列行军" id="4000039" item="3031201"/>
+		<ItemSpec doing="点击" what="动画：三队列行军" id="4000040" item="3031202"/>
+		<ItemSpec doing="看见" what="剧情：介绍世界" id="4000041" item="3030301"/>
+		<ItemSpec doing="点击" what="剧情：介绍世界" id="4000042" item="3030302"/>
+		<ItemSpec doing="看见" what="引导：点击空地" id="4000043" item="3030401"/>
+		<ItemSpec doing="点击" what="引导：点击空地" id="4000044" item="3030402"/>
+		<ItemSpec doing="看见" what="引导：点击造田" id="4000045" item="3030501"/>
+		<ItemSpec doing="点击" what="引导：点击造田" id="4000046" item="3030502"/>
+		<ItemSpec doing="看见" what="引导：出征界面，点击【Attack】按钮" id="4000047" item="3030701"/>
+		<ItemSpec doing="点击" what="引导：出征界面，点击【Attack】按钮" id="4000048" item="3030702"/>
+		<ItemSpec doing="看见" what="等待4s：行军动画" id="4000049" item="3030801"/>
+		<ItemSpec doing="点击" what="等待4s：行军动画" id="4000050" item="3030802"/>
+		<ItemSpec doing="看见" what="剧情：回到主城" id="4000051" item="3030901"/>
+		<ItemSpec doing="点击" what="剧情：回到主城" id="4000052" item="3030902"/>
+		<ItemSpec doing="看见" what="引导：点击【回城】按钮" id="4000053" item="14012001"/>
+		<ItemSpec doing="点击" what="引导：点击【回城】按钮" id="4000054" item="14012002"/>
+		<ItemSpec doing="看见" what="剧情：去造瞭望塔" id="4000055" item="14010901"/>
+		<ItemSpec doing="点击" what="剧情：去造瞭望塔" id="4000056" item="14010902"/>
+		<ItemSpec doing="看见" what="引导：点击地块" id="4000057" item="3171001"/>
+		<ItemSpec doing="点击" what="引导：点击地块" id="4000058" item="3171002"/>
+		<!-- <ItemSpec doing="看见" what="引导：点击建筑建造" id="4000059" item="3171101"/>
+		<ItemSpec doing="点击" what="引导：点击建筑建造" id="4000060" item="3171102"/> -->
+		<ItemSpec doing="看见" what="引导：建造瞭望塔" id="4000061" item="3171201"/>
+		<ItemSpec doing="点击" what="引导：建造瞭望塔" id="4000062" item="3171202"/>
+		<ItemSpec doing="看见" what="引导：等待1s" id="4000063" item="14010501"/>
+		<ItemSpec doing="点击" what="引导：等待1s" id="4000064" item="14010502"/>
+		<ItemSpec doing="看见" what="引导：点击瞭望塔免费CD" id="4000065" item="14010511"/>
+		<ItemSpec doing="点击" what="引导：点击瞭望塔免费CD" id="4000066" item="14010512"/>
+		<ItemSpec doing="看见" what="引导：等待0.6s" id="4000067" item="14010531"/>
+		<ItemSpec doing="点击" what="引导：等待0.6s" id="4000068" item="14010532"/>
+		<ItemSpec doing="看见" what="引导：点击剪彩" id="4000069" item="14010521"/>
+		<ItemSpec doing="点击" what="引导：点击剪彩" id="4000070" item="14010522"/>
+		<ItemSpec doing="看见" what="引导：等待3s" id="4000071" item="14010541"/>
+		<ItemSpec doing="点击" what="引导：等待3s" id="4000072" item="14010542"/>
+		<ItemSpec doing="看见" what="剧情：领主大人，我们发现这个" id="4000073" item="14010551"/>
+		<ItemSpec doing="点击" what="剧情：领主大人，我们发现这个" id="4000074" item="14010552"/>
+		<ItemSpec doing="看见" what="动画：大宝剑动画1" id="4000075" item="14010561"/>
+		<ItemSpec doing="点击" what="动画：大宝剑动画1" id="4000076" item="14010562"/>
+		<ItemSpec doing="看见" what="引导：等待2s" id="4000077" item="14010571"/>
+		<ItemSpec doing="点击" what="引导：等待2s" id="4000078" item="14010572"/>
+		<ItemSpec doing="看见" what="剧情：它是上古精灵的宝物" id="4000079" item="14010581"/>
+		<ItemSpec doing="点击" what="剧情：它是上古精灵的宝物" id="4000080" item="14010582"/>
+		<ItemSpec doing="看见" what="剧情：让工匠把它安放在瞭望塔上" id="4000081" item="14010611"/>
+		<ItemSpec doing="点击" what="剧情：让工匠把它安放在瞭望塔上" id="4000082" item="14010612"/>
+		<ItemSpec doing="看见" what="动画：大宝剑动画3" id="4000083" item="14010621"/>
+		<ItemSpec doing="点击" what="动画：大宝剑动画3" id="4000084" item="14010622"/>
+		<ItemSpec what="——————【怪物攻城】——————" id="4000090" item="3000000"/>
+		<ItemSpec doing="看见" what="动画：敌军来袭" id="4000091" item="3171301"/>
+		<ItemSpec doing="点击" what="动画：敌军来袭" id="4000092" item="3171302"/>
+		<ItemSpec doing="看见" what="引导：等待2s" id="4000093" item="3171311"/>
+		<ItemSpec doing="点击" what="引导：等待2s" id="4000094" item="3171312"/>
+		<ItemSpec doing="看见" what="剧情：是敌袭" id="4000095" item="3171321"/>
+		<ItemSpec doing="点击" what="剧情：是敌袭" id="4000096" item="3171322"/>
+		<ItemSpec doing="看见" what="剧情：我们的当务之急是造兵来抵御他们的进攻" id="4000097" item="3171401"/>
+		<ItemSpec doing="点击" what="剧情：我们的当务之急是造兵来抵御他们的进攻" id="4000098" item="3171402"/>
+		<ItemSpec doing="看见" what="引导：点击兵营" id="4000099" item="3170601"/>
+		<ItemSpec doing="点击" what="引导：点击兵营" id="4000100" item="3170602"/>
+		<ItemSpec doing="看见" what="引导：点击造兵按钮" id="4000101" item="3170701"/>
+		<ItemSpec doing="点击" what="引导：点击造兵按钮" id="4000102" item="3170702"/>
+		<ItemSpec doing="看见" what="引导：立即训练" id="4000103" item="3170801"/>
+		<ItemSpec doing="点击" what="引导：立即训练" id="4000104" item="3170802"/>
+		<ItemSpec doing="看见" what="引导：返回" id="4000105" item="3170901"/>
+		<ItemSpec doing="点击" what="引导：返回" id="4000106" item="3170902"/>
+		<ItemSpec doing="看见" what="引导：点击【世界】按钮" id="4000107" item="3171501"/>
+		<ItemSpec doing="点击" what="引导：点击【世界】按钮" id="4000108" item="3171502"/>
+		<ItemSpec doing="看见" what="剧情：告诉敌军显示红线" id="4000109" item="3171601"/>
+		<ItemSpec doing="点击" what="剧情：告诉敌军显示红线" id="4000110" item="3171602"/>
+		<ItemSpec doing="看见" what="动画：攻打怪物的动画16s" id="4000111" item="14010801"/>
+		<ItemSpec doing="点击" what="动画：攻打怪物的动画16s" id="4000112" item="14010802"/>
+		<ItemSpec doing="看见" what="剧情：恭喜您守城成功" id="4000113" item="3171701"/>
+		<ItemSpec doing="点击" what="剧情：恭喜您守城成功" id="4000114" item="3171702"/>
+		<ItemSpec doing="看见" what="剧情：回家布防吧" id="4000115" item="3171801"/>
+		<ItemSpec doing="点击" what="剧情：回家布防吧" id="4000116" item="3171802"/>
+		<ItemSpec doing="看见" what="引导：点击【回城】按钮" id="4000117" item="3171901"/>
+		<ItemSpec doing="点击" what="引导：点击【回城】按钮" id="4000118" item="3171902"/>
+		<ItemSpec doing="看见" what="动画：展示宝箱" id="4000119" item="3171911"/>
+		<ItemSpec doing="点击" what="动画：展示宝箱" id="4000120" item="3171912"/>
+		<ItemSpec doing="看见" what="引导：点击宝箱" id="4000121" item="3190101"/>
+		<ItemSpec doing="点击" what="引导：点击宝箱" id="4000122" item="3190102"/>
+		<ItemSpec doing="看见" what="引导：领取奖励" id="4000123" item="3190111"/>
+		<ItemSpec doing="点击" what="引导：领取奖励" id="4000124" item="3190112"/>
+		<!-- <ItemSpec what="——————【喂龙】——————" id="4000120" item="3000000"/>
+    <ItemSpec doing="看见" what="剧情：去喂龙吧" id="4000121" item="3172001"/>
+    <ItemSpec doing="点击" what="剧情：去喂龙吧" id="4000122" item="3172002"/>
+    <ItemSpec doing="看见" what="引导：点击【喂肉】按钮" id="4000123" item="14010101"/>
+    <ItemSpec doing="点击" what="引导：点击【喂肉】按钮" id="4000124" item="14010102"/>
+    <ItemSpec doing="看见" what="引导：等龙飞过来" id="4000125" item="14010201"/>
+    <ItemSpec doing="点击" what="引导：等龙飞过来" id="4000126" item="14010202"/>
+    <ItemSpec doing="看见" what="引导：点击宝箱" id="4000127" item="14010301"/>
+    <ItemSpec doing="点击" what="引导：点击宝箱" id="4000128" item="14010302"/>
+    <ItemSpec doing="看见" what="引导：点击领取" id="4000129" item="14010401"/>
+    <ItemSpec doing="点击" what="引导：点击领取" id="4000130" item="14010402"/> -->
+		<ItemSpec what="——————【点击任务引导头像的引导】——————" id="4000140" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：恭喜你完成了前面的引导！接下来我会继续在这陪着你" id="4000141" item="3190121"/>
+		<ItemSpec doing="点击" what="剧情：恭喜你完成了前面的引导！接下来我会继续在这陪着你" id="4000142" item="3190122"/>
+		<ItemSpec doing="看见" what="引导：引导头像小动画" id="4000143" item="3190201"/>
+		<ItemSpec doing="点击" what="引导：引导头像小动画" id="4000144" item="3190202"/>
+		<ItemSpec doing="看见" what="剧情：请跟随任务发展您的领地" id="4000145" item="3190301"/>
+		<ItemSpec doing="点击" what="剧情：请跟随任务发展您的领地" id="4000146" item="3190302"/>
+		<ItemSpec doing="看见" what="引导：点击引导头像" id="4000147" item="3190401"/>
+		<ItemSpec doing="点击" what="引导：点击引导头像" id="4000148" item="3190402"/>
+		<!-- <ItemSpec doing="看见" what="剧情：丰收啦" id="4000138" item="3080101"/>
+    <ItemSpec doing="点击" what="剧情：丰收啦" id="4000139" item="3080102"/>
+    <ItemSpec doing="看见" what="动画：指引丰收" id="4000140" item="3080201"/>
+    <ItemSpec doing="点击" what="动画：指引丰收" id="4000141" item="3080202"/>
+    <ItemSpec doing="看见" what="等待4s" id="4000142" item="3080301"/>
+    <ItemSpec doing="点击" what="等待4s" id="4000143" item="3080302"/>
+    <ItemSpec doing="看见" what="剧情：跟着推荐任务走" id="4000144" item="3031101"/>
+    <ItemSpec doing="点击" what="剧情：跟着推荐任务走" id="4000145" item="3031102"/> -->
+		<ItemSpec what="——————【城堡二级任务领奖】——————" id="4000200" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：任务领奖" id="4000201" item="3075901"/>
+		<ItemSpec doing="点击" what="剧情：任务领奖" id="4000202" item="3075902"/>
+		<ItemSpec doing="看见" what="引导：点击领奖" id="4000203" item="3076001"/>
+		<ItemSpec doing="点击" what="引导：点击领奖" id="4000204" item="3076002"/>
+		<!-- <ItemSpec doing="看见" what="引导：点击【Reward】按钮" id="4000205" item="3076901"/>
+		<ItemSpec doing="点击" what="引导：点击【Reward】按钮" id="4000206" item="3076902"/>
+		<ItemSpec doing="看见" what="等待4s：奖励动画" id="4000207" item="3076101"/>
+		<ItemSpec doing="点击" what="等待4s：奖励动画" id="4000208" item="3076102"/>
+		<ItemSpec doing="看见" what="剧情：不断完成推荐任务" id="4000107" item="3076201"/>
+    <ItemSpec doing="点击" what="剧情：不断完成推荐任务" id="4000108" item="3076202"/>
+		<ItemSpec doing="看见" what="引导：任务界面，点击【后退】按钮" id="4000209" item="3076301"/>
+		<ItemSpec doing="点击" what="引导：任务界面，点击【后退】按钮" id="4000210" item="3076302"/> -->
+		<!--<ItemSpec doing="看见" what="引导：点击主界面任务条" id="4000111" item="3077001"/>
+    <ItemSpec doing="点击" what="引导：点击主界面任务条" id="4000112" item="3077002"/> -->
+		<ItemSpec what="——————【点杀泰坦引导】——————" id="4000250" item="3000000"/>
+		<ItemSpec doing="看见" what="引导：地下城中的怪物守着大量的金币" id="4000251" item="14010691"/>
+		<ItemSpec doing="点击" what="引导：地下城中的怪物守着大量的金币" id="4000252" item="14010692"/>
+		<ItemSpec doing="看见" what="引导：点击地下城" id="4000253" item="14010701"/>
+		<ItemSpec doing="点击" what="引导：点击地下城" id="4000254" item="14010702"/>
+		<ItemSpec doing="看见" what="引导：地下城中的怪物守着大量的金币" id="4000255" item="3180101"/>
+		<ItemSpec doing="点击" what="引导：地下城中的怪物守着大量的金币" id="4000256" item="3180102"/>
+		<ItemSpec doing="看见" what="引导：点击十万金币" id="4000257" item="3180201"/>
+		<ItemSpec doing="点击" what="引导：点击十万金币" id="4000258" item="3180202"/>
+		<ItemSpec doing="看见" what="剧情：通过不断点击" id="4000259" item="3180301"/>
+		<ItemSpec doing="点击" what="剧情：通过不断点击" id="4000260" item="3180302"/>
+		<ItemSpec doing="看见" what="引导：点击开始挑战按钮" id="4000261" item="3180401"/>
+		<ItemSpec doing="点击" what="引导：点击开始挑战按钮" id="4000262" item="3180402"/>
+		<ItemSpec doing="看见" what="引导：点击怪物" id="4000263" item="3180501"/>
+		<ItemSpec doing="点击" what="引导：点击怪物" id="4000264" item="3180502"/>
+		<ItemSpec doing="看见" what="引导：点击宝箱" id="4000265" item="3180521"/>
+		<ItemSpec doing="点击" what="引导：点击宝箱" id="4000266" item="3180522"/>
+		<ItemSpec doing="看见" what="引导：点击领取金币" id="4000267" item="3180531"/>
+		<ItemSpec doing="点击" what="引导：点击领取金币" id="4000268" item="3180532"/>
+		<ItemSpec doing="看见" what="引导：点击返回" id="4000269" item="3180541"/>
+		<ItemSpec doing="点击" what="引导：点击返回" id="4000270" item="3180542"/>
+		<ItemSpec what="——————【民居引导】——————" id="4000300" item="3000000"/>
+		<ItemSpec doing="看见" what="引导：聚焦" id="4000301" item="3210301"/>
+		<ItemSpec doing="点击" what="引导：聚焦" id="4000302" item="3210302"/>
+		<ItemSpec doing="看见" what="剧情：这里是民居" id="4000303" item="3210401"/>
+		<ItemSpec doing="点击" what="剧情：这里是民居" id="4000304" item="3210402"/>
+		<ItemSpec doing="看见" what="剧情：伟大的城市" id="4000305" item="3210501"/>
+		<ItemSpec doing="点击" what="剧情：伟大的城市" id="4000306" item="3210502"/>
+		<ItemSpec doing="看见" what="引导：动画" id="4000307" item="3210601"/>
+		<ItemSpec doing="点击" what="引导：动画" id="4000308" item="3210602"/>
+		<ItemSpec doing="看见" what="引导：等待" id="4000309" item="3210701"/>
+		<ItemSpec doing="点击" what="引导：等待" id="4000310" item="3210702"/>
+		<ItemSpec doing="看见" what="剧情：通过扩建民居" id="4000311" item="3210801"/>
+		<ItemSpec doing="点击" what="剧情：通过扩建民居" id="4000312" item="3210802"/>
+		<ItemSpec doing="看见" what="剧情：跟着引导" id="4000313" item="3210901"/>
+		<ItemSpec doing="点击" what="剧情：跟着引导" id="4000314" item="3210902"/>
+		<!--<ItemSpec what="——————【三级城堡点击邮件】——————" id="4000250" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：领主大人，恭喜您的城堡升级，做的太棒了" id="4000251" item="3170101"/>
+		<ItemSpec doing="点击" what="剧情：领主大人，恭喜您的城堡升级，做的太棒了" id="4000252" item="3170102"/>
+		<ItemSpec doing="看见" what="引导：点击邮件" id="4000253" item="3170201"/>
+		<ItemSpec doing="点击" what="引导：点击邮件" id="4000254" item="3170202"/> -->
+		<ItemSpec what="——————【三级城堡点天赋】——————" id="4000350" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：让我们点天赋吧" id="4000351" item="3211001"/>
+		<ItemSpec doing="点击" what="剧情：让我们点天赋吧" id="4000352" item="3211002"/>
+		<ItemSpec doing="看见" what="引导：点领主头像" id="4000353" item="3211011"/>
+		<ItemSpec doing="点击" what="引导：点领主头像" id="4000354" item="3211012"/>
+		<ItemSpec doing="看见" what="引导：点天赋按钮" id="4000355" item="3211021"/>
+		<ItemSpec doing="点击" what="引导：点天赋按钮" id="4000356" item="3211022"/>
+		<ItemSpec doing="看见" what="剧情：在每个标签" id="4000357" item="3211051"/>
+		<ItemSpec doing="点击" what="剧情：在每个标签" id="4000358" item="3211052"/>
+		<ItemSpec doing="看见" what="引导：点天赋" id="4000359" item="3211061"/>
+		<ItemSpec doing="点击" what="引导：点天赋" id="4000360" item="3211062"/>
+		<ItemSpec doing="看见" what="引导：点学习" id="4000361" item="3211071"/>
+		<ItemSpec doing="点击" what="引导：点学习" id="4000362" item="3211072"/>
+		<ItemSpec what="——————【支线任务】——————" id="4000400" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：让我们使用物品" id="4000401" item="3100101"/>
+		<ItemSpec doing="点击" what="剧情：让我们使用物品" id="4000402" item="3100102"/>
+		<ItemSpec doing="看见" what="引导：点击背包按钮" id="4000403" item="3100201"/>
+		<ItemSpec doing="点击" what="引导：点击背包按钮" id="4000404" item="3100202"/>
+		<ItemSpec doing="看见" what="引导：点击第一个物品" id="4000405" item="3100301"/>
+		<ItemSpec doing="点击" what="引导：点击第一个物品" id="4000406" item="3100302"/>
+		<ItemSpec doing="看见" what="引导：点击物品使用按钮" id="4000407" item="3100401"/>
+		<ItemSpec doing="点击" what="引导：点击物品使用按钮" id="4000408" item="3100402"/>
+		<ItemSpec what="——————【杂物引导】——————" id="4000450" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：基地中有不少神秘的植物" id="4000451" item="3211301"/>
+		<ItemSpec doing="点击" what="剧情：基地中有不少神秘的植物" id="4000452" item="3211302"/>
+		<ItemSpec doing="看见" what="引导：镜头移到杂物" id="4000453" item="3211311"/>
+		<ItemSpec doing="点击" what="引导：镜头移到杂物" id="4000454" item="3211312"/>
+		<ItemSpec doing="看见" what="引导：点击杂物" id="4000455" item="3211321"/>
+		<ItemSpec doing="点击" what="引导：点击杂物" id="4000456" item="3211322"/>
+		<ItemSpec doing="看见" what="引导：镜头移到哥布林" id="4000457" item="3211201"/>
+		<ItemSpec doing="点击" what="引导：镜头移到哥布林" id="4000458" item="3211202"/>
+		<ItemSpec doing="看见" what="剧情：基地中有哥布林" id="4000459" item="3211211"/>
+		<ItemSpec doing="点击" what="剧情：基地中有哥布林" id="4000460" item="3211212"/>
+		<ItemSpec doing="看见" what="引导：点击哥布林" id="4000461" item="3211221"/>
+		<ItemSpec doing="点击" what="引导：点击哥布林" id="4000462" item="3211222"/>
+		<ItemSpec what="——————【支线任务】——————" id="4000500" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：关注支线任务" id="4000501" item="3090101"/>
+		<ItemSpec doing="点击" what="剧情：关注支线任务" id="4000502" item="3090102"/>
+		<ItemSpec doing="看见" what="引导：点击【quest】按钮" id="4000503" item="3090201"/>
+		<ItemSpec doing="点击" what="引导：点击【quest】按钮" id="4000504" item="3090202"/>
+		<ItemSpec doing="看见" what="剧情：很多事情可以做" id="4000505" item="3090301"/>
+		<ItemSpec doing="点击" what="剧情：很多事情可以做" id="4000506" item="3090302"/>
+		<ItemSpec doing="看见" what="引导：支线任务区域框住，闪3秒" id="4000507" item="3090401"/>
+		<ItemSpec doing="点击" what="引导：支线任务区域框住，闪3秒" id="4000508" item="3090402"/>
+		<ItemSpec what="——————【六级点杀泰坦引导】——————" id="4000550" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：邀请好友，可以显著提高你的伤害~~~" id="4000551" item="3180601"/>
+		<ItemSpec doing="点击" what="剧情：邀请好友，可以显著提高你的伤害~~~" id="4000552" item="3180602"/>
+		<ItemSpec doing="看见" what="引导：点击大火人" id="4000553" item="3180701"/>
+		<ItemSpec doing="点击" what="引导：点击大火人" id="4000554" item="3180702"/>
+		<ItemSpec doing="看见" what="剧情：想要更快地通过地下城~~~" id="4000555" item="3180801"/>
+		<ItemSpec doing="点击" what="剧情：想要更快地通过地下城~~~" id="4000556" item="3180802"/>
+		<ItemSpec doing="看见" what="剧情：另外，facebook好友~~~" id="4000557" item="3180901"/>
+		<ItemSpec doing="点击" what="剧情：另外，facebook好友~~~" id="4000558" item="3180902"/>
+		<ItemSpec what="——————【升级科技】——————" id="4000600" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：学习升级科技" id="4000601" item="3040101"/>
+		<ItemSpec doing="点击" what="剧情：学习升级科技" id="4000602" item="3040102"/>
+		<ItemSpec doing="看见" what="引导：点击学院" id="4000603" item="3040201"/>
+		<ItemSpec doing="点击" what="引导：点击学院" id="4000604" item="3040202"/>
+		<ItemSpec doing="看见" what="引导：点击【研究】按钮" id="4000605" item="3040301"/>
+		<ItemSpec doing="点击" what="引导：点击【研究】按钮" id="4000606" item="3040302"/>
+		<ItemSpec doing="看见" what="引导：点击【资源类】科技按钮" id="4000607" item="3040401"/>
+		<ItemSpec doing="点击" what="引导：点击【资源类】科技按钮" id="4000608" item="3040402"/>
+		<ItemSpec doing="看见" what="引导：点击第一个科技图标" id="4000609" item="3040501"/>
+		<ItemSpec doing="点击" what="引导：点击第一个科技图标" id="4000610" item="3040502"/>
+		<ItemSpec doing="看见" what="引导：点击【研究】按钮" id="4000611" item="3040601"/>
+		<ItemSpec doing="点击" what="引导：点击【研究】按钮" id="4000612" item="3040602"/>
+		<ItemSpec doing="看见" what="引导：点击关闭按钮" id="4000613" item="3040701"/>
+		<ItemSpec doing="点击" what="引导：点击关闭按钮" id="4000614" item="3040702"/>
+		<ItemSpec doing="看见" what="剧情：巴拉巴拉" id="4000615" item="3040801"/>
+		<ItemSpec doing="点击" what="剧情：巴拉巴拉" id="4000616" item="3040802"/>
+		<!--<ItemSpec what="————————————————" id="4000163" item="3000000"/>
+    <ItemSpec doing="看见" what="世界罗盘引导" id="4000164" item="3000100"/>
+    <ItemSpec doing="点击" what="世界罗盘引导" id="4000165" item="3000200"/> -->
+		<ItemSpec what="——————【好友驻守引导】——————" id="4000650" item="3000000"/>
+		<ItemSpec doing="看见" what="剧情：领主大人，您可以邀请好友来领地里担任职务" id="4000651" item="15011101"/>
+		<ItemSpec doing="点击" what="剧情：领主大人，您可以邀请好友来领地里担任职务" id="4000652" item="15011102"/>
+		<ItemSpec doing="看见" what="剧情：好友的等级越高，职务带来的提升效果就越强大" id="4000653" item="15011201"/>
+		<ItemSpec doing="点击" what="剧情：好友的等级越高，职务带来的提升效果就越强大" id="4000654" item="15011202"/>
+		<ItemSpec doing="看见" what="剧情：让我们点击这里，看看~~~" id="4000655" item="15011301"/>
+		<ItemSpec doing="点击" what="剧情：让我们点击这里，看看~~~" id="4000656" item="15011302"/>
+		<ItemSpec doing="看见" what="引导：点击【加号】按钮" id="4000657" item="15011401"/>
+		<ItemSpec doing="点击" what="引导：点击【加号】按钮" id="4000658" item="15011402"/>
+		<ItemSpec doing="看见" what="剧情：随着您好友的增多~~~" id="4000659" item="15011501"/>
+		<ItemSpec doing="点击" what="剧情：随着您好友的增多~~~" id="4000660" item="15011502"/>
+		<ItemSpec doing="看见" what="剧情：寻找那些志同道合的好友~~~" id="4000661" item="15011601"/>
+		<ItemSpec doing="点击" what="剧情：寻找那些志同道合的好友~~~" id="4000662" item="15011602"/><![CDATA[]]><![CDATA[]]></Group>
+</tns:database>

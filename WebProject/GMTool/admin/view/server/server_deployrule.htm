@@ -1,0 +1,139 @@
+<!--{template header}-->
+<pre>
+<h1>一、总体规则</h1>
+为了保证线上发布机的纯粹性。以下规则务必遵守。
+1、所有 代码、config 等文件的变更，都要Merge到Branch上。
+2、所有 前台包、版本 等的变化，在Branch进行配置。zip包的版本每次都需要顺次增加。
+3、以上涉及到的文件，都要提交SVN。
+4、所有发布操作，都要从Branch目录下执行。
+5、突发的线上更新，也需要先从内网(URLIP) 发布到 测试机/发布机(IPIPIP)后，再进行发布。
+6、服务器信息整理excel在svn trunk/docs/技术文档/后台/COK服务器列表.xlsx 。开服/更新SFS/DB时，须从该文件中复制相关命令。
+
+<h1>二、更新发布流程</h1>
+
+<h2>【从 内网(URLIP) 发布到 测试机/发布机(IPIPIP)】</h2>
+1、root用户登陆到 内网服务器（URLIP）
+2、转到 Branch 目录。『此步 很重要！后继的操作 一定 要在此目录下进行』
+	cd /IF/branches/smartfoxserver/SFS2X
+3、上传前台config文件（database.local.xml\*.ini等文件的 zip）到CDN
+	fab uploadConfig2CDN
+	「该方法会默认取得 extensions/COK1/config.properties 里配置的app版本和xml版本」
+	「如果需要自由定义版本，可用：fab uploadConfig2CDN:version=1.0.78,xmlversion=1.0.1353,ftpver=1.0.78 」
+	上传后，验证路径：http://cok.eleximg.com/cok/config/1.0.78/config_1.0.1353_en.zip
+4、发布到测试机（IPIPIP）
+	如果没有数据库表和数据的变化：
+	fab package stopsfs upload startsfs
+	如果数据库表和数据 需要更新，确认 db_struct_changes.sql db_struct_changes_global.sql 这两个sql文件后：
+	fab package stopsfs upload changeDbStruct startsfs
+	没有代码变更的补丁发布：
+	fab package upload
+5、补丁
+	fab changeDbStruct
+	fab uploadResourceXml:xmlfiles="item.xml|goods.xml|position.xml|reward.xml|building.xml|exchange.xml"
+	fab updateGameconfigClientVersion:appVer=1.0.79,clientVer="0|1.0.1376"
+
+<h2>【从 测试机/发布机(IPIPIP) 发布到 线上各服】</h2> 
+<h3>常规发布流程</h3> 
+1、root用户登陆到 测试机/发布机(IPIPIP) 
+2、转到SFS2X目录。 
+	cd /usr/local/cok/SFS2X 
+3、GM 上发布停服公告 
+	原则：服较多，分批发布。导量服错开发布。 
+	先发布s1-10，再发布其他。（导量服分到两批中，注意停服前，修改导量配置） 
+4、如果停服包括导量服，则先修改导量配置，导入到已经启动的新服上。 
+5、到达停服更新时间后，执行如下脚本 
+	1）数据库表和数据 无 变化 
+	./publish_control deploy 1-3,7,30-50 
+	2）数据库表和数据 有 变化 
+	./publish_control deploywithdb 142-151 
+6、发布完成后，初始化/清理部分数据 
+	./publish_control clearGlobalDbData 1 
+
+<h3>代码 补丁</h3>
+1、找到发生问题的版本的svn版本号。
+2、创建该版本号的子分支
+svn copy -r {revision} http://svn.xinggeq.com/svn/if/branches/production/src/server/ClashOfKingProject http://svn.xinggeq.com/svn/if/branches/production/src/server/sub_branches/ClashOfKingProject_{revision} -m 'create branch for {GAME_VERSION} bugfix.'
+3、开发者，checkout该分支，修改文件并commit
+4、在内网机上，前往子分支目录，up修正代码
+cd /IF/branches/sub_branches && svn up
+5、转到 ClashOfKingProject_{revision} 目录，执行编译
+gradle -b build.gradle build
+6、上传jar包到发布机107 
+scp cok-game/build/libs/COK-1.0.0-Extension.jar root@IPIPIP:/usr/local/cok/SFS2X/patch_jarfile/COK-{GAME_VERSION}-Extension.jar
+7、在 107 上修改、确认 $SFS2X/publish_control 中 deployTemp 的内容。然后执行补丁发布
+./publish_control deployTemp 1
+
+<h3>配置文件 补丁</h3> 
+1、root用户登陆到 测试机/发布机(IPIPIP) 
+2、转到SFS2X目录。 
+	cd /usr/local/cok/SFS2X 
+3、应用场景： 
+	1）后台表变更：
+	fab uploadResourceXml:host=10.41.163.10,xmlfiles="item.xml|exchange.xml|resources.xml" 
+	fab -P uploadResourceXml:xmlfiles="item.xml|exchange.xml|resources.xml" 
+	2）前台表变更，从72生成的zip包 或者 从策划那儿拿到的临时zip包 上传到CDN后： 
+	fab updateGameconfigClientVersion:host=10.41.163.10,appVer=1.0.79,clientVer="0|1.0.1376" 
+	fab -P updateGameconfigClientVersion:appVer=1.0.79,clientVer="0|1.0.1376" 
+	3）更新表结构： 
+	确保 currdeploy/db_struct_changes.sql 文件正确后执行： 
+	./publish_control changeDbStruct ALL 
+ 
+<h3>故障处理 流程</h3> 
+1、SFS服务器宕机。 
+	1）GM「导量配置」功能上确认是否是导量服，若是，把导量 设置为空。 
+	2）【自动】系统probe.php会判定服务器状态为（维护中），并返回给前端显示。 
+	3）运维 准备 替换用机器 （确认新机器的时区！UTC！）
+	3.1) 运维 db屏蔽旧机器的ip访问。以防止旧机器重启后 自动或误操作 导致sfs启动，导致线上数据出现错误。
+	3.2) 运维 【切换域名绑定ip，国内的香港代理机上的ip修正。】
+	4）在excel上更新 SFS服务器IP，复制出php切服命令；在发布机107上执行 
+		cd /publish
+		php kaifu/prepare.php ref_server_id=latest 
+		php kaifu/switch_sfs.php @PARAMS 
+		·注：此脚本会自动设置 syn_world_redis=1 ； 
+		·注：此脚本会同步写入 badwords 到新服的redis。 
+	5）修改107上到各服的的快捷入口shell的缓存ip：
+		sed -i 's/OLD_INNER_IP/NEW_INNER_IP/g' /usr/local/cok/SFS2X/fabfile.py
+		sed -i 's/OLD_INNER_IP/NEW_INNER_IP/g' /publish/logs/server_list.cache.txt
+	6）启动服务器。 
+		cd /usr/local/cok/SFS2X && ./publish_control start @SID
+	7）重新生成新的rmiClient.xml（包含新sfsip）、并发布到各服 
+		cd /usr/local/cok/SFS2X && fab -P uploadServersXml
+	8）执行脚本，使各服rmiClient生效 
+		redis-cli -h {GLOBAL_REDIS_SERVER_IP} publish CrossRefreshRMIChannel @SID
+		验证（正常返回true）：fab checkCrossRefreshRMI:sid=@SID  
+	9）servers.xml更新到getserverlist服务器
+		cd /usr/local/cok/SFS2X && fab uploadServersXml2PhpServer
+2、DB Master服务器故障。 
+	【把SFS服务器上的redis worldNNN 删除！！！！！！！！！！】(已经在switch_db脚本中执行)
+	1）GM「导量配置」功能上确认是否是导量服，若是，把导量 设置为空。 
+	2）停服。---> probe.php会判定服务器状态为（维护中），并返回给前端显示。 
+		cd /usr/local/cok/SFS2X && ./publish_control stop @SIDs  
+		·如果SFS非正常终止。确保状态为维护：【执行 fab setRedisServerStatus:host=SFSIP,status=2 】 
+		·注意：目前一台DB搭载多个SFS，所以此步需要把关联SFS服务器都处理一下。 
+	3）【运维组】 Master/Slave 交换 
+		·从库 切为 主库。 
+		·新的 从库 准备、设置。 
+	4）在excel上更新 Master/Slave DB服务器IP，复制出php切服命令；在发布机107上执行 
+		php /publish/kaifu/prepare.php ref_server_id=latest 
+		php /publish/kaifu/switch_db.php @PARAMS 
+		·如果 新从库 来不及准备，那就把switch_db这个里的从库参数设置为主库的IP。 
+	5）启动服务器。 
+		cd /usr/local/cok/SFS2X && ./publish_control start @SIDs 
+	6）重新生成新的mybatis-cross.xml（包含新dbip）、并发布到各服 
+		cd /usr/local/cok/SFS2X && fab -P uploadMybatisCross 
+	7）执行脚本，使各服mybatis-cross.xml生效 
+		redis-cli -h {GLOBAL_REDIS_SERVER_IP} publish CrossRefreshMybatisChannel @SIDs 
+		验证（正常返回true）：fab checkCrossRefreshMybatis:sid=@SIDs 
+3、DB Slave服务器故障。（--> 不需要停服） 
+	1）【运维组】准备好Slave服。 
+	2）【运维组】设置新的从库，从备份机上恢复数据到新从库 
+	3）【运维组】提供新的SlaveIP 
+	4）在发布机107上执行 
+		php /publish/kaifu/switch_slavedb.php server_id_list=SID1,SID2 slave_ip_inner=xxx slave_ip_pub=xxx 
+		·此处仅仅是更新deploy表内的信息，为了后继的统计分析用。 
+</pre> 
+
+
+
+
+<!--{template footer}-->

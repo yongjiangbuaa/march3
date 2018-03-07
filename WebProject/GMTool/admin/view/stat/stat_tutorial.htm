@@ -1,0 +1,116 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "新手引导流失统计：";?><font color="red">点击ID可查询在此步骤流失的玩家UID</font></div>
+注册起始<input class="input-medium focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-medium focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+版本号
+<select class="input-small focused" id="zone">
+		<option id=''></option>
+		<!--{loop $appVersionList $appKey $appVal}-->
+			<option id="{$appKey}">{$appVal}</option>
+		<!--{/loop}-->
+</select>
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+
+<!--{else}-->
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!-- {/if} -->
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+渠道
+<select id="selectReferrer" name="selectReferrer" onchange="">
+	<!--{loop $referrerList $referrer $referrername}-->
+	<!--{if ($currReferrer == $referrer)}-->
+	<option value="{$referrer}" selected="selected">{$referrername}</option>
+	<!-- {else} -->
+	<option value="{$referrer}">{$referrername}</option>
+	<!-- {/if} -->
+	<!--{/loop}-->
+</select>
+<input class="" type="checkbox" name="organicNums" id="organicNums"/>自然量 <strong><font color="red">(目前只支持416-445服)</font></strong>
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据">
+<div id='show2' style="float:left;width:105%;height:auto"></div>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getLogData(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('show').innerHTML = 'loading';
+	document.getElementById('show2').innerHTML = '';
+	zoneSelect = document.getElementById("zone");
+	var url = 'mod=stat&act=tutorial&analyze=platform&start='+$('#start_time').val()+'&user='+$('#user').val()+'&end='+$('#end_time').val()
+			+'&zone='+zoneSelect.options[zoneSelect.selectedIndex].id+'&country='+$('#selectCountry').val()+'&pf='+$('#selectPf').val()+'&referrer='+$('#selectReferrer').val();
+	var org=document.getElementById('organicNums');
+	if(org.checked){
+		url=url+'&organicNums=1';
+	}
+	
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("POST",'admincp.php',true);
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmlHttp.send(url);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+function getLostUser(finish,notFinish){
+	document.getElementById('show2').innerHTML = 'loading';
+	zoneSelect = document.getElementById("zone");
+	var url = 'mod=stat&act=tutorial&analyze=lost&start='+$('#start_time').val()+'&user='+$('#user').val()+'&end='+$('#end_time').val()+'&zone='+zoneSelect.options[zoneSelect.selectedIndex].id;
+	url += '&country='+$('#selectCountry').val()+'&pf='+$('#selectPf').val();
+	url += '&finish='+finish+'&notFinish='+notFinish;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction2;
+	xmlHttp.open("POST",'admincp.php',true);
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmlHttp.send(url);
+}
+function getAction2(){
+	right=document.getElementById('show2');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

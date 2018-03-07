@@ -1,0 +1,64 @@
+<!--{template header}-->
+<br>
+<div class="alert alert-info"><?php echo $title;?><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=setRisk&analyze=user" method="post" name="getaccount">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+<!--{if $showData}-->
+<br>
+<br>
+<table class="listTable" style="width: 100%;">
+<tbody>
+	<tr class="listTr" style="background-color: aliceblue;">
+		<th style="text-align: center;">风险等级</th>
+		<!--{loop $dbIndex $indKey $indValue}-->
+			<th style="text-align: center;">$indValue</th>
+		<!--{/loop}-->
+	</tr>
+	<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+		<td align="center">风险值</td>
+		<!--{loop $dbIndex $indKey $indValue}-->
+			<td align="center" id="{$indValue}"><a href="javascript:void(edit('{$indValue}','$data[$indValue]'))">$data[$indValue]</a></td>
+		<!--{/loop}-->
+	</tr>
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+var level=null;
+function edit(riskLevel,riskValue) {
+	doClear();
+	level=riskLevel;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+riskLevel+'" value="'+riskValue+'"><br/>当前:'+riskValue+' <input type="button" id="savebtn" value="保存" onclick=save(new'+riskLevel+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(riskLevel);
+	right.innerHTML=str;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	search();
+}
+function save(num){
+	$.get('admincp.php?mod=op&act=setRisk&type=modify&riskLevel='+level+'&riskValue='+num.value,function(data){
+		alert(data);
+	});
+	search();
+}
+
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

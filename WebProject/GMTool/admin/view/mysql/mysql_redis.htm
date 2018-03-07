@@ -1,0 +1,114 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询数据库内容";?><font color="red"></font></div>
+<div class="span11" style='TEXT-ALIGN:center;float:left;'>
+<form action="admincp.php?mod=mysql&act=redis&type=output" method="post" name="getaccount">
+	RedisKey: 
+	<!-- <select id="selectTable" class="input-medium" onchange="changeTable()"></select> -->
+	<input type="text" id="selectTable" name="selectTable" value='{$selectTable}'></input>
+	hashKey: 
+	<!-- <select id="selectIndex" class="input-medium"></select> -->
+	<input type="text" id="selectIndex" name="selectIndex" value='{$selectIndex}'></input>
+	<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="hGet">&nbsp;&nbsp;
+	
+	<input class="btn js-btn btn-primary" type="button" onclick="get_datas('get')" name="btn_view" value="get">&nbsp;&nbsp;
+	
+	<input class="btn js-btn btn-primary" type="button" onclick="get_datas('hkeys')" name="btn_view" value="hkeys">&nbsp;&nbsp;
+	
+	<input class="display:none;" type="hidden" value="" id="tablename" name="tablename"/>
+</form>
+</div>
+<div id='show' style="float:left;width:110%;height:auto;"></div>
+<script type="text/javascript">
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+var currentPage = 1;
+function getData(page) {
+	document.getElementById('btn_view').disabled=true;
+	currentPage = page;
+	showData();
+}
+
+function get_datas(type){
+	showData(type);
+}
+
+function showData(type){
+	tableSelect = document.getElementById("selectTable");
+	var tablename = tableSelect.value;
+	indexSelect = document.getElementById("selectIndex");
+	var indexname = indexSelect.value;
+	if(tablename == null || tablename ==""){
+		alert("<?php echo 请输入一个表进行查询;?>");
+		$("#tablename").focus();
+		document.getElementById('btn_view').disabled=false;
+		return;
+	}
+	var url ='admincp.php?mod=mysql&act=redis&key='+tablename+'&index='+indexname+'&type='+type;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function outPut() {
+	tableSelect = document.getElementById("selectTable");
+	var tablename = tableSelect.options[tableSelect.selectedIndex].id;
+	$("#tablename").val(tableName);
+	document.getaccount.submit();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+/* tableList();
+function tableList() {
+	var url ='getstruct.php?redisList=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTable;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTable(){
+	right=document.getElementById('selectTable');
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(tableList);
+			return;
+		}
+		right.innerHTML=xmlHttp.responseText;
+		changeTable();
+		return;
+	}
+}
+function changeTable(){
+	tableSelect = document.getElementById("selectTable");
+	var url ='getstruct.php?redisList=true&key='+tableSelect.options[tableSelect.selectedIndex].id;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTableStruct;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTableStruct(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(changeTable);
+			return;
+		}
+		document.getElementById('selectIndex').innerHTML=xmlHttp.responseText;
+		return;
+	}
+} */
+
+</script>
+<!--{template footer}-->

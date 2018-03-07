@@ -1,0 +1,58 @@
+<!--{template header}-->
+<br>
+<strong><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></strong>
+<br>
+<form action="admincp.php?mod=server&act=countryAmount&analyze=user" method="post" name="getaccount">
+$serverDiv
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+<!--{if $showData}-->
+	<table class="listTable" style="text-align:center">
+		<tbody>
+			<tr>
+				<th style="text-align: center;">服</th>
+				<th style="text-align: center;">所有玩家</th>
+				<th style="text-align: center;">当前策略</th>
+				<th style="text-align: center;">新注册</th>
+				<!--{loop $dbIndex $indKey $indValue}-->
+					<th style="text-align: center;">$indValue</th>
+					<th style="text-align: center;">$indValue(%)</th>
+				<!--{/loop}-->
+			</tr>
+			<!--{loop $allUsers $serverKey $dbVal}-->
+				<!--{if $countryArray[$serverKey]=='JP' || $countryArray[$serverKey]=='CN,JP' || $data[$serverKey]['JP']>1000}-->
+					<tr style="background:#EFD0D1;" class='listTr'>
+				<!--{else}-->
+					<!--{if in_array($serverKey,$daoliangArray) || isset($countryArray[$serverKey])}-->
+						<tr style="background:aliceblue;" class='listTr'>
+					<!--{else}-->
+						<tr class='listTr'>
+					<!--{/if}-->
+				<!--{/if}-->
+					<td>$serverKey</td>
+					<td>$dbVal</td>
+					<td>$countryArray[$serverKey]</td>
+					<td>$data[$serverKey]['total']</td>
+					<!--{loop $dbIndex $indKey $indValue}-->
+						<td>$data[$serverKey][$indValue]</td>
+						<td>$data[$serverKey]["percent$indValue"]</td>
+					<!--{/loop}-->
+				</tr>
+			<!--{/loop}-->
+	
+		</tbody>
+	</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

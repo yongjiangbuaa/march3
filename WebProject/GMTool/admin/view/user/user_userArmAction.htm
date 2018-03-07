@@ -1,0 +1,98 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查看玩家部队使用情况";?><font color="red"></font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=user&act=userArmAction" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+
+起始时间<input class="input-medium" id="dateMin" name='dateMin' type="text" value='$dateMin' size="50"/>-
+结束时间<input class="input-medium" id="dateMax" name='dateMax' type="text" value='$dateMax' size="50"/>
+<span>UID</span><span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<br>
+兵种
+<select id="selectArm" name="selectArm" onchange="">
+		<!--{loop $arms $arm $armName}-->
+		<!--{if ($currArm == $arm)}-->
+			<option value="{$arm}" selected="selected">{$armName}</option>
+		<!-- {else} -->
+			<option value="{$arm}">{$armName}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+部队状态
+<select id="selectArmType" name="selectArmType" onchange="">
+		<!--{loop $armType $type $typeName}-->
+		<!--{if ($currArmType == $type)}-->
+			<option value="{$type}" selected="selected">{$typeName}</option>
+		<!-- {else} -->
+			<option value="{$type}">{$typeName}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+部队行动
+<select id="selectArmAct" name="selectArmAct" onchange="">
+		<!--{loop $armAct $act $actName}-->
+		<!--{if ($currArmAct == $act)}-->
+			<option value="{$act}" selected="selected">{$actName}</option>
+		<!-- {else} -->
+			<option value="{$act}">{$actName}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="getData(1)" />
+</div>
+</div>
+</form>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+
+
+<script type="text/javascript">
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function getData(page){
+	/* if(!$.trim($("#username").val() + $("#useruid").val())){
+		alert("请输入玩家名称或者玩家UID！！！");
+		return;
+	} */
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	selectArm = document.getElementById("selectArm").value;
+	selectArmType = document.getElementById("selectArmType").value;
+	selectArmAct = document.getElementById("selectArmAct").value;
+	var url ='admincp.php?mod=user&act=userArmAction&getData=true'+'&page='+page+'&useruid=' + $("#useruid").val()+'&selectArm='+selectArm+'&selectArmType='+selectArmType+'&selectArmAct='+selectArmAct;
+	if(document.getElementById('dateMin').value){
+		url += '&dateMin=' + document.getElementById('dateMin').value;
+	}
+	if(document.getElementById('dateMax').value){
+		url += '&dateMax=' + document.getElementById('dateMax').value;
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+$("#dateMin,#dateMax").datetimepicker();
+</script>
+<!--{template footer}-->

@@ -1,0 +1,220 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+<form action="admincp.php?mod=op&act=server_info&server={$selectServer}" method="post" name="getaccount" style="display: inline-table;">
+<div class="container" style="width: auto;">
+服(逗号横杠分隔1,3,8-22)<input type="text" value="{$sttt}" id="selectServer" name="selectServer"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="search()" />
+	<input class="" type="checkbox" name="batchProcessing" id="batchProcessing" onchange="changeEvent()"  />批量修改
+
+	<div id="modifyValues" style="display:none;">
+		<br>
+		名称<select id="columnName">
+		<!--{loop $header $headerKey $headerName}-->
+			<option value="{$headerKey}">$headerName</option>
+		<!--{/loop}-->
+		</select>&nbsp;&nbsp;
+
+		时间<input class="input-large focused" id="columnValue" name="columnValue" type="text" placeholder="点击选择日期">&nbsp;&nbsp;
+		<input class="btn js-btn btn-primary" type="button" value="批量修改" id="btn_modify" name="btn_modify" onclick="batchModify()" />
+	</div>
+</div>
+</form>
+
+<div style="height:1000px">
+	<table class="listTable" style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<td>服务器</td>
+			<td>开服时间UTC</td>
+ 			<!-- <td>开服</td> -->
+			<td>养服<br>开始时间</td>
+			<td>导量<br>开始时间</td>
+			<!-- <td>导量<br>结束时间</td> -->
+			<td>积分<br>开始时间</td>
+			<td>联盟积分<br>开始时间</td>
+			<td>刷怪|付费<br>开始时间</td>
+			<td>兑换码<br>结束时间</td>
+			<td>怪物攻城<br>开始时间</td>
+			<td>王位争夺战<br>开始时间</td>
+			<td>累积充值<br>开始时间</td>
+			<td>跨服战<br>开战服</td>
+			<td>跨服战<br>开始时间</td>
+			<td>玫瑰花冠<br>开始时间</td>
+			<td>王位争夺战<br>争夺状态</td>
+			<td>王位争夺战<br>本轮开始时间</td>
+			<td>王位争夺战<br>本轮结束时间</td>
+			<td>祝福活动<br>startTime</td>
+			<td>奖励排行<br>startTime</td>
+			<td>英雄招募排行<br>startTime</td>
+			<td>小王战<br>开始时间</td>
+			<td>备注</td>
+		</tr>
+		<!--{loop $allServerAct $severKey $actTime}-->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+				<td>$severKey</td>
+				<td id="{$severKey}_kaifu"><a href="javascript:void(edit('{$severKey}_kaifu','{$actTime['kaifu']}'))">$actTime['kaifu']</a></td>
+				<td id="{$severKey}_yangfu"><a href="javascript:void(edit('{$severKey}_yangfu','{$actTime['yangfu']}'))">$actTime['yangfu']</a></td>
+				<td id="{$severKey}_daoliangStart"><a href="javascript:void(edit('{$severKey}_daoliangStart','{$actTime['daoliangStart']}'))">$actTime['daoliangStart']</a></td>
+				<!-- <td id="{$severKey}_daoliangEnd"><a href="javascript:void(edit('{$severKey}_daoliangEnd','{$actTime['daoliangEnd']}'))">$actTime['daoliangEnd']</a></td> -->
+				<td id="{$severKey}_activityTime"><a href="javascript:void(edit('{$severKey}_activityTime','{$actTime['activityTime']}'))">$actTime['activityTime']</a></td>
+				<td id="{$severKey}_alactTime"><a href="javascript:void(edit('{$severKey}_alactTime','{$actTime['alactTime']}'))">$actTime['alactTime']</a></td>
+				<td id="{$severKey}_shuaguaiActStart"><a href="javascript:void(edit('{$severKey}_shuaguaiActStart','{$actTime['shuaguaiActStart']}'))">$actTime['shuaguaiActStart']</a></td>
+				<td id="{$severKey}_activationTime"><a href="javascript:void(edit('{$severKey}_activationTime','{$actTime['activationTime']}'))">$actTime['activationTime']</a></td>
+				<td id="{$severKey}_activity_110004_openTime"><a href="javascript:void(edit('{$severKey}_activity_110004_openTime','{$actTime['activity_110004_openTime']}'))">$actTime['activity_110004_openTime']</a></td>
+				<td id="{$severKey}_activity_110001_openTime"><a href="javascript:void(edit('{$severKey}_activity_110001_openTime','{$actTime['activity_110001_openTime']}'))">$actTime['activity_110001_openTime']</a></td>
+				<td id="{$severKey}_payTotalTime"><a href="javascript:void(edit('{$severKey}_payTotalTime','{$actTime['payTotalTime']}'))">$actTime['payTotalTime']</a></td>
+				<td id="{$severKey}_crossFightServerId"><a href="javascript:void(editCross('{$severKey}_crossFightServerId','{$actTime['crossFightServerId']}'))">$actTime['crossFightServerId']</a></td>
+				<td id="{$severKey}_activity_110007_openTime"><a href="javascript:void(edit('{$severKey}_activity_110007_openTime','{$actTime['activity_110007_openTime']}'))">$actTime['activity_110007_openTime']</a></td>
+				<td id="{$severKey}_roseCrownStart"><a href="javascript:void(edit('{$severKey}_roseCrownStart','{$actTime['roseCrownStart']}'))">$actTime['roseCrownStart']</a></td>
+				<td id="{$severKey}_roseCrownStart1">$actTime['activity_110001_status']</td>
+				<td id="{$severKey}_roseCrownStart2">$actTime['activity_110001_startTime']</td>
+				<td id="{$severKey}_roseCrownStart3">$actTime['activity_110001_endTime']</td>
+				<td id="{$severKey}_activity_110008_startTime"><a href="javascript:void(edit('{$severKey}_activity_110008_startTime','{$actTime['activity_110008_startTime']}'))">$actTime['activity_110008_startTime']</a></td>
+				<td id="{$severKey}_activity_110009_startTime"><a href="javascript:void(edit('{$severKey}_activity_110009_startTime','{$actTime['activity_110009_startTime']}'))">$actTime['activity_110009_startTime']</a></td>
+				<td id="{$severKey}_activity_110010_startTime"><a href="javascript:void(edit('{$severKey}_activity_110010_startTime','{$actTime['activity_110010_startTime']}'))">$actTime['activity_110010_startTime']</a></td>
+				<td id="{$severKey}_strongholdStart"><a href="javascript:void(edit('{$severKey}_strongholdStart','{$actTime['strongholdStart']}'))">$actTime['strongholdStart']</a></td>
+
+				<!-- {if {$actTime['log']}} -->
+				<td id="{$severKey}_log"><a href="javascript:void(edit('{$severKey}_log','{$actTime['log']}'))">$actTime['log']</a></td>
+				<!-- {else} -->
+				<td id="{$severKey}_log"><a href="javascript:void(edit('{$severKey}_log','{$actTime['log']}'))">无</a></td>
+				<!-- {/if} -->
+			</tr>
+		<!--{/loop}-->
+	</table>
+</div>
+<script type="text/javascript">
+	init();
+	function init(){
+		$("#columnValue").datetimepicker();
+	}
+<!-- 更新时间的函数-->
+var serverKey = null;
+function edit(server,nowTime) {
+	doClear();
+	serverKey = server;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'
+			+server
+			+'" value="'
+			+nowTime+'"><br/>当前:'
+			+nowTime+' <input type="button" id="savebtn" value="保存" onclick=save(new'
+			+server
+			+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(server);
+	right.innerHTML=str;
+	setDateFomate();
+}
+
+function batchModify(){
+	document.getElementsByName('btn_view').disabled=true;
+	document.getElementById('btn_modify').disabled=true;
+	var server = $('#selectServer').val();
+//	var url = 'admincp.php?mod=op&act=server_info&type=batchDo&selectServer=server'+'&columnName='+$('#columnName').val()+'&server='+server+'&columnValue='+$('#columnValue').val();
+	var url = 'admincp.php?mod=op&act=server_info&type=batchDo&selectServer='+$('#selectServer').val()+'&columnName='+$('#columnName').val()+'&columnValue='+$('#columnValue').val();
+	alert(url);
+	if(window.confirm(server)){
+		//alert("确定");
+		$.get(url,function(data){
+			alert(data);
+			search();
+
+			document.getElementsByName('btn_view').disabled=false;
+			document.getElementById('btn_modify').disabled=false;
+		});
+	}else{
+		//alert("取消");
+		document.getElementsByName('btn_view').disabled=false;
+		document.getElementById('btn_modify').disabled=false;
+		return false;
+	}
+
+
+}
+function changeEvent(){
+	if(document.getElementById('batchProcessing').checked){
+		$('#modifyValues').show();
+	}else{
+		$('#modifyValues').hide();
+	}
+}
+function editCross(server,warServerId) {
+	doClear();
+	serverKey = server;
+	var idsStr;
+	idsStr=getWarServerIds();
+	var timeArr=idsStr.split('|');
+	var opts='';
+	timeArr.forEach(function(entry) {
+		var sel='';
+	    if(warServerId==entry){
+	    		sel="selected"
+	    }
+	    opts=opts+'<option value="'+entry+'" '+sel+'>'+entry+'</option>'
+	});
+	var str='<form id="form1" style="margin:0">更新新数据: <select id="selectWarId" class="input-medium" name="selectWarId">'+opts+'</select> <input type="button" id="savebtn" value="保存" onclick=save(selectWarId)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(server);
+	right.innerHTML=str;
+	setDateFomate();
+}
+function getWarServerIds(){
+    var result = null;
+    var scriptUrl = "admincp.php?mod=op&act=server_info&event=getWarServerIdArray" + name;
+    $.ajax({
+       url: scriptUrl,
+       type: 'get',
+       dataType: 'html',
+       async: false,
+       success: function(data) {
+           result = data;
+       } 
+    });
+    return result;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=server_info';
+}
+function save(num){
+	//self.location = 'admincp.php?mod=op&act=server_info&type=modify&server='+serverKey+'&newDate='+num.value;
+	$.get('admincp.php?mod=op&act=server_info&type=modify&server='+serverKey+'&newDate='+num .value,function(){
+		alert('Success!');
+	});
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+serverKey+"'"+','+"'"+num.value+"'"+'))">'+num.value.split(" ")[0]+'</a>');
+	count = 0;
+	
+}
+
+function setDateFomate(){
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if( objId[1]=='yangfu' || objId[1]=='shuaguaiActStart' || objId[1]=='activityTime' || objId[1]=='activationTime' || objId[1]=='kaifu' || objId[1]=='daoliangStart' || objId[1]=='activity' || objId[1]=='payTotalTime' || objId[1]=='roseCrownStart' || objId[1]=='alactTime' || objId[1]=='strongholdStart'
+		)
+		{
+			$("#"+objs[i].id).datetimepicker();
+		}
+	}
+}
+
+function search(){
+	/* 	var objs = document.getElementsByTagName("input");
+		for(i=0;i<objs.length;i++){
+			if(objs[i].checked)
+			{ */
+				document.getaccount.submit();
+				return;
+		/* 	}
+		} */
+		alert("请选择需要查询的服");
+	}
+
+
+</script>
+<!--{template footer}-->

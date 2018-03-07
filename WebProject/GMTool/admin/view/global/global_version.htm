@@ -1,0 +1,57 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+<form action="admincp.php?mod=global&act=version" method="post" name="getaccount">
+	<div class="container" style="width: auto;">
+		<input class="btn js-btn btn-primary" type="button" value="刷新" name="btn_view" onclick="search()" />
+	</div>
+</form>
+
+<div style="height:1000px">
+	<table class="listTable" style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<td>id</td>
+			<td>name</td>
+			<td>version</td>
+		</tr>
+		<!--{loop $result $key $change}-->
+		<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+			<td>$change['id']</td>
+			<td id="{$change['id']}_name"><a href="javascript:void(edit('{$change['id']}_name','{$change['name']}'))">$change['name']</a></td>
+			<td id="{$change['id']}_version"><a href="javascript:void(edit('{$change['id']}_version','{$change['version']}'))">$change['version']</a></td>
+		</tr>
+		<!--{/loop}-->
+	</table>
+</div>
+<script type="text/javascript">
+
+	<!-- 更新时间的函数-->
+	var idKey = null;
+	function edit(id,change) {
+		doClear();
+		idKey = id;
+		var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+id+'" value="'+change+'"><br/>当前:'+change+' <input type="button" id="savebtn" value="保存" onclick=save(new'+id+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+		right=document.getElementById(id);
+		right.innerHTML=str;
+	}
+	var count = 0;
+	function doClear(){
+		count++;
+		if(count>=2)
+		{
+			alert('一次只能修改一项,请把未完成的项保存');
+			rightinfo();
+		}
+	}
+	function rightinfo() {
+		self.location = 'admincp.php?mod=global&act=version';
+	}
+	function save(num){
+		$.get('admincp.php?mod=global&act=version&type=modify&id='+idKey+'&newStr='+num.value ,function(){
+			alert('Success!');
+		});
+		$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+idKey+"'"+','+"'"+num.value+"'"+'))">'+num.value+'</a>');
+		count = 0;
+
+	}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,226 @@
+<!--{template header}-->
+<div id="tip" style="width:auto;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=user&act=lord" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<br>
+等级范围<input class="input-mini" id="levelMin" name='levelMin' type="text" value='1' size="50"/>-
+<input class="input-mini" id="levelMax" name='levelMax' type="text" value='99' size="50"/>
+大本等级<input class="input-mini" id="ubLevelMin" name='ubLevelMin' type="text" value='1' size="50"/>-
+<input class="input-mini" id="ubLevelMax" name='ubLevelMax' type="text" value='99' size="50"/>
+<br>
+<br>
+士兵数范围<input class="input-mini" id="troopsmin" name='troopsmin' type="text" value='0' size="50"/>-
+<input class="input-mini" id="troopsmax" name='troopsmax' type="text" value='99999999' size="50"/>
+战斗力范围<input class="input-mini" id="powermin" name='powermin' type="text" value='0' size="50"/>-
+<input class="input-mini" id="powermax" name='powermax' type="text" value='99999999' size="50"/>
+<br>
+<br>
+注册时间<input class="input-medium" id="regMin" name='regMin' type="text" value='{$regStart}' size="50"/>-
+<input class="input-medium" id="regMax" name='regMax' type="text" value='{$regEnd}' size="50"/>
+<br>
+	国家<select id="country" onchange="">
+	<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!--{/if}-->
+	<!--{/loop}-->
+	</select>
+<br>
+<div style="display:none">
+上次刷新距离现在时间(小时)<input class="input-small" id="loadMin" name='loadMin' type="text" value='' size="50"/>-
+<input class="input-small" id="loadMax" name='loadMax' type="text" value='' size="50"/>
+</div>
+<input class="" type="radio" name="orderUser" id="bylevel" >按等级排序
+<input class="" type="radio" name="orderUser" id="byblv" >按大本等级排序
+<input class="" type="radio" name="orderUser" id="byarmy" >按士兵数排序
+<input class="" type="radio" name="orderUser" id="bypower" >按战斗力排序
+<br>
+<br>
+<input class="" type="checkbox" name="orderUser" id="showsolider" >显示兵力信息
+<input class="" type="checkbox" name="orderUser" id="showpower" >显示战斗力信息
+<input class="" type="checkbox" name="orderUser" id="showresource" >显示资源信息
+<div style="display:none">
+<input class="" type="radio" name="orderUser" id="byvip" >按VIP排序
+</div>
+<br>
+<br>
+<input class="btn js-btn btn-primary" type="button" value="点击开始查询" name="btn_view" onclick="getData(1)" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input class="btn btn-success dropdown-toggle" type="button" value="查询总用户数" name="btn_view" onclick="getTotalNum()" />
+</div>
+</form>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+
+
+<script type="text/javascript">
+function getTotalNum(){
+	$.get('admincp.php?mod=stat&act=alluser&getCount=true',function(data){
+		$("#show").html(data);
+	});
+}
+var thisPage;
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	$("#show").html("<h3 style='color: red;'>loading......</h3>");
+	thisPage = page;
+	showData();
+}
+function showData(){
+	var url ='admincp.php?mod=stat&act=alluser&page='+thisPage;
+	if(document.getElementById('bylevel').checked)
+		url += '&bylevel=true';
+	if(document.getElementById('byvip').checked)
+		url += '&byvip=true';
+	if(document.getElementById('levelMin').value){
+		url += '&levelMin=' + document.getElementById('levelMin').value;
+	}
+	if(document.getElementById('levelMax').value){
+		url += '&levelMax=' + document.getElementById('levelMax').value;
+	}
+	if(document.getElementById('ubLevelMin').value){
+		url += '&ubLevelMin=' + document.getElementById('ubLevelMin').value;
+	}
+	if(document.getElementById('ubLevelMax').value){
+		url += '&ubLevelMax=' + document.getElementById('ubLevelMax').value;
+	}
+	if(document.getElementById('regMin').value){
+		url += '&regMin=' + document.getElementById('regMin').value;
+	}
+	if(document.getElementById('regMax').value){
+		url += '&regMax=' + document.getElementById('regMax').value;
+	}
+	if(document.getElementById('loadMin').value){
+		url += '&loadMin=' + document.getElementById('loadMin').value;
+	}
+	if(document.getElementById('loadMax').value){
+		url += '&loadMax=' + document.getElementById('loadMax').value;
+	}
+	if(document.getElementById('troopsmin').value){
+		url += '&troopsmin=' + document.getElementById('troopsmin').value;
+	}
+	if(document.getElementById('troopsmax').value){
+		url += '&troopsmax=' + document.getElementById('troopsmax').value;
+	}
+	if(document.getElementById('powermin').value){
+		url += '&powermin=' + document.getElementById('powermin').value;
+	}
+	if(document.getElementById('powermax').value){
+		url += '&powermax=' + document.getElementById('powermax').value;
+	}
+	if(document.getElementById('bylevel').checked){
+		url += '&bylevel=' + 1;
+	}
+	if(document.getElementById('byblv').checked){
+		url += '&byblv=' + 1;
+	}
+	if(document.getElementById('byarmy').checked){
+		url += '&byarmy=' + 1;
+	}
+	if(document.getElementById('bypower').checked){
+		url += '&bypower=' + 1;
+	}
+	if(document.getElementById('showresource').checked){
+		url += '&showResource=' + 1;
+	}
+	if(document.getElementById('showpower').checked){
+		url += '&showPower=' + 1;
+	}
+	if(document.getElementById('showsolider').checked){
+		url += '&showSolider=' + 1;
+	}
+	if($("#country")[0] && $("#country").val() != 'all'){
+		url+='&country='+$("#country").val();
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function deleteUser(uid){
+	if(confirm("确定删除UID为"+uid+"的账号吗?"))
+	{
+		var key;
+		if(key = prompt("请输入清除密码",'123'))
+		{
+			confirmDelete(uid,key);
+		}
+	}
+}
+function confirmDelete(uid,key){
+	var url ='admincp.php?mod=stat&act=alluser&deleteUser=true&uid='+uid+'&code='+key;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = deleteBack;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			//new superTable("table", {
+			//headerRows : 1,
+			//fixedCols : 2
+		    //});
+			return;
+		}
+	}
+}
+function deleteBack(){
+	if(xmlHttp.readyState==4 && xmlHttp.status == 200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		if(xmlHttp.responseText != 'true')
+		{
+			alert('失败'+xmlHttp.responseText);
+		}
+		else
+		{
+			alert('操作成功,点击确认以刷新页面');
+			getData(thisPage);
+		}
+	}
+}
+var mouseX = 0;
+var mouseY = 0;
+var tipText = '';
+$(document).mousemove(function (e) {
+	mouseX = e.pageX;
+	mouseY = e.pageY;
+});
+$(document).click(function (e) {
+	if(e.target.id != 'tip')
+		closeTip();
+});
+$("#regMin,#regMax").datetimepicker();
+function showTip(uid){
+	tipText = ""+ uid +"";
+	$("#tip").html(tipText).css({top:mouseY,left:mouseX,visibility:'visible'})
+}
+function closeTip(){
+	tipText = '';
+	$("#tip").html(tipText).css({visibility:'hidden'})
+}
+</script>
+
+<!--{template footer}-->

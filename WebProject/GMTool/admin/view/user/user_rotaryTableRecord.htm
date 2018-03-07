@@ -1,0 +1,117 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=rotaryTableRecord" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>用户名</span>
+<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<br>
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+转盘转动记录
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center">编号</th>
+	<th align="center">时间</th>
+	<th align="center">花费</th>
+	<th align="center">获得物品</th>
+	</tr>
+	<!--{loop $outData $key $dbData}-->
+		<tr>
+			<td>$key</td>
+			<td>$dbData['time']</td>
+			<td>$dbData['cost']</td>
+			<td>$dbData['name']</td>
+		</tr>
+	<!--{/loop}-->
+</tbody>
+</table>
+
+翻牌记录
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center">编号</th>
+	<th align="center">时间</th>
+	<th align="center">策略ID</th>
+	<th align="center">牌1</th>
+	<th align="center">牌2</th>
+	<th align="center">牌3</th>
+	<th align="center">牌4</th>
+	<th align="center">牌5</th>
+	<th align="center">牌6</th>
+	<th align="center">牌7</th>
+	<th align="center">牌8</th>
+	<th align="center">牌9</th>
+	<th align="center">翻牌位置</th>
+	<th align="center">总花费</th>
+	</tr>
+	<!--{loop $inData $key $dbData}-->
+		<tr>
+			<td>$key</td>
+			<td>$dbData['time']</td>
+			<td>$dbData['lotteryId']</td>
+			<td>$dbData['p1']</td>
+			<td>$dbData['p2']</td>
+			<td>$dbData['p3']</td>
+			<td>$dbData['p4']</td>
+			<td>$dbData['p5']</td>
+			<td>$dbData['p6']</td>
+			<td>$dbData['p7']</td>
+			<td>$dbData['p8']</td>
+			<td>$dbData['p9']</td>
+			<td>$dbData['position']</td>
+			<td>$dbData['cost']</td>
+		</tr>
+	<!--{/loop}-->
+</tbody>
+</table>
+
+
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputName)&&isEmpty(inputUid)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

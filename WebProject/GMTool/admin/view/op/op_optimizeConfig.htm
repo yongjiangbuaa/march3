@@ -1,0 +1,123 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+<form action="admincp.php?mod=op&act=optimizeConfig" method="post" name="getaccount" style="display: inline-table;">
+<div class="container" style="width: auto;">
+服(逗号横杠分隔1,3,8-22)<input type="text" value="{$sttt}" id="selectServer" name="selectServer"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search()" />&nbsp;&nbsp;
+<input class="" type="checkbox" name="batchProcessing" id="batchProcessing" onchange="changeEvent()"  />批量修改
+&nbsp;&nbsp;
+<input class="" type="checkbox" name="switchProcessing" id="switchProcessing" onchange="changeEvent2()"  />添加开关
+<div id="modifyValues" style="display:none;">
+<br>
+	名称<select id="columnName">
+		<!--{loop $header $headerKey $headerName}-->
+			<option value="{$headerKey}">$headerKey</option>
+		<!--{/loop}-->
+	</select>&nbsp;&nbsp;
+	值<input type="text" value="" id="columnValue" name="columnValue"/>&nbsp;&nbsp;
+	<input class="btn js-btn btn-primary" type="button" value="批量修改" id="btn_modify" name="btn_modify" onclick="batchModify()" />
+</div>
+
+<div id="addSwitch" style="display:none;">
+<br>
+	开关名称(name1;中文名1|name2;中文名2|...)<input type="text" value="" id="switchName" name="switchName"/>&nbsp;&nbsp;
+	<input class="btn js-btn btn-primary" type="button" value="添加" id="btn_addSwitch" name="btn_addSwitch" onclick="addSwit()" />
+</div>
+
+</div>
+</form>
+
+
+<div style="height:1000px">
+	<table class="listTable" style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<td>服务器</td>
+			<!--{loop $header $headerKey $headerName}-->
+			<td>$headerKey $headerName</td>
+			<!--{/loop}-->
+		</tr>
+		<!--{loop $data $severKey $salData}-->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+				<td>$severKey</td>
+				<!--{loop $header $headerKey $headerName}-->
+				<td id="{$severKey}_{$headerKey}"><a href="javascript:void(edit('{$severKey}_{$headerKey}','$salData[$headerKey]'))">$salData[$headerKey]</a></td>
+				<!--{/loop}-->
+			</tr>
+		<!--{/loop}-->
+	</table>
+</div>
+<script type="text/javascript">
+
+<!-- 更新时间的函数-->
+var serverKey = null;
+function edit(server,nowTime) {
+	doClear();
+	serverKey = server;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+server+'" value="'+nowTime+'"><br/>当前:'+nowTime+' <input type="button" id="savebtn" value="保存" onclick=save(new'+server+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(server);
+	right.innerHTML=str;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=optimizeConfig';
+}
+function save(num){
+	//self.location = 'admincp.php?mod=op&act=optimizeConfig&type=modify&server='+serverKey+'&newDate='+num.value;
+	$.get('admincp.php?mod=op&act=optimizeConfig&type=modify&server='+serverKey+'&newDate='+num.value,function(){
+		alert('Success!');
+	});
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+serverKey+"'"+','+"'"+num.value+"'"+'))">'+num.value.split(" ")[0]+'</a>');
+	count = 0;
+	rightinfo();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+function changeEvent(){
+	if(document.getElementById('batchProcessing').checked){
+		$('#modifyValues').show();
+	}else{
+		$('#modifyValues').hide();
+	}
+}
+
+function changeEvent2(){
+	if(document.getElementById('switchProcessing').checked){
+		$('#addSwitch').show();
+	}else{
+		$('#addSwitch').hide();
+	}
+}
+
+function batchModify(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('btn_modify').disabled=true;
+	$.get('admincp.php?mod=op&act=optimizeConfig&event=batchDo&selectServer='+$('#selectServer').val()+'&columnName='+$('#columnName').val()+'&columnValue='+$('#columnValue').val(),function(data){
+		alert(data);
+		search();
+	});
+}
+function addSwit(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('btn_modify').disabled=true;
+	document.getElementById('btn_addSwitch').disabled=true;
+	$.get('admincp.php?mod=op&act=optimizeConfig&event=addSwitch&switchName='+$('#switchName').val(),function(data){
+		alert(data);
+		document.getElementById('btn_view').disabled=false;
+		document.getElementById('btn_modify').disabled=false;
+		document.getElementById('btn_addSwitch').disabled=false;
+		search();
+	});
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,186 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "MOD管理";?><font color="red" id="showtips"></font></div>
+	<form action="admincp.php?mod=user&act=mod&server={$selectServer}" method="POST" name="getaccount" >
+		
+		$serverDiv
+		
+		<div class="row-fluid">
+			<div class="span11">
+				<span>用户名</span>
+				<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+				<span>UID</span>
+				<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+				<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+				<input class="btn js-btn btn-primary" type="button" value="查看" name="btn_view" onclick="check_submit('view')" />
+			</div>
+		</div>
+	</form>
+<!--{if $showData}-->
+<table class="listTable" cellspacing=1 padding=0 style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<td>编号</td>
+ 			<td>服务器</td>
+			<td>UID</td>
+			<td>名字</td>
+			<td>等级</td>
+			<td>权限</td>
+			<td>禁言权限状态</td>
+			<td>上次登录时间</td>
+			<td>发送邮件的人数</td>
+			<td>收到的MOD邮件</td>
+			<td>回复的MOD邮件</td>
+			<td>回复率</td>
+			<td>工资领取周期(小时)</td>
+			<td>工资领取数量</td>
+			<td>禁言权限开关</td>
+			<td>操作</td>
+		</tr>
+		<!--{loop $data $idx $value}-->
+			<tr id="{$value['server']}_{$value['uid']}">
+				<td>$value['num']</td>
+				<td>$value['server']</td>
+				<td>$value['uid']</td>
+				<td>$value['name']</td>
+				<td>$value['level']</td>
+				<td>$value['gmFlag']</td>
+				<td id="{$value['server']}_{$value['uid']}_modStatus">$value['authorize']</td>
+				<td>$value['lastOnlineTime']</td>
+				<td>$value['usersCount']</td>
+				<td>$value['cntAll']</td>
+				<td>$value['cntReply']</td>
+				<td>$value['rp']</td>
+				<td id="{$value['server']}_{$value['uid']}_modGoldGetTimeInterval"><a href="javascript:void(edit('{$value['server']}_{$value['uid']}_modGoldGetTimeInterval','{$value['modGoldGetTimeInterval']}'))">$value['modGoldGetTimeInterval']</a></td>
+				<td id="{$value['server']}_{$value['uid']}_modGoldAmount"><a href="javascript:void(edit('{$value['server']}_{$value['uid']}_modGoldAmount','{$value['modGoldAmount']}'))">$value['modGoldAmount']</a></td>
+				<td><a href="javascript:void(banSwitch('{$value['uid']}','{$value['server']}','on'))">on</a>&nbsp;&nbsp;
+					<a href="javascript:void(banSwitch('{$value['uid']}','{$value['server']}','off'))">off</a>
+				</td>
+				<td><a href="javascript:void(deleteLine('{$value['uid']}','{$value['server']}','{$value['gmFlag']}'))">删除</a></td>
+			</tr>
+		<!--{/loop}-->
+</table>		
+
+
+<!--{/if}-->
+<script type="text/javascript">
+
+function banSwitch(uid,server,type){
+	var str;
+	if(type=='on'){
+		str='是否确定开启禁言权限';
+	}else{
+		str='是否确定关闭禁言权限';
+	}
+	if(confirm(str))
+	{
+		doSwitch(uid,server,type);	
+	}
+}
+function deleteLine(uid,server,gmFlag){
+	if(confirm('是否确定删除'))
+	{
+		rmve(uid,server,gmFlag);	
+	}
+}
+function doSwitch(uid,server,type){
+	$.get("admincp.php?mod=user&act=mod&type=ban&uid="+uid+"&server="+server+"&typeSwitch="+type,function(data){
+		alert(data);
+		if(data=='OK'){
+			if(type=='on'){
+				document.getElementById(server+'_'+uid+'_modStatus').innerHTML = 'on';
+			}else{
+				document.getElementById(server+'_'+uid+'_modStatus').innerHTML = 'off';
+			}
+		}
+	});
+}
+function rmve(uid,server,gmFlag){
+	 $.get("admincp.php?mod=user&act=mod&type=delete&uid="+uid+"&server="+server+"&gmFlag="+gmFlag,function(data){
+			alert(data);
+			if(data=='OK'){
+				document.getElementById(server+'_'+uid).style.display = 'none';
+			}
+		});
+}
+/* function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+} */
+/* function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+} */
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+/* function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputName)&&isEmpty(inputUid)){
+		alert("<?php echo 请输入用户名或者UID;?>");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+} */
+function check_submit(type) {
+	//if(isCommit()){
+		document.getElementById('action').value = type;
+		//document.getaccount.submit();
+		/* var objs = document.getElementsByTagName("input");
+		for(i=0;i<objs.length;i++){
+			if(objs[i].checked)
+			{ */
+				document.getaccount.submit();
+				/* return;
+			}
+		}
+		alert("请选择需要查询的服"); */
+	//}
+}
+var serverKey = null;
+function edit(server,value) {
+	doClear();
+	serverKey = server;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+server+'" value="'+value+'"><br/>当前:'+value+' <input type="button" id="savebtn" value="保存" onclick=save(new'+server+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(server);
+	right.innerHTML=str;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=user&act=mod';
+}
+function save(num){
+	self.location = 'admincp.php?mod=user&act=mod&type=modify&server='+serverKey+'&newValue='+num.value;
+}
+</script>
+
+<!--{template footer}-->

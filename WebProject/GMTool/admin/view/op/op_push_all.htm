@@ -1,0 +1,335 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "全服推送：";?><font color="red"></font></div>
+<input type="radio" id="manage" name="keyType" value="manage" onclick="changeType()" checked /> 管理现有全服推送
+<input type="radio" id="add" name="keyType" value="add" onclick="changeType()" /> 添加新的全服推送
+<div id="manageDiv">
+	<!--{if $dbData }-->
+		<table class="listTable" cellspacing=1 padding=0 style="table-layout:fixed;word-break:break-all;width: 100%; text-align: center;">
+		<tr class="listTr">
+			<th width=5%>类型</th>
+			<th width=65%>内容</th>
+			<th width=10%>预计发送时间</th>
+			<!--<th width=4%>发送语言</th>-->
+			<th width=10%>发送状态</th>
+			<th width=10%></th>
+		</tr>
+		<!--{loop $dbData $key $value}-->
+		<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+			onMouseOut="this.style.background='#fff';">
+			<!--{if $value['state'] }-->
+				<td width="5%">$value['type']</td>
+				<td width="65%">$value['contents']</td>
+				<td width="10%">$value['startTime']</td>
+				<!--<td width="2%" id="lang$value['lang']">$value['lang']</td>-->
+				<td width="10%">$value['stateMsg']</td>
+			<!--{else}-->
+				<td width="5%" id="$value['uid']_type"><a href="javascript:void(edit('{$value['uid']}_type','{$value['type']}'))">$value['type']</a></td>
+				<!--<td width="65%" id="$value['uid']_contents"><a href="javascript:void(edit('{$value['uid']}_contents','{$value['contents']}'))">$value['contents']</a></td>-->
+				<td width="65%" id="$value['uid']_contents">$value['contents']</td>
+				<td width="10%" id="$value['uid']_startTime"><a href="javascript:void(edit('{$value['uid']}_startTime','{$value['startTime']}'))">$value['startTime']</a></td>
+				<!--<td width="2%" id="lang$value['lang']">$value['lang']</td>-->
+				<td width="10%">$value['stateMsg']</td>
+			<!--{/if}-->
+			<!--{if $value['state'] > 0 }-->
+			<td width="10%"></td>
+			<!--{else}-->
+			<td width="10%"><a href="javascript:void(deleteLine('{$value['uid']}'))">删除</a></br><a href="javascript:void(deleteAll('{$value['uid']}'))">全服删除</a></td>
+			<!--{/if}-->
+		</tr>
+		<!--{/loop}-->
+		</table>
+	<!--{else}-->
+		没有已成功完成的全服推送
+	<!--{/if}-->
+</div>
+<div id="addDiv" style="display:none">
+	<form action="admincp.php?mod=op&act=push_all" method="post" name="getaccount" enctype="multipart/form-data" style="display: inline-table;">
+		<input class="display:none;" type="hidden" value="" id="type" name="type" />
+		<div class="container" style="width: auto;">
+			<ul class="nav nav-tabs">
+			<li>
+			<input type='checkbox' id="all_server" name="all_server"  onClick="serverall()"  />
+			all 
+			</li>
+			<!--{loop $servers $server $serverSettings}-->
+				<li>
+				<!-- {if $server==getCurrServer()} -->
+						<input type='checkbox' id="server_{$server}" name="{$server}"  onClick="checkserverall()" checked />
+					<!-- {else} -->
+						<input type='checkbox' id="server_{$server}" name="{$server}" onClick="checkserverall()" />
+					<!-- {/if} -->
+				$server</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<table class="listTable" cellspacing=1 padding=0 style="width: 40%; text-align: center">
+			<tr><td>预计发送时间</td><td><input class="input-large focused" id="startTime" name="startTime" type="text" value="" /></td></tr>
+			<tr><td>类型(数字，暂时不用管为0就好)</td><td><input class="input-large focused" id="configtype" name="configtype" type="text" value="0" maxlength=40 /></td></tr>
+			<tr><td>语言</td><td>
+				<!--{loop $mailLangs2 $langKey $langVal}-->
+				<a href="#" onclick="checkLang('$langKey')">$langVal</a> &nbsp;
+				<!--{/loop}-->
+			</td></tr>
+			<tr><td>按语言发送内容&nbsp;&nbsp;<span id="contentNotice" style="color: #FF0000">英语</span></td>
+
+				<!--{loop $mailLangs2 $langKey $langVal}-->
+				<!--{if $langKey=='En' }-->
+				<td id="content{$langKey}"><textarea class="input-xlarge" style="width: 600px;" id="txtcontent{$langKey}" name="txtcontent{$langKey}" rows="6"></textarea></td>
+				<!--{else}-->
+				<td id="content{$langKey}" style="display:none"><textarea class="input-xlarge" style="width: 600px;" id="txtcontent{$langKey}" name="txtcontent{$langKey}" rows="6"></textarea></td>
+				<!--{/if}-->
+				<!--{/loop}-->
+
+				<!--<td><textarea class="input-xlarge" id="contents" name="contents" rows="6"></textarea></td>-->
+			</tr>
+			<!--
+			<tr><td>其他语言发送内容(如果不填写“按语言发送”此项默认为<span id="contentNotice" style="color: #FF0000">全体</span>,如果有填写，此项为除以上语言的<span id="contentNotice" style="color: #FF0000">其他</span>语言)</td>
+				<td><textarea class="input-xlarge" id="contents" name="contents" rows="6" style="width: 600px;"></textarea></td></tr>
+			-->
+		<tr><td></td><td>
+		<button type="button" class="btn btn-info" name="btn_set" onclick="checksubmit('add')">添加</button>
+		<button type="reset" class="btn">重置</button></td></tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+$("#startTime,#regStartTime,#regEndTime,#lastOnlineTime").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+
+function checksubmit(type){
+	//if(type == 'add'){
+	var startTime= $('#startTime').val();
+	var inputType = $('#configtype').val();
+	var inputContents = $('#contents').val();
+	startTime=jQuery.trim(startTime);
+	inputContents = jQuery.trim(inputContents);
+	inputType = $.trim(inputType);
+	if(isEmpty(startTime)){
+		alert("<?php echo "please input start time";?>");
+		$("#startTime").focus();
+		return false;
+	}
+	if(isEmpty(inputType)){
+		alert("<?php echo "please input type";?>");
+		$("#configtype").focus();
+		return false;
+	}
+	var result=inputType.match(/^[0-9]+$/);
+	if(result == null){
+		alert("类型只能是数字");
+		$("#configtype").focus();
+		return false;
+	}
+//		if(isEmpty(inputContents)){
+//			alert("<?php echo "please input contents";?>");
+//			$("#contents").focus();
+//			return false;
+//		}
+	//}
+
+	var contsMap={};
+	<!--{loop $mailLangs2 $langKey $langVal}-->
+	var tempLang = "$langKey";
+	var tempLangVal="$langVal";
+	var val=$("#txtcontent"+tempLang).val();
+	if(val==null || val=="")
+	{
+		val="无";
+	}
+	contsMap[tempLangVal]=val;
+	<!--{/loop}-->
+	var str="";
+	var count=1;
+	for(var prop in contsMap){
+		str+=prop+" : "+contsMap[prop]+"  ";
+		if(count%2==0)
+		{
+			str+="\r\n";
+		}
+		count++;
+	}
+
+
+	var r=confirm("时间："+startTime+"\n\r发送内容列表："+str+"\n\r其他发送内容："+inputContents);
+	if(r==true)
+	{
+		document.getElementById('type').value = type;
+		document.getaccount.submit();
+	}
+
+}
+
+//语言切换
+function checkLang(lang){
+
+	<!--{loop $mailLangs2 $langKey $langVal}-->
+	var  tempLang = "$langKey";
+	if(lang!=tempLang){
+		//document.getElementById('title'+tempLang).style.display = 'none';
+		document.getElementById('content'+tempLang).style.display = 'none';
+	}else{
+		//document.getElementById("titleNotice").innerText = "$langVal";
+		document.getElementById("contentNotice").innerText = "$langVal";
+		//document.getElementById('title'+lang).style.display = 'block';
+		document.getElementById('content'+lang).style.display = 'block';
+	}
+	<!--{/loop}-->
+}
+
+function getLangName(value,id)
+{
+	var dom=document.getElementById(id);
+	if(isEmpty(value))
+	{
+		dom.innerHTML= "全服";
+	}else
+	{
+		var data=value;
+		if(data=='zh_CN')
+		{
+			data='zh-Hans';
+		}else if(data=='zh_TW')
+		{
+			data='zh-Hant';
+		}
+
+		<!--{loop $mailLangs2 $langKey $langVal}-->
+		var  tempLang = "$langKey";
+		if(data!=tempLang){
+
+		}else{
+			dom.innerHTML= $langKey;
+		}
+		<!--{/loop}-->
+	}
+}
+
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function showReward(buttonId,showId){
+	document.getElementById(buttonId).style.display = 'none';
+	document.getElementById(showId).style.display = 'block';
+}
+function changeType(){
+	if(document.getElementById('add').checked)
+	{
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+	if(document.getElementById('manage').checked)
+	{
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+var uuid = null;
+function edit(uid,now) {
+	doClear();
+	uuid = uid;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+uid+'" value="'+now+'"><br/>当前:'+now+' <input type="button" id="savebtn" value="保存" onclick=save(new'+uid+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(uid);
+	right.innerHTML=str;
+	setDateFomate();
+}
+
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function save(num){
+	if(uuid.indexOf('_type') != -1){
+		str = num.value;
+		var result=str.match(/^[0-9]+$/);
+		if(result == null){
+			alert("类型只能是数字");
+			return false;
+		}
+	}
+	self.location = 'admincp.php?mod=op&act=push_all&type=modify&uid='+uuid+'&newData='+num.value;
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=push_all';
+}
+
+function deleteLine(uid){
+	if(confirm('是否确定删除'))
+	{
+		rmve(uid);	
+	}
+}
+
+function deleteAll(uid)
+{
+	if(confirm('是否确定删除'))
+	{
+		rmveAll(uid);
+	}
+}
+
+function rmveAll(uid){
+	self.location = "admincp.php?mod=op&act=push_all&type=deleteAll&uid="+uid;
+}
+
+function rmve(uid){
+	 self.location = "admincp.php?mod=op&act=push_all&type=delete&uid="+uid;
+}
+function changeType(){
+	if(document.getElementById('manage').checked)
+	{
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(document.getElementById('add').checked)
+	{
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+}
+
+
+
+function setDateFomate(){
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[1]=='startTime' || objId[1]=='regStartTime' || objId[1]=='regEndTime' || objId[1]=='lastOnlineTime')
+		{
+			$("#"+objs[i].id).datetimepicker();
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

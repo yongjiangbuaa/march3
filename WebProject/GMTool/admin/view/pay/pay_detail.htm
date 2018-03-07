@@ -1,0 +1,82 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "充值统计";?><font color="red"></font></div>
+起始时间<input class="input-medium focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-medium focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+查询用户名<input class="input-medium focused" id="user" name="user" type="text" placeholder="输入需要关注的用户名" value="">
+查询用户uid<input class="input-medium focused" id="userUid" name="userUid" type="text" placeholder="输入需要关注的用户UID" value="">
+查询礼包id<input class="input-medium focused" id="goods" name="goods" type="text" placeholder="输入需要关注的礼包ID" value="">
+<br>
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{else}-->
+
+<!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view1" name="btn_view" value="查询充值记录">
+<input class="btn js-btn btn-primary" type="button" onclick="getCountryData(1)" id="btn_view2" name="btn_view" value="查询不同国家充值比例">
+<div id='show' style="float:left;width:95%;height:auto"></div>
+<div id='dis' style="float:left;display:none;z-index:99999;position:absolute;left:50px; top:70px; border-radius:20px;background-color:#708090;width:1024px;height:700px"><h2 align="center">正在加载数据，请稍后...</h2></div>
+
+<script type="text/javascript">
+function getData(page){
+	//document.getElementById('dis').style.display = 'block';
+	document.getElementById('btn_view1').disabled=true;
+	url = 'admincp.php?mod=pay&act=detail&analyze=user&page='+page+'&start='+$('#start_time').val()+'&user='+$('#user').val()+'&userUid='+$('#userUid').val()+'&end='+$('#end_time').val()+'&selectPf='+$('#selectPf').val()
+			+'&goods='+$('#goods').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getCountryData(){
+	//document.getElementById('dis').style.display = 'block';
+	document.getElementById('btn_view2').disabled=true;
+	var url = 'admincp.php?mod=pay&act=detail&analyze=user&bycountry=1'+'&start='+$('#start_time').val()+'&end='+$('#end_time').val();
+	$.get(url,function(data){
+		$("#show").html(data);
+		//document.getElementById('dis').style.display = 'none';
+		document.getElementById('btn_view2').disabled=false;
+	});
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			//document.getElementById('dis').style.display = 'none';
+			document.getElementById('btn_view1').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

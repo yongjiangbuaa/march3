@@ -1,0 +1,169 @@
+<!--{template header}-->
+
+<br>
+<div style="font-size: medium;">
+	<a href="javascript:void(changeType2(1))">添加映射</a>
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="javascript:void(changeType2(2))">删除映射</a>
+</div>
+<font color="red">绑定账号后,记得删除,否则玩家无法登陆!!!</font>
+
+<hr>
+<div id="manageMapping">
+	<form action="admincp.php?mod=op&act=updateDeviceMapping" method="post" name="getaccount">
+	<div class="row-fluid">
+	<div class="span11">
+	<span>UID</span>
+	<span><input type="text" id="uid" name="uid" value=''></input></span>
+	<span>设备ID</span>
+		<span><input type="text" id="deviceId" name="deviceId" value='' style="width:350px;"></input></span>
+	
+	<input class="display:none;" type="hidden" value="" id="action" name="action"/>&nbsp;&nbsp;
+	<input class="btn js-btn btn-primary" type="button" value="保存" id="btn_add" name="btn_edit" onclick="check_submit('add')" />
+	</div>
+	</div><br/>
+	
+	</form>
+</div>
+
+<div id="delMapping" style="display:none">
+	<div class="row-fluid">
+	<div class="span11">
+	<span>UID</span>
+	<span><input type="text" id="uidDel" name="uidDel" value=''></input></span>
+	<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_edit" onclick="check_submit('view')" />
+	</div>
+	</div><br/>
+	<div id="displayMapping"></div>
+	
+</div>
+
+<script type="text/javascript">
+
+function changeType2(type){
+	if(type == 1){
+		document.getElementById('manageMapping').style.display = 'block';
+		document.getElementById('delMapping').style.display = 'none';
+	}
+	if(type == 2){
+		document.getElementById('manageMapping').style.display = 'none';
+		document.getElementById('delMapping').style.display = 'block';
+	}
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommitUid(){
+	var uid=$('#uidDel').val();
+	uid = jQuery.trim(uid);
+	if(isEmpty(uid)){
+		alert("UID不能为空!");
+		$("#uidDel").focus();
+		return false;
+	}
+	return true;
+}
+function isCommit(){
+	var uid=$('#uid').val();
+	uid = jQuery.trim(uid);
+	var deviceId=$('#deviceId').val();
+	deviceId = jQuery.trim(deviceId);
+	if(isEmpty(uid)){
+		alert("UID不能为空!");
+		$("#uid").focus();
+		return false;
+	}
+	if(isEmpty(deviceId)){
+		alert("设备ID不能为空!");
+		$("#deviceId").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type){
+	if(type=='view'){
+		if(isCommitUid()){
+			var typeValue=document.getElementsByName("btn_edit");
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=true;
+		  	}
+			
+			$.get('admincp.php?mod=op&act=updateDeviceMapping&type='+type+'&uid='+$('#uidDel').val(),function(data){
+				$("#displayMapping").html(data);				
+				var typeValue=document.getElementsByName("btn_edit");
+				for(var i=0;i<typeValue.length;i++)
+				{
+					   typeValue[i].disabled=false;
+			  	}
+			});
+		}
+	}
+	if(type=='add'){
+		if(isCommit()){
+			if(confirm('是否确认要保存所输uid和设备id的对应关系?'))
+			{
+				var typeValue=document.getElementsByName("btn_edit");
+				for(var i=0;i<typeValue.length;i++)
+				{
+					   typeValue[i].disabled=true;
+			  	}
+				$.get('admincp.php?mod=op&act=updateDeviceMapping&type=save&uid='+$('#uid').val()+'&deviceId='+$('#deviceId').val(),function(data){
+					alert(data);
+					var typeValue=document.getElementsByName("btn_edit");
+					for(var i=0;i<typeValue.length;i++)
+					{
+						   typeValue[i].disabled=false;
+				  	}
+				});
+			}
+		}
+	}
+}
+
+function delVal(uid,deviceId){
+	if(confirm('是否确认要删除'+uid+'和设备'+deviceId+'的对应关系?'))
+	{
+		var typeValue=document.getElementsByName("btn_edit");
+		for(var i=0;i<typeValue.length;i++)
+		{
+			   typeValue[i].disabled=true;
+	  	}
+		$.get('admincp.php?mod=op&act=updateDeviceMapping&type=del&uid='+uid+'&deviceId='+deviceId,function(data){
+			alert(data);
+			check_submit('view');
+			var typeValue=document.getElementsByName("btn_edit");
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=false;
+		  	}
+		});
+	}
+}
+
+function removeServ(uid){
+	if(confirm('是否确认要清除'+uid+'的serverList?'))
+	{
+		var typeValue=document.getElementsByName("btn_edit");
+		for(var i=0;i<typeValue.length;i++)
+		{
+			   typeValue[i].disabled=true;
+	  	}
+		$.get('admincp.php?mod=op&act=updateDeviceMapping&type=removeSer&uid='+uid,function(data){
+			alert(data);
+			var typeValue=document.getElementsByName("btn_edit");
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=false;
+		  	}
+		});
+	}
+}
+
+</script>
+<!--{template footer}-->

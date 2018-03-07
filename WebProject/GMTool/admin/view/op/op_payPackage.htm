@@ -1,0 +1,119 @@
+<!--{template header}-->
+<div class="alert alert-info">给玩家补发礼包(礼包配置必须在线exchange表)<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=payPackage" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<div id="singleOrder">
+	<span>UID</span>
+	<span><input type="text" id="uid" name="uid" value='{$uid}'></input></span>
+	<span>订单号</span>
+	<span><input type="text" id="orderId" name="orderId" value='{$orderId}' style="width:310px;" ></input></span>
+	<br>
+	支付渠道
+	<select id="selectPayMethod" name="selectPayMethod" onchange="">
+		<?php echo $pfOptions;?>
+	</select>
+	<span>礼包ID</span>
+	<span><input type="text" id="packageId" name="packageId" value='{$packageId}' style="width:80px;"></input></span>
+	金额
+	<select id="target" name="money" class="input-medium" onchange="">
+		<?php echo $moneyOption;?>
+	</select>
+</div>
+<div id="batchOrders" style="display: none;">
+	UID以及订单相关信息<textarea class="input-xlarge" id="serverAndorderIds" style="width: 600px;" name="serverAndorderIds" rows="6">$serverAndorderIds</textarea>
+	<br>
+	<strong>数据格式:uid1,订单号1,支付渠道1,礼包id1|uid2,订单号2,支付渠道2,礼包id2|...</strong>
+</div>
+<br>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>&nbsp;&nbsp;
+<input class="" type="checkbox" name="exceptGold" id="exceptGold"   />只发道具&nbsp;&nbsp;
+<input class="" type="checkbox" name="batchProcessing" id="batchProcessing" onchange="changeEvent()"  />批量补发&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" value="补发礼包" id="btn_view" name="btn_view" onclick="check_submit()" />
+</div>
+</div><br/>
+<div>
+	<font color="red" size="600" style="font-size: 18px;"><strong>$html</strong></font>
+</div>
+
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var uid=$('#uid').val();
+	var inputOrderId = $('#orderId').val();
+	var packageId=$('#packageId').val();
+	uid = jQuery.trim(uid);
+	inputOrderId = jQuery.trim(inputOrderId);
+	packageId = jQuery.trim(packageId);
+	if(isEmpty(uid)){
+		alert("UID不能为空!");
+		$("#uid").focus();
+		return false;
+	}
+	if(isEmpty(inputOrderId)){
+		alert("订单号不能为空!");
+		$("#orderId").focus();
+		return false;
+	}
+	if(isEmpty(packageId)){
+		alert("礼包ID不能为空!");
+		$("#packageId").focus();
+		return false;
+	}
+	return true;
+}
+function isCommitOrders(){
+	var serverAndorderIds=$('#serverAndorderIds').val();
+	serverAndorderIds = jQuery.trim(serverAndorderIds);
+	if(isEmpty(serverAndorderIds)){
+		alert("订单信息不能为空!");
+		$("#serverAndorderIds").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit() {
+	var type;
+	if(document.getElementById('batchProcessing').checked){
+		type='batchPay';
+	}else{
+		type='pay';
+	}
+	
+	if(type=='pay')
+	{
+		if(isCommit()){
+			document.getElementById('btn_view').disabled=true;
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}else{
+		if(isCommitOrders()){
+			alert(type);
+			document.getElementById('btn_view').disabled=true;
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+}
+
+function changeEvent(){
+	if(document.getElementById('batchProcessing').checked){
+		$('#singleOrder').hide();
+		$('#batchOrders').show();
+	}else{
+		$('#singleOrder').show();
+		$('#batchOrders').hide();
+	}
+}
+
+</script>
+<!--{template footer}-->

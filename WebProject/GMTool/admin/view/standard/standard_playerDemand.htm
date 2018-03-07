@@ -1,0 +1,277 @@
+<!--{template header}-->
+<br>
+<div style="font-size: medium;">
+<a href="javascript:void(changeType2(1))">查询</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeType2(2))">添加</a>
+</div>
+<hr>
+<div id="manageDiv">
+<form action="admincp.php?mod=standard&act=playerDemand" method="post" name="getaccount">
+	信息来源
+	<select id="infoFrom" name="infoFrom" style="height: 30px;">
+		<!--{loop $infoList $infoKey $infoVal}-->
+			<!--{if ($infoFrom == $infoKey)}-->
+				<option value="{$infoKey}" selected="selected">{$infoVal}</option>
+			<!-- {else} -->
+				<option value="{$infoKey}">{$infoVal}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+	</select>&nbsp;&nbsp;
+	国家
+	<select id="selectCountry" name="selectCountry" onchange="" style="height: 30px;">
+			<!--{loop $countryList $country $countryname}-->
+			<!--{if ($currCountry == $country)}-->
+				<option value="{$country}" selected="selected">{$countryname}</option>
+			<!-- {else} -->
+				<option value="{$country}">{$countryname}</option>
+			<!-- {/if} -->
+			<!--{/loop}-->
+	</select>&nbsp;&nbsp;
+	分类
+	<select id="classification" name="classification" style="height: 30px;">
+		<!--{loop $kindList $kindKey $kindVal}-->
+			<!--{if ($classification == $kindKey)}-->
+				<option value="{$kindKey}" selected="selected">{$kindVal}</option>
+			<!-- {else} -->
+				<option value="{$kindKey}">{$kindVal}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	<input type="text" id="keywordsSearch" name="keywordsSearch" value='' placeholder="关键字" style='width: 400px;'></input>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+
+<br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:1000px;">
+<tbody>
+	<tr>
+		<th align="center" width="20px">#</th>
+		<th align="center" width="80px">来源|国家<br>分类|关键字</th>
+		<th align="center" width="200px">内容</th>
+		<th align="center" width="40px">同类数量</th>
+		<th align="center" width="100px">处理状态</th>
+		<th align="center" width="80px">提出者<br>提出时间</th>
+	</tr>
+	<!--{loop $result $dbData}-->
+		<tr>
+			<td>
+				<a href="javascript:void(edit('{$dbData['id']}','{$dbData['info_from']}','{$dbData['country']}','{$dbData['kind']}','{$dbData['msg']}','{$dbData['keywords']}','{$dbData['similarcnt']}','{$dbData['status']}'))">$dbData['id']</a>
+			</td>
+			<td>
+				$dbData['info_from']<br>
+				$dbData['country']<br>
+				$dbData['kind']<br>
+				$dbData['keywords']<br>
+			</td>
+			<td>$dbData['msg']</td>
+			<td>$dbData['similarcnt']</td>
+			<td>$dbData['status_detail']</td>
+			<td>$dbData['author']<br>$dbData['date']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+</form>
+
+
+<div id='display' style="display:none;position:fixed;z-index:99999; left:0px; top:0px; width:100%;height:100%; background-color:ghostwhite; color:teal; line-height:30px; filter:alpha(opacity=90);-moz-opacity:0.9;opacity:0.9; -khtml-opacity: 0.9;">
+	<a href="#" onclick="javascript:turnoff()">点击关闭</a>&nbsp;&nbsp;
+	<div id='displayinner' style="height:70%;margin-left: 10%;">
+		<input class="display:none;" type="hidden" value="" id="replyId" name="replyId"/>
+		<div style="text-align: left;">
+		信息来源:
+		<span id="infoFromReply"></span> 
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		国家:
+		<span id="countryReply"></span>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		分类:
+		<span id="classificationReply"></span>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		关键字:
+		<span id="keywordsReply"></span>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		同类信息数量:
+		<span id="infoNumReply"></span>
+		</div>
+		<div style="text-align: left;">
+		提交日期&nbsp;&nbsp;<strong><span id="subDate"></span></strong>
+		<br>
+		内容&nbsp;&nbsp;
+		<div id="infoContentsReply"></div>
+		<span>已回复:</span>
+		<div id="replyList" style="height:60%;width:47%;overflow: scroll;background-color: antiquewhite;">
+			
+		</div>
+		<br>
+		</div>
+</div>
+<div style="margin-left: 10%;">
+		<textarea class="input-xlarge" id="replyContent" style="width: 600px;" placeholder="回复内容" name="replyContent" rows="6"></textarea>
+		<p style="text-align:left;"><button type="button" class="btn btn-info" name="btn_set" onclick="save()" style='width: 100px;'>回复</button></p>
+</div>
+</div>
+
+
+</div>
+
+
+<div id="addDiv" style="display:none">
+	<form action="admincp.php?mod=standard&act=playerDemand" method="post">
+		<input class="display:none;" type="hidden" value="-9" id="uuid" name="uuid"/>
+		<input class="display:none;" type="hidden" value="" id="status" name="status"/>
+		信息来源
+		<select id="infoFromAdd" name="infoFromAdd" style="height: 30px;">
+			<!--{loop $infoList $infoKey $infoVal}-->
+			<!--{if ($infoKey=='ALL')}-->
+				
+			<!-- {else} -->
+				<option value="{$infoKey}">{$infoVal}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+		</select>&nbsp;&nbsp;
+		国家
+		<select id="selectCountryAdd" name="selectCountryAdd" onchange="" style="height: 30px;">
+			<!--{loop $countryList $country $countryname}-->
+				<option value="{$country}">{$countryname}</option>
+			<!--{/loop}-->
+		</select>&nbsp;&nbsp;
+		分类
+		<select id="classificationAdd" name="classificationAdd" style="height: 30px;">
+			<!--{loop $kindList $kindKey $kindVal}-->
+			<!--{if ($kindKey=='ALL')}-->
+				
+			<!-- {else} -->
+				<option value="{$kindKey}">{$kindVal}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+		</select>
+		<br>
+		<textarea class="input-xlarge" id="infoContentsAdd" style="width: 600px;" name="infoContentsAdd" placeholder="详细内容" rows="6"></textarea>
+		<br><input type="text" id="keywordsAdd" name="keywordsAdd" value='' placeholder="关键字（逗号分隔）" style='width: 400px;'></input>
+		<input type="text" id="infoNumAdd" name="infoNumAdd" value='' placeholder="同类信息数量" style='width: 100px;'></input>
+		<br><br>
+		<button type="button" class="btn btn-info" name="btn_set" onclick="check_add()" style='width: 100px;'>提交</button>
+	</form>	
+
+</div>
+
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var version_start = $('#version_start').val();
+	version_start = jQuery.trim(version_start);
+	if(isEmpty(version_start)){
+		alert("<?php echo '请输入版本号';?>");
+		$("#version_start").focus();
+		return false;
+	}
+	return true;
+}
+
+function changeType2(type){
+	if(type == 1){
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(type == 2){
+		document.getElementById('manageDiv').style.display = 'none';
+		setVal(-9,'HS','ALL','充值','','','',0);
+		document.getElementById('addDiv').style.display = 'block';
+	}
+}
+
+function check_submit(type) {
+	document.getElementById('action').value = type;
+	document.getaccount.submit();
+}
+
+function check_add(){
+	var contents = $('#infoContentsAdd').val();
+	var reg=new RegExp("\n","g"); 
+	contents= contents.replace(reg,"<br>");
+	$.get('admincp.php?mod=standard&act=playerDemand&addDemand=1&uuid='+$('#uuid').val()+'&infoFrom='+$('#infoFromAdd').val()+'&selectCountry='+$('#selectCountryAdd').val()+'&classification='+$('#classificationAdd').val()+'&infoNum='+$('#infoNumAdd').val()+'&infoContents='+contents+'&keywords='+$('#keywordsAdd').val()+'&status='+$('#status').val(),function(data){
+		alert(data);
+		setVal(-9,'HS','ALL','充值','','','',0)
+		check_submit('view');
+	});
+}
+
+function edit(id,infoFrom,country,classification,infoContents,keywords,infoNum,status) {
+	document.getElementById('manageDiv').style.display = 'none';
+	document.getElementById('addDiv').style.display = 'block';
+	
+	var reg=new RegExp("<br>","g"); 
+	infoContents= infoContents.replace(reg,"\n");
+	
+	setVal(id,infoFrom,country,classification,infoContents,keywords,infoNum,status);
+}
+
+function reply(id,infoFrom,country,classification,infoContents,keywords,infoNum,status,date){
+	
+	document.getElementById('replyId').value=id;
+	
+	$('#infoFromReply').html(infoFrom);
+	$('#countryReply').html(country);
+	$('#classificationReply').html(classification);
+	$('#keywordsReply').html(keywords);
+	$('#infoNumReply').html(infoNum);
+	
+	/* var reg=new RegExp("<br>","g"); 
+	infoContents= infoContents.replace(reg,"\n"); */
+	$('#infoContentsReply').html(infoContents);
+	
+	var reg=new RegExp("<br>","g"); 
+	date= date.replace(reg," ");
+	document.getElementById("subDate").innerText = date;
+	//document.getElementById('status').value=0;
+	
+	$.get('admincp.php?mod=standard&act=playerDemand&getReply=1&replyId='+id,function(data){
+		$("#replyList").html(data);
+	});
+	
+	
+	var div = document.getElementById('display'); 
+	div.style.display="block"; 
+	//div.style.left=event.clientX+10; 
+	//div.style.top=event.clientY+5;    
+	div.style.position="fixed"; 
+}
+
+function save(){
+	var replyContent = $('#replyContent').val();
+	var reg=new RegExp("\n","g"); 
+	replyContent= replyContent.replace(reg,"<br>");
+	$.get('admincp.php?mod=standard&act=playerDemand&saveReply=1&replyId='+$('#replyId').val()+'&replyContent='+replyContent,function(data){
+		alert(data);
+		check_submit('view');
+	});
+}
+
+function setVal(uuid,infoFrom,selectCountry,classification,infoContents,keywords,infoNum,status){
+	document.getElementById('uuid').value=uuid;
+	document.getElementById('infoFromAdd').value=infoFrom;
+	document.getElementById('selectCountryAdd').value=selectCountry;
+	document.getElementById('classificationAdd').value=classification;
+	document.getElementById('infoContentsAdd').value=infoContents;
+	document.getElementById('keywordsAdd').value=keywords;
+	document.getElementById('infoNumAdd').value=infoNum;
+	document.getElementById('status').value=status;
+}
+
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+
+</script>
+<!--{template footer}-->

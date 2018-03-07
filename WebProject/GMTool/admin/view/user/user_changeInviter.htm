@@ -1,0 +1,66 @@
+<!--{template header}-->
+<div class="alert alert-info">输入被邀请玩家Uid、当前邀请玩家Uid、更改的邀请玩家Uid<font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=changeInviter" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>被邀请玩家Uid</span>
+<span><input type="text" id="inviteeUid" name="inviteeUid" value='{$inviteeUid}'></input></span>
+
+<span>当前邀请玩家Uid</span>
+<span><input type="text" id="currentInviterUid" name="currentInviterUid" value='{$currentInviterUid}'></input></span>
+
+<span>更改的邀请玩家Uid</span>
+<span><input type="text" id="changedInviterUid" name="changedInviterUid" value='{$changedInviterUid}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="更换" id="btn_change" name="btn_change" onclick="check_submit('change')" />
+</div>
+</div><br/>
+<div>
+	<span style="color: red"><strong>$html</strong></span>
+</div>
+
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inviteeUid = $('#inviteeUid').val();
+	inviteeUid = jQuery.trim(inviteeUid);
+	var currentInviterUid = $('#currentInviterUid').val();
+	currentInviterUid = jQuery.trim(currentInviterUid);
+	var changedInviterUid = $('#changedInviterUid').val();
+	changedInviterUid = jQuery.trim(changedInviterUid);
+	if(isEmpty(inviteeUid)){
+		alert("被邀请玩家Uid不能为空!");
+		$("#inviteeUid").focus();
+		return false;
+	}
+	if(isEmpty(currentInviterUid)){
+		alert("当前邀请玩家Uid不能为空!");
+		$("#currentInviterUid").focus();
+		return false;
+	}
+	if(isEmpty(changedInviterUid)){
+		alert("更改的邀请玩家Uid不能为空!");
+		$("#changedInviterUid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='change')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

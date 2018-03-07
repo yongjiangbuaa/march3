@@ -1,0 +1,4 @@
+<h2><a>{{$service_name}}</a></h2>
+<table border="0" cellpadding="3" width="600">
+{{$table_content}}
+</table><br />

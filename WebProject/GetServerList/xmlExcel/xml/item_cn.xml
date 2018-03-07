@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="unit">
+    <ItemSpec id="1001" name="普通坦克" description="普通攻击型坦克" leftWeaponOffset="60,25" weapon="2001" leftOffset="-10,-30" class="UnitItemSpec"/>
+    <ItemSpec id="1002" name="普通战船1" description="普通攻击型战船" weapon="2001" class="UnitItemSpec" rightWakeOffset="-65,15" leftWakeOffset="-65,15" rightWeaponOffset="0,0" rightOffset="-10,-30"/>
+    <ItemSpec id="1003" name="普通炮兵" description="普通攻击型炮兵" weapon="2001" class="UnitItemSpec" numFrames="20" frameWidth="76.0" frameHeight="57.0" fps="25.0"/>
+    <ItemSpec id="1004" name="普通坦克" description="普通攻击型步兵" weapon="2001" leftOffset="-10,0" class="UnitItemSpec" numFrames="20" frameWidth="53.0" frameHeight="65.0" fps="25.0"/>
+    <ItemSpec id="1005" name="普通战船2" description="普通攻击型战船" weapon="2001" class="UnitItemSpec" rightWakeOffset="-35,5" rightWeaponOffset="0,0"/>
+    <ItemSpec id="1006" name="飞机" description="普通攻击型坦克" leftWeaponOffset="60,25" weapon="2001" leftOffset="-10,-60" class="UnitItemSpec"/>
+    <ItemSpec id="1007" name="暴徒坦克" description="暴徒攻击型坦克" leftWeaponOffset="60,25" weapon="2001" class="UnitItemSpec"/>
+    <ItemSpec id="1008" name="豺狼坦克" description="豺狼攻击型坦克" leftWeaponOffset="60,25" weapon="2001" class="UnitItemSpec"/>
+    <ItemSpec id="1009" name="普通坦克" description="普通攻击型坦克" leftWeaponOffset="60,25" weapon="2001" leftOffset="-10,-30" class="UnitItemSpec"/>
+    <ItemSpec id="1010" name="坦克" description="普通攻击型坦克" leftWeaponOffset="60,25" weapon="2001" leftOffset="-10,-30" class="UnitItemSpec"/>
+    <ItemSpec id="1011" name="步兵" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-55,-60" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1012" name="侦察营兵" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-55,-60" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1013" name="射手" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1014" name="野战" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1015" name="英雄" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1016" name="爆竹" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1017" name="猎人" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1018" name="火炮兵" description="普通攻击型步兵" weapon="2001" leftOffset="-50,-50" class="UnitItemSpec" rightOffset="-50,-50" numFrames="16" frameWidth="197.0" frameHeight="150.0" fps="30.0"/>
+    <ItemSpec id="1019" name="圆盾" description="暴徒攻击型坦克" leftWeaponOffset="60,25" weapon="2001" class="UnitItemSpec"/>
+    <ItemSpec id="1020" name="飞艇" description="普通攻击型步兵" weapon="2001" leftOffset="-16,-16" class="UnitItemSpec" rightOffset="-4,-23" frameWidth="113.0" frameHeight="105.0" animationleftOffset="-44,5" animationNumFrames="4" animationrightOffset="26,-46" animationfps="50.0"/>
+  </Group>
+  <Group id="goods">
+    <ItemSpec id="10001" name="杂物1" description="测试道具" icon="1" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="10002" name="杂物2" description="测试道具" icon="1" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="10003" name="杂物3" description="测试道具" icon="1" tab="3" class="InventoryItemSpec"/>
+    <ItemSpec id="10004" name="杂物4" description="测试道具" icon="1" tab="3" class="InventoryItemSpec"/>
+    <ItemSpec id="10005" name="杂物5" description="测试道具" icon="1" tab="4" class="InventoryItemSpec"/>
+    <ItemSpec id="101001" name="武器1" description="测试道具" icon="1" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="101002" name="武器2" description="测试道具" icon="1" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="101003" name="武器3" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="101004" name="武器4" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="101005" name="武器5" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="102001" name="军装1" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="102002" name="军装2" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="102003" name="军装3" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="102004" name="军装4" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="102005" name="军装5" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="103001" name="手册1" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="103002" name="手册2" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="103003" name="手册3" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="103004" name="手册4" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="103005" name="手册5" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="104001" name="饰品1" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="104002" name="饰品2" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="104003" name="饰品3" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="104004" name="饰品4" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="104005" name="饰品5" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="105001" name="勋章1" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="105002" name="勋章2" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="105003" name="勋章3" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="105004" name="勋章4" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="105005" name="勋章5" description="测试道具" icon="test01" tab="1" class="InventoryItemSpec"/>
+    <ItemSpec id="111001" name="宝石" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201001" name="加金币" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201002" name="加礼券" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201003" name="加银币" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201004" name="加人口" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201005" name="加粮食" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201006" name="加矿物" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201007" name="加石油" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201008" name="加粮矿油" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="201008" name="加粮矿油" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="202001" name="加建筑cd" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="203001" name="金钱产出" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="203002" name="士兵招募" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="203003" name="背包空间" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="203004" name="建筑位置" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210001" name="礼包1" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210002" name="礼包2" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210003" name="礼包3" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210004" name="礼包4" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210005" name="礼包5" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="210006" name="礼包6" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="300001" name="迁城1" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="311001" name="喇叭1(赠送)" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="311002" name="喇叭1" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="312001" name="喇叭2(赠送）" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="312002" name="喇叭2" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="313001" name="喇叭3" description="测试道具" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="320001" name="强征令(赠送)" description="允许强征" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="320002" name="强征令" description="允许强征" icon="test01" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="330001" name="动员令(赠送)" description="允许动员" icon="test02" tab="2" class="InventoryItemSpec"/>
+    <ItemSpec id="330002" name="动员令" description="允许动员" icon="test03" tab="2" class="InventoryItemSpec"/>
+  </Group>
+  <Group id="weapon">
+    <ItemSpec id="5000100" name="测试1" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+    <ItemSpec id="5000101" name="测试2" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+    <ItemSpec id="5000103" name="测试3" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+    <ItemSpec id="5000104" name="测试4" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+    <ItemSpec id="5000110" name="测试5" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+    <ItemSpec id="5000111" name="测试6" description="测试技能" effectArt="Cannon" class="WeaponItemSpec"/>
+  </Group>
+  <Group id="buliding">
+    <ItemSpec id="1301000" name="指挥中心" description="核心建筑，其他建筑升级的条件" class="BuildingItemSpec"/>
+    <ItemSpec id="1302000" name="科技中心" description="&lt;![CDATA[研究各种科技和阵法&lt;br&gt;&lt;/br&gt;{0}级科技中心提升科技研究速度{1}]]&gt;" class="BuildingItemSpec"/>
+    <ItemSpec id="1303000" name="石油采集厂" description="&lt;![CDATA[石油采集厂{0}级&lt;br&gt;&lt;/br&gt;生产石油资源&lt;br&gt;&lt;/br&gt;产率：{1}/10分钟]]&gt;" class="BuildingItemSpec"/>
+    <ItemSpec id="1304000" name="粮食加工厂" description="&lt;![CDATA[粮食加工厂{0}级&lt;br&gt;&lt;/br&gt;生产粮食资源&lt;br&gt;&lt;/br&gt;产率：{1}/10分钟]]&gt;" class="BuildingItemSpec"/>
+    <ItemSpec id="1305000" name="矿物勘探厂" description="&lt;![CDATA[矿物勘探厂{0}级&lt;br&gt;&lt;/br&gt;生产矿物资源&lt;br&gt;&lt;/br&gt;产率：{1}/10分钟]]&gt;" class="BuildingItemSpec"/>
+    <ItemSpec id="1306000" name="军事学院" description="招募将军" class="BuildingItemSpec"/>
+    <ItemSpec id="1307000" name="军备中心" description="购买军需道具" class="BuildingItemSpec"/>
+    <ItemSpec id="1308000" name="陆军研究中心" description="研究陆军各作战兵种" class="BuildingItemSpec"/>
+    <ItemSpec id="1309000" name="海军研究中心" description="研究海军各作战兵种" class="BuildingItemSpec"/>
+    <ItemSpec id="1310000" name="空军研究中心" description="研究空军各作战兵种" class="BuildingItemSpec" numFrames="24" frameWidth="184.0" frameHeight="195.0" artOffset="0,0" fps="12.0" column="true"/>
+    <ItemSpec id="1311000" name="物资仓库" description="影响城市各资源的存储上限" class="BuildingItemSpec"/>
+    <ItemSpec id="1312000" name="军火库" description="生产弹药" class="BuildingItemSpec"/>
+    <ItemSpec id="1313000" name="兵营" description="招募士兵" class="BuildingItemSpec"/>
+    <ItemSpec id="1314000" name="军事中心" description="影响各部队战斗能力" class="BuildingItemSpec"/>
+    <ItemSpec id="1315000" name="防御中心" description="影响城市防御能力" class="BuildingItemSpec"/>
+    <ItemSpec id="1316000" name="商业中心" description="影响城市经济收益" class="BuildingItemSpec"/>
+    <ItemSpec id="1317000" name="政治中心" description="影响城市人口增加速度" class="BuildingItemSpec"/>
+    <ItemSpec id="1318000" name="防御设施" description="影响城市防御能力" class="BuildingItemSpec"/>
+    <ItemSpec id="1319000" name="商业设施" description="影响城市经济收益" class="BuildingItemSpec"/>
+    <ItemSpec id="1320000" name="政治设施" description="影响城市人口增加速度" class="BuildingItemSpec"/>
+    <ItemSpec id="1321000" name="军火设施" description="硬性城市弹药生产能力" class="BuildingItemSpec"/>
+    <ItemSpec id="1322000" name="大使馆" description="拥有建筑后科技加入联盟，并影响行军速度" class="BuildingItemSpec"/>
+    <ItemSpec id="1323000" name="贸易中心" description="拥有建筑后可以开启自由贸易" class="BuildingItemSpec"/>
+    <ItemSpec id="1324000" name="训练中心" description="拥有建筑后可以进行将军训练" class="BuildingItemSpec"/>
+  </Group>
+  <Group id="back_data">
+    <ItemSpec id="100001" name="学员"/>
+  </Group>
+  <Group id="item_effect">
+    <ItemSpec id="1" name="战斗" description="战斗  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="2" name="防御" description="防御  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="3" name="幸运" description="幸运  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="4" name="战术" description="战术  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="5" name="统帅" description="统帅  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="9" name="单位数量" description="士兵  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="10" name="技能攻击" description="攻击  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="15" name="技能数值恢复" description="士兵恢复  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="16" name="技能比例恢复" description="士兵恢复  {0}%" class="EffectItemSpec"/>
+    <ItemSpec id="17" name="被攻击者士气增加" description="攻击者士气  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="18" name="攻击者士气增加" description="被攻击者士气  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="19" name="士气消耗比例" description="士气消耗  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="20" name="攻击者数值伤害加深" description="伤害  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="21" name="被攻击数值伤害减少" description="伤害 -{0}" class="EffectItemSpec"/>
+    <ItemSpec id="22" name="攻击者比例伤害加深" description="伤害  {0}%" class="EffectItemSpec"/>
+    <ItemSpec id="23" name="被攻击比例伤害减少" description="伤害 -{0}%" class="EffectItemSpec"/>
+    <ItemSpec id="50" name="金币增加" description="金币  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="51" name="礼券增加" description="礼券  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="52" name="银币增加" description="银币  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="53" name="人口增加" description="人口  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="54" name="粮食增加" description="粮食  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="55" name="矿物增加" description="矿物  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="56" name="石油增加" description="人口  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="100" name="金钱产出" description="银币收益  {0}%" class="EffectItemSpec"/>
+    <ItemSpec id="101" name="作战单位产出" description="士兵招募速度  {0}%" class="EffectItemSpec"/>
+    <ItemSpec id="120" name="背包空间" description="背包空间  {0}" class="EffectItemSpec"/>
+    <ItemSpec id="121" name="建筑队列上限增加" description="建筑队列位置  {0}" class="EffectItemSpec"/>
+  </Group>
+  <Group id="science">
+    <ItemSpec id="101000" name="重装战斗" description="增加重装部队战斗{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="102000" name="重装战术" description="增加重装部队战术{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="103000" name="重装防御" description="增加重装部队防御{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="104000" name="重装幸运" description="增加重装部队幸运{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="201000" name="突击战斗" description="增加突击部队战斗{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="202000" name="突击战术" description="增加突击部队战术{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="203000" name="突击防御" description="增加突击部队防御{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="204000" name="突击幸运" description="增加突击部队幸运{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="301000" name="远程战斗" description="增加远程部队战斗{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="302000" name="远程战术" description="增加远程部队战术{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="303000" name="远程防御" description="增加远程部队防御{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="304000" name="远程幸运" description="增加远程部队幸运{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="401000" name="辅助战斗" description="增加辅助部队战斗{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="402000" name="辅助战术" description="增加辅助部队战术{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="403000" name="辅助防御" description="增加辅助部队防御{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="404000" name="辅助幸运" description="增加辅助部队幸运{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="501000" name="迂回战阵" description="增加阵法内所有部队的闪避能力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="502000" name="斩首战阵" description="增加阵法内所有部队的普通攻击力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="503000" name="闪电战阵" description="增加阵法内所有部队的技能攻击力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="504000" name="锋芒战阵" description="增加阵法内所有部队的暴击能力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="505000" name="壕沟战阵" description="增加阵法内所有部队的防御能力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="506000" name="铁血战阵" description="增加阵法内所有部队的格挡能力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="507000" name="口袋战阵" description="增加阵法内所有部队的反击能力" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="508000" name="恢复战阵" description="增加阵法内所有部队的士气恢复速度" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="601000" name="税收" description="金钱获取速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="602000" name="石油勘探" description="石油获取速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="603000" name="矿物采集" description="矿物获取速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="604000" name="食物储备" description="食物获取速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="605000" name="工程研究" description="建筑升级速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="606000" name="科技研究" description="科技研究速度提升" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="701000" name="急行军" description="使自己出征的军队加速行军，到达的时间缩短{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="702000" name="路障" description="使进攻我方的军队速度减慢，到达的时间增加{0}" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="703000" name="雷行" description="一定的几率利用雷达观测到进攻你的军队的详细信息" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="704000" name="突袭" description="降低你的部队被雷达观测到的几率" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="705000" name="战略转移" description="召回正在出征中且没有到达目标的军队（被阻击的军队无法战略转移）" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="706000" name="阻击" description="阻击敌方正在侵略你且还没到达目标的军队，使其无法战略转移" icon="science001" class="ScienceItemSpec"/>
+    <ItemSpec id="707000" name="撤退" description="强制召回还没达到目标的军队（不受阻击影响）" icon="science001" class="ScienceItemSpec"/>
+  </Group>
+  <Group id="arms">
+    <ItemSpec id="11101" name="DF-1 &quot;圆盾&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11102" name="DF-2 &quot;铁壁&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11103" name="DF-3 &quot;堡垒&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11201" name="DZ-1 &quot;暴徒&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11202" name="DZ-2 &quot;嗜血&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11203" name="DZ-3 &quot;屠夫&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="12101" name="DX-1 &quot;铁甲&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="12102" name="DX-2 &quot;金刚&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="12103" name="DX-3 &quot;无畏&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="12201" name="DC-1 &quot;怒浪&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="12202" name="DC-2 &quot;风暴&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="12203" name="DC-3 &quot;海啸&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="13101" name="DW-1 &quot;截击&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="13102" name="DW-2 &quot;守卫&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="13103" name="DW-3 &quot;磐石&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="13201" name="DQ-1 &quot;咆哮&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="13202" name="DQ-2 &quot;狂风&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="13203" name="DQ-3 &quot;雷霆&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11701" name="指挥中心" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11702" name="中立城池1" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="12703" name="中立城池2" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="13704" name="中立城池3" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="11705" name="中立资源1" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="12706" name="中立资源2" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="13707" name="中立资源3" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21101" name="AH-1 &quot;豺狼&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21102" name="AH-2 &quot;猎豹&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21103" name="AH-3 &quot;雄狮&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21201" name="AG-1 &quot;大黄蜂&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21202" name="AG-2 &quot;蝎子&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="21203" name="AG-3 &quot;眼镜蛇&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="22101" name="EY-1 &quot;贵族&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="22102" name="EY-2 &quot;公爵&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="22103" name="EY-3 &quot;女王&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="22201" name="EB-1 &quot;光辉&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="22202" name="EB-2 &quot;企业&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="22203" name="EB-3 &quot;方舟&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="23101" name="AI-1 &quot;战鹰&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="23102" name="AI-2 &quot;火鸟&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="23103" name="AI-3 &quot;飞龙&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="23201" name="AN-1 &quot;流光&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="23202" name="AN-2 &quot;闪电&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="23203" name="AN-3 &quot;自由战士&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31101" name="EA-1 &quot;野战&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31102" name="EA-2 &quot;射手&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31103" name="EA-3 &quot;英雄&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31201" name="ER-1 &quot;爆竹&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31202" name="ER-2 &quot;猎人&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="31203" name="ER-3 &quot;菁英&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="32101" name="AU-1 &quot;海狼&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="32102" name="AU-2 &quot;食人鱼&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="32103" name="AU-3 &quot;虎鲸&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="32201" name="AS-1 &quot;海豚&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="32202" name="AS-2 &quot;飞鱼&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="32203" name="AS-3 &quot;鲨鱼&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="33101" name="EV-1 &quot;轻剑&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="33102" name="EV-2 &quot;标枪&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="33103" name="EV-3 &quot;空中骑士&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="33201" name="EV-4 &quot;火舞&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="33202" name="EV-5 &quot;鬼怪&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="33203" name="EV-6 &quot;流星&quot;" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41101" name="SP-1 护士组" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41102" name="SP-2 医护兵" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41103" name="SP-3 高级医护兵" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41201" name="ST-1 侦察营" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41202" name="ST-2 爆破兵" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="41203" name="ST-3 特种兵" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" numFrames="16" frameWidth="197" frameHeight="150" fps="30" class="UnitItemSpec"/>
+    <ItemSpec id="42101" name="SK-1 维修船" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="42102" name="SK-2 补给舰" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="42103" name="SK-3 医疗舰" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="42201" name="SL-1 救援舰" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="42202" name="SL-2 军火舰" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="42203" name="SL-3 能量舰" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" leftWakeOffset="0,0" rightWakeOffset="0,0" class="UnitItemSpec"/>
+    <ItemSpec id="43101" name="SM-1 空中抢修队" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="43102" name="SM-2 空中救援队" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="43103" name="SM-3 空中医疗队" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="43201" name="SO-1 侦察机" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="43202" name="SO-2 加油机" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+    <ItemSpec id="43203" name="SO-3 预警机" description="文字描述" icon="arms001" description1="文字描述" icon1="arms001" leftOffset="0,0" rightOffset="0,0" leftWeaponOffset="0,0" rightWeaponOffset="0,0" animationLeftOffset="0,0" animationRightOffset="0,0" animationNumFrames="16" animationFps="30" class="UnitItemSpec"/>
+  </Group>
+  <Group id="item_status">
+    <ItemSpec id="100001" icon_tip="苛税" icon="test01"/>
+    <ItemSpec id="101001" icon_tip="征兵" icon="test01"/>
+    <ItemSpec id="120001" icon_tip="vip1" icon="test01"/>
+    <ItemSpec id="121001" icon_tip="vip2" icon="test01"/>
+    <ItemSpec id="130001"/>
+    <ItemSpec id="130002"/>
+    <ItemSpec id="130003"/>
+  </Group>
+  <Group id="power">
+    <ItemSpec id="100001" power_pos="250,200" name="普通势力1" level="1" description="普通势力1描述" pisland="0" class="PowerItemSpec"/>
+    <ItemSpec id="110001" power_pos="500,400" name="精英势力1" level="10" description="精英势力1描述" pisland="0" class="PowerItemSpec"/>
+  </Group>
+  <Group id="npc">
+    <ItemSpec id="200001" power_id="100001" order="1" name="副本1名" description="副本1描述" class="NpcItemSpec"/>
+    <ItemSpec id="200002" power_id="100001" order="2" name="副本2名" description="副本2描述" class="NpcItemSpec"/>
+    <ItemSpec id="200003" power_id="100001" order="3" name="副本3名" description="副本3描述" class="NpcItemSpec"/>
+    <ItemSpec id="210001" power_id="110001" order="1" name="精英副本1名" description="精英副本1描述" class="NpcItemSpec"/>
+    <ItemSpec id="210002" power_id="110001" order="2" name="精英副本2名" description="精英副本2描述" class="NpcItemSpec"/>
+    <ItemSpec id="210003" power_id="110001" order="3" name="精英副本3名" description="精英副本3描述" class="NpcItemSpec"/>
+  </Group>
+  <Group id="battle">
+    <ItemSpec id="7101001" icon="test01" icon_tip="推图" des="推图1_1"/>
+    <ItemSpec id="7101002" icon="test01" icon_tip="推图" des="推图1_2"/>
+    <ItemSpec id="7101003" icon="test01" icon_tip="推图" des="推图1_3"/>
+    <ItemSpec id="7101004" icon="test01" icon_tip="推图" des="推图1_4"/>
+    <ItemSpec id="7101005" icon="test01" icon_tip="推图" des="推图1_5"/>
+    <ItemSpec id="7101006" icon="test01" icon_tip="推图" des="推图1_6"/>
+    <ItemSpec id="7101007" icon="test01" icon_tip="推图" des="推图1_7"/>
+    <ItemSpec id="7101008" icon="test01" icon_tip="推图" des="推图1_8"/>
+    <ItemSpec id="7101009" icon="test01" icon_tip="推图" des="推图1_9"/>
+    <ItemSpec id="7101010" icon="test01" icon_tip="推图" des="推图1_10"/>
+    <ItemSpec id="7101011" icon="test01" icon_tip="推图" des="推图1_11"/>
+    <ItemSpec id="7101012" icon="test01" icon_tip="推图" des="推图1_12"/>
+    <ItemSpec id="7101013" icon="test01" icon_tip="推图" des="推图1_13"/>
+    <ItemSpec id="7101014" icon="test01" icon_tip="推图" des="推图1_14"/>
+    <ItemSpec id="7101015" icon="test01" icon_tip="推图" des="推图1_15"/>
+    <ItemSpec id="7101101" icon="test01" icon_tip="推图" des="推图1*_1"/>
+    <ItemSpec id="7101102" icon="test01" icon_tip="推图" des="推图1*_2"/>
+    <ItemSpec id="7101103" icon="test01" icon_tip="推图" des="推图1*_3"/>
+    <ItemSpec id="7101104" icon="test01" icon_tip="推图" des="推图1*_4"/>
+    <ItemSpec id="7101105" icon="test01" icon_tip="推图" des="推图1*_5"/>
+    <ItemSpec id="7101106" icon="test01" icon_tip="推图" des="推图1*_6"/>
+    <ItemSpec id="7101107" icon="test01" icon_tip="推图" des="推图1*_7"/>
+    <ItemSpec id="7101108" icon="test01" icon_tip="推图" des="推图1*_8"/>
+    <ItemSpec id="7101109" icon="test01" icon_tip="推图" des="推图1*_9"/>
+    <ItemSpec id="7101110" icon="test01" icon_tip="推图" des="推图1*_10"/>
+    <ItemSpec id="7101111" icon="test01" icon_tip="推图" des="推图1*_11"/>
+    <ItemSpec id="7101112" icon="test01" icon_tip="推图" des="推图1*_12"/>
+    <ItemSpec id="7101113" icon="test01" icon_tip="推图" des="推图1*_13"/>
+    <ItemSpec id="7101114" icon="test01" icon_tip="推图" des="推图1*_14"/>
+    <ItemSpec id="7101115" icon="test01" icon_tip="推图" des="推图1*_15"/>
+    <ItemSpec id="7110001" icon="test01" icon_tip="资源占领" des="资源_占领_pve"/>
+    <ItemSpec id="7120001" icon="test01" icon_tip="城市占领" des="城市_占领_pve"/>
+    <ItemSpec id="7130001" icon="test01" icon_tip="资源占领" des="资源_占领_pvp"/>
+    <ItemSpec id="7140001" icon="test01" icon_tip="城市占领" des="城市_占领_pvp"/>
+    <ItemSpec id="7150001" icon="test01" icon_tip="城市掠夺" des="城市_掠夺"/>
+    <ItemSpec id="7160001" icon="test01" icon_tip="城市摧毁" des="城市_摧毁"/>
+    <ItemSpec id="7170001"/>
+  </Group>
+</tns:database>

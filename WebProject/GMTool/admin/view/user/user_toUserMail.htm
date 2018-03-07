@@ -1,0 +1,78 @@
+<!--{template header}-->
+<div class="alert alert-info">查看个人邮件<font color="red"> </font></div>
+<form action="admincp.php?mod=user&act=toUserMail&type=1" method="POST">
+	<span>用户名</span>
+	<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+	<span>UID</span>
+	<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+	<input class="btn js-btn btn-primary" type="submit" id="btn_view" name="btn_view" value="{$MALANG['btn_view']}" />
+	<span>&nbsp;</span>
+	<span>&nbsp;</span>
+	<span>原始数据</span>
+	<span><input type="text" id="showContents" name="showContents" value='{$showContents}'></input></span>
+
+	<br />
+</form>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+<div id='showMember' style="width:100%;float:left;"></div>
+<!--{if isset($mails) }-->
+	<div id="tip" style="font-size:16px;width:auto;height:auto;padding:2px;border:1px solid #000000;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+	<table class="listTable" style="width: 100%; text-align: center">
+	<tr class="listTr">
+		<th width=2%>编号</th>
+		<th width=2%>时间</th>
+		<th width=2%>接收人</th>
+		<th width=2%>发送人</th>
+		<th width=2%>标题</th>
+		<th width=2%>奖励</th>
+		<th width=2%>是否已读</th>
+		<th width=2%>是否接收奖励</th>
+		<th width=2%>是否被玩家删除</th>
+	</tr>
+	<!--{loop $mails  $key $value}-->
+	<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';"  >
+		<td width="2%">{$value['No']}</td>
+		<td width="2%">{$value['createTime']}</td>
+		<td width="2%">{$value['toUser']}</td>
+		<td width="2%">{$value['fromUser']}/{$value['fromName']}</td>
+		<td width="2%"><a href=javascript:getMember("{$value['uid']}")>{$value['title']}</a></td>
+		<td width="2%">{$value['rewardId']}</td>
+		<td width="2%">{$value['status']}</td>
+		<td width="2%">{$value['rewardStatus']}</td>
+		<td width="2%">{$value['saveFlag']}</td>
+		<!--{if isset($showContents) }-->
+		<td width="2%">{$value['contents']}</td>
+		<!--{/if}-->
+	</tr>
+	</tr>
+	<!--{/loop}-->
+	</table>
+<!--{/if}-->
+<div>{$html}</div>
+<script type="text/javascript">
+
+	function getAction(){
+		right=document.getElementById('show');
+		if(xmlHttp.readyState==4){
+			if (xmlHttp.status==200){
+				if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+					return;
+				}
+				right.innerHTML=xmlHttp.responseText;
+				document.getElementById('btn_view').disabled=false;
+				document.getaccount.submit();
+				return;
+			}
+		}
+	}
+function getMember(uid){
+	document.getElementById('btn_view').disabled=true;
+	var url = 'mod=user&act=toUserMail&uid='+uid;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("POST",'admincp.php',true);
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmlHttp.send(url);
+}
+</script>
+<!--{template footer}-->

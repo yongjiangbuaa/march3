@@ -1,0 +1,94 @@
+<!--{template header}-->
+<form action="admincp.php?mod=pay&act=userPayAnalyze" method="post" name="getaccount">
+	<div class="alert alert-info"><?php echo "付费用户情况统计";?><font color="red"></font></div>
+	
+	$serverDiv
+	
+	<div class="row-fluid">
+		<div class="span11">
+			起始日期<input id="start" name='start' type="text" value='{$start}' class="input-medium" />
+			结束日期<input id="end" name='end' type="text" value='{$end}' class="input-medium" />
+			<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search()" />
+		</div>
+	</div>
+	
+	<!-- {if $totalUsers} -->
+		<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+			<tr class="listTr">
+				<th>日期</th>
+				<th>付费总用户数</th>
+				<th>流失付费用户(3日)</th>
+				<th>沉默付费用户(7日)</th>
+				<th>周期付费用户(7日)</th>
+				<th>新增付费用户(7日)</th>
+				<th>1天</th>
+				<th>2天</th>
+				<th>3天</th>
+				<th>4天</th>
+				<th>5天</th>
+				<th>6天</th>
+				<th>7天</th>
+			</tr>
+			<!--{loop $totalUsers $dateKey $value}-->
+			<tr>
+				<td>$dateKey</td>
+				<td>$value</td>
+				<td>$loseUsers[$dateKey]</td>
+				<td>$silenceUsers[$dateKey]</td>
+				<td>$repeatUsers[$dateKey]</td>
+				<td>$firsetUsers[$dateKey]</td>
+				<td>$day[$dateKey]['r1']</td>
+				<td>$day[$dateKey]['r2']</td>
+				<td>$day[$dateKey]['r3']</td>
+				<td>$day[$dateKey]['r4']</td>
+				<td>$day[$dateKey]['r5']</td>
+				<td>$day[$dateKey]['r6']</td>
+				<td>$day[$dateKey]['r7']</td>
+			</tr>
+			<!--{/loop}-->
+		</table>
+	
+	<!-- {/if} -->
+	
+</form>
+
+<script type="text/javascript">
+	$("#start,#end").datetimepicker({dateFormat:'yyyy-MM-dd'});
+	function serverall(){
+		var currentObj = document.getElementById('all_server');
+		var objs=document.getElementsByTagName("input");
+		for(i=0;i<objs.length;i++){
+			var objId = objs[i].id.split('_');
+			if(objId[0]=='server'){
+				objs[i].checked = currentObj.checked;
+			}
+		}	
+	}
+	function checkserverall(){
+		document.getElementById('all_server').checked = true;
+		var objs=document.getElementsByTagName("input");
+		for(i=0;i<objs.length;i++){
+			var objId = objs[i].id.split('_');
+			if(!objs[i].checked&&objId[0]=='server')
+			{
+				document.getElementById('all_server').checked = false;
+				break;
+			}
+		}
+	}
+	function search(){
+		document.getElementById('btn_view').disabled=true;
+		/* var objs = document.getElementsByTagName("input");
+		for(i=0;i<objs.length;i++){
+			if(objs[i].checked)
+			{ */
+				document.getaccount.submit();
+				/* return;
+			}
+		}
+		alert("请选择需要查询的服"); */
+	}
+
+</script>
+
+<!--{template footer}-->

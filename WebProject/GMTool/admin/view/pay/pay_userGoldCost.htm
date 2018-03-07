@@ -1,0 +1,121 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<div class="alert alert-info"><?php echo "个人金币消费点统计";?></div>
+<form action="admincp.php?mod=pay&act=userGoldCost" method="POST" name="getaccount" >
+	<div class="row-fluid">
+		<div class="span11">
+			起始时间<input class="input-large focused" id="start" name="start" type="text" placeholder="点击选择日期" value="{$_REQUEST['start']}">
+			结束时间<input class="input-large focused" id="end" name="end" type="text" placeholder="点击选择日期" value="{$_REQUEST['end']}">
+			uid<input class="input-medium focused" id="userUid" name="userUid" type="text" placeholder="输入用户UID" value="{$userUid}">
+			<input class="display:none;" type="hidden" value="" id="analyze" name="analyze"/>	
+			<input class="btn js-btn btn-primary" type="button" onclick="getLogData('view')" id="btn_view" name="btn_view" value="统计数据">
+		</div>
+	</div>
+</form>
+	<div id='show' style="float:left;width:105%;height:auto;">$html</div>
+	<div id="chart_pie"></div>
+	
+<script type="text/javascript">
+var chart;
+$(function() {
+	chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'chart_pie',  //饼状图关联html元素id值
+			defaultSeriesType: 'pie', //默认图表类型为饼状图
+			plotBackgroundColor: '#ffc',  //设置图表区背景色
+            plotShadow: true   //设置阴影
+        },
+        title: {
+            text: '个人消费点统计分析'  //图表标题
+        },
+		credits: {
+			enabled:false
+		},
+        tooltip: {
+            formatter: function() { //鼠标滑向图像提示框的格式化提示信息
+               // return '<b>' + this.point.name + '</b>: ' + twoDecimal(this.percentage) + ' %';
+            		return '<b>' + this.point.name + '</b>: ' + this.y ; 
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true, //允许选中，点击选中的扇形区可以分离出来显示
+                cursor: 'pointer',  //当鼠标指向扇形区时变为手型（可点击）
+				//showInLegend: true,  //如果要显示图例，可将该项设置为true
+                dataLabels: {
+                    enabled: true,  //设置数据标签可见，即显示每个扇形区对应的数据
+                    color: '#000000',  //数据显示颜色
+                    connectorColor: '#999',  //设置数据域扇形区的连接线的颜色
+					style:{
+						fontSize: '12px'  //数据显示的大小
+					},
+                    formatter: function() { //格式化数据
+                        return '<b>' + this.point.name + '</b>: ' + twoDecimal(this.percentage) + ' %';
+					    //return '<b>' + this.point.name + '</b>: ' + this.y ;
+                    }
+                }
+            }
+        },
+        series: [{ //数据列
+            name: 'user cost',
+			data: <?php echo $data;?> //核心数据列来源于php读取的数据并解析成JSON
+        }]
+    });
+});
+//保留2位小数
+function twoDecimal(x) {
+    var f_x = parseFloat(x);
+    if (isNaN(f_x)) {
+        alert('错误的参数');
+        return false;
+    }
+    var f_x = Math.round(x * 100) / 100;
+    var s_x = f_x.toString();
+    var pos_decimal = s_x.indexOf('.');
+    if (pos_decimal < 0) {
+        pos_decimal = s_x.length;
+        s_x += '.';
+    }
+    while (s_x.length <= pos_decimal + 2) {
+        s_x += '0';
+    }
+    return s_x;
+}
+</script>
+	
+	
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function isCommit(){
+	var userUid = $('#userUid').val();
+	var userUid = $('#userUid').val();
+	if(isEmpty(userUid)){
+		alert("请输入用户UID");
+		$("#userUid").focus();
+		return false;
+	}
+	return true;
+}
+
+function getLogData(type){
+	if(isCommit()){
+		document.getElementById('btn_view').disabled=true;
+		document.getElementById('analyze').value = type;
+		document.getaccount.submit();
+		return;
+	}
+}
+init();
+function init(){
+	$("#start").datetimepicker();
+    $("#end").datetimepicker();
+}
+</script>
+<!--{template footer}-->

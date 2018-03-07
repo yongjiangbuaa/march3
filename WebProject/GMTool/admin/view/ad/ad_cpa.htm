@@ -1,0 +1,147 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;$alertHead</font></div>
+<!--<form action="admincp.php?mod=ad&act=itemTop" method="post" name="getaccount">-->
+<!--日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">-->
+<!--前<input class="input-mini" id="topnumber" name="topnumber" type="text" value="$top">名玩家-->
+<!--<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">-->
+
+<!--<input class="display:none;" type="hidden" value="" id="action" name="action"/>-->
+<!--<input class="display:none;" type="hidden" value="" id="event" name="event"/>-->
+<!--<div id='show' style="float:left;width:105%;height:auto"></div>-->
+<!--</form>-->
+
+<form action="admincp.php?mod=ad&act=cpa" method="post" name="getaccount">
+	国家
+	<select id="selectCountry" name="selectCountry[]" onchange="" style="width: 150px; height: 150px" size="5" MULTIPLE>
+			<option value="ALL">--ALL--</option>
+			<!--{loop $countryArray $country}-->
+				<!--{if (in_array($country,$currCountry))}-->
+					<!--{if (isset($countryList[$country]))}-->
+						<option value="{$country}" selected="selected">$countryList[$country]</option>
+					<!-- {else} -->
+						<option value="{$country}" selected="selected">{$country}</option>
+					<!-- {/if} -->
+				<!-- {else} -->
+					<!--{if (isset($countryList[$country]))}-->
+						<option value="{$country}">$countryList[$country]</option>
+					<!-- {else} -->
+						<option value="{$country}">{$country}</option>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+	</select>
+	一级渠道
+	<select id="selectPf" name="selectPf[]" onchange="" style="width: 150px; height: 150px" size="5" MULTIPLE>
+			<option value="ALL">--ALL--</option>
+			<!--{loop $fcArray $pf}-->
+				<!--{if (in_array($pf,$currPf))}-->
+					<option value="{$pf}" selected="selected">{$pf}</option>
+				<!-- {else} -->
+					<option value="{$pf}">{$pf}</option>
+				<!-- {/if} -->
+			<!--{/loop}-->
+	</select>
+	<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+</form>
+<br>
+
+<form action="admincp.php?mod=ad&act=cpa&type=add" method="POST">
+		<span>操作系统</span><span><input type="text" name="os" value="" ></span>
+		<span>国家</span><span><input type="text" name="country" value="" ></span>
+		<span>一级渠道</span><span><input type="text" name="fc" value="" ></span>
+		<span>二级渠道</span><span><input type="text" name="sc" value="" ></span>
+		<span>cpa</span><span><input type="text" name="cpa" value="" ></span>
+		<input class="btn js-btn btn-danger" type="submit" value="添加" />
+	</form>	
+<br/>
+
+<!--{if ($showData)}-->
+<table class="listTable" style="width: 100%; text-align: center">
+	<tr class="listTr"  style="background-color: aliceblue;">
+		<!--{loop $titleArray $tKey $tVal}-->
+		<th>$tVal</th>
+		<!--{/loop}-->
+		<th>操作</th>
+	</tr>
+	<!--{loop $data $dk $dv}-->
+	<tr id="{$dv['id']}" class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+		<!--{loop $titleArray $tKey $tVal}-->
+			<!--{if $tKey!='lastmodifytime'}-->
+				<td id="{$dv['id']}_{$tKey}"><a href="javascript:void(edit('{$dv['id']}','{$tKey}','$dv[$tKey]'))">$dv[$tKey]</a></td>
+			<!--{else}-->
+				<td>$dv[$tKey]</td>
+			<!--{/if}-->
+		<!--{/loop}-->
+		<td><a href="javascript:void(deleteLine('{$dv['id']}'))">删除</a></td>
+	</tr>
+	<!--{/loop}-->
+</table>
+<!--{/if}-->
+
+
+<script type="text/javascript">
+var count=0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		//rightinfo();
+		return true;
+	}
+	return false;
+}
+function rightinfo() {
+	self.location='admincp.php?mod=ad&act=cpa';	
+}
+var uuidKey = null;
+var param = null;
+var originalVal = null;
+function edit(uuid,column,num) {
+	if(doClear()){
+		return;
+	}
+	uuidKey = uuid;
+	param = column;
+	originalVal = num;
+	var id=uuid+"_"+column;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+id+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(new'+id+')> <input type="button" id="cancelbtn" value="取消" onclick="goBack('+"'"+num+"'"+')"></form>';
+	right=document.getElementById(id);
+	right.innerHTML=str;
+}
+function save(numId){
+	//self.location = 'admincp.php?mod=op&act=server_info&type=modify&server='+serverKey+'&newDate='+num.value;
+	$.get('admincp.php?mod=ad&act=cpa&type=modify&uuid='+uuidKey+'&param='+param+'&paramValue='+numId.value+"&originalVal="+originalVal,function(){
+	
+	});
+	//rightinfo();
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+uuidKey+"'"+','+"'"+numId.value+"'"+'))">'+numId.value.split(" ")[0]+'</a>');
+	count = 0;	
+}
+function goBack(originalValue){
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+uuidKey+"'"+','+"'"+originalValue+"'"+'))">'+originalValue+'</a>');
+	count = 0;
+}
+
+function deleteLine(uuid){
+	if(confirm('是否确定删除'))
+	{
+		$.get('admincp.php?mod=ad&act=cpa&type=delete&uuid='+uuid,function(){
+			
+		});
+		 $("#"+uuid).hide(); 
+		//rightinfo();
+	}
+}
+
+init();
+function init(){
+	$("#start_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

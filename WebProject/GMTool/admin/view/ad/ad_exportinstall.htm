@@ -1,0 +1,104 @@
+<!--{template header}-->
+<div class="alert alert-info">导出installcallback 数据<font color="red">&nbsp;&nbsp;$alertHead</font></div>
+<form action="admincp.php?mod=ad&act=exportinstall" method="post" name="getaccount" style="display: inline-table;">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+	国家
+	<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+		<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+		<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	操作系统
+	<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $os_name $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+		<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+		<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	渠道
+	<select id="selectReferrer" name="selectReferrer" onchange="">
+		<!--{loop $adreferrer $referrer $referrername}-->
+		<!--{if ($currReferrer == $referrer)}-->
+		<option value="{$referrer}" selected="selected">{$referrername}</option>
+		<!-- {else} -->
+		<option value="{$referrer}">{$referrername}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询">
+&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<input class="display:none;" type="hidden" value="" id="page" name="page"/>
+
+</form>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<!--{if ($showData)}-->
+<table class="listTable" cellspacing=1 padding=0  style='TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width: 100%; text-align: center'>
+	<tr>
+		<!--{loop $titleArray $tKey $tVal}-->
+		<th width=10%>$tVal</th>
+		<!--{/loop}-->
+	</tr>
+	<tbody id='adDataTable'>
+	<!--{loop $result_all $dbData}-->
+	<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';"style="font-weight: bold; color: rgb(119, 125, 237);">
+		<!--{loop $titleArray $tKey $tVal}-->
+		<td>$dbData[$tKey]</td>
+		<!--{/loop}-->
+	</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+<div class='span11' style='TEXT-ALIGN:center;'>
+	$pager['pager']
+</div>
+
+
+<script type="text/javascript">
+	var thisPage;
+	function check(key){
+		var pattern = /[^0-9]/g;
+		if(pattern.test(key.value)){
+			alert('Please enter number');
+			$("#turn").val('');
+		}
+		return false;
+	}
+	function turnPage(){
+		var page = $("#turn").val();
+		getData(page);
+	}
+	function getData(page){
+		document.getElementById('btn_view').disabled=true;
+		thisPage = page;
+		search();
+	}
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getElementById('page').value = thisPage;
+	document.getaccount.submit();
+}
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

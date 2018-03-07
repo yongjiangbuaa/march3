@@ -1,0 +1,102 @@
+<!--{template header}-->
+<br>
+<div style="font-size: medium;">
+<a href="javascript:void(changeType2(1))">查询</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeType2(2))">添加</a>
+</div>
+<hr>
+<div id="manageDiv">
+<form action="admincp.php?mod=standard&act=channelSpecification" method="post" name="getaccount">
+	渠道来源
+	<input type="text" id="channelfrom" name="channelfrom" value='{$channelfrom}' placeholder="渠道" style='width: 300px;'></input>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+
+<br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:1000px;">
+<tbody>
+	<tr>
+		<th align="center" width="20px">#</th>
+		<th align="center" width="80px">pf来源</th>
+		<th align="center" width="200px">内容</th>
+	</tr>
+	<!--{loop $result $dbData}-->
+		<tr>
+			<td>
+				<a href="javascript:void(edit('{$dbData['id']}','{$dbData['pfStr']}','{$dbData['msg']}'))">$dbData['id']</a>
+			</td>
+			<td>$dbData['pfStr']</td>
+			<td>$dbData['msg']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+</form>
+
+</div>
+
+
+<div id="addDiv" style="display:none">
+	<form action="admincp.php?mod=standard&act=channelSpecification" method="post">
+		<input class="display:none;" type="hidden" value="-9" id="uuid" name="uuid"/>
+		渠道<input type="text" id="channelfromAdd" name="channelfromAdd" value='' placeholder="渠道" style='width: 400px;'></input>
+		<br>
+		<textarea class="input-xlarge" id="contentsAdd" style="width: 600px;" name="contentsAdd" placeholder="详细内容" rows="20"></textarea>
+		<br>
+		<button type="button" class="btn btn-info" name="btn_set" onclick="check_add()" style='width: 100px;'>提交</button>
+	</form>	
+
+</div>
+
+
+<script type="text/javascript">
+
+function changeType2(type){
+	if(type == 1){
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(type == 2){
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+		setVal(-9,'','')
+	}
+}
+
+function check_submit(type) {
+	//document.getElementById('action').value = type;
+	document.getaccount.submit();
+}
+
+function check_add(){
+	var contents = $('#contentsAdd').val();
+	var reg=new RegExp("\n","g"); 
+	contents= contents.replace(reg,"<br>");
+	$.get('admincp.php?mod=standard&act=channelSpecification&addChannel=1&uuid='+$('#uuid').val()+'&channelfromAdd='+$('#channelfromAdd').val()+'&contentsAdd='+contents,function(data){
+		alert(data);
+		setVal(-9,'','')
+		check_submit('view');
+	});
+}
+
+function edit(id,pfFrom,contents) {
+	document.getElementById('manageDiv').style.display = 'none';
+	document.getElementById('addDiv').style.display = 'block';
+	
+	var reg=new RegExp("<br>","g"); 
+	contents= contents.replace(reg,"\n");
+	
+	setVal(id,pfFrom,contents);
+}
+
+function setVal(uuid,pfFrom,contents){
+	document.getElementById('uuid').value=uuid;
+	document.getElementById('channelfromAdd').value=pfFrom;
+	document.getElementById('contentsAdd').value=contents;
+}
+
+</script>
+<!--{template footer}-->

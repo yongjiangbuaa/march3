@@ -1,0 +1,53 @@
+<!--{template header}--> 
+
+<br />
+
+<form id="adminform" name="userdel" action="admincp.php?mod=admin&act=log" method="post" class="form-horizontal">
+    <table class="table table-striped">
+        <tr><td>
+            起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+            结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+
+            <input type="submit" name="op" value="search"/>
+        </td>
+        </tr>
+        <tr>
+            <td>操作人：
+                <select name="oper">
+                    <option value="" {if $oper == ""}selected{/if}>{ALL}</option>
+                    {loop $ADMINLIST $admin}
+                    <option value="{$admin['username']}" {if $admin['username'] == $oper}selected{/if}>{$admin['username']}</option>
+                    {/loop}
+                </select>
+                
+               	被 操作人(Uid)：<input type="text" id="userId" name="userId" value='{$userId}'>
+                
+                操作类别：
+                <select name="actiontype">
+                    <option value="0" {if 0 == $actiontype}selected{/if}>{ALL}</option>
+                    {loop $ALLACTION $k $v}
+                    <option value="{$k}" {if $k == $actiontype}selected{/if}>{$v}</option>
+                    {/loop}
+                </select>
+                显示条目：<input type="text" name="limit" value="{$limit}">
+            </td>
+        </tr>
+    </table>
+    <table class="table table-striped">
+        {if $auditLogNum > 0 }
+            <tr><td>序号</td><td>操作人</td><td>被操作人</td><td>操作服务器</td><td>操作类型</td><td>操作详细</td><td>ip</td><td>时间</td></tr>
+            {loop $auditLog $oneLog}
+            <tr><td>{$oneLog['serial_id']}</td><td>$oneLog['adminname']</td>
+                <td>$oneLog['target_uid']</td><td>$oneLog['target_server']</td><td>$ALLACTION[$oneLog['action_type']]</td>
+                <td>$oneLog['action_detail']</td><td>$oneLog['ip']</td><td>{php echo date('Y-m-d H:i:s',$oneLog['create_time']);}</td></tr>
+            {/loop}
+        {/if}
+    </table>
+</form>
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#startDate,#endDate").datetimepicker();
+    }
+</script>
+<!--{template footer}-->

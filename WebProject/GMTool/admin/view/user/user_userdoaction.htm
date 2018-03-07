@@ -1,0 +1,88 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查看各功能使用情况";?><font color="red"></font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=user&act=userdoaction" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+
+起始时间<input class="input-medium" id="dateMin" name='dateMin' type="text" value='$dateMin' size="50"/>-
+结束时间<input class="input-medium" id="dateMax" name='dateMax' type="text" value='$dateMax' size="50"/>
+<br>
+<?php echo $selectEventCtl;?>
+<span>UID</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="getData(1)" />
+<input class="btn js-btn btn-primary" type="button" value="修复美杜莎" name="btn_mds" onclick="repair()" />
+</div>
+</div>
+</form>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+
+
+<script type="text/javascript">
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function repair(){
+	var url ='admincp.php?mod=user&act=userdoaction&medusa=true&useruid=' + $("#useruid").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getData(page){
+	/* if(!$.trim($("#username").val() + $("#useruid").val())){
+		alert("请输入玩家名称或者玩家UID！！！");
+		return;
+	} */
+	
+	var eventStr='';
+	var obj = document.getElementById("selectEvent");
+	for(var i=0;i<obj.options.length;i++){
+	    if(obj.options[i].selected){
+	    	eventStr +=obj.options[i].id+"|";// 收集选中项
+	    }
+	}
+	//var sEvent=desc_id.serializeArray();
+	
+	//selectEvent = document.getElementById("selectEvent");
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	//var url ='admincp.php?mod=user&act=userdoaction&getData=true&username='+$("#username").val()+'&page='+page+'&useruid=' + $("#useruid").val()+'&event=' + selectEvent.options[selectEvent.selectedIndex].id;
+	var url ='admincp.php?mod=user&act=userdoaction&getData=true&username='+$("#username").val()+'&page='+page+'&useruid=' + $("#useruid").val()+'&event=' + eventStr;
+	if(document.getElementById('dateMin').value){
+		url += '&dateMin=' + document.getElementById('dateMin').value;
+	}
+	if(document.getElementById('dateMax').value){
+		url += '&dateMax=' + document.getElementById('dateMax').value;
+	}
+	
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+$("#dateMin,#dateMax").datetimepicker();
+</script>
+<!--{template footer}-->

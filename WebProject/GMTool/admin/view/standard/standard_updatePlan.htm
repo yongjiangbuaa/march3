@@ -1,0 +1,125 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=standard&act=updatePlan" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			游戏版本号:
+			<input type="text" style="width: 70px;" value="{$appVersion}" id="appVersion" name="appVersion"/>
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+			<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit()" />
+			<!--{loop $displayArr $key $appValue}-->
+			<input type="text" style="width: 70px;cursor: pointer;text-align: center;" value="{$appValue}" id="{$appValue}" name="appVersion_{$appValue}" onclick="findByAppVer('{$appValue}')" readonly />
+			<!--{/loop}-->
+			<!--{if $saveAuth}-->
+			&nbsp;&nbsp;
+			<input type='checkbox' id="defaultVer" name="defaultVer"/>设为默认版本
+			<input class="btn js-btn btn-primary" type="button" value="保存" name="btn_view" onclick="edit_submit('edit')" />
+			<!--{else}-->
+
+			<!--{/if}-->
+			<br>
+			<table border="0">
+				<tr>
+					<td align="center">
+						中文
+					</td>
+					<td align="center">
+						英文useless
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<textarea id="msg_cn" name="msg_cn" rows="40" cols="140" wrap="hard">$msg_cn</textarea>
+					</td>
+					<td>
+						<textarea id="msg_en" name="msg_en" rows="40" cols="30" wrap="hard">$msg_en</textarea>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div><br/>
+
+
+</form>
+<script type="text/javascript">
+
+	function isEmpty(value){
+		if(value == null || value ==""){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function isCommit(){
+		var appVersion = $('#appVersion').val();
+		appVersion = jQuery.trim(appVersion);
+		if(isEmpty(appVersion)){
+			alert("游戏版本号不能为空!");
+			$("#appVersion").focus();
+			return false;
+		}
+		return true;
+	}
+	function check_submit() {
+		if(isCommit()){
+			var objs=document.getElementsByName('btn_view');
+			for(i=0;i<objs.length;i++){
+				objs[i].disabled=true;
+			}
+			document.getaccount.submit();
+		}
+	}
+
+	function findByAppVer(appVer){
+		document.getElementById('appVersion').value = appVer;
+		check_submit();
+	}
+
+	function  edit_submit(type) {
+		if(isCommit()){
+			var appVersion = $('#appVersion').val();
+			appVersion = jQuery.trim(appVersion);
+			if(confirm('是否确认要插入或者更新当前游戏版本的计划?'+'==='+appVersion))
+			{
+				var objs=document.getElementsByName('btn_view');
+				for(i=0;i<objs.length;i++){
+					objs[i].disabled=true;
+				}
+				var msg_cn = $('#msg_cn').val();
+				var msg_en = $('#msg_en').val();
+				var reg=new RegExp("\n","g");
+				msg_cn= msg_cn.replace(reg,"<br>");
+				msg_en= msg_en.replace(reg,"<br>");
+				/* var res = str.replace("\n", "<br>"); */
+
+				var defaultFlag=document.getElementById('defaultVer');
+				var tempFlag='';
+				if(defaultFlag.checked){
+					tempFlag = 1;
+				}else{
+					tempFlag = 0;
+				}
+
+
+				$.post("admincp.php",
+						{
+							mod: "standard",
+							act: "updatePlan",
+							type:type,
+							defaultVer:tempFlag,
+							appVersion:$('#appVersion').val(),
+							msg_cn:msg_cn,
+							msg_en:msg_en
+						},
+						function(data){
+							alert(data);
+							check_submit();
+						}
+				);
+			}
+		}
+	}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,115 @@
+<!--{template header}-->
+<div class="alert alert-info">封禁所输入的IP(全服生效)<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=banIP" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+<span>订单号(多个ip以';'分割)</span>
+<textarea class="input-xlarge" id="queryIps" style="width: 600px;" name="queryIps" rows="6">$queryIps</textarea>
+<br>
+<!--  
+<span>IP</span>
+<span><input type="text" id="queryIp" name="queryIp" value='{$queryIp}'></input></span>&nbsp;&nbsp;
+-->
+
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="禁封IP" name="btn_view" onclick="check_submit('view')" />
+<input class="btn js-btn btn-primary" type="button" value="解封IP" name="btn_view" onclick="delete_submit('delete')" />
+<input class="btn js-btn btn-primary" type="button" value="查询IP" name="btn_view" onclick="search_submit('search')" />
+
+</div>
+</div>
+
+</form>
+<!--{if $showData}-->
+<div style='float:left;width:100%;height:600px;text-align:center;overflow-x:auto;overflow-y:auto;'>
+
+	<table class="listTable" style="text-align:center ;">
+		<tbody>
+		<tr>
+			<th style="text-align: center;">IP</th>
+		</tr>
+		<!--{loop $data $key $value}-->
+		<tr class='listTr'>
+			<td>{$value}</td>
+		</tr>
+		<!--{/loop}-->
+
+		</tbody>
+	</table>
+
+	<!--{/if}-->
+</div>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var queryIps = $('#queryIps').val();
+	queryIps = jQuery.trim(queryIps);
+	if(isEmpty(queryIps)){
+		alert("IP不能为空!");
+		$("#queryIps").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(isCommit()){
+		if(confirm('是否确认禁封所输的IP?'))
+		{
+			var objs=document.getElementsByName('btn_view');
+			for(i=0;i<objs.length;i++){
+				objs[i].disabled=true;
+			}
+			$.get('admincp.php?mod=op&act=banIP&action='+type+'&queryIps='+$('#queryIps').val(),function(data){
+				alert(data);
+				var objs=document.getElementsByName('btn_view');
+				for(i=0;i<objs.length;i++){
+					objs[i].disabled=false;
+				}
+			});
+		}
+	}
+}
+function search_submit(type) {
+	var objs=document.getElementsByName('btn_view');
+	for(i=0;i<objs.length;i++){
+		objs[i].disabled=true;
+	}
+	$('#action').val(type);
+	document.getaccount.submit();
+//	$.post('admincp.php?mod=op&act=banIP&action='+type,function(data){
+////		alert(data);
+//		var objs=document.getElementsByName('btn_view');
+//		for(i=0;i<objs.length;i++){
+//			objs[i].disabled=false;
+//		}
+//	});
+
+}
+function  delete_submit(type) {
+	if(isCommit()){
+		if(confirm('是否确认解除对所输IP的禁封?'))
+		{
+			var objs=document.getElementsByName('btn_view');
+			for(i=0;i<objs.length;i++){
+				objs[i].disabled=true;
+			}
+			$.get('admincp.php?mod=op&act=banIP&action='+type+'&queryIps='+$('#queryIps').val(),function(data){
+				alert(data);
+				var objs=document.getElementsByName('btn_view');
+				for(i=0;i<objs.length;i++){
+					objs[i].disabled=false;
+				}
+			});
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,59 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red">特定物品剩余查询$alertHead</font></div>
+<form action="admincp.php?mod=pay&act=specificItemSearch&analyze=user" method="post" name="getaccount">
+
+    $serverDiv
+
+    <span>物品ID</span>
+    <span><input type="text" id="itemid" name="itemid" value='{$curritemid}'></input></span>
+    <span>人数</span>
+    <span><input type="text" id="numb" name="numb" value='{$currnum}'></input></span>
+
+    <input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+    &nbsp;&nbsp;
+    <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+    <input class="display:none;" type="hidden" value="" id="event" name="event"/>
+    <div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+
+<!--{if ($showData)}-->
+<div>
+    <table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+        <tr>
+            <th width=7%>物品ID</th>
+            <th width=7%>UID</th>
+            <th width=7%>昵称</th>
+            <th width=7%>注册国家</th>
+            <th width=7%>剩余量</th>
+            <th width=7%>充值金币数</th>
+            <th width=7%>注册时间</th>
+            <th width=7%>最后登陆时间</th>
+            <th width=7%>注册平台</th>
+            <th width=7%>当前平台</th>
+        </tr>
+        <tbody id='DataTable'>
+        <!--{loop $data $bKey $bVal}-->
+        <tr>
+            <!--{loop $bVal $aKey $aVal}-->
+            <td width=2%>$aVal</td>
+            <!--{/loop}-->
+        </tr>
+        <!--{/loop}-->
+        </tbody>
+    </table>
+</div>
+<!--{/if}-->
+
+
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#start_time,#end_time").datetimepicker();
+    }
+    function search(){
+        document.getElementById('btn_view').disabled=true;
+        document.getElementById('event').value = 'view';
+        document.getaccount.submit();
+    }
+</script>
+<!--{template footer}-->

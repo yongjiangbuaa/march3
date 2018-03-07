@@ -1,0 +1,22 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=sendNotice" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>公告内容</span>
+<br>
+<textarea id="contents" name="contents" rows="6" cols="80"></textarea>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="发布" name="btn_view" onclick="check_submit()" />
+</div>
+</div><br/>
+
+</form>
+<script type="text/javascript">
+
+function check_submit() {
+	  //document.getElementById('action').value = type;
+	  document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

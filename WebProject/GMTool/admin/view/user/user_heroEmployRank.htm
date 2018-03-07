@@ -1,0 +1,43 @@
+<!--{template header}-->
+<div class="alert alert-info">英雄招募排行活动<font color="red">{$tip} </font></div>
+<form action="admincp.php?mod=user&act=heroEmployRank" method="POST" name="getRank">
+    <div class="row-fluid">
+        <div class="span11">
+            <span>最大数目</span>
+            <span><input type="text" id="showNum" name="showNum" placeholder='1000' value="{$showNum}"></input></span>
+            <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+            <input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+        </div>
+    </div><br/>
+</form>
+<!--{if $showData}-->
+
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+    <tbody>
+    <tr>
+        <th align="center"  width="20%">排名</th>
+        <th align="center"  width="50%">uid</th>
+        <th align="center"  width="30%">次数</th>
+    </tr>
+    <!--{loop $items $key $item}-->
+    <tr>
+        <td>$item['rank']</td>
+        <td>$item['uid']</td>
+        <td>$item['score']</td>
+    </tr>
+    <!--{/loop}-->
+    </tbody>
+</table>
+<!--{/if}-->
+
+<script type="text/javascript">
+    function check_submit(type) {
+        if(type=='view')
+        {
+            document.getElementById('action').value = type;
+            document.getRank.submit();
+        }
+    }
+</script>
+
+<!--{template footer}-->

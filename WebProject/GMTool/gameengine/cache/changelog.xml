@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog name="PHP SDK">
+<version name="1.0.0.1">
+新特性：
+1. getCacheService() 返回memcache client实例
+2. getCacheAccess() 返回XCacheAccess实例
+</version>
+<version name="1.0.0.0">
+新特性：
+1. cache模块拆分
+</version>
+</changelog>

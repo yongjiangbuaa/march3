@@ -1,0 +1,122 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=standard&act=confirmVersion" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>游戏版本号</span>
+<input type="text" id="version_start" name="version_start" value='{$version_start}'></input>
+确认状态
+<select id="isConfValue" name="isConfValue">
+	<option value="all">all</option>
+	<!--{if $isConfValue==1}-->
+	<option value="1" selected="selected">已确认</option>
+	<!--{else}-->
+	<option value="1">已确认</option>
+	<!--{/if}-->
+	<!--{if $isConfValue===0}-->
+	<option value="0" selected="selected">未确认</option>
+	<!--{else}-->
+	<option value="0">未确认</option>
+	<!--{/if}-->
+</select>
+程序员<input type="text" value="{$programmer}" id="programmer" name="programmer"/>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+
+<br>
+<!--{if $developer}-->
+新增游戏版本号
+<input type="text" id="addVersion" name="addVersion" value='{$currentAppVer}'></input>&nbsp;&nbsp;
+trunk_from<input type="text" id="trunk_from" name="trunk_from" value='{$trunk_from}'></input>&nbsp;&nbsp;
+trunk_to<input type="text" id="trunk_to" name="trunk_to" value='{$trunk_to}'></input>&nbsp;&nbsp;
+branch_from<input type="text" id="branch_from" name="branch_from" value='{$branch_from}'></input>&nbsp;&nbsp;
+branch_to<input type="text" id="branch_to" name="branch_to" value='{$branch_to}'></input>&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" value="增加" name="btn_add" onclick="check_add()" />
+<!--{/if}-->
+</div>
+</div><br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:1000px;">
+<tbody>
+	<tr>
+	<th align="center" width="50px">确认</th>
+	<th align="center" width="50px">SVN 版本</th>
+	<th align="center" width="80px">日期</th>
+	<th align="center" width="300px">功能说明</th>
+	<th align="center" width="100px">程序</th>
+	<th align="center" width="50px">策划</th>
+	<th align="center" width="200px">变动文件</th>
+	</tr>
+	<!--{loop $result $versionKey $dbData}-->
+		<tr>
+			<!--{if $dbData['status']}-->
+				<td><input type='checkbox' id="{$versionKey}" name="{$versionKey}" onClick="changeState('{$versionKey}')" checked /></td>
+			<!--{else}-->
+				<td><input type='checkbox' id="{$versionKey}" name="{$versionKey}" onClick="changeState('{$versionKey}')"/></td>
+			<!--{/if}-->
+			<td>$versionKey</td>
+			<td>$dbData['date']</td>
+			<td>$dbData['msg']</td>
+			<td>$dbData['author']</td>
+			<td>$dbData['cehua']</td>
+			<td>$dbData['files']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var version_start = $('#version_start').val();
+	version_start = jQuery.trim(version_start);
+	if(isEmpty(version_start)){
+		alert("<?php echo '请输入版本号';?>");
+		$("#version_start").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+
+function check_add(){
+	var addVersion = $('#addVersion').val();
+	addVersion=jQuery.trim(addVersion);
+	if(isEmpty(addVersion)){
+		alert("<?php echo "请输入新增游戏版本号";?>");
+		$("#addVersion").focus();
+		return false;
+	}
+	$.get('admincp.php?mod=standard&act=confirmVersion&addPublish=1&appVer='+addVersion+'&trunk_from='+$('#trunk_from').val()+'&trunk_to='+$('#trunk_to').val()+'&branch_from='+$('#branch_from').val()+'&branch_to='+$('#branch_to').val(),function(data){
+		alert(data);
+	});
+}
+
+function changeState(version){
+	var state=0;
+	if(document.getElementById(version).checked){
+		state=1;
+	}
+	$.get('admincp.php?mod=standard&act=confirmVersion&isConfirm=1&version='+version+'&state='+state,function(data){
+		alert(data);
+		//check_submit('view');
+	});
+}
+
+</script>
+<!--{template footer}-->

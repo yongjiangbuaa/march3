@@ -1,0 +1,53 @@
+//=========基本数据导出,从线上库到snapshot分服库
+//潜在风险,服增多,数据增大,会出现这边正导着数据,下边统计会出现空...但是依赖snapshot的统计库每天会多次统计,会填补...
+//这个userprofile先运行,会新建数据库
+    5 0,8,16 * * * sh /data/htdocs/stats/cron/dump_userprofile.sh >> /data/htdocs/stats/cron/run_dump_db_userprofile.log 2>&1
+    1 */2 * * * sh /data/htdocs/stats/cron/dump_db.sh >> /data/htdocs/stats/cron/run_dump_db.log 2>&1
+    3 */2 * * * sh /data/htdocs/stats/cron/dump_stat_regAndPaylog.sh >> /data/htdocs/stats/cron/run_dump_stat_regAndPaylog.log 2>&1
+    5 0,8,16 * * * sh /data/htdocs/stats/cron/dump_userprofileFull_tutorial.sh >> /data/htdocs/stats/cron/run_dump_userprofileFull_tutorial.log 2>&1
+////==============
+//留存
+    15 1,5,18 * * * sh /data/htdocs/stats/cron/stats_country.sh >> /data/htdocs/stats/cron/run_stats_country.log 2>&1
+//支付相关
+    25 */2 * * * sh /data/htdocs/stats/cron/stats.sh >> /data/htdocs/stats/cron/run_stats.log 2>&1
+//日活跃
+    20 */2 * * * sh /data/htdocs/stats/cron/stats_country_roi.sh >> /data/htdocs/stats/cron/run_stats_country_roi.log 2>&1
+//杂,支付等
+    55 */3 * * * sh /data/htdocs/stats/cron/stats_payData.sh >> /data/htdocs/stats/cron/run_stats_payData.log 2>&1
+
+/////=====最后统计,这个基本数据经常看,是由后边其它统计,又统计了次
+    10 4 * * * sh /data/htdocs/stats/cron/dump_stat_basic.sh >> /data/htdocs/stats/cron/run_dump_stat_basic.log 2>&1
+
+//神秘商人 + 新手
+    10 2,8,16 * * * sh /data/htdocs/stats/cron/stats_tutorial_allServer.sh >> /data/htdocs/stats/cron/run_stats_tutorial_allServer.log 2>&1
+//redis 付费排行
+    18 12 * * * /usr/local/bin/php /data/htdocs/stats/scripts/topPay_global.php >> /data/htdocs/stats/scripts/stats_topPay_global.log 2>&1
+//NPC城堡  攻击情况
+    20 6 * * * sh /data/htdocs/stats/cron/stats_half_orcs_npcBuild.sh >> /data/htdocs/stats/cron/stats_half_orcs_npcBuild.log 2>&1
+//金币消耗情况
+    30 */4 * * * sh /data/htdocs/stats/cron/stats_dau_v3.sh >> /data/htdocs/stats/cron/run_stats_dau_v3.log 2>&1
+//物品总消耗与礼包卖出情况统计
+    55 */1 * * * sh /data/htdocs/stats/cron/stats_signAll.sh >> /data/htdocs/stats/cron/run_stats_signAll.log 2>&1
+///===log_rbi是针对 统计打点scribe再次统计(日活跃任务)
+    20 7 * * *  sh /data/htdocs/stats/cron/stats_log_rbi.sh >> /data/htdocs/stats/cron/run_stats_log_rbi.log 2>&1
+//分付费等级区分
+    33 */5 * * * sh /data/htdocs/stats/cron/stats_payLevelData.sh >> /data/htdocs/stats/cron/stats_payLevelData.log 2>&1
+
+//版本统计
+1 5 * * * sh /data/htdocs/stats/cron/stats_version.sh >> /data/htdocs/stats/cron/stats_version.log 2>&1
+
+
+########################################################################################################
+先drop 掉db 在 新建导入的表
+paylog  不能根据时间或者count(1)来导入导出,从库paylog删除数据,会导致混乱
+userprofile
+userprofile_full
+
+
+
+########################################################################################################
+goods_cost_record_20160825
+gold_cost_record
+########################################################################################################
+stats_version 可以过一段时间,删除老旧的时间
+新手引导统计,也可以删除

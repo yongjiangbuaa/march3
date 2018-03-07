@@ -1,0 +1,15 @@
+<div class="col-sm-3 col-md-1 sidebar" style="width: 10%;position: initial;padding-top: 80px;" id="leftslidesidebar">
+	<ul class="nav nav-sidebar">
+		<li ><a style="margin-left: -10px;" href="javascript:void(0)" class="active" ><span> $menu[$module]['name']</span></a></li>
+		<ul class="nav nav-sidebar">
+			<!--{loop $menu[$module]['sub_menu'] $mkey $sub_menu}-->
+			<li style="list-style-type:none;" {if $action==$sub_menu[ 'action'] }class="active"{/if}>
+			<a style="margin-left: 20px;" href="{$sub_menu['href']}" {if isset($sub_menu[target])}target="{$sub_menu[target]}"{/if}>
+			{$sub_menu['name']}
+			{if isset($sub_menu[target])}<i class="icon-share"></i>{/if}
+			</a>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</ul>
+</div>

@@ -1,0 +1,46 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "根据坐标查询玩家的Uid和name";?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=findUidAndName" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>X坐标</span>
+<span><input type="text" id="xpoint" name="xpoint" value='{$xpoint}'></input></span>
+<span>Y坐标</span>
+<span><input type="text" id="ypoint" name="ypoint" value='{$ypoint}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  width="20%">X</th>
+	<th align="center"  width="20%">Y</th>
+	<th align="center"  width="30%">Uid</th>
+	<th align="center"  width="30%">Name</th>
+	</tr>
+	<!--{loop $items $key $item}-->
+	<tr>
+		<td>$item['x']</td>
+		<td>$item['y']</td>
+		<td>$item['ownerId']</td>
+		<td>$item['ownerName']</td>
+	</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+function check_submit(type) {
+	if(type=='view')
+	{
+	  document.getElementById('action').value = type;
+	  document.getaccount.submit();
+	}
+}
+</script>
+<!--{template footer}-->

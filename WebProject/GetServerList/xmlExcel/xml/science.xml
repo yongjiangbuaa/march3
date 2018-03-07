@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="science_list">
+    <ItemSpec id="101001" tab="1" gold="100" mineral="100" oil="100" food="100" time="360" effect1="1" value1="1" effect2="1" value2="1" arms="1####" building1="1301001" building2="1301001" science1="502001" science2="502001" show_level="1"/>
+    <ItemSpec id="101002" tab="1" gold="200" mineral="200" oil="200" food="200" time="720" effect1="1" value1="2" arms="1####"/>
+    <ItemSpec id="101003" tab="1" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="1" value1="3" arms="1####"/>
+    <ItemSpec id="101004" tab="1" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="1" value1="4" arms="1####"/>
+    <ItemSpec id="101005" tab="1" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="1" value1="5" arms="1####"/>
+    <ItemSpec id="101006" tab="1" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="1" value1="6" arms="1####"/>
+    <ItemSpec id="101007" tab="1" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="1" value1="7" arms="1####"/>
+    <ItemSpec id="101008" tab="1" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="1" value1="8" arms="1####"/>
+    <ItemSpec id="101009" tab="1" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="1" value1="9" arms="1####"/>
+    <ItemSpec id="101010" tab="1" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="1" value1="10" arms="1####"/>
+    <ItemSpec id="102001" tab="1" gold="100" mineral="100" oil="100" food="100" time="360" effect1="4" value1="1" arms="1####"/>
+    <ItemSpec id="102002" tab="1" gold="200" mineral="200" oil="200" food="200" time="720" effect1="4" value1="2" arms="1####"/>
+    <ItemSpec id="102003" tab="1" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="4" value1="3" arms="1####"/>
+    <ItemSpec id="102004" tab="1" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="4" value1="4" arms="1####"/>
+    <ItemSpec id="102005" tab="1" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="4" value1="5" arms="1####"/>
+    <ItemSpec id="102006" tab="1" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="4" value1="6" arms="1####"/>
+    <ItemSpec id="102007" tab="1" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="4" value1="7" arms="1####"/>
+    <ItemSpec id="102008" tab="1" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="4" value1="8" arms="1####"/>
+    <ItemSpec id="102009" tab="1" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="4" value1="9" arms="1####"/>
+    <ItemSpec id="102010" tab="1" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="4" value1="10" arms="1####"/>
+    <ItemSpec id="103001" tab="1" gold="100" mineral="100" oil="100" food="100" time="360" effect1="2" value1="1" arms="1####"/>
+    <ItemSpec id="103002" tab="1" gold="200" mineral="200" oil="200" food="200" time="720" effect1="2" value1="2" arms="1####"/>
+    <ItemSpec id="103003" tab="1" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="2" value1="3" arms="1####"/>
+    <ItemSpec id="103004" tab="1" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="2" value1="4" arms="1####"/>
+    <ItemSpec id="103005" tab="1" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="2" value1="5" arms="1####"/>
+    <ItemSpec id="103006" tab="1" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="2" value1="6" arms="1####"/>
+    <ItemSpec id="103007" tab="1" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="2" value1="7" arms="1####"/>
+    <ItemSpec id="103008" tab="1" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="2" value1="8" arms="1####"/>
+    <ItemSpec id="103009" tab="1" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="2" value1="9" arms="1####"/>
+    <ItemSpec id="103010" tab="1" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="2" value1="10" arms="1####"/>
+    <ItemSpec id="104001" tab="1" gold="100" mineral="100" oil="100" food="100" time="360" effect1="3" value1="1" arms="1####"/>
+    <ItemSpec id="104002" tab="1" gold="200" mineral="200" oil="200" food="200" time="720" effect1="3" value1="2" arms="1####"/>
+    <ItemSpec id="104003" tab="1" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="3" value1="3" arms="1####"/>
+    <ItemSpec id="104004" tab="1" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="3" value1="4" arms="1####"/>
+    <ItemSpec id="104005" tab="1" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="3" value1="5" arms="1####"/>
+    <ItemSpec id="104006" tab="1" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="3" value1="6" arms="1####"/>
+    <ItemSpec id="104007" tab="1" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="3" value1="7" arms="1####"/>
+    <ItemSpec id="104008" tab="1" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="3" value1="8" arms="1####"/>
+    <ItemSpec id="104009" tab="1" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="3" value1="9" arms="1####"/>
+    <ItemSpec id="104010" tab="1" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="3" value1="10" arms="1####"/>
+    <ItemSpec id="201001" tab="2" gold="100" mineral="100" oil="100" food="100" time="360" effect1="1" value1="1" arms="2####"/>
+    <ItemSpec id="201002" tab="2" gold="200" mineral="200" oil="200" food="200" time="720" effect1="1" value1="2" arms="2####"/>
+    <ItemSpec id="201003" tab="2" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="1" value1="3" arms="2####"/>
+    <ItemSpec id="201004" tab="2" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="1" value1="4" arms="2####"/>
+    <ItemSpec id="201005" tab="2" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="1" value1="5" arms="2####"/>
+    <ItemSpec id="201006" tab="2" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="1" value1="6" arms="2####"/>
+    <ItemSpec id="201007" tab="2" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="1" value1="7" arms="2####"/>
+    <ItemSpec id="201008" tab="2" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="1" value1="8" arms="2####"/>
+    <ItemSpec id="201009" tab="2" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="1" value1="9" arms="2####"/>
+    <ItemSpec id="201010" tab="2" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="1" value1="10" arms="2####"/>
+    <ItemSpec id="202001" tab="2" gold="100" mineral="100" oil="100" food="100" time="360" effect1="4" value1="1" arms="2####"/>
+    <ItemSpec id="202002" tab="2" gold="200" mineral="200" oil="200" food="200" time="720" effect1="4" value1="2" arms="2####"/>
+    <ItemSpec id="202003" tab="2" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="4" value1="3" arms="2####"/>
+    <ItemSpec id="202004" tab="2" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="4" value1="4" arms="2####"/>
+    <ItemSpec id="202005" tab="2" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="4" value1="5" arms="2####"/>
+    <ItemSpec id="202006" tab="2" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="4" value1="6" arms="2####"/>
+    <ItemSpec id="202007" tab="2" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="4" value1="7" arms="2####"/>
+    <ItemSpec id="202008" tab="2" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="4" value1="8" arms="2####"/>
+    <ItemSpec id="202009" tab="2" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="4" value1="9" arms="2####"/>
+    <ItemSpec id="202010" tab="2" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="4" value1="10" arms="2####"/>
+    <ItemSpec id="203001" tab="2" gold="100" mineral="100" oil="100" food="100" time="360" effect1="2" value1="1" arms="2####"/>
+    <ItemSpec id="203002" tab="2" gold="200" mineral="200" oil="200" food="200" time="720" effect1="2" value1="2" arms="2####"/>
+    <ItemSpec id="203003" tab="2" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="2" value1="3" arms="2####"/>
+    <ItemSpec id="203004" tab="2" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="2" value1="4" arms="2####"/>
+    <ItemSpec id="203005" tab="2" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="2" value1="5" arms="2####"/>
+    <ItemSpec id="203006" tab="2" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="2" value1="6" arms="2####"/>
+    <ItemSpec id="203007" tab="2" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="2" value1="7" arms="2####"/>
+    <ItemSpec id="203008" tab="2" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="2" value1="8" arms="2####"/>
+    <ItemSpec id="203009" tab="2" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="2" value1="9" arms="2####"/>
+    <ItemSpec id="203010" tab="2" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="2" value1="10" arms="2####"/>
+    <ItemSpec id="204001" tab="2" gold="100" mineral="100" oil="100" food="100" time="360" effect1="3" value1="1" arms="2####"/>
+    <ItemSpec id="204002" tab="2" gold="200" mineral="200" oil="200" food="200" time="720" effect1="3" value1="2" arms="2####"/>
+    <ItemSpec id="204003" tab="2" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="3" value1="3" arms="2####"/>
+    <ItemSpec id="204004" tab="2" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="3" value1="4" arms="2####"/>
+    <ItemSpec id="204005" tab="2" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="3" value1="5" arms="2####"/>
+    <ItemSpec id="204006" tab="2" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="3" value1="6" arms="2####"/>
+    <ItemSpec id="204007" tab="2" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="3" value1="7" arms="2####"/>
+    <ItemSpec id="204008" tab="2" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="3" value1="8" arms="2####"/>
+    <ItemSpec id="204009" tab="2" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="3" value1="9" arms="2####"/>
+    <ItemSpec id="204010" tab="2" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="3" value1="10" arms="2####"/>
+    <ItemSpec id="301001" tab="3" gold="100" mineral="100" oil="100" food="100" time="360" effect1="1" value1="1" arms="3####"/>
+    <ItemSpec id="301002" tab="3" gold="200" mineral="200" oil="200" food="200" time="720" effect1="1" value1="2" arms="3####"/>
+    <ItemSpec id="301003" tab="3" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="1" value1="3" arms="3####"/>
+    <ItemSpec id="301004" tab="3" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="1" value1="4" arms="3####"/>
+    <ItemSpec id="301005" tab="3" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="1" value1="5" arms="3####"/>
+    <ItemSpec id="301006" tab="3" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="1" value1="6" arms="3####"/>
+    <ItemSpec id="301007" tab="3" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="1" value1="7" arms="3####"/>
+    <ItemSpec id="301008" tab="3" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="1" value1="8" arms="3####"/>
+    <ItemSpec id="301009" tab="3" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="1" value1="9" arms="3####"/>
+    <ItemSpec id="301010" tab="3" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="1" value1="10" arms="3####"/>
+    <ItemSpec id="302001" tab="3" gold="100" mineral="100" oil="100" food="100" time="360" effect1="4" value1="1" arms="3####"/>
+    <ItemSpec id="302002" tab="3" gold="200" mineral="200" oil="200" food="200" time="720" effect1="4" value1="2" arms="3####"/>
+    <ItemSpec id="302003" tab="3" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="4" value1="3" arms="3####"/>
+    <ItemSpec id="302004" tab="3" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="4" value1="4" arms="3####"/>
+    <ItemSpec id="302005" tab="3" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="4" value1="5" arms="3####"/>
+    <ItemSpec id="302006" tab="3" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="4" value1="6" arms="3####"/>
+    <ItemSpec id="302007" tab="3" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="4" value1="7" arms="3####"/>
+    <ItemSpec id="302008" tab="3" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="4" value1="8" arms="3####"/>
+    <ItemSpec id="302009" tab="3" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="4" value1="9" arms="3####"/>
+    <ItemSpec id="302010" tab="3" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="4" value1="10" arms="3####"/>
+    <ItemSpec id="303001" tab="3" gold="100" mineral="100" oil="100" food="100" time="360" effect1="2" value1="1" arms="3####"/>
+    <ItemSpec id="303002" tab="3" gold="200" mineral="200" oil="200" food="200" time="720" effect1="2" value1="2" arms="3####"/>
+    <ItemSpec id="303003" tab="3" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="2" value1="3" arms="3####"/>
+    <ItemSpec id="303004" tab="3" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="2" value1="4" arms="3####"/>
+    <ItemSpec id="303005" tab="3" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="2" value1="5" arms="3####"/>
+    <ItemSpec id="303006" tab="3" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="2" value1="6" arms="3####"/>
+    <ItemSpec id="303007" tab="3" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="2" value1="7" arms="3####"/>
+    <ItemSpec id="303008" tab="3" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="2" value1="8" arms="3####"/>
+    <ItemSpec id="303009" tab="3" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="2" value1="9" arms="3####"/>
+    <ItemSpec id="303010" tab="3" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="2" value1="10" arms="3####"/>
+    <ItemSpec id="304001" tab="3" gold="100" mineral="100" oil="100" food="100" time="360" effect1="3" value1="1" arms="3####"/>
+    <ItemSpec id="304002" tab="3" gold="200" mineral="200" oil="200" food="200" time="720" effect1="3" value1="2" arms="3####"/>
+    <ItemSpec id="304003" tab="3" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="3" value1="3" arms="3####"/>
+    <ItemSpec id="304004" tab="3" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="3" value1="4" arms="3####"/>
+    <ItemSpec id="304005" tab="3" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="3" value1="5" arms="3####"/>
+    <ItemSpec id="304006" tab="3" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="3" value1="6" arms="3####"/>
+    <ItemSpec id="304007" tab="3" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="3" value1="7" arms="3####"/>
+    <ItemSpec id="304008" tab="3" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="3" value1="8" arms="3####"/>
+    <ItemSpec id="304009" tab="3" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="3" value1="9" arms="3####"/>
+    <ItemSpec id="304010" tab="3" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="3" value1="10" arms="3####"/>
+    <ItemSpec id="401001" tab="4" gold="100" mineral="100" oil="100" food="100" time="360" effect1="1" value1="1" arms="4####"/>
+    <ItemSpec id="401002" tab="4" gold="200" mineral="200" oil="200" food="200" time="720" effect1="1" value1="2" arms="4####"/>
+    <ItemSpec id="401003" tab="4" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="1" value1="3" arms="4####"/>
+    <ItemSpec id="401004" tab="4" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="1" value1="4" arms="4####"/>
+    <ItemSpec id="401005" tab="4" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="1" value1="5" arms="4####"/>
+    <ItemSpec id="401006" tab="4" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="1" value1="6" arms="4####"/>
+    <ItemSpec id="401007" tab="4" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="1" value1="7" arms="4####"/>
+    <ItemSpec id="401008" tab="4" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="1" value1="8" arms="4####"/>
+    <ItemSpec id="401009" tab="4" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="1" value1="9" arms="4####"/>
+    <ItemSpec id="401010" tab="4" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="1" value1="10" arms="4####"/>
+    <ItemSpec id="402001" tab="4" gold="100" mineral="100" oil="100" food="100" time="360" effect1="4" value1="1" arms="4####"/>
+    <ItemSpec id="402002" tab="4" gold="200" mineral="200" oil="200" food="200" time="720" effect1="4" value1="2" arms="4####"/>
+    <ItemSpec id="402003" tab="4" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="4" value1="3" arms="4####"/>
+    <ItemSpec id="402004" tab="4" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="4" value1="4" arms="4####"/>
+    <ItemSpec id="402005" tab="4" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="4" value1="5" arms="4####"/>
+    <ItemSpec id="402006" tab="4" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="4" value1="6" arms="4####"/>
+    <ItemSpec id="402007" tab="4" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="4" value1="7" arms="4####"/>
+    <ItemSpec id="402008" tab="4" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="4" value1="8" arms="4####"/>
+    <ItemSpec id="402009" tab="4" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="4" value1="9" arms="4####"/>
+    <ItemSpec id="402010" tab="4" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="4" value1="10" arms="4####"/>
+    <ItemSpec id="403001" tab="4" gold="100" mineral="100" oil="100" food="100" time="360" effect1="2" value1="1" arms="4####"/>
+    <ItemSpec id="403002" tab="4" gold="200" mineral="200" oil="200" food="200" time="720" effect1="2" value1="2" arms="4####"/>
+    <ItemSpec id="403003" tab="4" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="2" value1="3" arms="4####"/>
+    <ItemSpec id="403004" tab="4" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="2" value1="4" arms="4####"/>
+    <ItemSpec id="403005" tab="4" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="2" value1="5" arms="4####"/>
+    <ItemSpec id="403006" tab="4" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="2" value1="6" arms="4####"/>
+    <ItemSpec id="403007" tab="4" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="2" value1="7" arms="4####"/>
+    <ItemSpec id="403008" tab="4" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="2" value1="8" arms="4####"/>
+    <ItemSpec id="403009" tab="4" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="2" value1="9" arms="4####"/>
+    <ItemSpec id="403010" tab="4" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="2" value1="10" arms="4####"/>
+    <ItemSpec id="404001" tab="4" gold="100" mineral="100" oil="100" food="100" time="360" effect1="3" value1="1" arms="4####"/>
+    <ItemSpec id="404002" tab="4" gold="200" mineral="200" oil="200" food="200" time="720" effect1="3" value1="2" arms="4####"/>
+    <ItemSpec id="404003" tab="4" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="3" value1="3" arms="4####"/>
+    <ItemSpec id="404004" tab="4" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="3" value1="4" arms="4####"/>
+    <ItemSpec id="404005" tab="4" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="3" value1="5" arms="4####"/>
+    <ItemSpec id="404006" tab="4" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="3" value1="6" arms="4####"/>
+    <ItemSpec id="404007" tab="4" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="3" value1="7" arms="4####"/>
+    <ItemSpec id="404008" tab="4" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="3" value1="8" arms="4####"/>
+    <ItemSpec id="404009" tab="4" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="3" value1="9" arms="4####"/>
+    <ItemSpec id="404010" tab="4" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="3" value1="10" arms="4####"/>
+    <ItemSpec id="501001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="001000000"/>
+    <ItemSpec id="501002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="001000000"/>
+    <ItemSpec id="501003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="001010000"/>
+    <ItemSpec id="501004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="001010000"/>
+    <ItemSpec id="501005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="011010000"/>
+    <ItemSpec id="501006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="011010000"/>
+    <ItemSpec id="501007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="011110000"/>
+    <ItemSpec id="501008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="011110000"/>
+    <ItemSpec id="501009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="011110000"/>
+    <ItemSpec id="501010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="011110100"/>
+    <ItemSpec id="502001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="000010000"/>
+    <ItemSpec id="502002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="000010000"/>
+    <ItemSpec id="502003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="000011000"/>
+    <ItemSpec id="502004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="000011000"/>
+    <ItemSpec id="502005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="001011000"/>
+    <ItemSpec id="502006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="001011000"/>
+    <ItemSpec id="502007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="001011001"/>
+    <ItemSpec id="502008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="001011001"/>
+    <ItemSpec id="502009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="001011001"/>
+    <ItemSpec id="502010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="001111001"/>
+    <ItemSpec id="503001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="000001000"/>
+    <ItemSpec id="503002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="000001000"/>
+    <ItemSpec id="503003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="010001000"/>
+    <ItemSpec id="503004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="010001000"/>
+    <ItemSpec id="503005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="010001010"/>
+    <ItemSpec id="503006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="010001010"/>
+    <ItemSpec id="503007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="110001010"/>
+    <ItemSpec id="503008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="110001010"/>
+    <ItemSpec id="503009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="110001010"/>
+    <ItemSpec id="503010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="110001110"/>
+    <ItemSpec id="504001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="000001000"/>
+    <ItemSpec id="504002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="000001000"/>
+    <ItemSpec id="504003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="000001001"/>
+    <ItemSpec id="504004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="000001001"/>
+    <ItemSpec id="504005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="010001001"/>
+    <ItemSpec id="504006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="010001001"/>
+    <ItemSpec id="504007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="110001001"/>
+    <ItemSpec id="504008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="110001001"/>
+    <ItemSpec id="504009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="110001001"/>
+    <ItemSpec id="504010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="110001011"/>
+    <ItemSpec id="505001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="000001000"/>
+    <ItemSpec id="505002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="000001000"/>
+    <ItemSpec id="505003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="000011000"/>
+    <ItemSpec id="505004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="000011000"/>
+    <ItemSpec id="505005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="010011000"/>
+    <ItemSpec id="505006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="010011000"/>
+    <ItemSpec id="505007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="010011010"/>
+    <ItemSpec id="505008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="010011010"/>
+    <ItemSpec id="505009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="010011010"/>
+    <ItemSpec id="505010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="010111010"/>
+    <ItemSpec id="506001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="001000000"/>
+    <ItemSpec id="506002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="001000000"/>
+    <ItemSpec id="506003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="001010000"/>
+    <ItemSpec id="506004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="001010000"/>
+    <ItemSpec id="506005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="001010001"/>
+    <ItemSpec id="506006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="001010001"/>
+    <ItemSpec id="506007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="101010001"/>
+    <ItemSpec id="506008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="101010001"/>
+    <ItemSpec id="506009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="101010001"/>
+    <ItemSpec id="506010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="101010101"/>
+    <ItemSpec id="507001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="001000000"/>
+    <ItemSpec id="507002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="001000000"/>
+    <ItemSpec id="507003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="001000001"/>
+    <ItemSpec id="507004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="001000001"/>
+    <ItemSpec id="507005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="011000001"/>
+    <ItemSpec id="507006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="011000001"/>
+    <ItemSpec id="507007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="011000011"/>
+    <ItemSpec id="507008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="011000011"/>
+    <ItemSpec id="507009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="011000011"/>
+    <ItemSpec id="507010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="011100011"/>
+    <ItemSpec id="508001" tab="5" gold="100" mineral="100" oil="100" food="100" time="360" formation="000001000"/>
+    <ItemSpec id="508002" tab="5" gold="200" mineral="200" oil="200" food="200" time="720" formation="000001000"/>
+    <ItemSpec id="508003" tab="5" gold="300" mineral="300" oil="300" food="300" time="1080" formation="000011000"/>
+    <ItemSpec id="508004" tab="5" gold="400" mineral="400" oil="400" food="400" time="1440" formation="000011000"/>
+    <ItemSpec id="508005" tab="5" gold="500" mineral="500" oil="500" food="500" time="1800" formation="000111000"/>
+    <ItemSpec id="508006" tab="5" gold="600" mineral="600" oil="600" food="600" time="2160" formation="000111000"/>
+    <ItemSpec id="508007" tab="5" gold="700" mineral="700" oil="700" food="700" time="2520" formation="100111000"/>
+    <ItemSpec id="508008" tab="5" gold="800" mineral="800" oil="800" food="800" time="2880" formation="100111000"/>
+    <ItemSpec id="508009" tab="5" gold="900" mineral="900" oil="900" food="900" time="3240" formation="100111000"/>
+    <ItemSpec id="508010" tab="5" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" formation="100111100"/>
+    <ItemSpec id="601001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="601002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="601003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="601004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="601005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="601006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="601007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="601008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="601009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="601010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="602001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="602002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="602003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="602004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="602005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="602006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="602007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="602008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="602009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="602010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="603001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="603002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="603003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="603004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="603005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="603006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="603007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="603008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="603009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="603010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="604001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="604002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="604003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="604004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="604005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="604006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="604007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="604008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="604009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="604010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="605001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="605002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="605003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="605004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="605005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="605006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="605007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="605008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="605009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="605010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="606001" tab="6" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="606002" tab="6" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="606003" tab="6" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="606004" tab="6" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="606005" tab="6" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="606006" tab="6" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="606007" tab="6" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="606008" tab="6" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="606009" tab="6" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="606010" tab="6" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="701001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360" effect1="200" value1=".2"/>
+    <ItemSpec id="701002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720" effect1="200" value1=".4"/>
+    <ItemSpec id="701003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080" effect1="200" value1=".6"/>
+    <ItemSpec id="701004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440" effect1="200" value1=".8"/>
+    <ItemSpec id="701005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800" effect1="200" value1="1"/>
+    <ItemSpec id="701006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160" effect1="200" value1="1.2"/>
+    <ItemSpec id="701007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520" effect1="200" value1="1.4"/>
+    <ItemSpec id="701008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880" effect1="200" value1="1.6"/>
+    <ItemSpec id="701009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240" effect1="200" value1="1.8"/>
+    <ItemSpec id="701010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600" effect1="200" value1="2"/>
+    <ItemSpec id="702001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="702002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="702003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="702004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="702005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="702006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="702007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="702008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="702009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="702010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="703001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="703002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="703003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="703004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="703005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="703006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="703007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="703008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="703009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="703010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="704001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="704002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="704003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="704004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="704005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="704006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="704007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="704008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="704009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="704010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="705001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="705002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="705003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="705004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="705005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="705006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="705007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="705008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="705009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="705010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="706001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="706002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="706003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="706004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="706005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="706006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="706007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="706008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="706009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="706010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+    <ItemSpec id="707001" tab="7" gold="100" mineral="100" oil="100" food="100" time="360"/>
+    <ItemSpec id="707002" tab="7" gold="200" mineral="200" oil="200" food="200" time="720"/>
+    <ItemSpec id="707003" tab="7" gold="300" mineral="300" oil="300" food="300" time="1080"/>
+    <ItemSpec id="707004" tab="7" gold="400" mineral="400" oil="400" food="400" time="1440"/>
+    <ItemSpec id="707005" tab="7" gold="500" mineral="500" oil="500" food="500" time="1800"/>
+    <ItemSpec id="707006" tab="7" gold="600" mineral="600" oil="600" food="600" time="2160"/>
+    <ItemSpec id="707007" tab="7" gold="700" mineral="700" oil="700" food="700" time="2520"/>
+    <ItemSpec id="707008" tab="7" gold="800" mineral="800" oil="800" food="800" time="2880"/>
+    <ItemSpec id="707009" tab="7" gold="900" mineral="900" oil="900" food="900" time="3240"/>
+    <ItemSpec id="707010" tab="7" gold="1000" mineral="1000" oil="1000" food="1000" time="3600"/>
+  </Group>
+</tns:database>

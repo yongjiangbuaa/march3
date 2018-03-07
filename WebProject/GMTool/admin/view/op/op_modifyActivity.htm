@@ -1,0 +1,41 @@
+<!--{template header}-->
+<div class="alert alert-info">修改随机活动<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=modifyActivity" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>随机活动</span>
+<br/>
+<textarea id="contents" name="contents" rows="6" cols="80">{$item['events']}</textarea>
+<br/><br/>
+<input class="display:none;" type="hidden" value="{$item['uid']}" id="activityuid" name="activityuid"/>
+<input class="display:none;" type="hidden" value="{$item['events']}" id="events" name="events"/>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="修改" name="btn_view" onclick="check_submit('modify')" />
+</div>
+</div><br/>
+</form>
+<script type="text/javascript">
+
+function check_submit(type) {
+	var uid = $('#activityuid').val();
+	if(uid == "") {
+		alert("该周不随机，不能修改");
+		return;
+	}
+	var contents = jQuery.trim($('#contents').val());
+	if(contents == "") {
+		alert("不能为空！");
+		return;
+	}
+	var events = $('#events').val();
+	if(contents == events){
+		alert("活动未做修改");
+		return;
+	}
+	if(confirm('确定要修改吗？')){
+		document.getElementById('action').value = type;
+		document.getaccount.submit();
+	}
+}
+</script>
+<!--{template footer}-->

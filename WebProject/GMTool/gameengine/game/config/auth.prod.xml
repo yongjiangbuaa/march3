@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- 安全认证配置文件 -->
+<!-- 前后台oauth加密认证配置 -->
+<oauth>
+	<!-- oauth认证过期时间，单位为秒 -->
+	<expires>86400</expires>
+	<!--
+	default=0表示默认不开启安全认证，但是会对services中enabled数组中定义的service进行安全认证
+	default=1表示默认开启安全认证，但是不会对services中disabled数组中定义的service进行安全认证
+	-->
+	<default>1</default>
+	<services>
+		<enabled>
+			<!--
+			<UserService.doPlatformLogin/>
+			-->
+		</enabled>
+		<disabled>
+		</disabled>
+	</services>
+</oauth>
+<!-- GM模块前后台oauth加密认证配置 -->
+<admin>
+	<!-- oauth认证过期时间，单位为秒 -->
+	<expires>86400</expires>
+	<!-- default=0表示关闭GM模块安全认证，1表示打开 -->
+	<default>1</default>
+</admin>
+</xingcloud:config>

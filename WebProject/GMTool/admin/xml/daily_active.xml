@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Group id="daily_active">
+		<ItemSpec id="1005000000" name="10022000" desc="10022014" pic="baoxiang3"/>
+		<ItemSpec id="1005000001" name="10022001" desc="10022015" pic="pichuochuan_01"/>
+		<ItemSpec id="1005000002" name="10022002" desc="10022016" pic="quest_Monster0_icon1"/>
+		<ItemSpec id="1005000003" name="10022003" desc="10022017" pic="quest_Barrack_icon1"/>
+		<ItemSpec id="1005000004" name="10022004" desc="10022018" pic="quest_Fortress_icon1"/>
+		<ItemSpec id="1005000005" name="10022005" desc="10022019" pic="quest_Hospital_icon1"/>
+		<ItemSpec id="1005000006" name="10022006" desc="10022020" pic="quest_Sawmill_icon1"/>
+		<ItemSpec id="1005000007" name="10022007" desc="10022021" pic="quest_BigCastle_icon1"/>
+		<ItemSpec id="1005000008" name="10022008" desc="10022022" pic="Clear_Debris"/>
+		<ItemSpec id="1005000009" name="10022009" desc="10022023" pic="Kill_Animals"/>
+		<ItemSpec id="1005000010" name="10022010" desc="10022024" pic="quest_College_icon1"/>
+		<ItemSpec id="1005000011" name="10022011" desc="10022025" pic="quest_Embassy_icon1"/>
+		<ItemSpec id="1005000012" name="10022012" desc="10022026" pic="quest_Embassy_icon1"/>
+		<ItemSpec id="1005000013" name="10022013" desc="10022027" pic="quest_Wishing well_icon1"/>
+		<ItemSpec id="1005000014" name="10022004" desc="10022018" pic="quest_Fortress_icon1"/>
+		<ItemSpec id="1005000015" name="133110" desc="10022020" pic="tile_pop_icon36"/>
+		<ItemSpec id="1005000016" name="10022032" desc="10022020" pic="tile_pop_icon37"/>
+		<ItemSpec id="1005000017" name="133172" desc="10022020" pic="tile_pop_icon38"/>
+		<ItemSpec id="1005000018" name="10022033" desc="10022020" pic="tile_pop_icon39"/>
+		<ItemSpec id="1005000019" name="161006" desc="10022030" pic="quest_Dungeon"/>
+		<ItemSpec id="1005000020" name="10022034" desc="10022031" pic="quest_Visit_friends"/>
+		<ItemSpec id="1005000021" name="10022036" desc="10022038" pic="quest_equip_material"/>
+		<ItemSpec id="1005000022" name="10024156" desc="10022039" pic="quest_explore"/>
+	</Group>
+	</tns:database>

@@ -1,0 +1,88 @@
+<!--{template header}-->
+<form action="admincp.php?mod=stat&act=dailyActive" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "每日活跃任务";?><font color="red"></font></div>
+$serverDiv
+起始时间<input class="input-large focused" id="start" name="start" type="text" placeholder="点击选择日期" value="{$start}" />
+结束时间<input class="input-large focused" id="end" name="end" type="text" placeholder="点击选择日期" value="{$end}" />
+版本号
+    <select id="selectAppVersion" name="selectAppVersion" onchange="">
+        <!--{loop $appVersionList $appVersion $appVersionname}-->
+        <!--{if ($currAppVersion == $appVersion)}-->
+        <option value="{$appVersion}" selected="selected">{$appVersionname}</option>
+        <!-- {else} -->
+        <option value="{$appVersion}">{$appVersionname}</option>
+        <!-- {/if} -->
+        <!--{/loop}-->
+    </select>
+    <!--{if $allServerFlag}-->
+    <input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+    <!--{else}-->
+    <input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+    <!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据" />
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+
+<hr/>
+    <input class="display:none;" type="hidden" value="" id="event" name="event"/>
+</form>
+<div id='show' style="float:left;width:105%;height:auto">
+    {$html}
+</div>
+
+<script type="text/javascript">
+    function getLogData(){
+
+        document.getElementById('event').value = 'platform';
+        document.getElementById('btn_view').disabled=true;
+        document.getaccount.submit();
+    }
+    init();
+    function init(){
+        $("#start").datetimepicker();
+        $("#end").datetimepicker();
+    }
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                    showLogin(getLogData);
+                    return;
+                }
+                right.innerHTML=xmlHttp.responseText;
+                document.getElementById('btn_view').disabled=false;
+                document.getElementById('btn_out').disabled=false;
+                document.getaccount.submit();
+                return;
+            }
+        }
+    }
+    function serverall(){
+        var currentObj = document.getElementById('all_server');
+        var objs=document.getElementsByTagName("input");
+        for(i=0;i<objs.length;i++){
+            var objId = objs[i].id.split('_');
+            if(objId[0]=='server'){
+                objs[i].checked = currentObj.checked;
+            }
+        }
+    }
+    function checkserverall(){
+        document.getElementById('all_server').checked = true;
+        var objs=document.getElementsByTagName("input");
+        for(i=0;i<objs.length;i++){
+            var objId = objs[i].id.split('_');
+            if(!objs[i].checked&&objId[0]=='server')
+            {
+                document.getElementById('all_server').checked = false;
+                break;
+            }
+        }
+    }
+    function getXlsData(){
+        document.getElementById('event').value = 'output';
+        document.getElementById('btn_out').disabled=true;
+        document.getaccount.submit();
+    }
+</script>
+<!--{template footer}-->

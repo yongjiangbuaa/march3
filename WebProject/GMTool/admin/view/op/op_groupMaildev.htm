@@ -1,0 +1,160 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "给多个用户发送邮件,会自动查询玩家所在服(测试,暂时不能用)";?><font color="red">$tip</font></div>
+<input type="radio" id="manage" name="keyType" value="view" onclick="changeType()" checked /> 查看已发邮件
+<input type="radio" id="add" name="keyType" value="add" onclick="changeType()" /> 发送新邮件
+<div id="manageDiv">
+	<div id='show' style="width:100%;float:left;height:450px;"></div>
+</div>
+<form action="admincp.php?mod=op&act=groupMaildev" method="post" name="getaccount" enctype="multipart/form-data">
+	<input class="display:none;" type="hidden" value="" id="type" name="type" />
+	<input class="display:none;" type="hidden" value="" id="mailUid" name="mailUid" />
+	<div id="addDiv" style="display:none">
+	<table class="listTable" cellspacing=1 padding=0 style="width: 40%; text-align: center">
+		<tr>
+		<td>UID&nbsp;&nbsp;(多个uid用','分割)</td>
+		<!--<td><input class="input-large focused" id="uids" name="uids" type="text" value="" /></td></tr>-->
+			<td><textarea id="uids" name="uids" rows="6" cols="80"></textarea></td></tr>
+		<tr><td>邮件标题</td><td><input class="input-large focused" id="title" name="title" type="text" value="" maxlength=40 /></td></tr>
+		<tr><td>邮件内容</td><td><textarea  id="contents" name="contents" rows="6" cols="80"></textarea></td></tr>
+		<tr><td>附件奖励<font color="red"><br/>多个ID用'|'分隔<br/>数量也对应用'|'分开</font></td>
+			<td>
+				<button type="button" class="btn btn-info" id="rewardButton" name="btn_set1" onclick="showReward('rewardButton','rewardTable')">展开</button>
+				<table id="rewardTable" class="smallTable" style="display:none;border:none">
+					<tr><td>金币</td><td><input id="reward_gold" name="reward_gold" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>木材</td><td><input name="reward_wood" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>粮食</td><td><input name="reward_food" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>秘银</td><td><input name="reward_stone" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>铁矿</td><td><input name="reward_iron" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>道具ID</td><td><input name="reward_goods" type="text" value="" /></td></tr>
+					<tr><td>数量</td><td><input id="reward_goodsNum" name="reward_goodsNum" type="text" value="" /></td></tr>
+				</table>
+			</td>
+		</tr>
+		<tr><td></td>
+			<td>
+				<button type="button" class="btn btn-info" name="btn_set" id="btn_set" onclick="checksubmit('add')">添加</button>
+				<button type="reset" class="btn">重置</button>
+			</td>
+		</tr>
+	</table>
+	</div>
+</form>
+<script type="text/javascript">
+function showReward(buttonId,showId){
+	document.getElementById(buttonId).style.display = 'none';
+	document.getElementById(showId).style.display = 'inline-table';
+}
+function changeType(){
+	if(document.getElementById('add').checked)
+	{
+		document.getElementById('manageDiv').style.display = 'none';
+		$('#addDiv').show();
+	}
+	if(document.getElementById('manage').checked)
+	{
+		document.getElementById('addDiv').style.display = 'none';
+		$('#manageDiv').show();
+	}
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+function sendReward(mailUid){
+	document.getElementById('type').value = 'sendReward';
+	document.getElementById('mailUid').value = ''+mailUid;
+	document.getaccount.submit();
+}
+function checksubmit(type){
+	if(type == 'add'){
+		var uids = $('#uids').val();
+		var inputTitle = $('#title').val();
+		var inputContents = $('#contents').val();
+		var gold = $('#reward_gold').val();
+		var content = $('#reward_goodsNum').val();
+		var numarr = content.split('|');
+		if(isEmpty(uids)){
+			alert("<?php echo "please input uids";?>");
+			$("#uids").focus();
+			return false;
+		}
+		if(isEmpty(inputTitle)){
+			alert("<?php echo "please input title";?>");
+			$("#title").focus();
+			return false;
+		}
+		if(isEmpty(inputContents)){
+			alert("<?php echo "please input contents";?>");
+			$("#contents").focus();
+			return false;
+		}
+		if(gold>30000){
+			alert("<?php echo "the number of gold should be less than 10000";?>");
+			checkEn();
+			$("#reward_gold").focus();
+			return false;
+		}
+		var num;
+		for(var i=0; i<numarr.length; i++) {
+			num = parseInt(numarr[i]);
+			if(num>1000){
+				if(!confirm("<?php echo "Are You Sure the Nums is bigger than 1000   确定道具数量大于1000";?>")){
+					checkEn();
+					$("#reward_goodsNum").focus();
+					return false;
+				}
+			}
+			if(num>10000){
+				$("#reward_goodsNum").focus();
+				alert("<?php echo "the number of num > 10000 !!!!";?>");
+				return false;
+			}
+		}
+	}
+	if(confirm('确认提交?')) {
+		document.getElementById('btn_set').disabled = true;
+
+		document.getElementById('type').value = type;
+		document.getaccount.submit();
+	}
+}
+getData(1);
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	var url ='admincp.php?mod=op&act=groupMaildev&page='+page;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin();
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+		document.getElementById('btn_set').disabled=false;
+
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

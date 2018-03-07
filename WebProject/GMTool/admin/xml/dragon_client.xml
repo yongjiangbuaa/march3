@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:database xmlns:ns1="http://www.iw.com/sns/platform/">
+	<Group id="dragon_client">
+		<!--  name龙名字;description龙描述;icon龙图标;type龙类型;dragon_egg龙蛋;element_name元素名字;element_icon1元素小图标;element_icon2元素大图标;dragon_march龙城外行走特效  -->
+        <!--  effects_fly邮件战斗动画中龙的飞行特效 格式-(粒子效果:X:Y);effects_hit邮件战斗动画中龙的命中特效  -->
+		<ItemSpec id="150001000" name="10039001" description="10039001" icon="ico150001000_small" type="1" dragon_egg="BADragonEgg_fire" element_name="10039012" element_icon1="4_dragon_pro_1.png" element_icon2="item100001106.png" egg_description="10039009" dragon_march="0" effects_fly="dragon_fireball_BS:0:0|dragon_fireball_tuowei:0:0|dragon_fireball_hexin:0:0" effects_hit="dragon_fireboom_feisan:0:0|dragon_fireboom_feisanan:0:2|dragon_fireboom_gaoyan:0:4|dragon_fireboom_kuosan:0:3|dragon_fireboom_lizi:0:5"/>
+		<ItemSpec id="150002000" name="10039136" description="10039136" icon="ico150002000_small" type="2" dragon_egg="BADragonEgg_ice" element_name="10039013" element_icon1="4_dragon_pro_2.png" element_icon2="item100001110.png" egg_description="10039009" dragon_march="180" effects_fly="icedargon_attack_1:-5:0|icedargon_attack_2:1:0|icedargon_attack_3:0:0" effects_hit="icedargon_hit_1:0:3|icedargon_hit_2:0:1|icedargon_hit_3:0:0|icedargon_hit_4:0:3|icedargon_hit_5:0:3|icedargon_hit_6:0:2"/>
+		<ItemSpec id="150003000" name="10039003" description="10039003" icon="ico150003000_small" type="3" dragon_egg="BADragonEgg_rock" element_name="10039014" element_icon1="4_dragon_pro_3.png" element_icon2="item100001114.png" egg_description="10039009" dragon_march="170" effects_fly="" effects_hit=""/>
+	</Group>
+</ns1:database>

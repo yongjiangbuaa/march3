@@ -1,0 +1,60 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=banRecord" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" id="btn_view" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<th>编号</th>
+		<!--{loop $title $tKey $tValue}-->
+			<th>$tValue</th>
+		<!--{/loop}-->
+	</tr>
+	<!--{loop $data $indexKey $dbData}-->
+		<tr>
+			<td>$indexKey</td>
+			<!--{loop $title $tKey $tValue}-->
+				<td>$dbData[$tKey]</td>
+			<!--{/loop}-->
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputUid = $('#useruid').val();
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputUid)){
+		alert("请输入玩家uid");
+		$("#useruid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(isCommit()){
+	  document.getElementById('action').value = type;
+	  document.getElementById('btn_view').disabled=true;
+	  document.getaccount.submit();
+	}
+}
+
+</script>
+<!--{template footer}-->

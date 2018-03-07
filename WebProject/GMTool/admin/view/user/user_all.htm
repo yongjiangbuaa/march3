@@ -1,0 +1,117 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询用户信息";?><font color="red"></font></div>
+	<form action="admincp.php?mod=user&act=all" method="POST" name="getaccount" >
+	<span>用户名</span>
+	<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+	<span>用户UID</span>
+	<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+	<span>用户平台ID</span>
+	<span><input type="text" id="userplat" name='userplat' value='{$userplat}'/></span>
+	<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+	<input class="display:none;" type="hidden" value="disable" id="action" name="action"/>
+	</form>
+<!--{if $showData}-->
+<table class="table table-striped" >
+	<tr>
+		<th>角色名：</th><td>{$userProfile[name]}</td>
+		<th>玩家ID：</th><td>{$userProfile[uid]}</td>
+		<th>平台ID：</th><td>{$userProfile[platformAddress]}</td>
+	</tr>
+	<tr>
+		<th>账号创建时间：</th><td>{$userProfile[registerTime]}</td>
+		<th>最后登录时间：</th><td>{$userProfile[lastLoadTime]}</td>
+	 	<th>总在线时长：</th><td>{$userProfile[playerOnlineTime]}</td>
+	</tr>
+	<tr>
+		<th>玩家等级：</th><td>{$userProfile[level]}</td>
+		<th>VIP等级：</th><td>{$userProfile[vip]}</td>
+		<th></th><td></td>
+	</tr>
+	<tr>
+		<th>金币数量：</th><td>{$userProfile[user_gold]}</td>
+		<th>礼券数量：</th><td>{$userProfile[system_gold]}</td>
+		<th>银币数量：</th><td>{$userProfile[city][money]}</td>
+	</tr>
+	<tr>
+		<th>主城等级：</th><td>{$userProfile[city][level]}</td>
+	 	<th>主将经验：</th><td>{$userProfile[lord][commandExp]}</td>
+		<th>经验池经验：</th><td>{$userProfile[lord][attrPoint]}</td>
+	</tr>
+	<tr>
+ 	<th>可招新兵：</th><td>{$userProfile[city][soldiers]}</td>
+ 	<th>已招士兵：</th><td>{$userProfile[city][forces]}</td>
+ 	<th></th><td></td>
+	</tr>
+	<tr>
+ 	<th>在线状态：</th><td><!-- {if $online} -->在线<input class='btn js-btn btn-primary' type='submit' value='强制下线' onclick='kickout()' /><!-- {else} -->离线<!-- {/if} --></td>
+ 	<th>战斗力：</th><td>{$userProfile[fightPower]}</td>
+ 	<th></th><td></td>
+	</tr>
+	<tr>
+		<th>禁言结束时间</th>
+		<!--{if $userProfile[speakingForbid]}-->
+		<td>{$userProfile['speakingForbid']}	<input class="btn js-btn btn-primary" type="button" value="立即解禁" name="btn_edit" onclick="check_submit('unSpeakingForbid')" /></td>
+		<!--{else}-->
+		<td></td>
+		<!--{/if}-->
+		<th>封号结束时间</th>
+		<!--{if $userProfile[seize]}-->
+		<td>{$userProfile['seize']} <input class="btn js-btn btn-primary" type="button" value="立即解封" name="btn_edit" onclick="check_submit('unSeize')" /></td>
+		<!--{else}-->
+		<td></td>
+		<!--{/if}-->
+		<th></th><td></td>
+	</tr>
+</table>
+<!--{/if}-->
+<script type="text/javascript">
+function kickout(){
+	var url = 'admincp.php?mod=user&act=all&action=kickout&username='+$("#username").val()+'&useruid='+$("#useruid").val()+'&userplat='+$("#userplat").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = kickback;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function kickback(){
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin();
+				return;
+			}
+			alert(xmlHttp.responseText);
+			window.location.href='admincp.php?mod=user&act=all&type=read&username='+$("#username").val()+'&useruid='+$("#useruid").val()+'&userplat='+$("#userplat").val();
+			return;
+		}
+	}
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputPlat = $('#userplat').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputPlat = jQuery.trim(inputPlat);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputPlat)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#username").val(" ");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(isCommit()){
+	  document.getElementById('action').value = type;
+	  document.getaccount.submit();
+	}
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,7 @@
+</div>
+<div class="center">
+<table border="0" cellpadding="3" width="600">
+<tr class="h"><td>
+<h1 class="p">{{$xingcloud}}</h1>
+</td></tr>
+</table></div></body></html>

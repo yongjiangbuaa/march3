@@ -1,0 +1,137 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=modify&act=lord" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+<span>用户名</span>
+<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;">
+<tbody>
+	<tr>
+	<th align="center"  width="30%">属性</th>
+	<th align="center"  width="30%">值</th>
+	<th align="center" width="40%">修改值</th>
+	</tr>
+	<!--{loop $dbArray $dbName $dbData}-->
+		<tr>
+			<td><input type="text" id="key_{$dbName}" value="{$dbData['name']}" size="20" class="input-xlarge disabled uneditable-input" readonly="readonly"></td>
+			<td>$item[$dbName]</td>
+			<!--{if $dbData['uneditable']}-->
+				<td></td>
+			<!--{else}-->
+				<td><input type="text" id="value_{$dbName}" name="value_{$dbName}" size="50" value="">
+				<input type="hidden" id="type_{$dbName}" value="INT"  readonly='readonly'></td>
+			<!--{/if}-->
+		</tr>
+	<!--{/loop}-->
+	<tr>
+	<td colspan="3"><p class="pull-right">	
+	<input class="btn js-btn btn-danger" type="button" value="{$MALANG['btn_edit']}" name="btn_edit" onclick="check_submit('edit')" />
+	</p></td>
+	</tr>
+</tbody>
+</table>
+<!--{/if}-->
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function lookup(inputValue,flg){
+	var hideValue;
+    if(flg == "xp"){
+    	hideValue = $("#hideXp").val();
+    }else if(flg == "socialxp"){
+    	hideValue = $("#hideSocialxp").val();
+    }
+    if(hideValue == null || hideValue == ""){
+    	hideValue =0;
+    }
+    //alert(inputValue+" : "+hideValue);
+	if(inputValue < hideValue){
+		if(flg == "xp"){
+			$("#xpNoticView").text("{$MALANG['info_user_notice_xp']}");
+			$("#xpNoticView").addClass("pcolor");
+		}else if(flg == "socialxp"){
+			$("#socialxpNoticView").text("{$MALANG['info_user_notice_socialxp']}");
+			$("#socialxpNoticView").addClass("pcolor");
+		}
+	}else{
+		if(flg == "xp"){
+			$("#xpNoticView").empty();
+		}else if(flg == "socialxp"){
+			$("#socialxpNoticView").empty();
+		}
+	   
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputPlat = $('#userplat').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputPlat = jQuery.trim(inputPlat);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputPlat)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#username").val(" ");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function delete_user() {
+	if(document.getElementById('reason').value == ""){
+		alert("{$MALANG['info_user_deluser_reason_null']}");
+		return false;
+	}
+	if(confirm("{$MALANG['info_user_deluser_confirm']}")){
+		check_submit('delete');
+	}
+	return true;
+}
+function undisable_user() {
+	if(confirm("{$MALANG['info_user_undisableuser_confirm']}")){
+		check_submit('undisable');
+	}
+}
+function disable_user() {
+	if(document.getElementById('reason').value == ""){
+		alert("{$MALANG['info_user_deluser_reason_null']}");
+		return false;
+	}
+	var days = prompt("{$MALANG['info_user_disableuser_days']}","");
+	if(days){
+		document.getElementById('days').value = days;  
+		check_submit('disable');
+	}
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+	else if(confirm("确定当前操作"))
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

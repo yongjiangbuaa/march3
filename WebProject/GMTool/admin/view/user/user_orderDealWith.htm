@@ -1,0 +1,147 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=orderDealWith&analyze=user" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>订单号</span>
+<span><input type="text" id="orderId" name="orderId" value='{$orderId}' style="width: 500px;"/></span>
+<br>
+<span>设备ID(或fbuid)</span>
+<span><input type="text" id="deviceId" name="deviceId" value='{$deviceId}' style="width: 300px;"/></span>
+<span>UID</span>
+<span><input type="text" id="uid" name="uid" value='{$uid}' style="width: 300px;" /></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" id="btn_view" name="btn_view" onclick="getData()" />
+</div>
+</div><hr/>
+
+<!--{if $showData}-->
+<strong>设备ID(或fbuid)上所有的uid</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<!--{loop $title $indexKey $tValue}-->
+		<th align="center">$tValue</th>
+	<!--{/loop}-->
+	</tr>
+	<!--{loop $log $uidKey $dbValue}-->
+				<tr>
+					<!--{loop $dbValue $key $value}-->
+						<td>$value</td>
+					<!--{/loop}-->
+				</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<strong>支付明细</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;width:auto;">
+<tbody>
+	<tr>
+	<!--{loop $payLog[0] $pKey $ptValue}-->
+		<th align="left">$pKey</th>
+	<!--{/loop}-->
+	</tr>
+	<!--{loop $payLog $uidpKey $dbpValue}-->
+				<tr>
+					<!--{loop $dbpValue $key $value}-->
+						<td>$value</td>
+					<!--{/loop}-->
+				</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<strong>礼包详细信息</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;width:auto;">
+<tbody>
+	<tr>
+	<!--{loop $packLog[0] $paKey $patValue}-->
+		<th align="left">$paKey</th>
+	<!--{/loop}-->
+	</tr>
+	<!--{loop $packLog $uidpaKey $dbpaValue}-->
+				<tr>
+					<!--{loop $dbpaValue $key $value}-->
+						<td>$value</td>
+					<!--{/loop}-->
+				</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<strong>金币变化明细</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;width:auto;">
+<tbody>
+	<tr>
+	<!--{loop $goldLog[0] $gKey $gValue}-->
+		<th align="left">$gKey</th>
+	<!--{/loop}-->
+	</tr>
+	<!--{loop $goldLog $uidgKey $dbgValue}-->
+				<tr>
+					<!--{loop $dbgValue $key $value}-->
+						<td>$value</td>
+					<!--{/loop}-->
+				</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<strong>物品变化明细</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;width:auto;">
+<tbody>
+	<tr>
+	<!--{loop $itemLog[0] $iKey $iValue}-->
+		<th align="left">$iKey</th>
+	<!--{/loop}-->
+	</tr>
+	<!--{loop $itemLog $uidiKey $dbiValue}-->
+				<tr>
+					<!--{loop $dbiValue $key $value}-->
+						<td>$value</td>
+					<!--{/loop}-->
+				</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<div id='show' style="width:100%;float:left;height:auto"></div>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+
+function isCommit(){
+	var orderId = $('#orderId').val();
+	var inputDeviceId = $('#deviceId').val();
+	var inputUid = $('#uid').val();
+	orderId = jQuery.trim(orderId);
+	inputDeviceId = jQuery.trim(inputDeviceId);
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(orderId)){
+		alert("order id is empty");
+		$("#orderId").focus();
+		return false;
+	}
+	if(isEmpty(inputDeviceId) && isEmpty(inputUid)){
+		alert("ID or UID is empty");
+		$("#deviceId").focus();
+		return false;
+	}
+	return true;
+}
+function getData() {
+	if(isCommit()){
+		document.getElementById('btn_view').disabled=true;
+		document.getaccount.submit();
+	}
+}
+</script>
+<!--{template footer}-->

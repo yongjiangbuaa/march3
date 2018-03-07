@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Le styles -->
+<link href="bootstrap/css/bootstrap.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-theme.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/dashboard.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/font-awesome.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/site.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/signin.css?v=$cssVersion" rel="stylesheet">
+<script type="text/javascript">
+function checkLogin(){
+	var user = $("#user").val();
+	if(!jQuery.trim(user)){
+		alert("{$MALANG['login_failed_username_null']}");
+		$("#user").val("");
+		$("#user").focus();
+		return false;
+	}
+	var password = jQuery.trim($("#password").val());
+	if(password.length < 4){
+		alert("{$MALANG['login_failed_password_null']}");
+		$("#password").val("");
+		$("#password").focus();
+		return false;
+	}
+	return true;
+}
+</script>
+<title>{$indexPageTitle}</title>
+</head>
+<body>
+<div class="container">
+	<form role="form" class="form-signin" action="admincp.php" method="post" name="getaccount" >
+		<h2 class="form-signin-heading">{$indexPageTitle}登陆</h2>
+		<input type="text" name="user" autofocus="" required="" placeholder="用户名" class="form-control">
+		<input type="password" name="password" required="" placeholder="密码" class="form-control">
+		<button type="submit" class="btn btn-lg btn-primary btn-block" onclick="checkLogin">登陆</button>
+	</form>
+</div>
+</body>
+</html>

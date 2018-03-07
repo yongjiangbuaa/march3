@@ -1,0 +1,95 @@
+<!--{template header}-->
+<div class="alert alert-info">根据UID查询战力变化明细<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=powerChange" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<br>
+<span>UID</span>
+<span><input type="text" id="userId" name="userId" value='{$userId}'></input></span>
+	<?php echo $selectEventCtl;?>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th align="center">时间</th>
+			<th align="center">总战力</th>
+			<th align="center">变化值</th>
+			<th align="center">变化原因</th>
+				<th align="center">任务</th>
+				<th align="center">玩家</th>
+				<th align="center">天赋</th>
+				<th align="center">英雄</th>
+				<th align="center">军队</th>
+				<th align="center">建筑</th>
+				<th align="center">科技</th>
+				<th align="center">陷阱</th>
+				<th align="center">装备</th>
+				<th align="center">龙</th>
+
+			</tr>
+			<!--{loop $data $key $dbData}-->
+					<tr>
+						<td>$dbData['timeStamp']</td>
+						<td>$dbData['power']</td>
+						<td>$dbData['powerChange']</td>
+						<td>$dbData['reason']</td>
+						<td>$dbData['questpower']</td>
+						<td>$dbData['playerPower']</td>
+						<td>$dbData['talentPower']</td>
+						<td>$dbData['heroPower']</td>
+						<td>$dbData['armyPower']</td>
+						<td>$dbData['buildingPower']</td>
+						<td>$dbData['sciencePower']</td>
+						<td>$dbData['fortPower']</td>
+						<td>$dbData['equipPower']</td>
+						<td>$dbData['dragonPower']</td>
+					</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>
+
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputUid = $('#userId').val();
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputUid)){
+		alert("UID不能为空!");
+		$("#userId").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

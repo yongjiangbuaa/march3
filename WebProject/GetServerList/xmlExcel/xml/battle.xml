@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="initgeneral_plan">
+    <ItemSpec id="7101001" type="0" battletime="50" reward="6000001" soldier_lose="0" arm_type="111" resource="100" arm1="2600101"/>
+    <ItemSpec id="7101002" type="0" battletime="50" reward="6000002" soldier_lose="0" arm_type="110" resource="100" arm1="2600201"/>
+    <ItemSpec id="7101003" type="0" battletime="50" reward="6000003" soldier_lose="0" arm_type="101" resource="100" arm1="2600301"/>
+    <ItemSpec id="7101004" type="0" battletime="50" reward="6000001" soldier_lose="0" arm_type="11" resource="100" arm1="2600401"/>
+    <ItemSpec id="7101005" type="0" battletime="50" reward="6000002" soldier_lose="0" arm_type="111" resource="100" arm1="2600501"/>
+    <ItemSpec id="7101006" type="0" battletime="50" reward="6000003" soldier_lose="0" arm_type="111" resource="100" arm1="2600601"/>
+    <ItemSpec id="7101007" type="0" battletime="50" reward="6000001" soldier_lose="0" arm_type="111" resource="100" arm1="2600701"/>
+    <ItemSpec id="7101008" type="0" battletime="50" reward="6000002" soldier_lose="0" arm_type="111" resource="100" arm1="2600801"/>
+    <ItemSpec id="7101009" type="0" battletime="50" reward="6000003" soldier_lose="0" arm_type="111" resource="100" arm1="2600901"/>
+    <ItemSpec id="7101010" type="0" battletime="50" reward="6000001" soldier_lose="0" arm_type="111" resource="100" arm1="2601001"/>
+    <ItemSpec id="7101011" type="0" battletime="50" reward="6000002" soldier_lose="0" arm_type="111" resource="100" arm1="2601101"/>
+    <ItemSpec id="7101012" type="0" battletime="50" reward="6000003" soldier_lose="0" arm_type="111" resource="100" arm1="2601201"/>
+    <ItemSpec id="7101013" type="0" battletime="50" reward="6000001" soldier_lose="0" arm_type="111" resource="100" arm1="2601301"/>
+    <ItemSpec id="7101014" type="0" battletime="50" reward="6000002" soldier_lose="0" arm_type="111" resource="100" arm1="2601401"/>
+    <ItemSpec id="7101015" type="0" battletime="50" reward="6000003" soldier_lose="0" arm_type="111" resource="100" arm1="2601501"/>
+    <ItemSpec id="7101101" type="0" battletime="50" reward="6000001" soldier_lose="100" arm_type="111" resource="100" arm1="2610101"/>
+    <ItemSpec id="7101102" type="0" battletime="50" reward="6000002" soldier_lose="100" arm_type="111" resource="100" arm1="2610201"/>
+    <ItemSpec id="7101103" type="0" battletime="50" reward="6000003" soldier_lose="100" arm_type="111" resource="100" arm1="2610301"/>
+    <ItemSpec id="7101104" type="0" battletime="50" reward="6000001" soldier_lose="100" arm_type="111" resource="100" arm1="2610401"/>
+    <ItemSpec id="7101105" type="0" battletime="50" reward="6000002" soldier_lose="100" arm_type="111" resource="100" arm1="2610501"/>
+    <ItemSpec id="7101106" type="0" battletime="50" reward="6000003" soldier_lose="100" arm_type="111" resource="100" arm1="2610601"/>
+    <ItemSpec id="7101107" type="0" battletime="50" reward="6000001" soldier_lose="100" arm_type="111" resource="100" arm1="2610701"/>
+    <ItemSpec id="7101108" type="0" battletime="50" reward="6000002" soldier_lose="100" arm_type="111" resource="100" arm1="2610801"/>
+    <ItemSpec id="7101109" type="0" battletime="50" reward="6000003" soldier_lose="100" arm_type="111" resource="100" arm1="2610901"/>
+    <ItemSpec id="7101110" type="0" battletime="50" reward="6000001" soldier_lose="100" arm_type="111" resource="100" arm1="2611001"/>
+    <ItemSpec id="7101111" type="0" battletime="50" reward="6000002" soldier_lose="100" arm_type="111" resource="100" arm1="2611101"/>
+    <ItemSpec id="7101112" type="0" battletime="50" reward="6000003" soldier_lose="100" arm_type="111" resource="100" arm1="2611201"/>
+    <ItemSpec id="7101113" type="0" battletime="50" reward="6000001" soldier_lose="100" arm_type="111" resource="100" arm1="2611301"/>
+    <ItemSpec id="7101114" type="0" battletime="50" reward="6000002" soldier_lose="100" arm_type="111" resource="100" arm1="2611401"/>
+    <ItemSpec id="7101115" type="0" battletime="50" reward="6000003" soldier_lose="100" arm_type="111" resource="100" arm1="2611501"/>
+    <ItemSpec id="7110001" type="1" battletime="50" times="10" reward="6000001" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2004101,2004201,2004301,2004401,2004501,2004601,2004701,2004801,2004901,2005001,2005101,2005201,2005301,2005401,2005501,2005601,2005701,2005801,2005901,2006001" arm2="2004103,2004203,2004303,2004403,2004503,2004603,2004703,2004803,2004903,2005003,2005103,2005203,2005303,2005403,2005503,2005603,2005703,2005803,2005903,2006003"/>
+    <ItemSpec id="7120001" type="2" battletime="50" times="5" reward="6000001" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2002101,2002201,2002301,2002401,2002501,2002601,2002701,2002801,2002901,2003001,2003101,2003201,2003301,2003401,2003501,2003601,2003701,2003801,2003901,2004001" arm2="2002103,2002203,2002303,2002403,2002503,2002603,2002703,2002803,2002903,2003003,2003103,2003203,2003303,2003403,2003503,2003603,2003703,2003803,2003903,2004003"/>
+    <ItemSpec id="7130001" type="3" times="10" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2000101,2000201,2000301,2000401,2000501,2000601,2000701,2000801,2000901,2001001,2001101,2001201,2001301,2001401,2001501,2001601,2001701,2001801,2001901,2002001"/>
+    <ItemSpec id="7140001" type="4" battletime="50" times="10" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2000101,2000201,2000301,2000401,2000501,2000601,2000701,2000801,2000901,2001001,2001101,2001201,2001301,2001401,2001501,2001601,2001701,2001801,2001901,2002001"/>
+    <ItemSpec id="7150001" type="5" battletime="50" times="10" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2000101,2000201,2000301,2000401,2000501,2000601,2000701,2000801,2000901,2001001,2001101,2001201,2001301,2001401,2001501,2001601,2001701,2001801,2001901,2002001"/>
+    <ItemSpec id="7160001" type="6" battletime="20" times="10" soldier_lose="100" arm_type="111" resource="100" para="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20" arm1="2000101,2000201,2000301,2000401,2000501,2000601,2000701,2000801,2000901,2001001,2001101,2001201,2001301,2001401,2001501,2001601,2001701,2001801,2001901,2002001"/>
+    <ItemSpec id="7170001" type="7" battletime="50" soldier_lose="100" arm_type="111" resource="100"/>
+  </Group>
+</tns:database>

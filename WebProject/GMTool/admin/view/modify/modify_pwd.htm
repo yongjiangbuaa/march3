@@ -1,0 +1,114 @@
+<!--{template header}-->
+<div class="alert alert-info" xmlns="http://www.w3.org/1999/html">$title<font color="red">$alert</font></div>
+<form action="admincp.php?mod=modify&act=pwd&type=1" method="POST" style="display: inline-table;">
+    <span>用户名</span>
+    <span><input type="text" id="username" name="username" value='{$username}'></input></span>
+    <span>UID</span>
+    <span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+    <input class="btn js-btn btn-primary" type="submit" value="{$MALANG['btn_view']}" />
+</form>
+<!--{if isset($items) }-->
+<div id="tip" style="font-size:16px;width:auto;height:auto;padding:2px;border:1px solid #000000;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<table class="listTable" style="width: 100%; text-align: center">
+    <tr class="listTr">
+        <!--{loop $dbArray $dbName $dbData}-->
+        <th width=2%>{$dbData['name']}</th>
+        <!--{/loop}-->
+        <th width=2%>操作</th>
+    </tr>
+    <!--{loop $items  $key $value}-->
+    <tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';" >
+        <!--{loop $dbArray $dbName $dbData}-->
+        <!--{if $dbData['editable']}-->
+        <td width="2%" id="$dbName" ><a href="javascript:void(edit('{$username}','{$useruid}','$dbName','$value[$dbName]','{$value['uid']}','{$value['check_key']}'))">$value[$dbName]</a></td>
+        <!--{else}-->
+        <td width="2%">$value[$dbName]</td>
+        <!--{/if}-->
+        <!--{/loop}-->
+        <td width="2%"><a
+                href="javascript:void(deleteLine('{$username}','{$useruid}','{$value['check_key']}'))">删除</a></td>
+    </tr>
+    <!--{/loop}-->
+</table>
+<!--{/if}-->
+
+<br />
+<form
+        action="admincp.php?mod=modify&act=pwd&type=2&username={$username}&useruid={$useruid}&mUid={$useruid}"
+        method="POST">
+    <div class="alert alert-info">添加密码</div>
+    <span>uid</span><span><input type="text" name="mpuid" value=""></span>
+    <span>key</span><span><input type="text" name="mpkey" value=""></span>
+    <span>value</span><span><input type="text" name="mpwd" value=""></span>
+    <input class="btn js-btn btn-danger" type="submit" value="添加" />
+</form>
+
+<script type="text/javascript">
+    var mouseX = 0;
+    var mouseY = 0;
+    $(document).mousemove(function (e) {
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+    var count=0;
+    function doClear(){
+        count++;
+        if(count>=2)
+        {
+            alert('一次只能修改一项,请把未完成的项保存');
+            rightinfo();
+        }
+    }
+    function edit(uname,uuid,vid,num,muid,key) {
+        doClear();
+        unameSide=uname;
+        uuidSide=uuid;
+        modify_name=vid;
+        uid=muid;
+        ukey=key;
+        var tdnode=document.getElementById(ukey).childNodes;
+        for(var i=0; i<tdnode.length; i++)
+        {
+            if(tdnode[i].id==vid+ukey)
+                right=tdnode[i];
+        }
+        var str='<form id="form1" style="margin:0">输入值: <input class="input-mini" name="num" type="text" id="num'+uid+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(num)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+        right.innerHTML=str;
+    }
+    function save(num){
+        var url ='admincp.php?mod=modify&act=pwd&type=3&username='+unameSide+'&useruid='+uuidSide+'&num='+num.value+'&mUid='+mUid+"&vid="+modify_name+"&ukey="+ukey;
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+        alert('成功');
+    }
+
+    function deleteLine(uname, uuid, key) {
+        unameSide = uname;
+        uuidSide = uuid;
+        ukey=key;
+        if (confirm('是否确定删除')) {
+            var url = 'admincp.php?mod=modify&act=pwd&type=4&username='+unameSide+'&useruid='+uuidSide+'&ukey='+ukey;
+            xmlHttp = getAjax();
+            xmlHttp.onreadystatechange = getAction;
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send(null);
+        }
+    }
+
+    function getAction(){
+        if(xmlHttp.readyState==4 && xmlHttp.status==200){
+            if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                showLogin();
+                return;
+            }
+            rightinfo();
+            return;
+        }
+    }
+    function rightinfo() {
+        self.location='admincp.php?mod=modify&act=pwd&type=1&username='+unameSide+'&useruid='+uuidSide;
+    }
+</script>
+<!--{template footer}-->

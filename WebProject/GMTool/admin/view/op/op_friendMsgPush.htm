@@ -1,0 +1,89 @@
+<!--{template header}-->
+<div id="addDiv">
+	<form action="admincp.php?mod=op&act=friendMsgPush&type=1" method="post" name="getaccount"  action="servlet/fileServlet"  enctype="multipart/form-data">
+		<input class="display:none;" type="hidden" value="" id="type" name="type" />
+		<br>
+
+		$serverDiv
+		<table id="changeTable" class="listTable" cellspacing=1 padding=0 style="width: 90%; text-align: left">
+			<tr id="displayTime"><td>预计发送时间</td><td><input class="input-large fouid、cused" id="startTime" name="startTime" type="hidden" value="" onchange="onchangeStartTime(this.value)"/>半小时后自动发送</td></tr>
+			<tr><td>您的id&nbsp;&nbsp;<span id="uid" style="color: #FF0000"></span></td>
+				<td id="userUid"><textarea class="input-xlarge" id="userid" style="width: 600px;" name="userid" rows="1">1000001</textarea></td>
+			</tr>
+			<tr><td>内容&nbsp;&nbsp;<span id="contentNotice" style="color: #FF0000"></span></td>
+				<td id="content"><textarea class="input-xlarge" id="tcontent" style="width: 600px;" name="tcontent" rows="6"></textarea></td>
+			</tr>
+			<tr><td>請選擇照片&nbsp;&nbsp;<span id="picture" style="color: #FF0000"></span></td>
+				<td id="content_pic"><input type="file" name="file" />
+					</td>
+			</tr>
+			<td></td><td>
+			<input type="submit" name="submit" value="上传" onclick="getMember_uid()"/>
+			<!--<button type="button" class="btn btn-info" name="btn_set" onclick="getMember_uid()">发送</button>-->
+			<button type="reset" class="btn">重置</button></td></tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+	init();
+	$("#startTime").datetimepicker();
+	function init(){
+		$("#regStartTime,#regEndTime,#lastOnlineTimeBegin,#lastOnlineTime").datetimepicker();
+		$("#market_global_startTime,#amazon_startTime,#tstore_startTime,#nstore_startTime,#AppStore_startTime,#cn1_startTime,#cn2_startTime,#cafebazaar_startTime,#facebook_startTime").datetimepicker();
+	}
+	function getAction(){
+		right=document.getElementById('show');
+		if(xmlHttp.readyState==4){
+			if (xmlHttp.status==200){
+				if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+					return;
+				}
+				right.innerHTML=xmlHttp.responseText;
+				document.getElementById('btn_view').disabled=false;
+				document.getaccount.submit();
+				return;
+			}
+		}
+	}
+//	function getMember_data(){
+//		var startTime=$("#startTime").val();
+//		var date = new Date();
+//		var seperator1 = "-";
+//		var seperator2 = ":";
+//		var year = date.getFullYear();
+//		var month = date.getMonth() + 1;
+//		var strDate = date.getDate();
+//		if (month >= 1 && month <= 9) {
+//			month = "0" + month;
+//		}
+//		if (strDate >= 0 && strDate <= 9) {
+//			strDate = "0" + strDate;
+//		}
+//		var currentdate = year + seperator1 + month + seperator1 + strDate
+//				+ " " + date.getHours() + seperator2 + date.getMinutes();
+//		if(startTime<currentdate){
+//			alert($("#tcontent_pic").val());
+//			alert("预计发送时间请大于此刻的北京时间");
+//			return;
+//		}
+//		getMember_uid()
+//	}
+	function getMember_uid(){
+		var userid=$("#userid").val();
+		if(userid!="1000001"){
+			alert("系統默認id為1000001，請不要修改")
+			return;
+		}
+		getMember()
+	}
+	function getMember(){
+		alert("成功!!!@_@");
+		xmlHttp=getAjax();
+		xmlHttp.onreadystatechange = getAction;
+		xmlHttp.open("POST",'admincp.php',true);
+		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		xmlHttp.send(url);
+	}
+
+</script>
+<!--{template footer}-->

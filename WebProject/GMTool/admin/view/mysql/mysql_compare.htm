@@ -1,0 +1,82 @@
+<!--{template header}-->
+<div class="alert alert-info" ><?php echo "比较数据库结构，防止合服数据错误，列表中为原始服";?><font color="red"></font></div>
+原始数据库所在服务器
+<select id="selectOriServer" onchange="">
+		$serverOptions
+</select>
+比较数据库所在服务器
+<select id="selectCmpServer" onchange="">
+		$serverOptions
+</select>
+<input class="btn js-btn btn-primary " type="button" onclick="start()" name="btn_view" value="点击开始查询">
+<div style='TEXT-ALIGN:center;'>
+	<div id='show' style="width:auto;float:left;height:auto;"></div>
+</div>
+<script type="text/javascript">
+function start() {
+	oriSelect = document.getElementById("selectOriServer");
+	cmpSelect = document.getElementById("selectCmpServer");
+	var url ='getstruct.php?&checkTable=true&admin=true&ori='+oriSelect.options[oriSelect.selectedIndex].id+'&cmp='+cmpSelect.options[cmpSelect.selectedIndex].id;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(start);
+			return;
+		}
+		if (xmlHttp.status==200){
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+function getDetail(id){
+	document.getElementById(id+'_detail').style.display = 'table-row-group';
+	right=document.getElementById(id+'_btn');
+	right.innerHTML="<a style='cursor:pointer;' onclick=offDetail('"+id+"')>◆</a>";
+}
+function offDetail(id){
+	document.getElementById(id+'_detail').style.display = 'none';
+	right=document.getElementById(id+'_btn');
+	right.innerHTML="<a style='cursor:pointer;' onclick=getDetail('"+id+"')>◇</a>";
+}
+function openDetail(id){
+	var objs=document.getElementsByTagName("thead");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]==id)
+		{
+			objs[i].style.display = 'table-row-group';
+		}
+	}
+	right=document.getElementById(id+'_btn');
+	right.innerHTML="<a style='cursor:pointer;' onclick=closeDetail('"+id+"')>◆</a>";
+}
+function closeDetail(id){
+	var objs=document.getElementsByTagName("tbody");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0] == id && objId[2] == 'detail' && objs[i].style.display == 'table-row-group')
+		{			
+			offDetail(objId[0]+'_'+objId[1]);
+		}
+	}
+	var objs=document.getElementsByTagName("thead");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]==id)
+		{
+			objs[i].style.display = 'none';
+		}
+	}
+	right=document.getElementById(id+'_btn');
+	right.innerHTML="<a style='cursor:pointer;' onclick=openDetail('"+id+"')>◇</a>";
+}
+</script>
+<!--{template footer}-->

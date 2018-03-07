@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ItemSpec id="240000" attack="5.222" defence="4.778" color="0" power="0" talent="2000" ability="50505"/>
+  <ItemSpec id="240001" attack="5.444" defence="5" color="0" power="0" talent="2001" ability="50504"/>
+  <ItemSpec id="240002" attack="4.333" defence="6.556" color="0" power="0" talent="2002" ability="50501"/>
+  <ItemSpec id="240003" attack="4.556" defence="6.778" color="0" power="0" talent="2003" ability="50520"/>
+  <ItemSpec id="240004" attack="5.667" defence="6.111" color="0" power="0" talent="2004" ability="50521"/>
+  <ItemSpec id="240005" attack="7" defence="5.222" color="0" power="0" talent="2005" ability="50522"/>
+  <ItemSpec id="240006" attack="6.333" defence="6.333" color="0" power="0" talent="2006" ability="50523"/>
+  <ItemSpec id="240007" attack="5.667" defence="7.444" color="0" power="0" talent="2007" ability="50503"/>
+  <ItemSpec id="240008" attack="7.444" defence="6.111" color="0" power="0" talent="2008" ability="50540"/>
+  <ItemSpec id="240009" attack="8.222" defence="5.778" color="0" power="0" talent="2009" ability="50507"/>
+  <ItemSpec id="240010" attack="6.111" defence="8.333" color="0" power="0" talent="2010" ability="50500"/>
+  <ItemSpec id="240011" attack="6.778" defence="8.111" color="0" power="0" talent="2011" ability="50560"/>
+  <ItemSpec id="240012" attack="6.111" defence="9.222" color="1" power="0" talent="2012" ability="50541"/>
+  <ItemSpec id="240013" attack="7" defence="8.778" color="1" power="0" talent="2013" ability="50502"/>
+  <ItemSpec id="240014" attack="9.222" defence="7" color="1" power="0" talent="2014" ability="50500"/>
+  <ItemSpec id="240020" attack="0" defence="0" color="0" power="0"/>
+  <ItemSpec id="241000" attack="0" defence="0"/>
+</tns:database>

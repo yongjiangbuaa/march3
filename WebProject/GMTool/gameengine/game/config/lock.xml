@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- 锁信息配置文件 -->
+
+<memcache>
+	<type>cache</type>
+	<instance>memcache</instance>
+</memcache>
+
+</xingcloud:config>

@@ -1,0 +1,119 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "审核被举报图片";?><font color="red"> 该功能只能选择单个服</font></div>
+<form action="admincp.php?mod=user&act=reportPicture&analyze=user" method="post" name="getaccount">
+
+$serverDiv
+
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询">
+</form>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+function pictureAll(){
+	var currentObj = document.getElementById('all_picture');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='picture'){
+			objs[i].checked = currentObj.checked;
+		}
+	}
+}
+function checkPictureAll(){
+	document.getElementById('all_picture').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='picture')
+		{
+			document.getElementById('all_picture').checked = false;
+			break;
+		}
+	}
+}
+
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function getData(page){
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url ='admincp.php?mod=user&act=reportPicture&analyze=user&selectServer='+$('#selectServer').val()+'&page='+page;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+function picDelete(){
+	var objs=document.getElementsByTagName("input");
+	var pictures='';
+	for(var i=0;i<objs.length;i++){
+		
+		var objId = objs[i].id.split('_');
+		if(objs[i].checked&&objId[0]=='picture')
+		{
+			pictures+=objId[1]+'_'+objId[2]+'|';
+		}
+	}
+	if(!pictures){
+		alert('请选择图片');
+		return;
+	}
+	if(confirm('是否删除所选图片'))
+	{
+		$.get("admincp.php?mod=user&act=auditPicture&event=delete&pictureStr="+pictures,function(data){
+			alert(data);
+			getData(1);
+		}); 
+	}
+}
+function picConfirm(){
+	var objs=document.getElementsByTagName("input");
+	var pictures='';
+	for(var i=0;i<objs.length;i++){
+		
+		var objId = objs[i].id.split('_');
+		if(objs[i].checked&&objId[0]=='picture')
+		{
+			pictures+=objId[1]+'_'+objId[2]+'_'+objId[3]+'|';
+		}
+	}
+	if(!pictures){
+		alert('请选择图片');
+		return;
+	}
+	if(confirm('是否所选图片已通过审核'))
+	{
+		$.get("admincp.php?mod=user&act=reportPicture&event=confirm&pictureStr="+pictures,function(data){
+			alert(data);
+			getData(1);
+		});
+	}
+}
+</script>
+<!--{template footer}-->

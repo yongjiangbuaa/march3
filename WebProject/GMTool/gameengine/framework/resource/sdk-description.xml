@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sdk-description name="PHP SDK">
+<version name="1.1.2.0">
+	<download>
+		<fileset dir="game"/>
+		<fileset dir="public"/>
+		<fileset dir="resource"/>
+		<fileset file="index.php"/>
+	</download>
+	<config dir="game/config"> 
+    </config>
+    <resource dir="resource">
+    </resource>
+	<modules>
+		<module name="Admin" required="false" choose="false">
+			<package>service.admin</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Action" required="false" choose="false">
+			<package>service.action</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Audit Change" required="false" choose="false">
+			<package>service.change</package>
+			<resource>/resource/change</resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Item" required="true" choose="true">
+			<package>service.item</package>
+			<resource>/resource/locale/language</resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Locale" required="true" choose="true">
+			<package>service.locale</package>
+			<resource>/resource/locale</resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Quest" required="false" choose="false">
+			<package>service.quest</package>
+			<resource>/resource/quest</resource>
+			<config></config>
+			<listener id="QuestUpdateListener" class="service.quest.QuestUpdateListener"></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Tutorial" required="false" choose="false">
+			<package>service.tutorial</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="User" required="true" choose="true">
+			<package>service.user</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+	</modules>
+</version>
+</sdk-description>

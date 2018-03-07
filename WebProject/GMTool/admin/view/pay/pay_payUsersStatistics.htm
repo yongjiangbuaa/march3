@@ -1,0 +1,198 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=pay&act=payUsersStatistics&server={$selectServer}" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "查看付费用户曲线";?><font color="red"></font></div>
+
+$serverDiv
+
+<div class="row-fluid">
+<div class="span11">
+起始日期<input id="startDate" name='startDate' type="text" value='{$startDate}' class="input-medium"/>
+结束日期<input id="endDate" name='endDate' type="text" value='{$endDate}' class="input-medium"/>
+
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!-- {else} -->
+
+<!-- {/if} -->
+
+<input class="btn js-btn btn-primary" type="button" value="付费金额统计" name="btn_view" onclick="search('pay')" />
+<input class="btn js-btn btn-primary" type="button" value="付费人数统计" name="btn_view" onclick="search('payuser')" />
+<input class="btn js-btn btn-primary" type="button" value="付费间隔统计" name="btn_view" onclick="search('grap')" />
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+</div>
+</div>
+</form>
+<div id="chart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<!-- {if $data} -->
+	<script language="javascript">
+		var timeFix = new Date().getTimezoneOffset()*60;
+		var showData = [];
+	</script>
+	<!--{loop $data  $date $payLevelData}-->
+		<script language="javascript">
+			var svData = [];
+		</script>
+		<!--{loop $payLevelData  $key $value}-->
+		<script language="javascript">
+			svData.push($value['y']);
+		</script>
+		<!--{/loop}-->
+		<script language="javascript">
+			showData.push({
+						"type":"spline",
+						"name":"$date",
+						"data":svData,
+						"lineWidth": 2,});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart',
+			type: 'area',
+			plotBorderWidth: 1,
+			height:600
+		},
+		title: {
+			text: ''
+		},
+		subtitle: {
+			text: ''
+		},
+        xAxis: {
+            type: 'linear',
+            categories: [
+                         '1',
+                         '2',
+                         '3',
+                         '4',
+                         '5',
+                         '6',
+                         '7',
+                         '8',
+                         '9',
+                         '10',
+                         '11',
+                         '12',
+                         '13',
+                         '14',
+                         '15',
+                         '16',
+                         '17',
+                         '18',
+                         '19',
+                         '20',
+                         '21',
+                         '22',
+                         '23',
+                         '24',
+                         '25',
+                         '26',
+                         '27',
+                         '28',
+                         '29',
+                         '30'
+                     ],
+            title: {
+                text: $title_x
+            }
+        },
+		yAxis: {
+			title: {
+				text: $title
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+			minPadding:1,
+		},
+		tooltip: {
+			formatter: function() {
+			var d = new Date(this.x + timeFix*1000);
+			var s = '<b>'+d.getFullYear() + "-";
+				s += ("0"+(d.getMonth()+1)).slice(-2) + "-";
+				s += ("0"+d.getDate()).slice(-2) + " ";
+				s += ("0"+d.getHours()).slice(-2) + ":";
+				s += ("0"+d.getMinutes()).slice(-2);
+				s += '</b>';
+				$.each(this.points, function(i, point) {
+				    s += '<br/>'+ '<tspan style="fill:'+ point.series.color + '" dy="16" x="5">' + point.series.name +'</tspan>';
+				    s += '<b>: </b>'+ point.y;
+				});
+				return s;
+            },
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			},
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+	<!--{loop $data  $server $serverData}-->
+	$server: $total[$server]<br />
+	<!--{/loop}-->
+<!-- {/if} -->
+<script language="javascript">
+$("#startDate").datetimepicker();
+$("#endDate").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(type){
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){ */
+		document.getElementById('action').value = type;
+		document.getaccount.submit();
+		/* return;
+	}
+	alert("请选择需要查询的服"); */
+}
+</script>
+
+<!--{template footer}-->

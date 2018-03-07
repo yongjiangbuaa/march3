@@ -1,0 +1,63 @@
+<!--{template header}-->
+
+<form action="admincp.php?mod=server&act=monitor&view=metric" method="post" name="monitor_form">
+	服
+	<select id="server_id" name="server_id" onchange="" title="选择单个服查看所有指标">
+		<option value="ALL">全服</option>
+		<!--{loop $server_list $s_id $s_info}-->
+		<!--{if ($server_select == $s_id)}-->
+		<option value="{$s_id}" selected="selected">S{$s_id}</option>
+		<!-- {else} -->
+		<option value="{$s_id}">S{$s_id}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	指标
+	<select id="metric" name="metric" onchange="">
+		<!--{loop $metric_list $m_id $m_name}-->
+		<!--{if ($metric_select == $m_id)}-->
+		<option value="{$m_id}" selected="selected">{$m_name}</option>
+		<!-- {else} -->
+		<option value="{$m_id}">{$m_name}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	时间跨度
+	<select id="time_span" name="time_span" onchange="">
+		<!--{loop $time_span_list $t_id $t_name}-->
+		<!--{if ($time_span == $t_id)}-->
+		<option value="{$t_id}" selected="selected">{$t_name}</option>
+		<!-- {else} -->
+		<option value="{$t_id}">{$t_name}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+
+</form>
+<!--{loop $image_list $id $info}-->
+
+<div style="float: left;margin: 0 0 10px 10px;display: block;width:410px; height: 210px;">
+	<span style="padding-left: 4em; padding-right: 4em; text-weight: bold;position: relative;vertical-align: middle;text-align: center;">{$info['sid']}</span>
+	<img id="graph_img_{$id}" style="margin-top:5px;border: 0;" title="{$info['title']}"
+		 src="{$info['url']}">
+</div>
+<!--{/loop}-->
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.monitor_form.submit();
+}
+
+</script>
+<!--{template footer}-->

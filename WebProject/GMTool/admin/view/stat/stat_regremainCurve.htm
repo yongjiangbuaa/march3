@@ -1,0 +1,245 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=stat&act=regremainCurve&getData=true" method="post" name="getaccount">
+$serverDiv
+
+<div class="row-fluid">
+<div class="span11">
+    国家
+    <select id="selectCountry" name="selectCountry" onchange="">
+        <!--{loop $countryList $country $countryname}-->
+        <!--{if ($currCountry == $country)}-->
+        <option value="{$country}" selected="selected">{$countryname}</option>
+        <!-- {else} -->
+        <option value="{$country}">{$countryname}</option>
+        <!-- {/if} -->
+        <!--{/loop}-->
+    </select>
+起始时间<input class="input-medium" id="dateMin" name="dateMin" type="text" value="{$dateMin}" size="50">
+结束时间<input class="input-medium" id="dateMax" name='dateMax' type="text" value='$dateMax' size="50"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="getData()" />
+
+</div>
+</div>
+</form>
+<br>
+<br>
+
+<!-- {if ($total_num || $tableRegData)} -->
+<div id="container" style="min-width: 310px; height: 500px; margin: 0 auto">
+</div>
+<div align="center">
+<table border="0">
+	<tr >
+		<td><div id="container2" style="height: 400px"></div></td>
+		<td><div id="container3" style="height: 400px"></div></td>
+	</tr>
+</table>
+
+</div>
+
+<script type="text/javascript">
+	var showData = [];
+	var chartTitle='';
+</script>
+
+	<script language="javascript">
+		chartTitle="留存曲线(%)";
+	</script>
+	<!--{loop $indexArr  $iKey $dataVal}-->
+		<script language="javascript">
+			showData.push({
+							"name":"{$dataVal}",
+							"data":$showChart[$iKey],
+						});
+		</script>
+	<!--{/loop}-->
+	
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: chartTitle
+        },
+        xAxis: {
+            categories: $dateStr,
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            },
+            labels: {
+                rotation: -45
+            }
+        },
+        yAxis: {
+            title: {
+                text: '留存率'
+            }
+        },
+        tooltip: {
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: showData
+    });
+});
+</script>
+
+<script type="text/javascript">
+	var pfPieData = [];
+	var couPieData = [];
+</script>
+
+<!--{loop $pfPie $pVal}-->
+	<script language="javascript">
+		pfPieData.push($pVal);
+	</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: "$titleDate 每个平台的新注册比例图"
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '占比',
+            data: pfPieData
+        }]
+    });
+});
+</script>
+
+<!--{loop $countryPie $cPal}-->
+	<script language="javascript">
+		couPieData.push($cPal);
+	</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+$(function () {
+    $('#container3').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: "$titleDate 每个国家的新注册比例图"
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '占比',
+            data: couPieData
+        }]
+    });
+});
+</script>
+
+<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+	<tr>
+		<td width=2%>日期</td>
+		<td width=2%>国家</td>
+		<td width=2%>新注册</td>
+		<!--{loop $indexArr $indexKey  $indexVal}-->
+			<th width=4%>$indexVal</th>
+		<!--{/loop}-->
+	</tr>
+	<!--{loop $dateList $dateKey}-->
+			<!--{loop $tableRegData[$dateKey] $cKey  $val}-->
+				<!--{if $tableRegData[$dateKey][$cKey]['index']==1}-->
+					<tr style="background-color: aliceblue;">
+						<td>$dateKey</td>
+						<td>$displayCountryArr[$cKey]</td>
+						<td><strong>$tableRegData[$dateKey][$cKey]['reg']</strong></td>
+						<!--{loop $indexArr $indexKey  $indexVal}-->
+							<td><strong>$tableData[$dateKey][$cKey][$indexKey]['rate']</strong></td>
+						<!--{/loop}-->
+					</tr>
+				<!--{else}-->
+					<tr>
+						<td>$dateKey</td>
+						<td>$displayCountryArr[$cKey]</td>
+						<td><strong>$tableRegData[$dateKey][$cKey]['reg']</strong></td>
+						<!--{loop $indexArr $indexKey  $indexVal}-->
+							<td><strong>$tableData[$dateKey][$cKey][$indexKey]['rate']</strong></td>
+						<!--{/loop}-->
+					</tr>
+				<!--{/if}-->	
+			<!--{/loop}-->
+	<!--{/loop}-->
+</table>
+<br>
+<br>
+
+<!-- {/if} -->
+
+<script type="text/javascript">
+
+function getData(){
+	var objs=document.getElementsByName('btn_view');
+	for(i=0;i<objs.length;i++){
+		objs[i].disabled=true;
+	}
+	document.getaccount.submit();	
+}
+$("#dateMax").datetimepicker();
+$("#dateMin").datetimepicker();
+</script>
+
+<!--{template footer}-->

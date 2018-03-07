@@ -1,0 +1,38 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "新商城统计(实时查询) 11.8号才开始区分商城|荣誉商店";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=user&act=newshop" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+	$serverDiv
+	<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+	<br>
+	起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+	结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+	<span>道具id</span>
+	<span><input type="text" id="itemId" name="itemId" value='{$itemId}'/></span>
+	<span>UID</span>
+	<span><input type="text" id="useruid" name="useruid" value='{$useruid}'/></span>
+	统计方式 : <select name="statType" id="statType">
+	$options
+</select>
+	<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search('view')" />
+</div>
+</div>
+</form>
+<div>
+	{$html}
+</div>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(type){
+	document.getElementById('btn_view').disabled = true;
+	document.getElementById('action').value = type;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

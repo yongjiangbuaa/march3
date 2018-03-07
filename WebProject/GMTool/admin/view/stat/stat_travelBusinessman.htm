@@ -1,0 +1,27 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "旅行商人信息统计,神秘商人";?><font color="red"></font></div>
+<form action="admincp.php?mod=stat&act=travelBusinessman&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

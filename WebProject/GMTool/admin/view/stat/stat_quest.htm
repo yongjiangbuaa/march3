@@ -1,0 +1,62 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "完成任务统计";?><font color="red"></font></div>
+注册起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<br />
+当前大本等级<input class="input-small" id="levelMin" name='levelMin' type="text" value='1' size="50"/>-
+<input class="input-small" id="levelMax" name='levelMax' type="text" value='99' size="50"/>
+版本号
+<select class="input-medium focused" id="zone">
+		<option id=''></option>
+		<!--{loop $appVersionList $appKey $appVal}-->
+			<option id="{$appKey}">{$appVal}</option>
+		<!--{/loop}-->
+</select>
+<input type='checkbox' name="regtype[]" value="0" {$mark0}/>新注册
+<input type='checkbox' name="regtype[]" value="1" {$mark1}/>重玩
+<input type='checkbox' name="regtype[]" value="2" {$mark2}/>迁服
+<input type="hidden" id= "senttd" name="senttd" value="{$senttd}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+function getLogData(){
+	document.getElementById('btn_view').disabled=true;
+	zoneSelect = document.getElementById("zone");
+	var obj=document.getElementsByName('regtype[]');
+	var senttd='';
+	for(var i=0; i<obj.length; i++){
+		if(obj[i].checked) senttd+=obj[i].value+',';
+	}
+	var url = 'mod=stat&act=quest&analyze=platform&start='+$('#start_time').val()+'&user='+$('#user').val()+'&end='+$('#end_time').val()
+			+'&levelMin='+$('#levelMin').val()+'&levelMax='+$('#levelMax').val()
+			+'&zone='+zoneSelect.options[zoneSelect.selectedIndex].id+'&senttd='+senttd;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("POST",'admincp.php',true);
+	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	xmlHttp.send(url);
+}
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

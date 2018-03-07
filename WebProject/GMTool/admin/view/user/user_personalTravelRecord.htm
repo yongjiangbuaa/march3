@@ -1,0 +1,178 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "旅行商人个人购买记录统计";?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=personalTravelRecord" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+<strong>购买记录</strong>
+<br>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th>编号</th>
+	<th>购买日期</th>
+	<th>物品名称</th>
+	<th>价格类型</th>
+	<th>价格</th>
+	</tr>
+	<!--{loop $data $key $dbData}-->
+		<tr>
+			<td>$key</td>
+			<td>$dbData['buyTime']</td>
+			<td>$dbData['goodsId']</td>
+			<td>$dbData['priceType']</td>
+			<td>$dbData['price']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<strong>购买统计-获得</strong>
+<br>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th>购买日期</th>
+	<th>物品名称</th>
+	<th>数目</th>
+	</tr>
+	<!--{loop $numArray $dateKey $nameData}-->
+		<!--{loop $nameData $nameKey $num}-->
+		<tr>
+			<td>$dateKey</td>
+			<td>$nameKey</td>
+			<td>$num</td>
+		</tr>
+		<!--{/loop}-->
+	<!--{/loop}-->
+	</tbody>
+</table>
+<strong>购买统计-花费</strong>
+<br>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th>购买日期</th>
+	<th>木材</th>
+	<th>粮食</th>
+	<th>铁矿</th>
+	<th>钢材</th>
+	<th>秘银</th>
+	<th>金币</th>
+	</tr>
+	<!--{loop $goldArray $dateKey $dbData}-->
+		<tr>
+			<td>$dateKey</td>
+			<td>$dbData['wood']</td>
+			<td>$dbData['food']</td>
+			<td>$dbData['iron']</td>
+			<td>$dbData['steel']</td>
+			<td>$dbData['silver']</td>
+			<td>$dbData['gold']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<strong>刷新记录</strong>
+<br>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<th></th>
+		<th></th>
+		<th colspan="3">物品1</th>
+		<th colspan="3">物品2</th>
+		<th colspan="3">物品3</th>
+		<th colspan="3">物品4</th>
+		<th></th>
+	</tr>
+	<tr>
+		<th>日期</th>
+		<th>次数</th>
+		
+		<th>名称</th>
+		<th>价格类型</th>
+		<th>价格</th>
+		
+		<th>名称</th>
+		<th>价格类型</th>
+		<th>价格</th>
+		
+		<th>名称</th>
+		<th>价格类型</th>
+		<th>价格</th>
+		
+		<th>名称</th>
+		<th>价格类型</th>
+		<th>价格</th>
+		
+		<th>刷新价格</th>
+	</tr>
+	<!--{loop $refreshGoods $reshitimeKey $value}-->
+		<tr>
+			<td>$value['date']</td>
+			<td>$value['num']</td>
+			<td>$value['goodsName1']</td>
+			<td>$value['goodsPriceType1']</td>
+			<td>$value['goodsPrice1']</td>
+			<td>$value['goodsName2']</td>
+			<td>$value['goodsPriceType2']</td>
+			<td>$value['goodsPrice2']</td>
+			<td>$value['goodsName3']</td>
+			<td>$value['goodsPriceType3']</td>
+			<td>$value['goodsPrice3']</td>
+			<td>$value['goodsName4']</td>
+			<td>$value['goodsPriceType4']</td>
+			<td>$value['goodsPrice4']</td>
+			<td>$value['gold']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputUid = $('#useruid').val();
+	inputUid = jQuery.trim(inputUid);
+	if(isEmpty(inputUid)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#useruid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

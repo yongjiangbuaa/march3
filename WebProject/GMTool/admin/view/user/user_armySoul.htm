@@ -1,0 +1,75 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "用户英灵信息";?></div>
+<form action="admincp.php?mod=user&act=armySoul" method="post" name="getaccount">
+    起始时间<input class="input-medium focused" id="start" name="start" type="text" placeholder="点击选择日期" value="{$start}">
+    结束时间<input class="input-medium focused" id="end" name="end" type="text" placeholder="点击选择日期" value="{$end}">
+    用户UID<input id="userId" name='userId' type="text" value='{$userId}' size="30"/>
+    <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+    <input class="btn js-btn btn-primary" type="button" onclick="check_submit('view')" name="btn_view" value="查看">
+    <div id='show' style="float:left;width:95%;height:auto"></div>
+</form>
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+    <tbody>
+    <tr><th align="left">当前英灵数:$soul['soul_count'],等级:$soul['soul_army_rank']</th></tr>
+    <tr>
+        <th align="center">日期</th>
+        <th align="center">英灵数</th>
+        <th align="center">死侍数</th>
+    </tr>
+    <!--{loop $alldata $date $dbData}-->
+    <tr>
+        <td>$date</td>
+        <td>$dbData['soul']</td>
+        <td>$dbData['soulSoldier']</td>
+    </tr>
+    <!--{/loop}-->
+    </tbody>
+</table>
+<!--{/if}-->
+
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#start").datetimepicker();
+        $("#end").datetimepicker();
+    }
+
+    function isEmpty(value){
+        if(value == null || value ==""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function isCommit(){
+        var inputUid = $('#userId').val();
+        inputUid = jQuery.trim(inputUid);
+        if(isEmpty(inputUid)){
+            alert("用户Id不能为空!");
+            $("#userId").focus();
+            return false;
+        }
+        /*
+         // modified by duzhigao.
+         // if inputItemId is null, select all the goods of this user.
+         if(isEmpty(inputItemId)){
+         alert("物品Id不能为空!");
+         $("#itemId").focus();
+         return false;
+         }
+         */
+        return true;
+    }
+    function check_submit(type) {
+        if(type=='view')
+        {
+            if(isCommit()){
+                document.getElementById('action').value = type;
+                document.getaccount.submit();
+            }
+        }
+    }
+</script>
+<!--{template footer}-->

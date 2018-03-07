@@ -1,0 +1,173 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=stat&act=versions&server={$selectServer}" method="post" name="getaccount" style="display: inline-table;">
+<div class="alert alert-info"><?php echo "玩家版本统计(查统计库时,最后登录时间默认7天)";?><font color="red"></font></div>
+
+<div class="container" style="width: auto;">
+	<!--选择服务器-->
+	$serverDiv
+<input type='hidden'  name="getdate"  value="true"  />
+
+<div id="defaultdate" style="display: none">
+玩家最后登录时间<input class="input-medium" id="dateMin" name='dateMin' type="text" value='$logdateMin' size="50"/>-
+<input class="input-medium" id="dateMax" name='dateMax' type="text" value='$logdateMax' size="50"/>
+</div>
+
+	平台
+	<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+		<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+		<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	国家<select id="selectCountry" name="selectCountry" onchange="">
+	<!--{loop $countryList $country $countryname}-->
+	<!--{if ($currCountry == $country)}-->
+	<option value="{$country}" selected="selected">{$countryname}</option>
+	<!-- {else} -->
+	<option value="{$country}">{$countryname}</option>
+	<!-- {/if} -->
+	<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="submit" value="点击开始查询" name="btn_view"/>
+	<select name="statType" id="statType">
+		<option value="1">统计库</option>
+		<option value="2">实时在线</option>
+	</select>
+</div>
+<div class="row-fluid">
+<div class="span11">
+</div>
+</div>
+</form>
+<div id="chart" style="min-width: 800px; height: 600px; margin: 0 auto"></div>
+<div>
+	{$html}
+</div>
+<script>
+
+var dataarr = [];
+var selectAll = true;
+/* $("#all_version").click(function(){
+	
+	//$("input[type='checkbox']").attr('checked',selectAll);
+		//selectAll = !selectAll;
+	var currentObj = document.getElementById('all_version');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='version'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}); */
+/* function checkversionall(){
+	document.getElementById('all_version').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='version')
+		{
+			document.getElementById('all_version').checked = false;
+			break;
+		}
+	}
+} */
+//function check(){
+//	var flag = true;
+	/* $("input[type='checkbox']").each(function(){
+		if($(this).attr('checked')){
+			flag = false;
+		}
+	}); */
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objs[i].checked && objId[0]=='version')
+		{
+			flag =false;
+			break;
+		}
+	}
+	if(flag){
+		alert("请选择版本");
+		return false;
+	}
+} */
+</script>
+<!-- {if $chartdata} -->
+       <script>   
+	<!--{loop $chartdata $key $value}-->
+		var item = [];
+		item[0] = $key;
+		item[1] = $value;
+		dataarr.push(item);
+	<!--{/loop}-->
+	</script>
+<!-- {/if} -->
+
+<!-- {if $chartdata} -->
+<script type="text/javascript">
+$(function () {
+    var chart;
+    
+    $(document).ready(function () {
+    	
+    	// Build the chart
+        $('#chart').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'COQ 玩家版本分布'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.2f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '版本份额',
+                data: dataarr,
+            }]
+        });
+    });
+    
+});
+<!-- {/if} -->
+</script>
+
+
+<script type="text/javascript">
+$("#dateMin,#dateMax").datetimepicker();
+$(document).ready(function () {
+	$("#statType").change(function() {
+		if ($("#statType").val() == 2) {
+			document.getElementById("defaultdate").style.display = 'block';
+		}else {
+			document.getElementById("defaultdate").style.display = 'none';
+		}
+	});
+});
+
+</script>
+
+<!--{template footer}-->

@@ -1,0 +1,34 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "新手引导流失统计：";?><font color="red">请选择用户注册时间</font></div>
+查询日期<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" name="btn_view" value="统计数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+function getLogData(){
+	url = 'admincp.php?mod=stat&act=pve&analyze=platform&end='+$('#end_time').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	$("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

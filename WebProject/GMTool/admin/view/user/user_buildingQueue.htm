@@ -1,0 +1,112 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "第二建筑队列时间修改";?><font color="red" id="showtips"></font></div>
+<form action="admincp.php?mod=user&act=buildingQueue" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			uid<input type="text" id="ownerId" name="ownerId" value='{$ownerId}'></input>
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+			<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+		</div>
+	</div>
+	<br>
+	<input class="display:none;" type="hidden" value="{$uidTime['endTime']}" id="endTime" name="endTime"/>
+	<input class="display:none;" type="hidden" value="{$uidTime['updateTime']}" id="updateTime" name="updateTime"/>	
+	<!--{if $showData}-->
+	减去的天数(只能为整数)<input type="text" id="minusDay" name="minusDay" value='{$minusDay}'></input>
+	<input class="btn js-btn btn-primary"  type="button" value="减队列时间" id="btn_find" name="btn_find" onclick="minus_submit('minus')" />
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th>endTime</th>
+			<th>updateTime</th>
+		</tr>
+		<tr>
+			<td>$info['endTime']</td>
+			<td>$info['updateTime']</td>
+		</tr>
+	</tbody>
+	</table>
+	<!--{/if}-->
+	
+	<!--{if $afterData}-->
+	
+	<span>队列时间减去之后的信息:</span>
+	<br>
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th>endTime</th>
+			<th>updateTime</th>
+			</tr>
+			<tr>
+				<td>$infoAfter['endTime']</td>
+				<td>$infoAfter['updateTime']</td>
+			</tr>
+		</tbody>
+	</table>	
+	<!--{/if}-->
+	
+	
+</form>
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var ownerId = $('#ownerId').val();
+	ownerId = jQuery.trim(ownerId);
+	if(isEmpty(ownerId)){
+		alert("<?php echo '请输入ownerId';?>");
+		$("#ownerId").focus();
+		return false;
+	}
+	return true;
+}
+
+function isMinus(){
+	var minusDay = $('#minusDay').val();
+	minusDay = jQuery.trim(minusDay);
+	if(isEmpty(minusDay)){
+		alert("<?php echo '请输入减去的天数';?>");
+		$("#minusDay").focus();
+		return false;
+	}
+	
+	if(minusDay<=0){
+		alert("<?php echo '输入的天数必须大于0';?>");
+		$("#minusDay").focus();
+		return false;
+	}
+	return true;
+}
+
+function check_submit(type) {
+	if(type=='view'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+	if(type=='minus'){
+		if(isMinus()&&isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+}
+function minus_submit(type){
+	if(confirm('是否确认要减去队列时间'))
+	{
+		check_submit(type);	
+	}
+}
+
+
+</script>
+
+<!--{template footer}-->

@@ -1,0 +1,275 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=pay&act=totalPay&getData=true" method="post" name="getaccount">
+$serverDiv
+<div class="row-fluid">
+<div class="span11">
+起始时间<input class="input-medium" id="dateMin" name="dateMin" type="text" value="{$dateMin}" size="50">
+结束时间<input class="input-medium" id="dateMax" name='dateMax' type="text" value='$dateMax' size="50"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="getData('ALL')" />
+
+<br>
+<!--{loop $displayCountryArr $couKey $couName}-->
+		<input class="btn js-btn btn-primary" type="button" value="{$couName}" id="btn_$couKey" name="btn_view" onclick="getData('{$couKey}')" />
+<!--{/loop}-->
+
+</div>
+</div>
+</form>
+<br>
+<br>
+
+<!-- {if $total} -->
+<div id="container" style="min-width: 310px; height: 500px; margin: 0 auto">
+</div>
+<div align="center">
+<table border="0">
+	<tr >
+		<!--{if $curCountry=='ALL'}-->
+		<td><div id="container2" style="height: 400px"></div></td>
+		<td><div id="container3" style="height: 400px"></div></td>
+		<!--{else}-->
+		<td colspan="2" align="center"><div id="container2" style="height: 400px"></div></td>
+		<!--{/if}-->
+	</tr>
+</table>
+
+</div>
+
+<script type="text/javascript">
+	var showData = [];
+	var chartTitle='';
+</script>
+
+<!--{if $curCountry=='ALL'}-->
+	<script language="javascript">
+		chartTitle="总值曲线";
+	</script>
+<!--{else}-->
+	<script language="javascript">
+		chartTitle="$displayCountryArr[$curCountry]曲线";
+	</script>
+<!--{/if}-->
+	
+	<!--{loop $indexArr  $iKey $dataVal}-->
+		<script language="javascript">
+			showData.push({
+							"name":"{$dataVal}",
+							"data":$showChart[$iKey],
+						});
+		</script>
+	<!--{/loop}-->
+	
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: chartTitle
+        },
+        xAxis: {
+            categories: $dateStr,
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            },
+            labels: {
+                rotation: -45
+            }
+        },
+        yAxis: {
+            title: {
+                text: '金额'
+            }
+        },
+        tooltip: {
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: showData
+    });
+});
+</script>
+
+<script type="text/javascript">
+	var pfPieData = [];
+	var couPieData = [];
+</script>
+
+<!--{loop $pfPie $pVal}-->
+	<script language="javascript">
+		pfPieData.push($pVal);
+	</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: "$titleDate 每个平台的支付比例图"
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '占比',
+            data: pfPieData
+        }]
+    });
+});
+</script>
+
+<!--{if $curCountry=='ALL'}-->
+<!--{loop $countryPie $cPal}-->
+	<script language="javascript">
+		couPieData.push($cPal);
+	</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+$(function () {
+    $('#container3').highcharts({
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: "$titleDate 每个国家的支付比例图"
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '占比',
+            data: couPieData
+        }]
+    });
+});
+</script>
+
+<!--{/if}-->
+
+<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+
+	<tr class="listTr">
+		<th width=2%>日期</th>
+		<!--{loop $dateList  $date}-->
+			<th width=2%>$date</th>
+		<!--{/loop}-->
+	</tr>
+	
+	<tr class="listTr" style="font-weight: bold; color: black;background: aliceblue;">
+	
+		<!--{if $curCountry=='ALL'}-->
+			<td>合计</td>
+		<!--{else}-->
+			<td>$displayCountryArr[$curCountry] 合计</td>
+		<!--{/if}-->
+	
+		<!--{loop $dateList  $date}-->
+			<td <!--{if ($totalTdBackgroundCol[$date]=='up')}-->style="color: darkred;"<!--{elseif ($totalTdBackgroundCol[$date]=='down')}-->style="color: darkgreen;"<!--{/if}-->>$total[$date]</td>
+		<!--{/loop}-->
+	</tr>
+	
+	<!--{loop $displayPf $pfKey $pfVal}-->
+		<!--{if $curCountry=='ALL'}-->
+		
+		<tr class="listTr" style="font-weight: bold; color: black; background: antiquewhite;">
+			<td><strong>$pfKey总和</strong></td>
+			<!--{loop $dateList  $date}-->
+				<td <!--{if ($tdBackgroundCol[$pfKey][$date]['total']=='up')}-->style="color: darkred;"<!--{elseif ($tdBackgroundCol[$pfKey][$date]['total']=='down')}-->style="color: darkgreen;"<!--{/if}-->>$pfData[$pfKey][$date]['total']</td>
+			<!--{/loop}-->
+		</tr>
+			<!--{if (array_key_exists($pfKey,$pfCountry))}-->
+				<!--{loop $displayCountryArr $country $countryname}-->
+					<tr class="listTr" style="color: black;">
+						<td>$countryname</td>
+						<!--{loop $dateList  $date}-->
+							<td <!--{if ($tdBackgroundCol[$pfKey][$date][$country]=='up')}-->style="color: darkred;"<!--{elseif ($tdBackgroundCol[$pfKey][$date][$country]=='down')}-->style="color: darkgreen;"<!--{/if}-->>$pfData[$pfKey][$date][$country]</td>
+						<!--{/loop}-->
+					</tr>
+				<!--{/loop}-->
+			<!--{/if}-->	
+		<!--{else}-->
+			<tr class="listTr" style="color: black;">
+				<td>$pfKey</td>
+				<!--{loop $dateList  $date}-->
+					<td <!--{if ($tdBackgroundCol[$pfKey][$date][$curCountry]=='up')}-->style="color: darkred;"<!--{elseif ($tdBackgroundCol[$pfKey][$date][$curCountry]=='down')}-->style="color: darkgreen;"<!--{/if}-->>$pfData[$pfKey][$date][$curCountry]</td>
+				<!--{/loop}-->
+			</tr>
+		<!--{/if}-->
+		
+	<!--{/loop}-->
+	
+</table>
+<br>
+<br>
+
+<!-- {/if} -->
+
+<script type="text/javascript">
+
+function getData(type){
+	document.getElementById('event').value = type;
+	var objs=document.getElementsByName('btn_view');
+	for(i=0;i<objs.length;i++){
+		objs[i].disabled=true;
+	}
+	document.getaccount.submit();	
+}
+$("#dateMax").datetimepicker();
+$("#dateMin").datetimepicker();
+</script>
+
+<!--{template footer}-->

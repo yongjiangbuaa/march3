@@ -1,0 +1,89 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询登陆游戏相关统计";?><font color="red">{$errorMsg}</font></div>
+<div class="span11" style='TEXT-ALIGN:center;float:left;'>
+	<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view" value="查询">
+		<input class="btn js-btn btn-primary" type="button" onclick="deleteData()" name="btn_view" value="删除已有数据">
+		<hr />
+<div id='show' style="float:left;width:110%;height:auto;"></div>
+<script type="text/javascript">
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+var currentPage = 1;
+function getData(page) {
+	currentPage = page;
+	showData();
+}
+function deleteData(){
+	$.get('admincp.php?mod=stat&act=loginlost&deletedata=1',function(data){
+		alert(data);
+	});
+}
+function showData(){
+	var url ='admincp.php?mod=stat&act=loginlost&getstat=1';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function outPut() {
+	tableSelect = document.getElementById("selectTable");
+	var tablename = tableSelect.options[tableSelect.selectedIndex].id;
+	$("#tablename").val(tableName);
+	document.getaccount.submit();
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+//tableList();
+function tableList() {
+	var url ='getstruct.php?redisList=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTable;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTable(){
+	right=document.getElementById('selectTable');
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(tableList);
+			return;
+		}
+		right.innerHTML=xmlHttp.responseText;
+		changeTable();
+		return;
+	}
+}
+function changeTable(){
+	tableSelect = document.getElementById("selectTable");
+	var url ='getstruct.php?redisList=true&key='+tableSelect.options[tableSelect.selectedIndex].id;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTableStruct;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTableStruct(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(changeTable);
+			return;
+		}
+		document.getElementById('selectIndex').innerHTML=xmlHttp.responseText;
+		return;
+	}
+}
+
+</script>
+<!--{template footer}-->

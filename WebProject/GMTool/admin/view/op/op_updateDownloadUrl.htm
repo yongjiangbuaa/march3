@@ -1,0 +1,71 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<br>
+<hr>
+<div id="manageMapping">
+    <form action="admincp.php?mod=op&act=updateDownloadUrl" method="post" name="update">
+        <div class="row-fluid">
+            <div class="span11">
+                <span>历史下载链接</span>
+                <span><input type="text" id="oldUrl" name="oldUrl" value='$oldUrl' readonly  style="width:450px;"/></span>
+                <br>
+                <br>
+                <span>新的下载链接</span>
+                <span><input type="text" id="newUrl" name="newUrl" value='' style="width:450px;"/></span>
+
+                <input class="display:none;" type="hidden" value="" id="action" name="action"/>&nbsp;&nbsp;
+                <input class="display:none;" type="hidden" value="update" id="type" name="type"/>&nbsp;&nbsp;
+                <input class="btn js-btn btn-primary" type="button" value="保存" id="btn_add" name="btn_edit" onclick="check_submit()" />
+            </div>
+        </div><br/>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    function isEmpty(value){
+        if(value == null || value ==""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    function isCommitUid(){
+        var uid=$('#uidDel').val();
+        uid = jQuery.trim(uid);
+        if(isEmpty(uid)){
+            alert("UID不能为空!");
+            $("#uidDel").focus();
+            return false;
+        }
+        return true;
+    }
+    function isCommit(){
+        var oldUrl=$('#oldUrl').val();
+        oldUrl = jQuery.trim(oldUrl);
+        var newUrl = $('#newUrl').val();
+        newUrl = jQuery.trim(newUrl);
+        if(isEmpty(newUrl)){
+            alert("url 不能为空!");
+            $("#newUrl").focus();
+            return false;
+        }
+        if(oldUrl == newUrl){
+            alert("两个url一致，并未更换")
+            $("#newUrl").focus();
+            return false;
+        }
+        return true;
+    }
+    function check_submit(){
+        if(isCommit()){
+            if(confirm('是否确认要更改下载的url地址吗?'))
+            {
+                document.update.submit();
+            }
+        }
+    }
+
+</script>
+<!--{template footer}-->

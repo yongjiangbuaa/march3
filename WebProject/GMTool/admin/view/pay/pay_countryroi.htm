@@ -1,0 +1,80 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "分国家ROI";?><font color="red"></font></div>
+<h3>暂未开放，等待国家信息统计完善</h3>
+<!-- 
+<select id="selectCountry" name="selectCountry" onchange="changecountry();"></select>
+<div id="selectInfo" style="display:none;">
+注册起始<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view" value="查询ROI">
+<input class="btn js-btn btn-primary" type="button" onclick="modifyAD()" name="btn_view" value="修改广告花费">
+</div>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+<div id='ADInfo' style="display:none;float:left;width:100%;height:auto"></div>
+
+ -->
+<script type="text/javascript">
+function changecountry(){
+	if($("#selectCountry").val()){
+		$("#selectInfo").show();
+	}
+}
+function getData(page){
+	url = 'admincp.php?mod=pay&act=newroi&getData=true&page='+page+'&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function modifyAD(){
+	$.get('admincp.php?mod=pay&act=countryroi&modifyAD=get'+'&startDate='+$('#startDate').val(),function(data){
+		$('#show').hide();
+		$('#ADInfo').html(data).show();
+	});
+}
+function cancelModify(){
+	$('#ADInfo').html('').hide();
+	$('#show').show();
+}
+function submitModify(){
+	var data = '?';
+	$('.datekey').each(function(){
+		data += '&'+$(this).attr('name')+'='+$(this).val();
+	});
+	$.post('admincp.php?mod=pay&act=countryroi&modifyAD=modify',data,function(){
+		$('#ADInfo').html('').hide();
+		$('#show').show();
+		getData();
+	});
+}
+init();
+function init(){
+	$.get('admincp.php?mod=pay&act=countryroi&getCountry=true',function(data){
+		$("#selectCountry").html(data);
+	});
+	$("#startDate,#endDate").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML='loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			$('tr').each(function() {
+			    $(this).find("td").eq(2).css("color","blue");
+			    $(this).find("td").eq(5).css("color","blue");
+			   	$(this).find("td").eq(7).css("color","blue");
+			    $(this).find("td").eq(10).css("color","blue");
+			    $(this).find("td").eq(11).css("color","red");
+			    $(this).find("td").eq(12).css("color","blue");
+			});
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

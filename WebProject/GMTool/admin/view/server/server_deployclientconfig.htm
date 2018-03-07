@@ -1,0 +1,115 @@
+<!--{template header}-->
+
+<div class="alert alert-info">
+<?php echo "前台配置 版本设定。（database.local.xml text_XX.ini)";?><br>
+<font color="red">$headAlert</font>
+</div>
+
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+		<!-- <th align="center" style="vertical-align: middle;">版本操作</th> -->
+		<th align="center" style="vertical-align: middle;">游戏版本</th>
+		<th align="center" style="vertical-align: middle;">在线状态</th>
+		<th align="center" style="vertical-align: middle;">配置版本<br>-1-服</th>
+		<th align="center" style="vertical-align: middle;">配置版本<br>-100-服</th>
+		<th align="center" style="vertical-align: middle;">最新配置版本<br>（SVN）</th>
+		<th align="center" style="vertical-align: middle;">最新编辑者</th>
+		<th align="center" style="vertical-align: middle;">最新修改时间</th>
+		<th align="center" style="vertical-align: middle;">最新文件（SVN）</th>
+		<th align="center" style="vertical-align: middle;">更新发布</th>
+		<th align="center" style="vertical-align: middle;">执行结果</th>
+		</tr>
+		<!--{loop $appVers $appver $appInfo}-->
+				<tr>
+					<!-- <td style="vertical-align: middle;">
+						<a href="javascript:void(putoffline('$appver','$appInfo['configVer']','0','上线'))">上线</a><br>
+						<a href="javascript:void(putoffline('$appver','$appInfo['configVer']','1','推荐更新'))">推荐更新</a><br>
+						<a href="javascript:void(putoffline('$appver','$appInfo['configVer']','2','强制更新'))">强制更新</a>
+					</td> -->
+					<td style="vertical-align: middle;">$appver</td>
+					<td style="vertical-align: middle;">
+						<!--{if ($appInfo['status'] == 0)}-->
+						正常
+						<!--{elseif ($appInfo['status'] == 1)}-->
+						推荐更新
+						<!--{else}-->
+						强制更新
+						<!--{/if}-->
+					</td>
+					<td style="vertical-align: middle;">$appInfo['configVer']</td>
+					<td style="vertical-align: middle;">$appInfo['configVerS100']</td>
+					<!--{if ($appInfo['configVer'] == $appInfo['txtVer']) && ($appInfo['configVerS100'] == $appInfo['txtVer'])}-->
+					<td style="vertical-align: middle;">$appInfo['txtVer']</td>
+					<!--{else}-->
+					<td style="vertical-align: middle;color: red;">$appInfo['txtVer']</td>
+					<!--{/if}-->
+					<td style="vertical-align: middle;">$appInfo['lastAuthor']</td>
+					<td style="vertical-align: middle;">$appInfo['lastDate']</td>
+					<td style="vertical-align: middle;">
+					<!--{loop $filelinks[$appver] $lang $fileurl}-->
+					<a href="$fileurl" target='_blank'>$lang</a>&nbsp;|
+					<!--{if ($lang=='nl' || $lang=='zh_TW')}-->
+					<br>
+					<!--{/if}-->
+					<!--{/loop}-->
+					</td>
+					<td style="vertical-align: middle;">
+					<input class="input-small" id="newconfigver{$appver}" name='newconfigver{$appver}' type="text" value="$appInfo['txtVer']" size="10"/><br>
+					<a href="javascript:void(edit('$appver','{$appInfo['configVer']}','ALL'))">全服发布</a><br>
+					<a href="javascript:void(edit('$appver','{$appInfo['configVer']}','1'))">1服发布</a><br>
+					</td>
+					<td style="vertical-align: top;">
+					<div id="divMsg{$appver}">$opmessages[$appver]</div>
+					</td>
+				</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
+
+<div id='display' style="display:none;position:absolute;z-index:1; left:50px; top:100px; width:1000px; height:600px; color:#FFF; line-height:30px;filter:alpha(opacity=70);opacity: 0.7;background-color:silver">
+	<a href="#" onclick="javascript:turnoff()">关闭</a><br><br>
+	<div id='displayinner'>执行中...</div>
+</div>
+
+<script type="text/javascript">
+var g_target_appver = '';
+function edit(appver,oldconfigver,targetservers) {
+	var oTextbox1=document.getElementById("newconfigver"+appver);
+	var newconfigver = oTextbox1.value;
+	//if(newconfigver==oldconfigver){alert("配置版本没有变化！");return false;}
+	if(!confirm("\r\n确定 修改 线上版本 ? \r\n \r\n服："+targetservers + "\r\n" + appver+" => "+newconfigver)){return false;}
+	turnon();
+	g_target_appver = appver;
+	var url = 'admincp.php?mod=server&act=deployclientconfig&appver='+appver+'&oldconfigver='+oldconfigver+'&newconfigver='+newconfigver+'&subact=modify&targetservers='+targetservers;
+	$.get(url,function(data){
+			turnoff();
+			var divMsg = document.getElementById("divMsg"+g_target_appver); 
+			divMsg.innerHTML = data;
+	},'html');
+}
+function putoffline(appver,newconfigver,status,txtmsg) {
+	if(!confirm("确定 修改该版本的上线状态 ? \r\n" + appver+" => "+txtmsg)){return false;}
+	turnon();
+	g_target_appver = appver;
+	var url = 'admincp.php?mod=server&act=deployclientconfig&appver='+appver+'&newconfigver='+newconfigver+'&status='+status+'&subact=putoffline';
+	$.get(url,function(data){
+			turnoff();
+			var divMsg = document.getElementById("divMsg"+g_target_appver); 
+			divMsg.innerHTML = data;
+	},'html');
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+function turnon(){
+	document.getElementById('display').style.display="block";
+	/* var div = document.getElementById('display'); 
+	div.style.display="block"; 
+	div.style.left=event.clientX+10; 
+	div.style.top=event.clientY+5;  
+	div.style.position="absolute"; 
+	$("#displayinner").html(data); */
+}
+</script>
+<!--{template footer}-->

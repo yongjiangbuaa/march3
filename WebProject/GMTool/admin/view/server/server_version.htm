@@ -1,0 +1,64 @@
+<!--{template header}-->
+
+<br>
+<span><font color="red">ios_review,特殊用处</font></span>
+<form action="admincp.php?mod=server&act=version&type=save" method="post" name="iosVersion">
+
+	正在审核的版本<input class="input-medium" id="version" name="version" type="text">
+
+	<input class="btn js-btn btn-primary" type="button" onclick="save()" id="btn_view" name="btn_view" value="提交">
+	<input class="btn js-btn btn-primary" type="button" onclick="del()" id="btn_view_del" name="btn_view" value="删除">
+</form>
+<table class="listTable" style="text-align:center">
+	<tbody>
+	<tr>
+		<th style="text-align: center;">版本</th>
+	</tr>
+	<tr class='listTr'>
+		<td>$versionAlready</td>
+	</tr>
+
+	</tbody>
+</table>
+
+<script type="text/javascript">
+
+	function isEmpty(value){
+		if(value == null || value ==""){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function save(){
+		var version = $("#version").val();
+		if(isEmpty(version)){
+			alert('版本不能为空');
+		}else {
+			var url ='admincp.php?mod=server&act=version&type=save&version='+version;
+			xmlHttp=getAjax();
+			xmlHttp.onreadystatechange = back;
+			xmlHttp.open("post",url,true);
+			xmlHttp.send(null);
+		}
+
+	}
+	function del(){
+		if(confirm('是否确定删除'))
+		{
+			var url ='admincp.php?mod=server&act=version&type=del';
+			xmlHttp=getAjax();
+			xmlHttp.onreadystatechange = back;
+			xmlHttp.open("GET",url,true);
+			xmlHttp.send(null);
+		}
+	}
+
+	function back(){
+		if(xmlHttp.readyState==4 && xmlHttp.status==200){
+			self.location='admincp.php?mod=server&act=version';
+		}
+	}
+
+</script>
+<!--{template footer}-->

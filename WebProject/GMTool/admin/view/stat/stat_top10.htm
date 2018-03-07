@@ -1,0 +1,48 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "玩家等级和大本等级信息";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red"></font></div>
+<form action="admincp.php?mod=stat&act=top10&analyze=user" method="post" name="getaccount">
+$serverDiv
+<div class="row-fluid">
+	<div class="span11">
+		<input class="btn js-btn btn-primary" type="button" value="点击开始查询" id="btn_view" name="btn_view" onclick="search()" />
+	</div>
+</div>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+<!-- {if $userInfo} -->
+<table class='listTable' cellspacing=1 style='width: 100%; text-align: center;padding: 0'>
+	<tr>
+		<th></th>
+		<th colspan="2">玩家等级</th>
+		<th colspan="2">大本等级</th>
+	</tr>
+	<tr>
+		<th></th>
+		<th>uid</th>
+		<th>level</th>
+		<th>uid</th>
+		<th>level</th>
+	</tr>
+	<!--{loop $userInfo $serverKey $data}-->
+		<!--{loop $data $key $userdata}-->
+	<tr>
+		<td>$serverKey</td>
+		<td>$userdata['uid']</td>
+		<td>$userdata['level']</td>
+		<td>$buildInfo[$serverKey][$key]['uid']</td>
+		<td>$buildInfo[$serverKey][$key]['level']</td>
+		<!--{/loop}-->
+	</tr>
+	<!--{/loop}-->
+</table>
+<!-- {/if} -->
+<script type="text/javascript">
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

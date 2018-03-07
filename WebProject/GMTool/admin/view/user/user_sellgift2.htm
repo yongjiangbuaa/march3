@@ -1,0 +1,103 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "礼包统计";?><font color="red"></font></div>
+<!--选择服务器-->
+<!--<form action="#" method="post" name="getaccount">-->
+$serverDiv
+请输入礼包Id<input class="input-large focused" id="packageId" name="packageId" type="text" placeholder="礼包ID" value="{$packageId}" />
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}" />
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}" />
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据" />
+礼包价格 : <select onchange="" id="countType">
+    $options
+</select>
+<hr/>
+<!--</form>-->
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#start_time").datetimepicker();
+        $("#end_time").datetimepicker();
+    }
+
+    function getLogData(){
+        document.getElementById('btn_view').disabled=true;
+        selectEvent = document.getElementById("countType");
+
+        var url = 'mod=user&act=sellgift2&analyze=platform&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&selectServer='+$('#selectServer').val()+'&packageId='+$('#packageId').val()+'&countType='+selectEvent.options[selectEvent.selectedIndex].value;
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("POST",'admincp.php',true);
+        xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlHttp.send(url);
+    }
+
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                showLogin(getLogData);
+                return;
+            }
+            right.innerHTML=xmlHttp.responseText;
+            document.getElementById('btn_view').disabled=false;
+                document.getaccount.submit();
+                return;
+            }
+        }
+    }
+    function serverall(){
+        var currentObj = document.getElementById('all_server');
+        var objs=document.getElementsByTagName("input");
+        for(i=0;i<objs.length;i++){
+            var objId = objs[i].id.split('_');
+            if(objId[0]=='server'){
+                objs[i].checked = currentObj.checked;
+            }
+        }
+    }
+    function checkserverall(){
+        document.getElementById('all_server').checked = true;
+        var objs=document.getElementsByTagName("input");
+        for(i=0;i<objs.length;i++){
+            var objId = objs[i].id.split('_');
+            if(!objs[i].checked&&objId[0]=='server')
+            {
+                document.getElementById('all_server').checked = false;
+                break;
+            }
+        }
+    }
+    var people, asc1 = 1,
+            asc2 = 1,
+            asc3 = 1;
+
+    //		tr是行，th或者td是列，
+    function sort_table(a, col, asc) {
+        var tbody = document.getElementById('adDataTable');
+        var rows = tbody.rows,    //获取行
+                rlen = rows.length,   //一共多少行
+                arr = new Array(),
+                i, j, cells, clen;
+        // fill the array with values from the table
+        for (i = 0; i < rlen; i++) {
+            cells = rows[i].cells;   //每一行所有单元格
+            clen = cells.length;    //每行多少个单元格
+            arr[i] = new Array();
+            for (j = 0; j < clen; j++) {
+                arr[i][j] = cells[j].innerHTML;
+            }
+        }
+        // sort the array by the specified column number (col) and order (asc)
+        arr.sort(function (a, b) {
+            return (a[col] == b[col]) ? 0 : ((Number(a[col]) > Number(b[col])) ? asc : -1 * asc);
+        });
+        // replace existing rows with new rows created from the sorted array
+        for (i = 0; i < rlen; i++) {
+            rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+        }
+    }
+</script>
+<!--{template footer}-->

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Le styles -->
+<link href="bootstrap/css/jquery.dataTables.min.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-theme.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/dashboard.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/font-awesome.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/site.css?v=$cssVersion" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-datetimepicker.css?v=$cssVersion" rel="stylesheet">
+<link href="favicon.ico" type="image/x-icon" rel=icon>
+<style type="text/css">
+label {
+    font-weight: normal !important;
+}
+select {
+    height: 30px;
+}
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+	color: #1a1a1a;
+	font-weight: bolder;
+	background-color: #c2ddf8;
+}
+a {
+	color: #666;
+	text-decoration: none;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+	color: #0563e5;
+	background-color: rgba(253, 253, 253, 0.32);
+}
+</style>
+
+<script type='text/javascript' src="include/jquery-1.11.1.min.js?v=$jsVersion"></script>
+<script type='text/javascript' src="include/jquery.dataTables.min.js?v=$jsVersion"></script>
+<script type='text/javascript' src="bootstrap/js/moment.js?v=$jsVersion"></script>
+<script type='text/javascript' src="bootstrap/js/bootstrap-datetimepicker.js?v=$jsVersion"></script>
+<script type="text/javascript">
+var backFunc = null;//回调函数名
+function showLogin(f){
+	backFunc = f;
+	var windowWidth = document.documentElement.clientWidth;	
+	var windowHeight = document.documentElement.clientHeight;	
+	//居中设置	
+	$("#openwindow").css({	
+	"position": "absolute",	
+	"top": windowHeight/2 - $("#openwindow").height()/2,	
+	"left": windowWidth/2 - $("#openwindow").width()/2	
+	});	
+	$('#openwindow').fadeIn("slow");
+}
+function closeLogin(){
+	$('#openwindow').fadeOut("slow");
+}
+function relogin(){
+	var url ='admincp.php?mod=admin&act=login&relogin=1&user='+$("#loginuser").val()+'&password='+$("#loginpass").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = loginHandler;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function checkLogin(){
+	var username = $("#username").val();
+	if(!jQuery.trim(username)){
+		alert("{$MALANG['login_failed_username_null']}");
+		$("#username").val("");
+		$("#username").focus();
+		return false;
+	}
+	var password = jQuery.trim($("#password").val());
+	if(password.length < 4){
+		alert("{$MALANG['login_failed_password_null']}");
+		$("#password").val("");
+		$("#password").focus();
+		return false;
+	}
+	return true;
+}
+function loginHandler(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText == 0){
+			alert('登陆成功');
+			$('#openwindow').fadeOut("slow");
+			if(backFunc)//执行回调函数
+				backFunc();
+		}else{
+			alert('用户名或密码错误');
+		}
+	}
+}
+function getAjax(p){
+	if(window.XMLHttpRequest){//非IE内核浏览器
+		p=new XMLHttpRequest();
+	}else if(window.ActiveXObject){//IE内核浏览器
+	   try{//IE6.0
+		   p=new ActiveXObject("Microsoft.XMLHTTP");
+		}catch(e1){
+		  try{
+			  p=new ActiveXObject("MSXML2.XMLHTTP");
+		   }catch(e2){
+			 try{
+				 p=new ActiveXObject("MSXML3.XMLHTTP");
+			  }catch(e3){
+				 alert("创建Ajax失败："+e3)
+			  }
+		   }
+		}
+	}else{//未知浏览器
+		alert("未能识别的浏览器");
+	}
+	return p;
+}
+function getCurrentServer(){
+	currentServer = '$_COOKIE['Gserver2']';
+	if(!currentServer){
+		var servers = [];
+		{loop $servers $serverName $value}
+		servers.push('$serverName');
+		{/loop}
+		currentServer = servers[0];
+	}
+	return currentServer;
+}
+$(document).click(function (e) {
+	if(e.target.id != null){
+		var idArr = e.target.id.split('_');
+		if(idArr[0]=='server'){
+			if(idArr[1]=='control'){
+				showServerList();
+				return;
+			}
+		}
+	}
+	hideServerList();
+});
+function showServerList(){
+	$('#server_list').show();
+	$("#server_control").removeClass("dropdown").addClass('dropdown open');
+}
+function hideServerList(){
+	$('#server_list').hide();
+	$("#server_control").removeClass("dropdown open").addClass('dropdown');
+}
+function changeServer(){
+	var sid = $('#current_serverId').val();
+
+	if(sid != '' && typeof(sid) !="undefined"){
+		window.location.href="admincp.php?mod={$module}&act={$action}&Gserver=s"+sid;
+	}
+}
+
+function changeServerDown(event){
+	event = (event) ? event : window.event;
+	if (event.keyCode) {
+		if(event.keyCode==13){
+			changeServer();
+		}
+	}
+}
+function getYearWeek(year, month, day) {
+	/*
+	 date1是当前日期
+	 date2是当年第一天
+	 d是当前日期是今年第多少天
+	 用d + 当前年的第一天的周差距的和在除以7就是本年第几周
+	 */
+	var date1 = new Date(year, parseInt(month) - 1, day), date2 = new Date(year, 0, 1),
+			d = Math.round((date1.valueOf() - date2.valueOf()) / 86400000);
+	return Math.ceil(
+			(d + ((date2.getDay() + 1) - 1)) / 7
+	);
+};
+
+$(document).ready(function()
+{
+//	$("#leftslidesidebar ul li").next("ul").hide();
+	$("#leftslidesidebar ul li").click(function()
+	{
+		$(this).next("ul").toggle(500);
+	});
+});
+//每1000毫秒(即1秒) 执行一次本段代码
+//setInterval("rtxtime.innerText=new Date().toUTCString()",1000)
+setInterval(function(){
+	with(new Date)
+		rtxtime.innerText= getYearWeek(getUTCFullYear(),getUTCMonth()+1,getUTCDate())+'周 '+getUTCFullYear()+'-'+(getUTCMonth()+1)+"-"+getUTCDate()+'  '+getUTCHours()+":"+getUTCMinutes()+":"+getUTCSeconds()},1000)
+</script>
+<title>{$indexPageTitle}</title>
+<body data-spy="scroll" data-target=".subnav" data-offset="50" screen_capture_injected="true">
+<div id='openwindow'
+	 style='text-align: center; display: none; position: fixed; _position: absolute; height: 300px; width: 700px; background: #FFFFFF; border: 1px solid #cecece; z-index: 2; padding: 12px; display: none'>
+	<fieldset>
+		<legend>登陆已超时，请重新登陆</legend>
+		<div class="control-group">
+			<label class="control-label" for="loginuser">用户名</label>
+			<div class="controls">
+				<input class="input-large focused" id="loginuser" name="loginuser"
+					   type="text" value="">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="loginpass">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+			<div class="controls">
+				<input class="input-large focused" id="loginpass" name="loginpass"
+					   type="password" value="">
+			</div>
+		</div>
+		<div class="form-actions">
+			<button type="button" class="btn btn-info pull-right"
+					onclick="relogin()">{$MALANG['btn_submit']}</button>
+		</div>
+	</fieldset>
+</div>
+<div>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+<div id='server_list' style="display:none;position:fixed;z-index:1; right:300px; top:50px; width:200px; background-color:#f6f5ec; color:#FFF; line-height:30px;">
+	<a href="#" onclick="javascript:turnoff()">点击关闭</a>&nbsp;&nbsp;
+	<div>
+		<ul>
+			<!--{loop $titleServers $sub1 $subServers1}-->
+			<li class="dropdown-submenu">
+					<a class="dropdown-toggle" id="server_$sub1" href="#$sub1" data-toggle="dropdown" data-target="#$sub1" onclick="$().dropdown();">
+					$sub1</a>
+					<ul class="dropdown-menu">
+					<!--{loop $subServers1 $sub $subServers}-->
+						<li class="dropdown-submenu">
+							<a class="dropdown-toggle" id="server_$sub" href="#$sub" data-toggle="dropdown" data-target="#$sub" onclick="$().dropdown();">
+							$sub</a>
+							<ul class="dropdown-menu" style="height:150px;overflow:auto;">
+								<!--{loop $subServers $skey $serverdata}-->
+									<li><a	href="admincp.php?mod=$module&act={$action}&Gserver={$skey}">$skey</a></li>
+								<!--{/loop}-->
+							</ul>
+						</li>
+					<!--{/loop}-->
+					</ul>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+</div>
+		<div class="container" style="width:100%">
+    		<div class="navbar-header">
+				<button data-target=".navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle collapsed">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- 
+				<ul class="nav navbar-nav">
+    				<li><a class="navbar-brand" style="cursor:default;color:#fff;">$curTime</a></li>
+   				</ul>
+				-->
+				<!--<div style="font-size:34px;margin-top: 10px;color:#333333;padding-left: 15px;">Elex</div>-->
+			</div>
+	    	<div role="navigation" class="navbar-collapse collapse" style="background-color: #f0f0f0;padding-right: 15px;">
+				<ul class="nav navbar-nav navbar-left" style="padding-top: 15px;">
+					<!--{loop $menu $mkey $menu_item}-->
+						<!--
+						<li class="active"><a href="admincp.php?mod={$mkey}">{$menu_item['name']}</a></li>
+						 -->
+						<li class="dropdown" id="menu_$mkey">
+							<a class="dropdown-toggle {if $module==$mkey}active{/if}" href="#menu_$mkey" data-toggle="dropdown" data-target="#menu_$mkey" onclick="hideServerList();$().dropdown();">
+									{$menu_item['name']}
+							</a>
+							<ul class="dropdown-menu" style="width:100px;height:600px;overflow:auto;">
+							<!--{loop $menu[$mkey]['sub_menu'] $sub_mkey $sub_menu}-->
+								<li {if $module==$mkey && $action==$sub_menu['action'] }class="active"{/if}><a href="{$sub_menu['href']}">{$sub_menu['name']}</a></li>
+							<!--{/loop}-->
+							</ul>
+						</li>
+					<!--{/loop}-->
+					<li class="dropdown" id="server_control">
+						<a  class="dropdown-toggle"  id="server_control_a" href="#server_control" >
+							{php echo ucfirst($currentServer)}
+						</a>
+					</li>
+					<li id="server_control_sid" style="margin-top:8px"><input placeholder="服编号"  id="current_serverId" onBlur="changeServer()" style="width:45px" onkeydown="changeServerDown(event)"></li>
+				</ul>
+				<div class="navbar-right" style="font-size:34px;margin-top: 10px;color:#333333;padding-left: 15px;">
+					<a id="rtxtime" style="font-size:15px;cursor:default;color:#333333; margin-top: 13px"></a>COQ
+				</div>
+			</div>
+			<div id='quitdoor' role="navigation" class="navbar-collapse collapse" style="padding-right: 15px;background-color: #c4d7ea;">
+				<ul class="nav navbar-nav navbar-right">
+					<li style="border-right: 1px solid #9cb3c9;"><a class="navbar-brand" href="admincp.php?mod=admin&act=quit" style="color: #3b5880">$adminid</a></li>
+					<!--<li><a class="navbar-brand" href="http://mm.cok.elexapp.com/player/index" style="color: #3b5880;padding-left: 30px;">新后台</a></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+		<!--Sidebar content-->
+		<!--{template menu}-->
+		<!--{template left}-->

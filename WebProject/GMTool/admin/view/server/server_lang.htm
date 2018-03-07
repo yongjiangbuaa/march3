@@ -1,0 +1,101 @@
+<!--{template header}-->
+
+<div class="alert alert-info">
+<?php echo "前台语言包版本更新。（ZIP包: database.local.xml text_XX.ini)";?><br>
+上传CDN的ZIP包名称 APPVER_config_CONFIGVER.zip 如 1.0.86_config_1.0.1484.zip。包内是各个语言和database的zip文件。
+<font color="red">$headAlert</font>
+</div>
+
+<div id="currVer">
+	最新版本：<?php echo $currVer;?>
+</div>
+
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+		<th align="center" style="vertical-align: middle;">游戏版本</th>
+		<th align="center" style="vertical-align: middle;">语言版本</th>
+		<th align="center" style="vertical-align: middle;">从CDN下载</th>
+		<!-- <th align="center" style="vertical-align: middle;">上传到CDN</th> -->
+		<th align="center" style="vertical-align: middle;">确认CDN</th>
+		<th align="center" style="vertical-align: middle;">修改线上版本</th>
+		<th align="center" style="vertical-align: middle;">执行结果</th>
+		<th align="center" style="vertical-align: middle;">新版提示</th>
+		</tr>
+		<!--{loop $appVers $appver $configver}-->
+				<tr>
+					<td style="vertical-align: middle;">$appver</td>
+					<td style="vertical-align: middle;">$configver</td>
+					<td style="vertical-align: middle;">
+					<a href="javascript:void(download('{$appver}','{$configver}'))">下载</a>
+					</td>
+					<!-- <td style="vertical-align: middle;">
+					<form enctype="multipart/form-data" action="admincp.php?mod=server&act=lang&appver={$appver}&oldconfigver={$configver}&subact=upload" method="POST">
+					    <input name="userfile" type="file" />
+					    <input type="submit" value="上传" />
+					</form>
+					</td> -->
+					<td style="vertical-align: middle;">
+					<!--{loop $langfiles[$appver] $ftp_appver $ftp_appverlangf}-->
+						<!--{loop $ftp_appverlangf $langf}-->
+						<a href="javascript:void(getcdnfile('{$ftp_appver}','{$langf}'))">$langf</a><br>
+						<!--{/loop}-->
+					<!--{/loop}-->
+					</td>
+					<td style="vertical-align: middle;">
+					<input class="input-small" id="newconfigver{$appver}" name='newconfigver{$appver}' type="text" value='$newappVers[$appver]' size="10"/><br>
+					<a href="javascript:void(edit('$appver','$configver'))">修改</a>
+					</td>
+					<td style="vertical-align: top;">
+					<div id="divMsg{$appver}">$opmessages[$appver]</div>
+					</td>
+					<td style="vertical-align: middle;">
+					$notify_arr[$appver]
+					</td>
+				</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
+
+<div id='display' style="display:none;position:absolute;z-index:1; left:20px; top:100px; width:1000px; height:600px; color:#FFF; line-height:30px;filter:alpha(opacity=70);opacity: 0.7;background-color:silver">
+	<a href="#" onclick="javascript:turnoff()">关闭</a><br><br>
+	<center>
+	<div id='displayinner'>执行中...</div>
+	</center>
+</div>
+
+<script type="text/javascript">
+var g_target_appver = '';
+function edit(appver,oldconfigver) {
+	var oTextbox1=document.getElementById("newconfigver"+appver);
+	var newconfigver = oTextbox1.value;
+	if(!confirm("确定 修改 线上版本 ? \r\n" + appver+" => "+newconfigver)){return false;}
+	turnon();
+	g_target_appver = appver;
+	var url = 'admincp.php?mod=server&act=lang&appver='+appver+'&oldconfigver='+oldconfigver+'&newconfigver='+newconfigver+'&subact=modify';
+	$.get(url,function(data){
+			turnoff();
+			var divMsg = document.getElementById("divMsg"+g_target_appver); 
+			divMsg.innerHTML = data;
+	},'html');
+}
+function download(appver,oldconfigver) {
+	self.location ='admincp.php?mod=server&act=lang&appver='+appver+'&oldconfigver='+oldconfigver+'&subact=download';
+}
+function getcdnfile(appver,filename) {
+	self.location ='http://cok.eleximg.com/cok/config/'+appver+'/'+filename;
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+function turnon(){
+	document.getElementById('display').style.display="block";
+	/* var div = document.getElementById('display'); 
+	div.style.display="block"; 
+	div.style.left=event.clientX+10; 
+	div.style.top=event.clientY+5;  
+	div.style.position="absolute"; 
+	$("#displayinner").html(data); */
+}
+</script>
+<!--{template footer}-->

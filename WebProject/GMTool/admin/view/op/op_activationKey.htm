@@ -1,0 +1,460 @@
+<!--{template header}-->
+<br/>
+<div>
+<a href="javascript:void(changeType2(1))">已生成记录</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeType2(2))">生成激活码</a>
+</div>
+<div id="manageDiv">
+	<!--{if $dbData }-->
+		<table class="listTable" cellspacing=1 padding=0 style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<th width=2%>编号</th>
+			<th width=8%>标识</th>
+			<th width=8%>生成时间</th>
+			<th width=10%>激活码奖励标题</th>
+			<th width=2%>生成激活码数量</th>
+			<th width=2%>每个激活码的使用次数</th>
+			<th width=4%>已使用激活码数量</th>
+			<th width=2%>已使用次数</th>
+			
+			<th width=10%>有效期</th>
+			<th width=10%>注册时间</th>
+			<th width=4%>国家</th>
+			<th width=10%>大本等级</th>
+			<th width=10%>领主等级</th>
+			<th width=10%>战斗力</th>
+			<th width=2%>最少充值金币</th>
+			<th width=2%>是否可like</th>
+			
+			<th width=2%>操作人</th>
+			<th width=2%>下载</th>
+			<th width=8%>操作</th>
+		</tr>
+		<!--{loop $dbData $key $value}-->
+		<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+			onMouseOut="this.style.background='#fff';">
+				<td width="2%">$key</td>
+				<td width="8%">$value['seriesId']</td>
+				<td width="8%">$value['seriesDate']</td>
+				<td width="10%">$value['title']</td>
+				<td width="2%">$value['num']</td>
+				<td width="2%">$value['count']</td>
+				<td width="4%">$value['usedNum']</td>
+				<td width="2%">$value['timesNum']</td>
+				
+				<td width=10%>$value['beginTime']～$value['endTime']</td>
+				<td width=10%>$value['regStart']～$value['regEnd']</td>
+				<td width=4%>$value['country']</td>
+				<td width=10%>$value['bLvMin']～$value['bLvMax']</td>
+				<td width=10%>$value['uLvMin']～$value['uLvMax']</td>
+				<td width=10%>$value['powerMin']～$value['powerMax']</td>
+				<td width=2%>$value['payGold']</td>
+				<td width=2%>$value['deviceLimit']</td>
+				
+				<td width="2%">$value['proUser']</td>
+				<td width="2%"><a href="javascript:void(getXlsData('{$value['seriesId']}'))">下载</a></td>
+				<td width="4%" id="{$value['seriesId']}_{$value['num']}_{$value['type']}_{$value['count']}"><a href="javascript:void(generateAgain('{$value['seriesId']}_{$value['num']}_{$value['type']}_{$value['count']}'))">再次生成</a>
+																					&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(addTimes('{$value['seriesId']}_{$value['num']}_{$value['type']}_{$value['count']}'))">增加次数</a>
+																					&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(deleteLine('{$value['seriesId']}','{$value['num']}'))">删除</a><br></td>
+		</tr>
+		<!--{/loop}-->
+		</table>
+	<!--{else}-->
+		没有生成记录
+	<!--{/if}-->
+</div>
+<div id="addDiv" style="display:none">
+	<form action="admincp.php?mod=op&act=activationKey" method="post" name="getaccount" enctype="multipart/form-data">
+		<input class="display:none;" type="hidden" value="" id="type" name="type" />
+		<br>
+		<table class="listTable" cellspacing=1 padding=0 style="width: 80%; text-align: left">
+			<tr><td width="10%">激活码领奖邮件标题&nbsp;&nbsp;</td>
+				<td>
+					<table id="titleTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr><td width="8%">英语</td><td><input class="input-large focused" id="txttitleEn" name="txttitleEn" style="width: 90%;" type="text" value="" maxlength=40 /></td></tr>
+						<tr><td>简体中文</td><td><input class="input-large focused" id="txttitleZh_Hans" name="txttitleZh_Hans" style="width: 90%;" type="text" value="" maxlength=40 /></td></tr>
+						<tr><td>繁体中文</td><td><input class="input-large focused" id="txttitleZh_Hant" name="txttitleZh_Hant" style="width: 90%;" type="text" value="" maxlength=40 /></td></tr>
+						<tr><td>韩语</td><td><input class="input-large focused" id="txttitleKo" name="txttitleKo" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+						<tr><td>泰语</td><td><input class="input-large focused" id="txttitleTh" name="txttitleTh" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+						<tr><td>德语</td><td><input class="input-large focused" id="txttitleDe" name="txttitleDe" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+						<tr><td>俄语</td><td><input class="input-large focused" id="txttitleRu" name="txttitleRu" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+						<tr><td>葡语</td><td><input class="input-large focused" id="txttitlePt" name="txttitlePt" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+						<tr><td>日语</td><td><input class="input-large focused" id="txttitleJa" name="txttitleJa" type="text" style="width: 90%;" value="" maxlength=40 /></td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>激活码领奖邮件内容&nbsp;&nbsp;</td>
+				<td>
+					<table id="contentTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr><td width="8%">英语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentEn" name="txtcontentEn" rows="2"></textarea></td></tr>
+						<tr><td>简体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentZh_Hans" name="txtcontentZh_Hans" rows="2"></textarea></td></tr>
+						<tr><td>繁体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentZh_Hant" name="txtcontentZh_Hant" rows="2"></textarea></td></tr>
+						<tr><td>韩语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentKo" name="txtcontentKo" rows="2"></textarea></td></tr>
+						<tr><td>泰语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentTh" name="txtcontentTh" rows="2"></textarea></td></tr>
+						<tr><td>德语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentDe" name="txtcontentDe" rows="2"></textarea></td></tr>
+						<tr><td>俄语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentRu" name="txtcontentRu" rows="2"></textarea></td></tr>
+						<tr><td>葡语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentPt" name="txtcontentPt" rows="2"></textarea></td></tr>
+						<tr><td>日语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentJa" name="txtcontentJa" rows="2"></textarea></td></tr>
+					</table>
+				</td>
+			</tr>	
+			<tr><td>激活码奖励内容</td>
+			<td>
+				<table id="rewardTable" class="smallTable" style="width: 100%;border:0px;">
+					<tr><td width="8%">金币</td><td><input id="reward_gold" name="reward_gold" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>木材</td><td><input id="reward_wood" name="reward_wood" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>粮食</td><td><input id="reward_food" name="reward_food" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>秘银</td><td><input id="reward_stone" name="reward_stone" type="text" value="" maxlength=40 /></td></tr>
+					<tr><td>铁矿</td><td><input id="reward_iron" name="reward_iron" type="text" value="" maxlength=40 /></td></tr>
+				</table>
+			</td>
+			</tr>
+			<tr><td>奖励-道具<br/><font color="red">多个ID用'|'分隔<br/>数量也对应用'|'分开</font></td>
+			<td>
+				<table id="rewardTable2" class="smallTable" style="width: 100%;border:0px;">
+					<tr><td width="8%">道具ID</td><td><input id="reward_goods" name="reward_goods" style="width: 90%;" type="text" value="" maxlength=1000 /></td></tr>
+					<tr><td>数量</td><td><input id="reward_goodsNum" name="reward_goodsNum" style="width: 90%;" type="text" value="" maxlength=1000 /></td></tr>
+				</table>
+			</td>
+			</tr>
+			<tr>
+				<td>生成数量及使用次数</td>
+				<td>
+					<table id="titleTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr>
+							<td width="8%"></td>
+							<td>
+								<input id="keyNum" name="keyNum" type="text" value="" maxlength=40 />&nbsp;&nbsp;&nbsp;&nbsp;指定激活码<input id="specifiedKeyName" name="specifiedKeyName" type="text" value="" maxlength=40 /><br>
+								<input type="radio" id="limitTimes" name="times" value="limitTimes" onclick="changeTimes()" />限制次数&nbsp;&nbsp;
+								<input type="radio" id="countlessTimes" name="times" value="countlessTimes" onclick="changeTimes()" checked="checked"/>不限次数
+								<input id="keyTimes" name="keyTimes" type="text" value="" maxlength=40 style="display: none;"/>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>有效期</td>
+				<td>
+					<input class="input-large focused" id="beginTime" name="beginTime" type="text" value="" placeholder="点击选择日期"/>
+					－
+					<input class="input-large focused" id="endTime" name="endTime" type="text" value="" placeholder="点击选择日期"/>
+				</td>
+			</tr>
+			<tr>
+				<td>注册时间</td>
+				<td>
+					<input class="input-large focused" id="regStartTime" name="regStartTime" type="text" value="" placeholder="点击选择日期"/>
+					－
+					<input class="input-large focused" id="regEndTime" name="regEndTime" type="text" value="" placeholder="点击选择日期"/>
+				</td>
+			</tr>
+			<tr>
+				<td>国家<br/>(<font color="red">多个国家用';'分隔</font>)</td>
+				<td>
+					<input class="input-large focused" id="countries" style="width: 600px;" name="selectCountry" type="text" value="" maxlength="516" />
+				</td>
+			</tr>
+			<tr>
+				<td>大本等级</td>
+				<td>
+					<input class="input-small" id="blevelMin" name='blevelMin' type="text" value="" size="50"/>
+					-
+					<input class="input-small" id="blevelMax" name='blevelMax' type="text" value="" size="50"/>
+				</td>
+			</tr>
+			<tr>
+				<td>领主等级</td>
+				<td>
+					<input class="input-small" id="ulevelMin" name='ulevelMin' type="text" value="" size="50"/>
+					-
+					<input class="input-small" id="ulevelMax" name='ulevelMax' type="text" value="" size="50"/>
+				</td>
+			</tr>
+			<tr>
+				<td>战斗力</td>
+				<td>
+					<input class="input-small" id="powerMin" name='powerMin' type="text" value="" size="50"/>
+					-
+					<input class="input-small" id="powerMax" name='powerMax' type="text" value="" size="50"/>
+				</td>
+			</tr>
+			<tr>
+				<td>最少充值金币</td>
+				<td>
+					<input class="input-small" id="payGold" name='payGold' type="text" value="" size="50"/>
+				</td>
+			</tr>
+			<tr>
+				<td>是否发给唯一设备</td>
+				<td>
+					<input type="radio" id="deviceLimit" name="deviceLimit" value="true"> 是
+					<input type="radio" id="deviceLimit" name="deviceLimit" value="false" checked> 否
+				</td>
+			</tr>
+			<tr>
+				<td>同一账号可使用多个</td>
+				<td>
+					<input type="radio" id="multiTimes" name="multiTimes" value="true"> 是
+					<input type="radio" id="multiTimes" name="multiTimes" value="false" checked> 否
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<div id="adviceGe" style="display: none;"><h3>正在生成激活码...</h3></div>
+					<button type="button" class="btn btn-info" id="btn_generate" name="btn_generate" onclick="confGenerate('add')">生成</button>
+					<button type="reset" class="btn" id="btn_reset">重置</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+$("#beginTime,#endTime,#regStartTime,#regEndTime").datetimepicker();
+
+var seriesKey = null;
+function generateAgain(seriesId) {
+	doClear();
+	seriesKey=seriesId;
+	var str='<form id="form1" style="margin:0">再次生成激活码的个数: <input class="input-medium" name="newKeyNum" type="text" id="new'+seriesId+'" value=""><br/><div id="againGe" style="display: none;"><h3>再次生成激活码中...</h3></div><input type="button" id="savebtn" value="保存" onclick=save(new'+seriesId+',"again")>  <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(seriesId);
+	right.innerHTML=str;
+}
+function addTimes(seriesId) {
+	doClear();
+	seriesKey=seriesId;
+	var str='<form id="form1" style="margin:0">增加激活码的使用次数: <input class="input-medium" name="keyCount" type="text" id="new'+seriesId+'" value=""><br/><div id="againGe" style="display: none;"><h3>正在增加激活码的使用次数...</h3></div><input type="button" id="savebtn" value="保存" onclick=save(new'+seriesId+',"addCount")>  <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(seriesId);
+	right.innerHTML=str;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=activationKey';
+}
+function save(num,type){
+	document.getElementById('savebtn').style.display = 'none';
+	document.getElementById('cancelbtn').style.display = 'none';
+	document.getElementById('againGe').style.display = 'block';
+	self.location = 'admincp.php?mod=op&act=activationKey&action='+type+'&series='+seriesKey+'&numValue='+num.value;
+}
+function getXlsData(seriesId){
+	self.location ='admincp.php?mod=op&act=activationKey&action=output&series='+seriesId;
+}
+function deleteLine(seriesId,num){
+	if(confirm('是否确定删除series为'+seriesId+'的'+num+'个激活码'))
+	{
+		rmve(seriesId);	
+	}
+}
+function rmve(seriesId){
+	 self.location = "admincp.php?mod=op&act=activationKey&action=delete&series="+seriesId;
+}
+
+function changeTimes(){
+	if(document.getElementById('limitTimes').checked)
+	{
+		document.getElementById('keyTimes').style.display = 'block';
+	}
+	if(document.getElementById('countlessTimes').checked){
+		document.getElementById('keyTimes').style.display = 'none';
+	}
+}
+
+function changeType2(type){
+	if(type == 1){
+		document.getElementById('addDiv').style.display = 'none';
+		document.getElementById('manageDiv').style.display = 'block';
+	}
+	if(type == 2){
+		document.getElementById('manageDiv').style.display = 'none';
+		document.getElementById('addDiv').style.display = 'block';
+	}
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function confGenerate(type){
+	
+	var num=$("#keyNum").val();
+	num=jQuery.trim(num);
+	
+		var i=0;
+		var enTitle = $('#txttitleEn').val();
+		var enContents = $('#txtcontentEn').val();
+		var zh_HansTitle = $('#txttitleZh_Hans').val();
+		var zh_HansContents = $('#txtcontentZh_Hans').val();
+		var zh_HantTitle = $('#txttitleZh_Hant').val();
+		var zh_HantContents = $('#txtcontentZh_Hant').val();
+		var koTitle = $('#txttitleKo').val();
+		var koContents = $('#txttitleKo').val();
+		var thTitle = $('#txttitleTh').val();
+		var thContents = $('#txttitleTh').val();
+		var deTitle = $('#txttitleDe').val();
+		var deContents = $('#txttitleDE').val();
+		var ruTitle = $('#txttitleRu').val();
+		var ruContents = $('#txttitleRu').val();
+		var ptTitle = $('#txttitlePt').val();
+		var ptContents = $('#txttitlePt').val();
+		var jaTitle = $('#txttitleJa').val();
+		var jaContents = $('#txttitleJa').val();
+		var gold = $('#reward_gold').val();
+		var wood = $('#reward_wood').val();
+		var food = $('#reward_food').val();
+		var stone = $('#reward_stone').val();
+		var iron = $('#reward_iron').val();
+		var goodsNum =$("#reward_goodsNum").val();
+		var goods = $("#reward_goods").val();
+		enTitle=jQuery.trim(enTitle);
+		enContents = jQuery.trim(enContents);
+		zh_HansTitle=jQuery.trim(zh_HansTitle);
+		zh_HansContents = jQuery.trim(zh_HansContents);
+		zh_HantTitle=jQuery.trim(zh_HantTitle);
+		zh_HantContents = jQuery.trim(zh_HantContents);
+		koTitle=jQuery.trim(koTitle);
+		koContents = jQuery.trim(koContents);
+		thTitle=jQuery.trim(thTitle);
+		thContents = jQuery.trim(thContents);
+		deTitle=jQuery.trim(deTitle);
+		deContents = jQuery.trim(deContents);
+		ruTitle=jQuery.trim(ruTitle);
+		ruContents = jQuery.trim(ruContents);
+		ptTitle=jQuery.trim(ptTitle);
+		ptContents = jQuery.trim(ptContents);
+		jaTitle=jQuery.trim(jaTitle);
+		jaContents = jQuery.trim(jaContents);
+		gold = jQuery.trim(gold);
+		wood = jQuery.trim(wood);
+		//total =total+Number(wood);
+		food = jQuery.trim(food);
+		//total =total+Number(food);
+		stone = jQuery.trim(stone);
+		//total =total+Number(stone);
+		iron = jQuery.trim(iron);
+		//total =total+Number(iron);
+		if(!isEmpty(gold)){
+			i++;
+		}
+		if(!isEmpty(wood)){
+			i++;
+		}
+		if(!isEmpty(food)){
+			i++;
+		}
+		if(!isEmpty(stone)){
+			i++;
+		}
+		if(!isEmpty(iron)){
+			i++;
+		}
+		if(!isEmpty(goods)){
+			var nums = goods.split("|");
+			$.each(nums, function (index, val){ 
+				if(!isEmpty(val)){
+					i++;
+				}
+			});
+		}
+		if(!isEmpty(goodsNum)){
+			var nums = goodsNum.split("|");
+			var n=0;
+			$.each(nums, function (index, val){ 
+				val = jQuery.trim(val);
+				if(Number(val)>10000){
+					alert("<?php echo "the number of each goodsNum should be less than 10000";?>");
+					checkEn();
+					n=1;
+					$("#reward_goodsNum").focus();
+					return false;
+				}
+			});
+			if(n==1){
+		        return false;
+		    }
+				//total = total+Number(val); });
+		}
+		if(isEmpty(enTitle)){
+			alert("<?php echo "please input english title";?>");
+			checkEn();
+			$("#txttitleEn").focus();
+			return false;
+		}
+		if(isEmpty(enContents)){
+			alert("<?php echo "please input english contents";?>");
+			checkEn();
+			$("#txtcontentEn").focus();
+			return false;
+		}
+		if(gold>1000000){
+			alert("<?php echo "the number of gold should be less than 1000000";?>");
+			checkEn();
+			$("#reward_gold").focus();
+			return false;
+		}
+		if(wood>500000){
+			alert("<?php echo "the number of wood should be less than 500000";?>");
+			checkEn();
+			$("#reward_wood").focus();
+			return false;
+		}
+		if(food>500000){
+			alert("<?php echo "the number of food should be less than 500000";?>");
+			checkEn();
+			$("#reward_food").focus();
+			return false;
+		}
+		if(stone>500000){
+			alert("<?php echo "the number of stone should be less than 500000";?>");
+			checkEn();
+			$("#reward_stone").focus();
+			return false;
+		}
+		if(iron>500000){
+			alert("<?php echo "the number of iron should be less than 500000";?>");
+			checkEn();
+			$("#reward_iron").focus();
+			return false;
+		}
+		if(i>500000){
+			alert("<?php echo "the number of species should be less than 500000";?>");
+			checkEn();
+			$("#reward_goods").focus();
+			return false;
+		}
+	if(isEmpty(num)){
+		alert("<?php echo "请输入生成激活码的个数";?>");
+		checkEn();
+		$("#keyNum").focus();
+		return false;
+	}
+	if(confirm('是否确定生成'+num+'个激活码'))
+	{
+		checksubmit(type);	
+	}
+}
+
+function checksubmit(type){
+	document.getElementById('btn_generate').style.display = 'none';
+	document.getElementById('btn_reset').style.display = 'none';
+	document.getElementById('adviceGe').style.display = 'block';
+	
+	document.getElementById('type').value = type;
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

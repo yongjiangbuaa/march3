@@ -1,0 +1,36 @@
+<!--{template header}-->
+<div class="alert alert-info">祭坛（许愿池）</div>
+<form action="admincp.php?mod=user&act=pray&type=1" method="post" name="getaccount">
+        起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start_time}" />
+        结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end_time}" />
+        </br>
+        用户名<input type="text" id="username" name="username" value='{$username}'></input>
+        UID<input type="text" id="useruid" name="useruid" value='{$useruid}'></input>
+        <input class="btn js-btn btn-primary" type="submit" value="{$MALANG['btn_view']}" />
+</form>
+<!--{if isset($sum) }-->
+<table class="listTable" style="width: 100%; text-align: center">
+    <tr class="listTr">
+        <th width=2%>时间</th>
+        <th width=2%>玩家uid</th>
+        <th width=2%>类型(1为点击，2为使用祝福)</th>
+        <th width=2%>次数</th>
+    </tr>
+    <!--{loop $sum  $key $value}-->
+    <tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';" id="$value['uid']" >
+        <td width="2%">$value['date']</td>
+        <td width="2%">$value['userid']</td>
+        <td width="2%">$value['type']</td>
+        <td width="2%">$value['num']</td>
+    </tr>
+    <!--{/loop}-->
+</table>
+<!--{/if}-->
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#start_time").datetimepicker();
+        $("#end_time").datetimepicker();
+    }
+</script>
+<!--{template footer}-->

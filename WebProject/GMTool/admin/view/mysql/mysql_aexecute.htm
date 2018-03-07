@@ -1,0 +1,115 @@
+<!--{template header}-->
+<div class="alert alert-info" ><?php echo "执行数据库语句，查询语句会展示结果";?><font color="red"></font></div>
+<div style='TEXT-ALIGN:center;'>
+	<textarea id="sql" class="input-xxlarge" rows="6" name="sql"></textarea>
+</div>
+<div style='TEXT-ALIGN:center;'>
+	<input type='checkbox' id="slaveDB" name="slaveDB"  checked  />从备份服查询
+	<input class="btn js-btn btn-primary " type="button" onclick="start()" name="btn_view" value="执行SQL">
+	<input class="btn js-btn btn-primary " type="button" onclick="checkField()" name="btn_view" value="全服字段检查">
+	<input class="btn js-btn btn-primary " type="button" onclick="clearApc()" name="btn_view" value="清除APC缓存">
+	<input class="btn js-btn btn-primary " type="button" onclick="getServerTime()" name="btn_view" value="查询系统时间">
+	<br />
+	<input class="btn js-btn btn-primary " type="button" onclick="clearServerApc()" name="btn_view" value="清除指定服的APC缓存">
+	<input class="btn js-btn btn-primary " type="button" onclick="serverStat()" name="btn_view" value="查询指定服状态">
+	<div style='TEXT-ALIGN:center;'>
+		<textarea id="cache" class="input-xxlarge" rows="6" name="cache"></textarea>
+	</div>
+	<input class="btn js-btn btn-primary " type="button" onclick="getCacheData()" name="btn_view" value="查询Cache">
+	<input class="btn js-btn btn-primary " type="button" onclick="clearCacheData()" name="btn_view" value="清除指定key的缓存">
+	<input class="btn js-btn btn-primary " type="button" onclick="getFileLog()" name="btn_view" value="查询文件log">
+	<input class="btn js-btn btn-primary " type="button" onclick="repair()" name="btn_view" value="删除不需要的联合军演战报">
+	<br><br/>
+	<div id='show' style="width:auto;float:left;height:auto;align:left;"></div>
+</div>
+<script type="text/javascript">
+function start() {
+	var sql = $("#sql").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&sql='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function checkField() {
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&checkField=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function clearApc() {
+	var sql = $("#sql").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&clearApc=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function clearServerApc(){
+	var sql = $("#sql").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&clearServerApc=true&server='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function serverStat(){
+	var sql = $("#sql").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&serverStat=true&server='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function repair(){
+	var url ='admincp.php?mod=mysql&act=aexecute&slaveDB='+$("#slaveDB").attr("checked")+'&repair=true&date='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getServerTime(){
+	var url ='admincp.php?mod=mysql&act=aexecute&serverTime=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getCacheData(){
+	var sql = $("#cache").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&getCache=true&key='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getFileLog(){
+	var sql = $("#cache").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&getFile=true&key='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function clearCacheData(){
+	var sql = $("#cache").val();
+	var url ='admincp.php?mod=mysql&act=aexecute&clearCache=true&key='+sql;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		right.innerHTML=xmlHttp.responseText;
+		return;
+	}
+}
+</script>
+<!--{template footer}-->

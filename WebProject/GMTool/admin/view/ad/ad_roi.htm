@@ -1,0 +1,385 @@
+<!--{template header}-->
+<style type="text/css">
+	.trTitle{
+		line-height: 20px;
+	    font-family: museo_sans300;
+	    border-bottom: 1px solid #e8e8e8;
+	    background-color: #39434e;
+	    color: #f5f6f8;
+	    font-size: 13px;
+	}
+	.topChannel{
+		background-color: #fff;
+	    border-radius: 5px;
+	    border: 1px solid #00bcee;
+	    color: #0090d0;
+	    cursor: default;
+	    height: 36px;
+	}
+	th.asc:after {
+		content:' \2191'
+	}
+	th.desc:after {
+		content:' \2193'
+	}
+</style>
+
+<div style="text-align: -webkit-left;height: 50px;margin-bottom: 10px;">
+	<font style="color: cornflowerblue;font-size: large;">说明:</font> 
+	<font style="font-size: large;">roi为<font color="red">红</font>色表示良好,黑色为一般,<font color="green">绿</font>色是不达标.</font>
+</div>
+<form action="admincp.php?mod=ad&act=roi" method="post" name="getaccount">
+	<span style="font-family: 'Gotham XNarrow SSm A', 'Gotham XNarrow SSm B';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">起始</span><input class="input-large focused" id="start_time"
+		name="start_time" type="text" style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;"
+		placeholder="起始日期" value="{$start}"> 
+	<span style="font-family: 'Gotham XNarrow SSm A', 'Gotham XNarrow SSm B';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">结束</span><input
+		class="input-large focused" id="end_time" name="end_time" type="text"
+		style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;" placeholder="点击选择日期" value="{$end}"> 
+		<select id='os' name='os' style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $osList $osKey $osName}-->
+		<!--{if ($curOs == $osKey)}-->
+		<option value="{$osKey}" selected="selected">{$osName}</option>
+		<!--{else}-->
+		<option value="{$osKey}">{$osName}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select> 
+	<select id="selectCountry" name="selectCountry" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+		<option value="{$country}" selected="selected">{$countryname}</option>
+		<!--{else}-->
+		<option value="{$country}">{$countryname}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select> 
+	<!--{if ($curOs=='ALL')}-->
+		<select style="width: 200px;" id="topChannel_ALL" name="topChannel_ALL" class="topChannel" onchange="">
+			<option value="ALL">渠道: ALL</option>
+			<!--{loop $osChannel $osK $channels}-->
+				<!--{if ($osK!='ALL')}-->
+					<!--{loop $channels $channelValue}-->
+						<!--{if ($curTopChannel==$channelValue)}-->
+							<option value="{$channelValue}" selected="selected">$channelValue</option>
+						<!--{else}-->
+							<option value="{$channelValue}">$channelValue</option>
+						<!--{/if}-->
+					<!--{/loop}-->
+				<!--{/if}-->
+			<!--{/loop}-->
+		</select>
+		<!--{else}-->
+		<select style="width: 200px;" name="topChannel_ALL" class="topChannel" style="display: none;">
+			<option value="ALL">渠道: ALL</option>
+			<!--{loop $osChannel $osK $channels}-->
+				<!--{if ($osK!='ALL')}-->
+					<!--{loop $channels $channelValue}-->
+						<option value="{$channelValue}">$channelValue</option>
+					<!--{/loop}-->
+				<!--{/if}-->
+			<!--{/loop}-->
+		</select>
+	<!--{/if}-->
+
+	<!--{loop $osChannel $osK $channels}-->
+		<!--{if ($osK!='ALL')}-->
+			<!--{if ($curOs==$osK)}-->
+				<select style="width: 200px;" id="topChannel_{$osK}" name="topChannel_{$osK}"
+					class="topChannel" onchange="">
+					<option value="ALL">渠道: ALL</option>
+					<!--{loop $channels $channelValue}-->
+						<!--{if ($curTopChannel==$channelValue)}-->
+							<option value="{$channelValue}" selected="selected">$channelValue</option>
+						<!--{else}-->
+							<option value="{$channelValue}">$channelValue</option>
+						<!--{/if}-->
+					<!--{/loop}-->
+				</select>
+			<!--{else}-->
+				<select id="topChannel_{$osK}" name="topChannel_{$osK}" class="topChannel" style="display: none;width: 200px;" onchange="">
+					<option value="ALL">渠道: ALL</option>
+					<!--{loop $channels $channelValue}-->
+						<option value="{$channelValue}">$channelValue</option>
+					<!--{/loop}-->
+				</select>
+			<!--{/if}-->
+		<!--{/if}-->
+	<!--{/loop}-->
+	<span style="font-family: 'Gotham XNarrow SSm A', 'Gotham XNarrow SSm B';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">查看维度</span> <select id="dimension" name="dimension" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $dimensionArray $dimeKey $dimeVal}-->
+		<!--{if ($currdimension == $dimeKey)}-->
+		<option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+		<!--{else}-->
+		<option value="{$dimeKey}">{$dimeVal}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select> 
+	<select id="eventtype" name="eventtype" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+    		<!--{loop $typeArray $typeKey $typeVal}-->
+		<!--{if ($currtype == $typeKey)}-->
+		<option value="{$typeKey}" selected="selected">{$typeVal}</option>
+		<!--{else}-->
+		<option value="{$typeKey}">{$typeVal}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc; cursor: pointer;" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询"> 
+    &nbsp;&nbsp;
+    <input class="display:none;" type="hidden" value="" id="event" name="event"/>
+    <input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc; cursor: pointer;" type="button" onclick="getXlsPage()" id="btn_page" name="btn_view" value="导出"> 
+	
+	<table class='listTable' style='text-align: center'>
+		<thead>
+			<tr class="trTitle">
+			<!--{if ($param=='channelTop1')}-->
+				<!--{loop $titleArray $tKey $tVal}-->
+					<th asc="1" style="word-break: keep-all;white-space:nowrap; padding: 10px; text-align: -webkit-center;"  onclick="var a=$(this).attr('asc');sort_table(people, $(this).index(),a,20);a*=-1;$('.listTable th').attr('asc','1');$(this).attr('asc',a);if(a==-1){$('.listTable th').removeClass();$(this).addClass('asc');}else{$('.listTable th').removeClass();$(this).addClass('desc');}">$tVal</th>
+				<!--{/loop}-->
+			<!--{else}-->
+				<!--{loop $titleArray $tKey $tVal}-->
+					<th asc="1" style="word-break: keep-all;white-space:nowrap; padding: 10px; text-align: -webkit-center;"  onclick="var a=$(this).attr('asc');sort_table(people, $(this).index(),a,10);a*=-1;$('.listTable th').attr('asc','1');$(this).attr('asc',a);if(a==-1){$('.listTable th').removeClass();$(this).addClass('asc');}else{$('.listTable th').removeClass();$(this).addClass('desc');}">$tVal</th>
+				<!--{/loop}-->
+			<!--{/if}-->
+			</tr>
+		</thead>
+		<tr onMouseOver="this.style.background='lightskyblue'"
+			onMouseOut="this.style.background='initial';">
+			<!--{loop $titleArray $tKey $tVal}-->
+				<!--{if ($tKey=='responsible')}-->
+					<td style="text-align: -webkit-right;padding: 10px;"></td>
+				<!--{elseif ($tKey=='date' || $tKey=='channelSecond')}-->
+					<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">合计</td>
+				<!--{else}-->
+					<td style="text-align: -webkit-right;padding: 10px;">$total[$tKey]</td>
+				<!--{/if}-->
+			<!--{/loop}-->
+		</tr>
+		<tbody id='adDataTable'>
+			<!--{loop $data $dbData}-->
+			<tr onMouseOver="this.style.background='lightskyblue'"
+				onMouseOut="this.style.background='initial';">
+				<!--{loop $titleArray $tKey $tVal}-->
+				<!--{if ($tKey=='responsible')}-->
+					<td id="$dbData[$param]" style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;"><a href="javascript:void(edit('$dbData[$param]','$responsibles[$dbData[$param]]'))">$responsibles[$dbData[$param]]</a></td>
+				<!--{elseif ($tKey=='date')}-->
+					<!--{if ($param=='country' && $countrysAdd[$dbData[$param]])}-->
+					<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$countrysAdd[$dbData[$param]]</td>
+					<!--{else}-->
+					<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dbData[$param]</td>
+					<!--{/if}-->
+				<!--{elseif (isset($columncolors[$tKey]))}-->
+					<!--{if ($dbData[$tKey]>=$columncolors[$tKey][1])}-->
+						<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;"><font style="color: red;">$dbData[$tKey]</font></td>
+					<!--{elseif ($dbData[$tKey]<$columncolors[$tKey][1] && $dbData[$tKey]>=$columncolors[$tKey][0])}-->
+						<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;"><font style="color: black;">$dbData[$tKey]</font></td>
+					<!--{else}-->
+						<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;"><font style="color: green;">$dbData[$tKey]</font></td>
+					<!--{/if}-->
+				<!--{else}-->
+					<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;">$dbData[$tKey]</td>
+				<!--{/if}-->
+				<!--{/loop}-->
+			</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>
+
+
+</form>
+
+<script type="text/javascript">
+       $(document).ready(function(){
+           $("#os").change(function(){
+        	   		var i=$('#os').prop('selectedIndex');
+        	   		$(".topChannel").hide();
+                	$(".topChannel").eq(i).show();
+           });
+           $("#os").change();
+       });
+</script>
+
+<script type="text/javascript">
+var count=0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		//rightinfo();
+		return true;
+	}
+	return false;
+}
+var channelKey = null;
+var responsibleKey = null;
+function edit(channel,responsible) {
+	if(doClear()){
+		return;
+	}
+	channelKey=channel;
+	responsibleKey=responsible;
+	var id=channel;
+	var newid='new'+id;
+	var str='<div id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="'+newid+'" value="'+responsible+'"><br/>当前:'+responsible+' <input type="button" id="savebtn" value="保存" onclick="save('+"'"+newid+"'"+')"> <input type="button" id="cancelbtn" value="取消" onclick="goBack('+"'"+responsible+"'"+')"></div>';
+	right=document.getElementById(id);
+	right.innerHTML=str;
+}
+function goBack(originalValue){
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+channelKey+"'"+','+"'"+originalValue+"'"+'))">'+originalValue+'</a>');
+	count = 0;
+}
+function save(numId){
+	var val=document.getElementById(numId).value;
+	$.get('admincp.php?mod=ad&act=roi&type=modify&channelKey='+channelKey+'&paramValue='+val+"&responsibleKey="+responsibleKey,function(data){
+		
+	});
+	//rightinfo();
+	$("#form1").replaceWith('<a href="javascript:void(edit('+"'"+channelKey+"'"+','+"'"+val+"'"+'))">'+val+'</a>');
+	count = 0;	
+}
+
+function getXlsPage(){
+	//alert('admincp.php?mod=ad&act=roi&start_time='+$('#start_time').val()+'&end_time='+$('#end_time').val()+'&os='+$('#os').val()+'&selectCountry='+$('#selectCountry').val()+'&topChannel_'+$('#os').val()+'='+$('#topChannel_'+$('#os').val()).val()+'&dimension='+$('#dimension').val()+'&event=output');
+	//window.location.href='admincp.php?mod=ad&act=roi&start_time='+$('#start_time').val()+'&end_time='+$('#end_time').val()+'&os='+$('#os').val()+'&selectCountry='+$('#selectCountry').val()+'&topChannel_'+$('#os').val()+'='+$('#topChannel_'+$('#os').val()).val()+'&dimension='+$('#dimension').val()+'&event=output'; 
+	/* document.getElementById('btn_view').disabled=true;
+	document.getElementById('btn_page').disabled=true; */
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+
+window.onload = function () {
+people = document.getElementById("adDataTable");
+}
+function sort_table(tbody, col, asc, flag) {
+	var rows = tbody.rows,
+        rlen = rows.length,
+        arr = new Array(),
+        i, j, cells, clen;
+    // fill the array with values from the table
+    if(flag==20){
+	    for (i = 0; i < rlen; i++) {
+	        cells = rows[i].cells;
+	        clen = cells.length;
+	        arr[i] = new Array();
+	        if(cells[0].hasAttribute('id')){
+	        		arr[i][0]="<td id='"+cells[0].attributes["id"].value+"' style='word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;'>"+ cells[0].innerHTML+"</td>";
+	        }else{
+	        		arr[i][0] = "<td style='word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;'>"+ cells[0].innerHTML+"</td>";
+	        }
+	        for (j = 1; j < clen; j++) {
+	            arr[i][j] = cells[j].innerHTML;
+	        }
+	    }
+	}else{
+		for (i = 0; i < rlen; i++) {
+	        cells = rows[i].cells;
+	        clen = cells.length;
+	        arr[i] = new Array();
+	        for (j = 0; j < clen; j++) {
+	            arr[i][j] = cells[j].innerHTML;
+	        }
+	    }
+	}
+    // sort the array by the specified column number (col) and order (asc)
+    arr.sort(function (a, b) {
+        	//return (a[col] == b[col]) ? 0 : ((Number(a[col].replace(/,|-/g, "")) > Number(b[col].replace(/,|-/g, ""))) ? asc : -1 * asc);
+        if(a[col].indexOf("<")>-1){ 
+			var asubStr = a[col].match(">(.*)<");
+	        var bsubStr = b[col].match(">(.*)<"); 
+	        return (asubStr[1] == bsubStr[1]) ? 0 : ((Number(asubStr[1].trim().replace(/,|-/g, "")) > Number(bsubStr[1].trim().replace(/,|-/g, ""))) ? asc : -1 * asc);
+	    }else{  
+	    		return (a[col] == b[col]) ? 0 : ((Number(a[col].trim().replace(/,|-/g, "")) > Number(b[col].trim().replace(/,|-/g, ""))) ? asc : -1 * asc); 
+	    }  
+    });
+    // replace existing rows with new rows created from the sorted array
+    if(flag==20){
+	    for (i = 0; i < rlen; i++) {
+	    		rows[i].innerHTML = arr[i].join("<td style='text-align: -webkit-right;padding: 10px;'>") + "</td>";
+	    }
+    }else{
+	    	for (i = 0; i < rlen; i++) {
+	    		rows[i].innerHTML = "<td style='word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;'>"+arr[i].join("</td><td style='text-align: -webkit-right;padding: 10px;'>") + "</td>";
+	    }
+    }
+}
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('btn_page').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+</script>
+
+<!--{if ($param=='country' || $param=='channelTop1')}-->
+	<script type="text/javascript">
+		var index=1;
+		var flag=10;
+	</script>
+	<!--{if ($param=='channelTop1')}-->
+		<script type="text/javascript">
+			index=2;
+			flag=20;
+		</script>
+	<!--{/if}-->
+	
+<script type="text/javascript">
+sort_table(document.getElementById("adDataTable"), index,-1,flag);
+$('.listTable tr:eq(0) th:not(:eq('+index+'))').attr('asc','1');
+$(".listTable tr:eq(0) th:eq('+index+')").attr('asc',1);
+$('.listTable th').removeClass();
+$('.listTable tr:eq(0) th:eq('+index+')').addClass('desc');
+</script>
+<!--{/if}-->
+
+
+<!--{template footer}-->

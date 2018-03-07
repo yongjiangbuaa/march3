@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog name="PHP SDK">
+<version name="1.0.0.0">
+新特性：
+1. statistics模块拆分
+</version>
+</changelog>

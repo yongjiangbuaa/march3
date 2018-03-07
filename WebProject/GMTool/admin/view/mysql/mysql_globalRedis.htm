@@ -1,0 +1,69 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询global上的redis数据";?><font color="red"></font></div>
+<div class="span11" style='TEXT-ALIGN:center;float:left;'>
+<form action="admincp.php?mod=mysql&act=globalRedis&type=output" method="post" name="getaccount">
+	RedisKey: 
+	<input type="text" id="selectTable" name="selectTable" value='{$selectTable}'></input>
+	hashKey: 
+	<input type="text" id="selectIndex" name="selectIndex" value='{$selectIndex}'></input>
+	<input class="btn js-btn btn-primary" type="button" onclick="get_datas('hGet')" id="btn_view" name="btn_view" value="hGet">&nbsp;&nbsp;
+	
+	<input class="btn js-btn btn-primary" type="button" onclick="get_datas('get')" name="btn_view" value="get">&nbsp;&nbsp;
+	
+	<input class="btn js-btn btn-primary" type="button" onclick="get_datas('hkeys')" name="btn_view" value="hkeys">&nbsp;&nbsp;
+	
+	<input class="display:none;" type="hidden" value="" id="tablename" name="tablename"/>
+</form>
+</div>
+<div id='show' style="float:left;width:110%;height:auto;"></div>
+<script type="text/javascript">
+
+function get_datas(type){
+	var objs=document.getElementsByName('btn_view');
+	for(i=0;i<objs.length;i++){
+		objs[i].disabled=true;
+	}
+	showData(type);
+}
+
+function showData(type){
+	tableSelect = document.getElementById("selectTable");
+	var tablename = tableSelect.value;
+	indexSelect = document.getElementById("selectIndex");
+	var indexname = indexSelect.value;
+	if(tablename == null || tablename ==""){
+		alert("<?php echo 请输入一个表进行查询;?>");
+		$("#tablename").focus();
+		var objs=document.getElementsByName('btn_view');
+		for(i=0;i<objs.length;i++){
+			objs[i].disabled=false;
+		}
+		return;
+	}
+	var url ='admincp.php?mod=mysql&act=globalRedis&key='+tablename+'&index='+indexname+'&type='+type;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			var objs=document.getElementsByName('btn_view');
+			for(i=0;i<objs.length;i++){
+				objs[i].disabled=false;
+			}
+			return;
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,105 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "跨服战玩家参与情况统计";?><font color="red">所选服不要超过10个!&nbsp;&nbsp;&nbsp;&nbsp;$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=crossFightStatistics&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!--{if $showData}-->
+<table class="table table-striped">
+<tbody>
+	<tr>
+		<th style="width: 65px;">参与服</th>
+		<th style="width: 120px;"></th>
+		<th style="width: 60px;"></th>
+		<!--{loop $serverIdArray $serId}-->
+			<th colspan="3" style="width: 80px;text-align: center;">$serId</th>
+		<!--{/loop}-->
+	</tr>
+	<tr>
+		<th style="width: 65px;">服</th>
+		<th style="width: 120px;">活动时间</th>
+		<th style="width: 60px;">阶段</th>
+		<!--{loop $serverIdArray $serId}-->
+			<th style="width: 80px;">参与人数</th>
+			<th style="width: 100px;">满足条件人数</th>
+			<th style="width: 60px;">参与率</th>
+		<!--{/loop}-->
+	</tr>
+	<!--{loop $data $serverKey $serverVal}-->
+		<!--{loop $serverVal $timeKey $roundVal}-->
+				<!--{loop $roundVal $roundKey $dbVal}-->
+					<tr>
+						<td style="width: 65px;">$serverKey</td>
+						<td style="width: 120px;">$timeKey</td>
+						<!--{if $roundKey==999}-->
+							<td style="width: 60px;">整阶段</td>
+						<!--{else}-->
+							<td style="width: 60px;">$roundKey</td>
+						<!--{/if}-->
+						<!--{loop $serverIdArray $serId}-->
+							<td style="width: 80px;">$dbVal[$serId]['partUsers']</td>
+							<td style="width: 100px;">$dbVal[$serId]['permissionUsers']</td>
+							<td style="width: 60px;">$dbVal[$serId]['rate']</td>
+						<!--{/loop}-->
+					</tr>
+				<!--{/loop}-->
+		<!--{/loop}-->
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+道具消耗:
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<th>道具名称</th>
+		<th>使用数量</th>
+	</tr>
+	<!--{loop $goodsArray $nameKey $countVal}-->
+		<tr>
+			<td>$nameKey</td>
+			<td>$countVal</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+金币消耗:
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<th>消费类型</th>
+		<th>消费次数</th>
+		<th>消费金额</th>
+	</tr>
+	<!--{loop $goldArray $typeKey $countVal}-->
+		<tr>
+			<td>$typeKey</td>
+			<td>$countVal['goldCount']</td>
+			<td>$countVal['goldSum']</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<!--{/if}-->
+
+</form>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

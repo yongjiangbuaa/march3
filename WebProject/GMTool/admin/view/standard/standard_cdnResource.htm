@@ -1,0 +1,70 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=standard&act=cdnResource&type=view" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+游戏版本号:
+<input type="text" style="width: 70px;" value="{$appVersion}" id="appVersion" name="appVersion"/>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="check_submit()" />
+</div>
+</div>
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:100%;">
+<tbody>
+	<tr>
+		<th align="center" width="40px">游戏版本</th>
+		<th align="center" width="60px">name</th>
+		<!--{loop $pfArray $pfVal}-->
+			<th align="center" width="200px">$pfVal平台</th>
+		<!--{/loop}-->
+	</tr>
+	<!--{loop $nameArray $nameVal}-->
+		<tr>
+			<td>
+				$appVersion
+			</td>
+			<td>$nameVal</td>
+			<!--{loop $pfArray $pfVal}-->
+				<td>
+					<a href="http://cok.eleximg.com/cok/lua/$data[$nameVal][$pfVal]['cdn_res_name']">$data[$nameVal][$pfVal]['cdn_res_name']</a>
+					<br>
+					$data[$nameVal][$pfVal]['update_time']
+				</td>
+			<!--{/loop}-->
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var appVersion = $('#appVersion').val();
+	appVersion = jQuery.trim(appVersion);
+	if(isEmpty(appVersion)){
+		alert("游戏版本号不能为空!");
+		$("#appVersion").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit() {
+	if(isCommit()){
+		document.getElementById('btn_view').disabled=true;
+		document.getaccount.submit();
+	}
+}
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,25 @@
+<!--{template header}-->
+<div class="alert alert-info">将用户修改为资源商标识(不分服)<font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=businessman" method="post" name="getaccount">
+    <div class="row-fluid">
+        <div class="span11">
+            <span>资源商uid用<font size="5" color="#FF0000">;</font>分隔</span>
+            <br>
+            <textarea id="contents" name="contents" rows="6" cols="80"></textarea>
+            <br>
+        </div>
+    </div><br/>
+    <input class="btn js-btn btn-primary" type="button" value="修改" name="btn_view" onclick="check_submit()" />
+</form>
+<script type="text/javascript">
+
+    function check_submit() {
+        var uids= $("#contents").val();
+        if(uids != null && uids.length !=0) {
+            document.getaccount.submit();
+        }else {
+            alert('批量uid 不能为空');
+        }
+    }
+</script>
+<!--{template footer}-->

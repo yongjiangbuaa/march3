@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<changelog name="PHP SDK">
+<version name="1.3.1.0">
+新特性：
+1. 运行bin目录下的update.bat会自动更新gameengine，但不会更新用户代码所在的game目录
+</version>
+<version name="1.3.0.2">
+优化：
+1. 通过CacheServiceFactory::getCacheAccess()来获取缓存实例
+</version>
+<version name="1.3.0.1">
+新特性：
+1. 拆分annotation, XObject到util模块
+2. 拆分cache模块
+
+优化：
+1. 优化testcase
+2. 去掉Persistence Cache相关代码
+3. 补充完善API文档
+4. 删除persistence session相关代码
+</version>
+<version name="1.3.0.0">
+新特性：
+1. 将User, Action, ItemSpec模块单独拆分，将OwnedItem并入User模块，将ItemSpec作为单独模块
+2. 将统计分析模块(statistics)，持久化模块(persistence)，基础工具模块(util)单独拆分，将config模块放到util模块中。
+3. 调整User, Action, ItemSpec模块的目录结构，去除lib目录
+4. 去除对AuditChange的支持，去除对多语言服务的支持
+5. 添加分布式memcache session的支持
+
+Bug修复：
+1. 修复XConfig多次加载的bug
+2. User接口中getUID()改为getUid()
+
+优化：
+1. sdk日志中增加一项：当前用户的gameUserId
+2. 在request和session上增加getuser和setuser接口
+3. ItemSpec添加getGroup()方法，获得所在的ItemGroup
+4. 优化ItemSpecManager,支持读取指定的ItemSpec.xml
+5. 优化XAnnotationParser性能
+6. 优化XServletRequest的headers方法
+7. SDK统一事件名称
+8. 优化request的读取次数
+9. 优化testcase命令号模式
+</version>
+<version name="1.2.1.3">
+Bug修复：
+1. 修复XCache多次加载的bug
+2. 修改对多维数组的前后台通信限制,放宽到第二层
+3. User接口中getUID()改为getUid()
+
+优化：
+1. 优化XXMLUTIL工具对xml文件的解析
+2. 优化file_exists
+3. 线上日志默认级别为ERROR
+</version>
+<version name="1.2.1.2">
+新特性：
+1. 采用xml作为配置文件
+
+</version>
+<version name="1.2.1.1">
+新特性：
+1. SDK日志文件限定大小，自动重命名
+
+Bug修复：
+1. 修复action调试页面传递参数错误的bug
+2. 修复UserAdminService中用户不存在时返回数据不正常的bug
+
+优化：
+1. 将secret_key, consumer_key配置信息放到framework内
+2. 用户注册时加持久化锁，防止重复注册
+3. 规范用户登录注册时的错误代码
+</version>
+<version name="1.2.1.0">
+新特性：
+1. 生成的OwendItem默认包名改为service.item
+2. PHP SDK安全认证失败时返回错误代码，不返回HTTP 401错误
+</version>
+<version name="1.2.0.0">
+新特性：
+1. SDK模块化，支持模块的选择
+2. Audit Change添加物品时支持由前台生成uid
+3. 将ItemSpec和OwnedItem模型分开
+4. action/audit change支持持久化锁
+5. 增加ItemSpecManager返回所有Group和ItemSpec的接口
+
+Bug修复:
+1. 修复Action错误处理不全面的问题
+2. 修复ItemSpecManager的bug
+
+优化：
+1. UserStatus改用by value形式存储，减少数据库读取次数，提升性能
+2. 补充完善API注释文档
+3. 优化UpdateAuditChange,只返回更改过的属性
+4. SDK日志显示毫秒级别时间戳
+5. 请求一组Action时，如果中间出错不再执行后面Action
+</version>
+<version name="1.1.1.1">
+Bug修复:
+1. 修复注释文件读取出错的bug
+2. 修复抛出异常时仍然会flush数据库的bug
+</version>
+<version name="1.1.1.0">
+新特性:
+1. 数据传输支持gzip压缩（gzcompress/gzuncompress）
+2. GM系统添加freeze/unfreeze用户接口
+3. 提供物品uid生成器，支持前台生成uid的方式
+
+Bug修复:
+1. 修复使用PHAR包时，amf调试页面无法使用的bug
+2. 更新service invoker和action invoker到最新接口
+
+性能优化：
+1. XAMFStream去掉authenticationFilter，改善性能
+2. 减少XServiceResult中formatData方法的遍历深度，最多支持一层object数组的asArray方法
+3. 对配置加载进行的优化
+4. 优化持久化数据的相关操作
+</version>
+<version name="1.1.0.0">
+New Features:
+1. 支持使用用户名密码登陆注册
+2. 支持通过@Visible注释过滤不需要输出的用户属性
+3. 支持用户登录、注册、加载时的回调
+4. 将Session改为PersistenceSession
+
+Bug fixed:
+1. 修复服务器地址端口不为80时加密验证失败的bug
+2. 修复amf中文加密不通过的bug
+3. 修复不同数据库行为不一致的bug
+4. 更新调试页面，匹配新接口
+</version>
+<version name="1.0.2.0">
+bug fix:
+1. 修正了新建项目后读取sdk-description.xml失败的问题
+2. 修改了默认的persistence.php配置信息，默认使用mysql数据库
+</version>
+</changelog>

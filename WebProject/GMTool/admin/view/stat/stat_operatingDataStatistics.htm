@@ -1,0 +1,543 @@
+<!--{template header}-->
+<style type="text/css">
+	th
+	{
+		white-space: nowrap;
+		text-align:center;
+	}
+	td
+	{
+		white-space: nowrap;
+	}
+
+	 #box{
+		 height:214px;
+		 width:520px;
+		 overflow-y:auto;/** 必须，否则当表格数据过多时，不会产生滚动条，而是自动延长该div的高度 */
+		 position:relative;/** 必须，若不设置，拷贝得来的表头将相对于其设置该属性为该值的父节点（或间接父节点）定位，如果没有，则相对于body */
+	 }
+	table,tr,td,th{
+		border:1px solid #ccd;
+		border-collapse:collapse;
+	}
+	/*table{*/
+		/*width:100%;*/
+	/*}*/
+	td{
+		height:24px;
+		/*width:3px;/!** 固定单元格宽度，防止分离表头后，表头与数据行错位（缺点） *!/*/
+		line-height:24px;
+		padding:3px 5px;
+		/*background-color:snow;*/
+	}
+
+	th{
+		height:24px;
+		/*width:3px;/!** 不管是固定像素或是百分比，应与对应数据列的宽度一致 *!/*/
+		line-height:24px;
+		/*background-color:snow;*/
+	}
+</style>
+<div class="alert alert-info"><?php echo "运营数据查询-adwords对应ROI界面的GoogleAdwords";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=operatingDataStatistics" method="post" name="getaccount">
+
+$serverDiv
+
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+国家
+<select id="selectCountry" name="selectCountry[]" onchange="" >
+		<!--{loop $countryList $country $countryname}-->
+			<!--{if (in_array($country,$currCountry))}-->
+				<option value="{$country}" selected="selected">{$countryname}</option>
+			<!-- {else} -->
+				<option value="{$country}">{$countryname}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+平台
+<select id="selectPf" name="selectPf[]" onchange="" >
+		<!--{loop $pfList $pf $pfname}-->
+			<!--{if (in_array($pf,$currPf))}-->
+				<option value="{$pf}" selected="selected">{$pfname}</option>
+			<!-- {else} -->
+				<option value="{$pf}">{$pfname}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+	渠道
+	<select id="selectReferrer" name="selectReferrer" onchange="">
+		<!--{loop $referrerList $referrer $referrername}-->
+		<!--{if ($currReferrer == $referrer)}-->
+		<option value="{$referrer}" selected="selected">{$referrername}</option>
+		<!-- {else} -->
+		<option value="{$referrer}">{$referrername}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL" />
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<!-- {if $showData} -->
+	<div id="box" style="float:left;width:500%;height: 700px;">
+	<table id="tab" style='text-align:center'>
+		<tr>
+			<th style="width: 80px">日期</th>
+			<th style="width: 50px">国家</th>
+			<th style="width: 80px">新注册</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!--{if ($pfName != 'ALL')}-->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 80px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 80px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 80px">$pfName</th>
+					<!-- {/if} -->
+				<!--{/if}-->
+			<!-- {/loop} -->
+
+			<th style="width: 80px">日活跃</th>
+			<!-- {loop $currPf $pfKey $pfName} -->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 80px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 80px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 80px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!-- {/loop} -->
+
+			<th style="width: 80px">老玩家</th>
+			<!-- {loop $currPf $pfKey $pfName} -->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 80px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 80px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 80px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!-- {/loop} -->
+
+			<th style="width: 80px">付费DAU</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 80px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 80px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 80px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">付费DAU(迁服)</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 80px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 80px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 80px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th  style="width: 100px">付费总值</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 100px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 100px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 100px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 60px">付费用户</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<!--<th>付费次数</th>-->
+			<!--&lt;!&ndash;{loop $currPf $pfKey $pfName}&ndash;&gt;-->
+				<!--<th>$pfName</th>-->
+			<!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+			<th style="width: 60px">首充用户</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 100px">首充付费金额</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 100px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 100px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 100px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">付费渗透率</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">ARPPU</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">次日留存</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">3日留存</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">7日留存</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+					<!-- {elseif ($pfName == 'AppStore')} -->
+						<th style="width: 60px">IOS</th>
+				<!-- {else} -->
+				<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 80px">30日留存</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<!-- {if ($pfName != 'ALL')} -->
+					<!-- {if ($pfName == 'market_global')} -->
+						<th style="width: 60px">GG</th>
+			<!-- {elseif ($pfName == 'AppStore')} -->
+			<th style="width: 60px">IOS</th>
+			<!-- {else} -->
+			<th style="width: 60px">$pfName</th>
+					<!-- {/if} -->
+				<!-- {/if} -->
+			<!--{/loop}-->
+
+			<th style="width: 90px">广告费</th>
+			<!--&lt;!&ndash;{loop $currPf $pfKey $pfName}&ndash;&gt;-->
+			<!--<th>$pfName</th>-->
+			<!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+			<th style="width: 70px">3日ROI</th>
+			<th style="width: 70px">7日ROI</th>
+			<th style="width: 70px">30日ROI</th>
+			<th style="width: 800px">运营备注信息</th>
+		</tr>
+		<!--{loop $countryArray $countryKey $countryValue}-->
+			<!--{loop $dateArray $dK $dateKey}-->
+				<tr>
+					<td style="width: 80px">$dateKey</td>
+					<td style="width: 50px">$countryValue</td>
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['reg']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!--{if ($pfName != 'ALL')}-->
+							<td style="width: 80px">$pfData[$dateKey][$countryValue][$pfName]['reg']</td>
+						<!--{/if}-->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['dau']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 80px">$pfData[$dateKey][$countryValue][$pfName]['dau']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['sdau']</td>
+					<!-- {loop $currPf $pfKey $pfName} -->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 80px">$pfData[$dateKey][$countryValue][$pfName]['sdau']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['paid_dau']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 80px">$pfData[$dateKey][$countryValue][$pfName]['paid_dau']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['pdau_relocation']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 80px">$pfData[$dateKey][$countryValue][$pfName]['pdau_relocation']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+
+
+					<td style="width: 100px">$eventAll[$dateKey][$countryValue]['payTotle']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 100px">$pfData[$dateKey][$countryValue][$pfName]['payTotle']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 60px">$eventAll[$dateKey][$countryValue]['payUsers']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName]['payUsers']</td>
+					<!-- {/if} -->
+					<!--{/loop}-->
+<!--<td>$eventAll[$dateKey][$countryValue]['payTimes']</td>-->
+<!--&lt;!&ndash;{loop $currPf $pfKey $pfName}&ndash;&gt;-->
+	<!--<td>$pfData[$dateKey][$countryValue][$pfName]['payTimes']</td>-->
+<!--&lt;!&ndash;{/loop}&ndash;&gt;-->
+					<td style="width: 60px">$eventAll[$dateKey][$countryValue]['firstPay']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName]['firstPay']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 100px">$eventAll[$dateKey][$countryValue]['newTotalPay']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 100px">$pfData[$dateKey][$countryValue][$pfName]['newTotalPay']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['filter']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName]['filter']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue]['ARPU']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName]['ARPU']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue][1]['rate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName][1]['rate']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue][3]['rate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName][3]['rate']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue][7]['rate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName][7]['rate']</td>
+						<!-- {/if} -->
+					<!--{/loop}-->
+					<td style="width: 80px">$eventAll[$dateKey][$countryValue][30]['rate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<!-- {if ($pfName != 'ALL')} -->
+							<td style="width: 60px">$pfData[$dateKey][$countryValue][$pfName][30]['rate']</td>
+						<!-- {/if} -->
+
+					<!--{/loop}-->
+					<!-- {if (!in_array('ALL',$currCountry))} -->
+						<td style="width: 80px">-</td>
+					<!-- {else} -->
+						<td style="width: 90px">$eventAll[$dateKey][$currReferrer]</td>
+					<!-- {/if} -->
+
+					<!-- {if (!in_array('ALL',$currCountry))} -->
+						<td style="width: 70px">-</td>
+					<!-- {else} -->
+						<td style="width: 70px">$eventAll[$dateKey]['3roi']</td>
+					<!-- {/if} -->
+
+					<!-- {if (!in_array('ALL',$currCountry))} -->
+						<td style="width: 70px">-</td>
+					<!-- {else} -->
+						<td style="width: 70px">$eventAll[$dateKey]['7roi']</td>
+					<!-- {/if} -->
+
+					<!-- {if (!in_array('ALL',$currCountry))} -->
+						<td style="width: 70px" >-</td>
+					<!-- {else} -->
+						<td style="width: 70px">$eventAll[$dateKey]['30roi']</td>
+					<!-- {/if} -->
+
+
+
+
+					<!-- {if $num[$dateKey]} -->
+					<td id="$dateKey" style="width: 800px; text-align:left;"><a href="javascript:void(edit('$dateKey','$num[$dateKey]'))">$num[$dateKey]</a></td>
+					<!-- {else} -->
+					<td id="$dateKey" style="width: 800px; text-align:left;"><a href="javascript:void(edit('$dateKey','$num[$dateKey]'))">无</a></td>
+					<!-- {/if} -->
+				</tr>
+			<!--{/loop}-->
+		<!--{/loop}-->
+	</table>
+<!-- {/if} -->
+		</div>
+</form>
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'user';
+	document.getaccount.submit();
+
+}
+
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+var count=0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+
+function edit(date,num) {
+	doClear()
+	datekey=date;
+	right =right=document.getElementById(date);
+	var str='<form id="form1" style="margin:0">输入值: <input class="input-mini" name="num" type="text" id="num'+date+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(num)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right.innerHTML=str;
+}
+
+function rightinfo() {
+	self.location='admincp.php?mod=stat&act=operatingDataStatistics&event=user&type=1&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val();
+}
+
+function save(num){
+	var url ='admincp.php?mod=stat&act=operatingDataStatistics&event=user&type=1&datekey='+datekey+'&num='+num.value;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+
+function getAction(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		rightinfo();
+		return;
+	}
+}
+
+		/**
+		 * 功能：固定表头
+		 * 参数   viewid     表格的id
+		 *       scrollid   滚动条所在容器的id
+		 *       size       表头的行数（复杂表头可能不止一行）
+		 */
+				function scroll(viewid,scrollid,size){
+			// 获取滚动条容器
+			var scroll = document.getElementById(scrollid);
+			// 将表格拷贝一份
+			var tb2 = document.getElementById(viewid).cloneNode(true);
+			// 获取表格的行数
+			var len = tb2.rows.length;
+			// 将拷贝得到的表格中非表头行删除
+			for(var i=tb2.rows.length;i>size;i--){
+				// 每次删除数据行的第一行
+				tb2.deleteRow(size);
+			}
+			// 创建一个div
+			var bak = document.createElement("div");
+			// 将div添加到滚动条容器中
+			scroll.appendChild(bak);
+			// 将拷贝得到的表格在删除数据行后添加到创建的div中
+			bak.appendChild(tb2);
+			// 设置创建的div的position属性为absolute，即绝对定于滚动条容器（滚动条容器的position属性必须为relative）
+			bak.style.position = "absolute";
+			// 设置创建的div的背景色与原表头的背景色相同（貌似不是必须）
+			bak.style.backgroundColor = "white";
+			// 设置div的display属性为block，即显示div（貌似也不是必须，但如果你不希望总是显示拷贝得来的表头，这个属性还是有用处的）
+			bak.style.display = "block";
+			// 设置创建的div的left属性为0，即该div与滚动条容器紧贴
+			bak.style.left = 0;
+			// 设置div的top属性为0，初期时滚动条位置为0，此属性与left属性协作达到遮盖原表头
+			bak.style.top = "0px";
+			// 给滚动条容器绑定滚动条滚动事件，在滚动条滚动事件发生时，调整拷贝得来的表头的top值，保持其在可视范围内，且在滚动条容器的顶端
+			scroll.onscroll = function(){
+				// 设置div的top值为滚动条距离滚动条容器顶部的距离值
+				bak.style.top = this.scrollTop+"px";
+			}
+		}
+
+// 在页面加载完成后调用该方法
+window.onload = function (){
+	scroll("tab","box",1);
+}
+
+</script>
+<!--{template footer}-->

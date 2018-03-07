@@ -1,0 +1,137 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "促销面板统计";?><font color="red" id="showtips"></font></div>
+
+<input type="radio" id="staPackage" name="typePackage" value="statistic" onclick="changeType()" checked /> 礼包统计
+<input type="radio" id="addPackage" name="typePackage" value="add" onclick="changeType()" /> 添加礼包
+
+<div id="packageStatistics">
+	$serverDiv
+	起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="$dateMin">
+	结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="$dateMax">
+	<!--{if ($_COOKIE['u']=='xiaomi')}-->
+
+	<!--{else}-->
+	国家
+	<select id="selectCountry" name="selectCountry" onchange="">
+			<!--{loop $countryList $country $countryname}-->
+			<!--{if ($currCountry == $country)}-->
+				<option value="{$country}" selected="selected">{$countryname}</option>
+			<!-- {else} -->
+				<option value="{$country}">{$countryname}</option>
+			<!-- {/if} -->
+			<!--{/loop}-->
+	</select>
+	<!--{/if}-->
+	平台
+	<select id="selectPf" name="selectPf" onchange="">
+			<!--{loop $pfList $pf $pfname}-->
+			<!--{if ($currPf == $pf)}-->
+				<option value="{$pf}" selected="selected">{$pfname}</option>
+			<!-- {else} -->
+				<option value="{$pf}">{$pfname}</option>
+			<!-- {/if} -->
+			<!--{/loop}-->
+	</select>
+	<!--{if $allServerFlag}-->
+		<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+	<!--{else}-->
+		<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+	<!--{/if}-->
+	<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view"  id="btn_submit" value="统计数据">
+	<hr />
+	<div id='show' style="width:100%;float:left;height:auto"></div>
+</div>
+
+<div id="packageAdd" style="display:none;">
+	<span>礼包内容</span>
+	<br>
+	<textarea id="contents" name="contents" rows="6" cols="80"></textarea>
+	<input class="btn js-btn btn-primary" type="button" value="添加" id="btn_add" name="btn_add" onclick="addPack()" />
+</div>
+
+<script type="text/javascript">
+
+function changeType(){
+	if(document.getElementById('staPackage').checked)
+	{
+		$('#packageStatistics').show();
+		$('#packageAdd').hide();
+	}
+	if(document.getElementById('addPackage').checked)
+	{
+		$('#packageStatistics').hide();
+		$('#packageAdd').show();
+	}
+}
+
+function addPack(){
+	document.getElementById('btn_add').disabled=true;
+	var url = 'admincp.php?mod=stat&act=exchange&event=add&contents='+$('#contents').val();
+	$.get(url,function(data){
+			alert(data);
+			document.getElementById('btn_add').disabled=false;
+	});
+}
+
+var thisPage;
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	document.getElementById('btn_submit').disabled=true;
+	thisPage = page;
+	showData();
+}
+function showData(){
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var objs = document.getElementsByName('server');
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			selectServer = objs[i].value;
+			break;
+		}
+	}
+	url = 'admincp.php?mod=stat&act=exchange&getData=true&selectServer='+$('#selectServer').val()+'&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&country='+$('#selectCountry').val()+'&pf='+$('#selectPf').val();
+	var allServers=document.getElementById('allServers');
+	if(allServers.checked){
+		url = url +'&allServers=1';
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_submit').disabled=false;
+			return;
+		}
+	}
+}
+
+
+</script>
+<!--{template footer}-->

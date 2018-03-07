@@ -1,0 +1,61 @@
+<!--{template header}-->
+<div class="alert alert-info">$title<font color="red">$alert</font></div>
+<form action="admincp.php?mod=user&act=loginCheck&type=1" method="POST" style="display: inline-table;">
+	<span>用户名</span>
+	<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+	<span>UID</span>
+	<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+	<span>时间</span>
+	<input id="std_date" name='std_date' type="text" value='{$std_date}' class="input-medium" onchange="changeDate()" />
+	<span>前N天</span>
+	<span><input id="date_range" name='date_range' type="text" value='{$date_range}' /></span>
+	<input class="btn js-btn btn-primary" type="submit" value="{$MALANG['btn_view']}" />
+
+</form>
+<div id="tip" style="font-size:16px;width:auto;height:auto;padding:2px;border:1px solid #000000;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<table class="listTable" style="width: 100%; text-align: center">
+	<tr class="listTr">
+		<th width=2%>设备</th>
+		<th width=2%>特征</th>
+		<th width=2%>总次数</th>
+	</tr>
+	<!--{loop $stats2  $device $feature_num}-->
+	<!--{loop $feature_num   $feature $num}-->
+	<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';"  >
+		<td align="left" width="2%">设备$device_map[$device]</a></td>
+		<td align="left" width="2%">特征$info_map[$feature]</a></td>
+		<td width="2%">$num</td>
+	</tr>
+	<!--{/loop}-->
+	<!--{/loop}-->
+</table>
+
+<table class="listTable" style="width: 100%; text-align: center">
+	<tr class="listTr">
+		<th width=2%>设备</th>
+		<th width=2%>特征</th>
+		<th width=2%>日期</th>
+		<th width=2%>次数</th>
+	</tr>
+	<!--{loop $stats  $date $device_feature_num}-->
+	<!--{loop $device_feature_num  $device $feature_num}-->
+	<!--{loop $feature_num  $feature $num}-->
+	<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';"  >
+		<td width="2%">$date</td>
+		<td align="left" width="2%">设备$device_map[$device]</a></td>
+		<td align="left" width="2%">特征$info_map[$feature]</a></td>
+		<td width="2%">$num</td>
+	</tr>
+	<!--{/loop}-->
+	<!--{/loop}-->
+	<!--{/loop}-->
+</table>
+<script type="text/javascript">
+	$("#std_date").datetimepicker({
+		format: 'YYYYMMDD'
+	});
+	function changeDate(){
+		$("#reconnect").val('');
+	}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="power">
+    <ItemSpec id="100001" player_lv="0"/>
+    <ItemSpec id="110001" player_lv="0" power_id="100001"/>
+  </Group>
+</tns:database>

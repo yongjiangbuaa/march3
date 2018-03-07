@@ -1,0 +1,124 @@
+<!--{template header}-->
+
+<div class="alert alert-info">
+    <?php echo "后台resource目录下xml操作";?><br>
+    <font color="red">$headAlert</font>
+</div>
+<span>{$content}拉取svn resource配置 </span>
+<div><label><font color="red">{$result}</font></label></div>
+<form action="admincp.php?mod=server&act=xml&subact=svnget" method="post" name="svngetplan">
+    <div style="float: left">
+        <input class="btn js-btn btn-primary" type="button" value="拉取最新svn配置" name="btn_view" onclick="svnget(1)"/>
+        <input  type="text" value="{$num}" placeholder='20' name='shownum' id="shownum"/><br>
+        <hr/>
+        <input class="btn js-btn btn-primary" type="button" style="" value="更新所有服务器(默认所有配置)" name="btn_view"
+               onclick="svnget(2)"/><br><br><br>
+
+        <hr/>
+        <span><font color="red">内容格式(server|xml 注意分号): 1-3;4-7;8|a.xml;b.xml  全部服务器(a.xml;b.xml)</font> </span><br>
+        <input class="btn js-btn btn-primary" type="button" value="更新部分文件" name="btn_view" onclick="svnget(3)"/>
+        <textarea id="contents" name="contents" rows="6" cols="80"></textarea>
+    </div>
+    <input class="display:none;" type="hidden" value="" id="type" name="type"/>
+
+    <span>最新变动文件列表(默认20个)</span>
+
+</form>
+<!--{if isset($items) }-->
+<div style="display: inline">
+    <!--<table class="listTable" style="width: 100%; text-align: center">-->
+    <table class="listTable">
+        <tr class="listTr">
+            <th >更新的文件名 <input class="btn js-btn btn-primary" id="btnSubmit" type="button" value="确认" />
+            </th>
+            <th>更新时间(UTC时间)</th>
+        </tr>
+        <!--{loop $items $dbName}-->
+        <tr class="listTr">
+            <td align="left"><input type="checkbox" value="{$dbName['name']}" name="xmllist[]"/>$dbName['name']</td>
+            <td align="right">$dbName['time']</td>
+        </tr>
+        <!--{/loop}-->
+    </table>
+</div>
+<!--{/if}-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSubmit').click(function () {
+            $('#contents').html('');
+            var display = '';
+            $("input[name^=xmllist]").each(function () {
+                if(this.checked) {
+                    display += $(this).val() + ';';
+                }
+            });
+            display = display.substr(0,display.length-1);
+
+            $('#contents').html(display);
+        });
+    });
+
+    function serverall() {
+        var currentObj = document.getElementById('all_server');
+        var objs = document.getElementsByTagName("input");
+        for (i = 0; i < objs.length; i++) {
+            var objId = objs[i].id.split('_');
+            if (objId[0] == 'server') {
+                objs[i].checked = currentObj.checked;
+            }
+        }
+    }
+    function checkserverall() {
+        document.getElementById('all_server').checked = true;
+        var objs = document.getElementsByTagName("input");
+        for (i = 0; i < objs.length; i++) {
+            var objId = objs[i].id.split('_');
+            if (!objs[i].checked && objId[0] == 'server') {
+                document.getElementById('all_server').checked = false;
+                break;
+            }
+        }
+    }
+    function addplan() {
+        if (confirm('确认要创建该计划？')) {
+            document.formaddplan.submit();
+        }
+    }
+    function svnget(type) {
+
+        if (type == 1 && confirm('确认拉取最新svn配置')) {
+            document.getElementById('type').value = 1;
+            if($('#shownum').val() > 100){
+                alert('数量不大于 100');
+                return;
+            }
+            document.svngetplan.submit();
+        } else if (type == 2 && confirm('更新所有服务器')) {
+            document.getElementById('type').value = 2;
+
+            document.svngetplan.submit();
+        } else if (type == 3) {
+            document.getElementById('type').value = 3;
+
+            var contents = $('#contents').val();
+            if (!isEmpty(contents) && confirm(contents)) {
+                document.svngetplan.submit();
+            }
+
+        }
+    }
+    function cancelplan(planid) {
+        if (confirm('确认要取消?')) {
+            document.getElementById('planid').value = planid;
+            document.formcancelplan.submit();
+        }
+    }
+    function isEmpty(value) {
+        if (value == null || value == "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+<!--{template footer}-->

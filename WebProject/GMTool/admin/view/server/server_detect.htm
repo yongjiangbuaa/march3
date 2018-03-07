@@ -1,0 +1,36 @@
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="include/js/jquery-ui-1.8.6.custom.css" />
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=server&act=detect" method="post" name="getaccount">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;">
+<tbody>
+	<tr>
+	<th align="center" >服务器在线人数检测配置</th>
+	<th align="center" >当前配置:<input type="text" name="detect_times" value="" readonly="readonly" /></th>
+	<th align="center" >修改:<input type="text" id="newNum" name="modify_detect_times" value="" /></th>
+	</tr>
+	<tr>
+	<td colspan="3"><p class="pull-right">	
+	<input class="btn js-btn btn-danger" type="button" value="保存配置" name="btn_edit" onclick="check_submit('modify')" />
+	</p></td>
+	</tr>
+</tbody>
+</table>
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$.get('admincp.php?mod=server&act=detect&action=get',function(data){
+		$('input[name=detect_times]').val(data);
+	})
+}
+function check_submit(type) {
+	if(confirm("确定当前操作")){
+		$.get('admincp.php?mod=server&act=detect&action='+type+'&newNum='+$("#newNum").val(),function(){
+			init();
+		})
+	}
+}
+</script>
+<!--{template footer}-->

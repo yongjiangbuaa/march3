@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script language="JavaScript" type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="json2.js"></script>
+</head>
+<body scroll="no">
+<script language="JavaScript" type="text/javascript">
+function showAPI(){
+	var addr = $('#address').val();
+	$.ajax({
+		  url: 'http://' + addr + '/test/rest/api.php',
+		  success: function(data) {
+			  var results = $.parseJSON(data);
+			  var length = results.length;
+			  var box = $('#apiname');
+			  box.html('');
+			  for(var i=0;i<length;i++){
+				  box.html(box.html() + '<option value="'+results[i]+'">'+results[i]+'</option>');
+			  }
+		  }
+	});
+}
+$(document).ready(function(){
+	showAPI();
+});
+function submit(){
+	$('#queryShow').val('');
+	$('#postShow').val('');
+	$('#resultShow').val('');
+	var addr = $('#address').val();
+	var api = $('#apiname').val();
+	api = api.replace(/\./g, '/');
+	var format = $('#format').val();
+	var method = parseInt($("input[name='http_method']:checked").val());
+	var params = new Object();
+    for(var i=0;i<5;i++){
+        var key = $('#params_key_'+i).val();
+        var value = $('#params_value_'+i).val();
+        if(key.length > 0){
+        	params[key] = value;
+        }
+    }
+    var query = 'http://' + addr + '/rest/' + api + '?format=' + format;
+    if(method!=2){
+        for(var key in params){
+        	query += '&' + key + '=' + params[key];
+        }
+    }
+    $('#queryShow').val(query);
+	if(method == 2){
+		params = JSON.stringify(params);
+		$('#postShow').val(params);
+	}
+	$.ajax({
+		  url: 'http://' + addr + '/rest/' + api,
+		  data: params,
+		  type: method == 2 ? 'POST' : 'GET',
+		  success: function(data){
+			  $('#resultShow').val(data);
+		  }
+	});
+};
+</script>
+	<table>
+		<tr>
+        	<td valign="top">
+        		<table border="0" cellpadding="0" cellspacing="0">
+        			<tbody>
+						<tr>
+        				<td>
+							<input id="api_url" type="hidden" name="api_url" value="sandbox" />
+        					<input type="hidden" name="api_soure" id="api_soure" value="0" />
+							<input type="hidden" name="hid_app_key" id="hid_app_key" value="test"/>
+							<input type="hidden" name="appkey" id="appkey" value="12129701"/>
+							<table class="parameters" width="500" border="0" cellpadding="4" cellspacing="0">
+        						<tbody>
+								<tr>
+        							<td width="160" align="right">Server：
+        							<td>http://<input type="text" id="address" name="address" value="xingcloud" style="width:190px;" onchange="showAPI();"></td>
+        							</td>
+        						</tr> 						
+								<tr>
+        							<td width="160" align="right">Format：</td>
+        							<td width="340">
+        								<select id="format" name="format" style="width:195px;">
+        									<option value="json">JSON</option>
+        								</select>
+        							</td>
+        						</tr>
+        						<tr>
+        							<td align="right">API：</td>
+        							<td>
+        								<span>
+        									<select id="apiname" name="apiname" style="width:195px;">
+        									</select>
+        								</span>&nbsp;</td>
+        						</tr>
+        						<tr>
+        							<td align="right">Method：</td>
+        							<td>
+        								<input type="radio" name="http_method" value="1" checked=''>GET
+        								<input type="radio" name="http_method" value="2">POST
+        							</td>
+        						</tr>
+        						<tr>
+        							<td align="right">Params：</td>
+        							<td></td>
+        						</tr> 
+        						<tr>
+        							<td align="center">Key</td>
+        							<td align="left">Value</td>
+        						</tr>      
+        						<tr>
+        							<td align="right"><input type="text" id="params_key_0" name="params_key_0" value="" size="10"></td>
+        							<td><input type="text" id="params_value_0" name="params_value_0" value="" size="30"></td>
+        						</tr>  	
+        						<tr>
+        							<td align="right"><input type="text" id="params_key_1" name="params_key_1" value="" size="10"></td>
+        							<td><input type="text" id="params_value_1" name="params_value_1" value="" size="30"></td>
+        						</tr>	
+        						<tr>
+        							<td align="right"><input type="text" id="params_key_2" name="params_key_2" value="" size="10"></td>
+        							<td><input type="text" id="params_value_2" name="params_value_2" value="" size="30"></td>
+        						</tr>
+        						<tr>
+        							<td align="right"><input type="text" id="params_key_3" name="params_key_3" value="" size="10"></td>
+        							<td><input type="text" id="params_value_3" name="params_value_3" value="" size="30"></td>
+        						</tr>
+        						<tr>
+        							<td align="right"><input type="text" id="params_key_4" name="params_key_4" value="" size="10"></td>
+        							<td><input type="text" id="params_value_4" name="params_value_4" value="" size="30"></td>
+        						</tr>
+        						</tbody>
+							</table>
+        				</td>
+						</tr>
+            			<tr>
+            				<td> <span id="ParamDiv"></span></td>
+            			</tr>
+            			<tr>
+            				<td>
+            					<table width="500" border="0" cellpadding="4" cellspacing="0">
+            						<tbody><tr>
+            							<td width="160">&nbsp;</td>
+            							<td width="340" align="left">
+            								<input type="button" value="Submit" onclick="submit();" style="width:60px;height:24px;*padding-top:3px;border:#666666 1px solid;cursor:pointer">
+            							</td>
+            						</tr>
+            					</tbody></table>
+            				</td>
+            			</tr>
+        			</tbody>
+				</table>
+        	</td>
+        	<td valign="top">
+        		Query：<br>
+        		<textarea name="queryShow" id="queryShow" cols="60" rows="3" style="overflow-x:scroll" readonly=""></textarea><br /><br />
+        		Post：<br>
+        		<textarea name="postShow" id="postShow" cols="60" rows="3" style="overflow-x:scroll" readonly=""></textarea><br /><br />
+        		Result：<br>
+        		<textarea name="resultShow" id="resultShow" cols="60" rows="10" style="overflow-x:scroll" readonly=""></textarea><br /><br />
+        	</td>
+        </tr>
+        <tr></tr>
+    </table>
+</body>
+</html>

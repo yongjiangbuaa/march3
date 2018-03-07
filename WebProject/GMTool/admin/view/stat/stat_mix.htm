@@ -1,0 +1,113 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "杂项统计";?><font color="red" id="showtips"></font></div>
+<div class="container" style="width: auto;">
+	<ul class="nav nav-tabs">
+	<!--{loop $servers $server $serverSettings}-->
+		<li>
+			<!-- {if $server==getCurrServer()} -->
+				<input type='radio' id="{$server}" name="server" value="{$server}" checked />
+			<!-- {else} -->
+				<input type='radio' id="{$server}" name="server" value="{$server}" />
+			<!-- {/if} -->
+			$server
+		</li>
+	<!--{/loop}-->
+	</ul>
+</div>
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<br />
+数据类型
+<select id="selectEvent" onchange="changeEvent();">
+		$eventOptions
+</select>
+用户UID
+<input id="user" name='user' type="text" value='{$user}' size="50"/>
+<br />
+玩家等级范围 : <input class="input-small" id="levelMin" name='levelMin' type="text" value='1' size="50"/> - 
+<input class="input-small" id="levelMax" name='levelMax' type="text" value='99' size="50"/>
+大本等级范围 : <input class="input-small" id="buildMin" name='buildMin' type="text" value='1' size="50"/> - 
+<input class="input-small" id="buildMax" name='buildMax' type="text" value='99' size="50"/>
+版本号 : <select id="selectVersion" name="selectVersion">
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" name="btn_view" disabled id="btn_submit" value="统计数据">
+<br/><br/><hr />
+<div id='show' style="float:left;height:auto"></div>
+<div id='showUserAction' style="float:left;margin-left:30px;height:auto"></div>
+
+
+<script type="text/javascript">
+function getLogData(){
+	var objs = document.getElementsByName('server');
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			selectServer = objs[i].value;
+			break;
+		}
+	}
+	selectEvent = document.getElementById("selectEvent");
+	url = 'admincp.php?mod=stat&act=mix&analyze=platform&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&user='+$('#user').val()+
+			'&levelMin='+$('#levelMin').val()+'&levelMax='+$('#levelMax').val()+'&event='+selectEvent.options[selectEvent.selectedIndex].id+'&server='+selectServer
+			+ '&appVersion=' +$("#selectVersion").val()+ '&buildMin='+$("#buildMin").val()+'&buildMax='+$("#buildMax").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+getVersion = true;
+init();
+getVersions();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			$(".listTable tr:odd").css("background-color", "#d9edf7");//双数行
+			return;
+		}
+	}
+}
+function getVersions(){
+	if(getVersion){
+		$.get('admincp.php?mod=stat&act=mix&analyze=getVersion',function(date){
+			$("#selectVersion").html(date);
+			getVersion = false;
+		    $("#btn_submit").removeAttr('disabled');
+		});
+	}
+}
+function changeEvent(){
+	if($("#selectEvent").val() == "LastAction"){
+		$("#showtips").html('	注意，起止时间是玩家注册时间！');
+	}
+	else{
+		$("#showtips").html("");
+	}
+}
+function getUserByAction(action){
+	selectServer = $("input[name='server']:checked").val();
+	url = 'admincp.php?mod=stat&act=mix&analyze=platform&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&user='+$('#user').val()+
+	'&levelMin='+$('#levelMin').val()+'&levelMax='+$('#levelMax').val()+'&event='+selectEvent.options[selectEvent.selectedIndex].id+'&server='+selectServer
+	+ '&appVersion=' +$("#selectVersion").val()+ '&buildMin='+$("#buildMin").val()+'&buildMax='+$("#buildMax").val()+'&UserAction='+action;
+	var h = $(document).scrollTop();
+	$.get(url,function(data){
+		$("#showUserAction").html(data);
+		$("#showUserAction").css('margin-top',h);
+		$(".listTable tr:odd").css("background-color", "#d9edf7");//双数行
+	})
+}
+
+
+
+</script>
+<!--{template footer}-->

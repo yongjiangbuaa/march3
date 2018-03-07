@@ -1,0 +1,79 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查看每天城堡装扮处于激活状态的玩家数量";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=castleDressUp&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+<!--{if $showData}-->
+
+<table class="table table-striped" style="width:100%;">
+<tbody>
+	<tr>
+	<th align="center" width="40px">日期</th>
+	<th align="center" width="40px">激活总数</th>
+	<!--{loop $selectServer $server $serInfo}-->
+		<th align="center" width="20px">$server</th>
+	<!--{/loop}-->
+	
+	</tr>
+	<!--{loop $dates $date}-->
+		<tr>
+			<td>$date</td>
+			<td>$data['total'][$date]['all']</td>
+		<!--{loop $selectServer $server $serInfo}-->
+			<td>$data[$server][$date]['all']</td>
+		<!--{/loop}-->
+		</tr>
+	<!--{/loop}-->	
+
+	</tbody>
+</table>
+
+<!--{loop $castleArray $idKey $nameVal}-->
+$nameVal
+<br>
+<table class="table table-striped" style="width:100%;">
+<tbody>
+	<tr>
+	<th align="center" width="40px">日期</th>
+	<th align="center" width="40px">激活总数</th>
+	<!--{loop $selectServer $server $serInfo}-->
+		<th align="center" width="20px">$server</th>
+	<!--{/loop}-->
+	
+	</tr>
+	<!--{loop $dates $date}-->
+		<tr>
+			<td>$date</td>
+			<td>$data['total'][$date][$idKey]</td>
+		<!--{loop $selectServer $server $serInfo}-->
+			<td>$data[$server][$date][$idKey]</td>
+		<!--{/loop}-->
+		</tr>
+	<!--{/loop}-->	
+
+	</tbody>
+</table>
+<!--{/loop}-->	
+<!--{/if}-->
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

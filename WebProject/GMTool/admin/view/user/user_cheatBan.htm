@@ -1,0 +1,67 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询因作弊而被封号的玩家";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red"><strong>$alertHeader</strong></font></div>
+<form action="admincp.php?mod=user&act=cheatBan" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+			<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="check_submit('view')" />
+		</div>
+	</div>
+	<br>
+	<!--{if $showData}-->
+	<table border="1">
+		<tr>
+			<td><strong>行军作弊封号:</strong></td>
+			<td><strong>充值作弊封号:</strong></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">
+				<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+					<tbody>
+						<tr>
+							<th>uid</th>
+							<th>封号时间</th>
+						</tr>
+						<!--{loop $data $uKey $tValue}-->
+						<tr>
+							<td>$uKey</td>
+							<td>$tValue</td>
+						</tr>
+						<!--{/loop}-->
+					</tbody>
+				</table>
+			</td>
+			<td style="vertical-align: top;">
+				<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+					<tbody>
+						<tr>
+							<th>uid</th>
+							<th>封号时间</th>
+						</tr>
+						<!--{loop $payData $uKey $tValue}-->
+						<tr>
+							<td>$uKey</td>
+							<td>$tValue</td>
+						</tr>
+						<!--{/loop}-->
+					</tbody>
+				</table>		
+			</td>
+		</tr>
+	
+	</table>
+	
+	<!--{/if}-->
+	
+</form>
+<script type="text/javascript">
+
+function check_submit(type) {
+	document.getElementById('action').value = type;
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+
+<!--{template footer}-->

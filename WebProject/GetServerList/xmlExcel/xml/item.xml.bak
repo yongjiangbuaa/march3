@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="resource">
+    <ItemSpec id="100001" area_level="20" ratio="14" rec_type="1" rec_level="1"/>
+    <ItemSpec id="100002" area_level="20" ratio="14" rec_type="2" rec_level="1"/>
+    <ItemSpec id="100003" area_level="20" ratio="14" rec_type="3" rec_level="1"/>
+    <ItemSpec id="100004" area_level="19" ratio="15" rec_type="1" rec_level="2"/>
+    <ItemSpec id="100005" area_level="19" ratio="15" rec_type="2" rec_level="2"/>
+    <ItemSpec id="100006" area_level="19" ratio="15" rec_type="3" rec_level="2"/>
+    <ItemSpec id="100007" area_level="18" ratio="17" rec_type="1" rec_level="3"/>
+    <ItemSpec id="100008" area_level="18" ratio="17" rec_type="2" rec_level="3"/>
+    <ItemSpec id="100009" area_level="18" ratio="17" rec_type="3" rec_level="3"/>
+    <ItemSpec id="100010" area_level="17" ratio="13" rec_type="1" rec_level="3"/>
+    <ItemSpec id="100011" area_level="17" ratio="13" rec_type="2" rec_level="3"/>
+    <ItemSpec id="100012" area_level="17" ratio="13" rec_type="3" rec_level="3"/>
+    <ItemSpec id="100013" area_level="17" ratio="5" rec_type="1" rec_level="4"/>
+    <ItemSpec id="100014" area_level="17" ratio="5" rec_type="2" rec_level="4"/>
+    <ItemSpec id="100015" area_level="17" ratio="5" rec_type="3" rec_level="4"/>
+    <ItemSpec id="100016" area_level="16" ratio="11" rec_type="1" rec_level="3"/>
+    <ItemSpec id="100017" area_level="16" ratio="11" rec_type="2" rec_level="3"/>
+    <ItemSpec id="100018" area_level="16" ratio="11" rec_type="3" rec_level="3"/>
+    <ItemSpec id="100019" area_level="16" ratio="6" rec_type="1" rec_level="4"/>
+    <ItemSpec id="100020" area_level="16" ratio="6" rec_type="2" rec_level="4"/>
+    <ItemSpec id="100021" area_level="16" ratio="6" rec_type="3" rec_level="4"/>
+    <ItemSpec id="100022" area_level="16" ratio="3" rec_type="1" rec_level="5"/>
+    <ItemSpec id="100023" area_level="16" ratio="3" rec_type="2" rec_level="5"/>
+    <ItemSpec id="100024" area_level="16" ratio="3" rec_type="3" rec_level="5"/>
+    <ItemSpec id="100025" area_level="15" ratio="12" rec_type="1" rec_level="4"/>
+    <ItemSpec id="100026" area_level="15" ratio="12" rec_type="2" rec_level="4"/>
+    <ItemSpec id="100027" area_level="15" ratio="12" rec_type="3" rec_level="4"/>
+    <ItemSpec id="100028" area_level="15" ratio="6" rec_type="1" rec_level="5"/>
+    <ItemSpec id="100029" area_level="15" ratio="6" rec_type="2" rec_level="5"/>
+    <ItemSpec id="100030" area_level="15" ratio="6" rec_type="3" rec_level="5"/>
+    <ItemSpec id="100031" area_level="15" ratio="3" rec_type="1" rec_level="6"/>
+    <ItemSpec id="100032" area_level="15" ratio="3" rec_type="2" rec_level="6"/>
+    <ItemSpec id="100033" area_level="15" ratio="3" rec_type="3" rec_level="6"/>
+    <ItemSpec id="100034" area_level="14" ratio="13" rec_type="1" rec_level="5"/>
+    <ItemSpec id="100035" area_level="14" ratio="13" rec_type="2" rec_level="5"/>
+    <ItemSpec id="100036" area_level="14" ratio="13" rec_type="3" rec_level="5"/>
+    <ItemSpec id="100037" area_level="14" ratio="6" rec_type="1" rec_level="6"/>
+    <ItemSpec id="100038" area_level="14" ratio="6" rec_type="2" rec_level="6"/>
+    <ItemSpec id="100039" area_level="14" ratio="6" rec_type="3" rec_level="6"/>
+    <ItemSpec id="100040" area_level="14" ratio="3" rec_type="1" rec_level="7"/>
+    <ItemSpec id="100041" area_level="14" ratio="3" rec_type="2" rec_level="7"/>
+    <ItemSpec id="100042" area_level="14" ratio="3" rec_type="3" rec_level="7"/>
+    <ItemSpec id="100043" area_level="13" ratio="13" rec_type="1" rec_level="6"/>
+    <ItemSpec id="100044" area_level="13" ratio="13" rec_type="2" rec_level="6"/>
+    <ItemSpec id="100045" area_level="13" ratio="13" rec_type="3" rec_level="6"/>
+    <ItemSpec id="100046" area_level="13" ratio="7" rec_type="1" rec_level="7"/>
+    <ItemSpec id="100047" area_level="13" ratio="7" rec_type="2" rec_level="7"/>
+    <ItemSpec id="100048" area_level="13" ratio="7" rec_type="3" rec_level="7"/>
+    <ItemSpec id="100049" area_level="13" ratio="3" rec_type="1" rec_level="8"/>
+    <ItemSpec id="100050" area_level="13" ratio="3" rec_type="2" rec_level="8"/>
+    <ItemSpec id="100051" area_level="13" ratio="3" rec_type="3" rec_level="8"/>
+    <ItemSpec id="100052" area_level="12" ratio="14" rec_type="1" rec_level="7"/>
+    <ItemSpec id="100053" area_level="12" ratio="14" rec_type="2" rec_level="7"/>
+    <ItemSpec id="100054" area_level="12" ratio="14" rec_type="3" rec_level="7"/>
+    <ItemSpec id="100055" area_level="12" ratio="7" rec_type="1" rec_level="8"/>
+    <ItemSpec id="100056" area_level="12" ratio="7" rec_type="2" rec_level="8"/>
+    <ItemSpec id="100057" area_level="12" ratio="7" rec_type="3" rec_level="8"/>
+    <ItemSpec id="100058" area_level="12" ratio="4" rec_type="1" rec_level="9"/>
+    <ItemSpec id="100059" area_level="12" ratio="4" rec_type="2" rec_level="9"/>
+    <ItemSpec id="100060" area_level="12" ratio="4" rec_type="3" rec_level="9"/>
+    <ItemSpec id="100061" area_level="11" ratio="15" rec_type="1" rec_level="8"/>
+    <ItemSpec id="100062" area_level="11" ratio="15" rec_type="2" rec_level="8"/>
+    <ItemSpec id="100063" area_level="11" ratio="15" rec_type="3" rec_level="8"/>
+    <ItemSpec id="100064" area_level="11" ratio="8" rec_type="1" rec_level="9"/>
+    <ItemSpec id="100065" area_level="11" ratio="8" rec_type="2" rec_level="9"/>
+    <ItemSpec id="100066" area_level="11" ratio="8" rec_type="3" rec_level="9"/>
+    <ItemSpec id="100067" area_level="11" ratio="4" rec_type="1" rec_level="10"/>
+    <ItemSpec id="100068" area_level="11" ratio="4" rec_type="2" rec_level="10"/>
+    <ItemSpec id="100069" area_level="11" ratio="4" rec_type="3" rec_level="10"/>
+    <ItemSpec id="100070" area_level="10" ratio="16" rec_type="1" rec_level="9"/>
+    <ItemSpec id="100071" area_level="10" ratio="16" rec_type="2" rec_level="9"/>
+    <ItemSpec id="100072" area_level="10" ratio="16" rec_type="3" rec_level="9"/>
+    <ItemSpec id="100073" area_level="10" ratio="8" rec_type="1" rec_level="10"/>
+    <ItemSpec id="100074" area_level="10" ratio="8" rec_type="2" rec_level="10"/>
+    <ItemSpec id="100075" area_level="10" ratio="8" rec_type="3" rec_level="10"/>
+    <ItemSpec id="100076" area_level="10" ratio="4" rec_type="1" rec_level="11"/>
+    <ItemSpec id="100077" area_level="10" ratio="4" rec_type="2" rec_level="11"/>
+    <ItemSpec id="100078" area_level="10" ratio="4" rec_type="3" rec_level="11"/>
+    <ItemSpec id="100079" area_level="9" ratio="17" rec_type="1" rec_level="10"/>
+    <ItemSpec id="100080" area_level="9" ratio="17" rec_type="2" rec_level="10"/>
+    <ItemSpec id="100081" area_level="9" ratio="17" rec_type="3" rec_level="10"/>
+    <ItemSpec id="100082" area_level="9" ratio="8" rec_type="1" rec_level="11"/>
+    <ItemSpec id="100083" area_level="9" ratio="8" rec_type="2" rec_level="11"/>
+    <ItemSpec id="100084" area_level="9" ratio="8" rec_type="3" rec_level="11"/>
+    <ItemSpec id="100085" area_level="9" ratio="4" rec_type="1" rec_level="12"/>
+    <ItemSpec id="100086" area_level="9" ratio="4" rec_type="2" rec_level="12"/>
+    <ItemSpec id="100087" area_level="9" ratio="4" rec_type="3" rec_level="12"/>
+    <ItemSpec id="100088" area_level="8" ratio="17" rec_type="1" rec_level="11"/>
+    <ItemSpec id="100089" area_level="8" ratio="17" rec_type="2" rec_level="11"/>
+    <ItemSpec id="100090" area_level="8" ratio="17" rec_type="3" rec_level="11"/>
+    <ItemSpec id="100091" area_level="8" ratio="9" rec_type="1" rec_level="12"/>
+    <ItemSpec id="100092" area_level="8" ratio="9" rec_type="2" rec_level="12"/>
+    <ItemSpec id="100093" area_level="8" ratio="9" rec_type="3" rec_level="12"/>
+    <ItemSpec id="100094" area_level="8" ratio="4" rec_type="1" rec_level="13"/>
+    <ItemSpec id="100095" area_level="8" ratio="4" rec_type="2" rec_level="13"/>
+    <ItemSpec id="100096" area_level="8" ratio="4" rec_type="3" rec_level="13"/>
+    <ItemSpec id="100097" area_level="7" ratio="18" rec_type="1" rec_level="12"/>
+    <ItemSpec id="100098" area_level="7" ratio="18" rec_type="2" rec_level="12"/>
+    <ItemSpec id="100099" area_level="7" ratio="18" rec_type="3" rec_level="12"/>
+    <ItemSpec id="100100" area_level="7" ratio="9" rec_type="1" rec_level="13"/>
+    <ItemSpec id="100101" area_level="7" ratio="9" rec_type="2" rec_level="13"/>
+    <ItemSpec id="100102" area_level="7" ratio="9" rec_type="3" rec_level="13"/>
+    <ItemSpec id="100103" area_level="7" ratio="5" rec_type="1" rec_level="14"/>
+    <ItemSpec id="100104" area_level="7" ratio="5" rec_type="2" rec_level="14"/>
+    <ItemSpec id="100105" area_level="7" ratio="5" rec_type="3" rec_level="14"/>
+    <ItemSpec id="100106" area_level="6" ratio="19" rec_type="1" rec_level="13"/>
+    <ItemSpec id="100107" area_level="6" ratio="19" rec_type="2" rec_level="13"/>
+    <ItemSpec id="100108" area_level="6" ratio="19" rec_type="3" rec_level="13"/>
+    <ItemSpec id="100109" area_level="6" ratio="10" rec_type="1" rec_level="14"/>
+    <ItemSpec id="100110" area_level="6" ratio="10" rec_type="2" rec_level="14"/>
+    <ItemSpec id="100111" area_level="6" ratio="10" rec_type="3" rec_level="14"/>
+    <ItemSpec id="100112" area_level="6" ratio="5" rec_type="1" rec_level="15"/>
+    <ItemSpec id="100113" area_level="6" ratio="5" rec_type="2" rec_level="15"/>
+    <ItemSpec id="100114" area_level="6" ratio="5" rec_type="3" rec_level="15"/>
+    <ItemSpec id="100115" area_level="5" ratio="20" rec_type="1" rec_level="14"/>
+    <ItemSpec id="100116" area_level="5" ratio="20" rec_type="2" rec_level="14"/>
+    <ItemSpec id="100117" area_level="5" ratio="20" rec_type="3" rec_level="14"/>
+    <ItemSpec id="100118" area_level="5" ratio="10" rec_type="1" rec_level="15"/>
+    <ItemSpec id="100119" area_level="5" ratio="10" rec_type="2" rec_level="15"/>
+    <ItemSpec id="100120" area_level="5" ratio="10" rec_type="3" rec_level="15"/>
+    <ItemSpec id="100121" area_level="5" ratio="5" rec_type="1" rec_level="16"/>
+    <ItemSpec id="100122" area_level="5" ratio="5" rec_type="2" rec_level="16"/>
+    <ItemSpec id="100123" area_level="5" ratio="5" rec_type="3" rec_level="16"/>
+    <ItemSpec id="100124" area_level="4" ratio="21" rec_type="1" rec_level="15"/>
+    <ItemSpec id="100125" area_level="4" ratio="21" rec_type="2" rec_level="15"/>
+    <ItemSpec id="100126" area_level="4" ratio="21" rec_type="3" rec_level="15"/>
+    <ItemSpec id="100127" area_level="4" ratio="10" rec_type="1" rec_level="16"/>
+    <ItemSpec id="100128" area_level="4" ratio="10" rec_type="2" rec_level="16"/>
+    <ItemSpec id="100129" area_level="4" ratio="10" rec_type="3" rec_level="16"/>
+    <ItemSpec id="100130" area_level="4" ratio="5" rec_type="1" rec_level="17"/>
+    <ItemSpec id="100131" area_level="4" ratio="5" rec_type="2" rec_level="17"/>
+    <ItemSpec id="100132" area_level="4" ratio="5" rec_type="3" rec_level="17"/>
+    <ItemSpec id="100133" area_level="3" ratio="21" rec_type="1" rec_level="16"/>
+    <ItemSpec id="100134" area_level="3" ratio="21" rec_type="2" rec_level="16"/>
+    <ItemSpec id="100135" area_level="3" ratio="21" rec_type="3" rec_level="16"/>
+    <ItemSpec id="100136" area_level="3" ratio="11" rec_type="1" rec_level="17"/>
+    <ItemSpec id="100137" area_level="3" ratio="11" rec_type="2" rec_level="17"/>
+    <ItemSpec id="100138" area_level="3" ratio="11" rec_type="3" rec_level="17"/>
+    <ItemSpec id="100139" area_level="3" ratio="5" rec_type="1" rec_level="18"/>
+    <ItemSpec id="100140" area_level="3" ratio="5" rec_type="2" rec_level="18"/>
+    <ItemSpec id="100141" area_level="3" ratio="5" rec_type="3" rec_level="18"/>
+    <ItemSpec id="100142" area_level="2" ratio="22" rec_type="1" rec_level="17"/>
+    <ItemSpec id="100143" area_level="2" ratio="22" rec_type="2" rec_level="17"/>
+    <ItemSpec id="100144" area_level="2" ratio="22" rec_type="3" rec_level="17"/>
+    <ItemSpec id="100145" area_level="2" ratio="11" rec_type="1" rec_level="18"/>
+    <ItemSpec id="100146" area_level="2" ratio="11" rec_type="2" rec_level="18"/>
+    <ItemSpec id="100147" area_level="2" ratio="11" rec_type="3" rec_level="18"/>
+    <ItemSpec id="100148" area_level="2" ratio="6" rec_type="1" rec_level="19"/>
+    <ItemSpec id="100149" area_level="2" ratio="6" rec_type="2" rec_level="19"/>
+    <ItemSpec id="100150" area_level="2" ratio="6" rec_type="3" rec_level="19"/>
+    <ItemSpec id="100151" area_level="1" ratio="23" rec_type="1" rec_level="18"/>
+    <ItemSpec id="100152" area_level="1" ratio="23" rec_type="2" rec_level="18"/>
+    <ItemSpec id="100153" area_level="1" ratio="23" rec_type="3" rec_level="18"/>
+    <ItemSpec id="100154" area_level="1" ratio="12" rec_type="1" rec_level="19"/>
+    <ItemSpec id="100155" area_level="1" ratio="12" rec_type="2" rec_level="19"/>
+    <ItemSpec id="100156" area_level="1" ratio="12" rec_type="3" rec_level="19"/>
+    <ItemSpec id="100157" area_level="1" ratio="6" rec_type="1" rec_level="20"/>
+    <ItemSpec id="100158" area_level="1" ratio="6" rec_type="2" rec_level="20"/>
+    <ItemSpec id="100159" area_level="1" ratio="6" rec_type="3" rec_level="20"/>
+  </Group>
+  <Group id="diy_resource">
+    <ItemSpec id="110001" type="1" point_x="2,3,4" point_y="5,6,7"/>
+  </Group>
+  <Group id="data_config">
+    <ItemSpec id="player_cdnum" k1="2" description="建筑排程个数"/>
+    <ItemSpec id="player_war1" k1="30" k2="1" k3="24" description="宣战"/>
+    <ItemSpec id="player_war2" k1="5" k2=".1" description="资源掠夺"/>
+    <ItemSpec id="player_war3" k1=".5" k2="2" description="摧毁"/>
+    <ItemSpec id="player_maxnum" k1="10" description="玩家数量上限"/>
+    <ItemSpec id="dodge" k1="1" k2="1" k3="1" k4="1" k5="1" description="普通闪避"/>
+    <ItemSpec id="dodge_skill" k1="1" k2="1" k3="1" k4="1" k5="1" description="技能闪避"/>
+    <ItemSpec id="damage_skill" k1="4" k2=".1" k3=".1" k4=".1" k5=".1" description="技能伤害"/>
+    <ItemSpec id="damage_para" k1=".1" k2=".1" k3=".8" description="伤害计算"/>
+    <ItemSpec id="criticle" k1=".8" k2=".1" k3=".1" k4=".1" k5=".1" description="暴击几率"/>
+    <ItemSpec id="criticle_damage" k1="5" k2=".1" k3=".1" k4=".1" k5="2" description="暴击比例"/>
+    <ItemSpec id="damage_float" k1=".2" description="伤害浮动"/>
+    <ItemSpec id="cure" k1=".95" k2=".1" k3=".1" k4=".1" k5=".1" description="治疗成功"/>
+    <ItemSpec id="cure_skill" k1=".95" k2=".1" k3=".1" k4=".1" k5=".1" description="技能治疗"/>
+    <ItemSpec id="criticle_cure" k1="5" k2=".1" k3=".1" k4=".1" k5="2" description="治疗暴击"/>
+    <ItemSpec id="courage" k1="200" description="士气上限"/>
+    <ItemSpec id="120001" k1="360" k2="360" description="世界中心点坐标"/>
+    <ItemSpec id="120002" k1="18" description="资源带宽度"/>
+    <ItemSpec id="distance" k1="600" k2="27"/>
+    <ItemSpec id="120004" k1="1" k2="1" k3=".02" description="读取范围"/>
+    <ItemSpec id="120010" k1="100" k2="100" k3="100"/>
+    <ItemSpec id="120012" k1=".2" k2="1000"/>
+    <ItemSpec id="120013" k1="1000" k2="1000" description="资源最大值"/>
+    <ItemSpec id="storage" k1="150"/>
+    <ItemSpec id="building_maxlv" k1="10" k2="20" k3="10" description="建筑最大等级"/>
+    <ItemSpec id="acceleration" k1=".6" k2=".71" k3=".0000075" k4="0" description="加速建造"/>
+    <ItemSpec id="rename_cost" k1="10" k2="10" description="武将重命名消耗金币K1、礼券K2数"/>
+  </Group>
+  <Group id="city">
+    <ItemSpec id="130001" level="1" city_exp="100" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="1000" pop_max="1000"/>
+    <ItemSpec id="130002" level="2" city_exp="200" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="2000" pop_max="2000"/>
+    <ItemSpec id="130003" level="3" city_exp="300" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="3000" pop_max="3000"/>
+    <ItemSpec id="130004" level="4" city_exp="400" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="4000" pop_max="4000"/>
+    <ItemSpec id="130005" level="5" city_exp="500" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="5000" pop_max="5000"/>
+    <ItemSpec id="130006" level="6" city_exp="600" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="6000" pop_max="6000"/>
+    <ItemSpec id="130007" level="7" city_exp="700" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="7000" pop_max="7000"/>
+    <ItemSpec id="130008" level="8" city_exp="800" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="8000" pop_max="8000"/>
+    <ItemSpec id="130009" level="9" city_exp="900" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="9000" pop_max="9000"/>
+    <ItemSpec id="130010" level="10" city_exp="1000" gold_use="0" mineral="0" oil="0" food="0" gold_gilv="10000" pop_max="10000"/>
+  </Group>
+  <Group id="status">
+    <ItemSpec id="100001" type="0" time="300" time_in="0" effect1="100" value1="100" value1_in="0" overlap="0"/>
+    <ItemSpec id="101001" type="0" time="300" time_in="0" effect1="101" value1="100" value1_in="0" overlap="0"/>
+    <ItemSpec id="120001" type="0" time="300" time_in="0" effect1="120" value1="10" value1_in="0" overlap="0"/>
+    <ItemSpec id="121001" type="0" time="300" time_in="0" effect1="121" value1="3" value1_in="0" overlap="0"/>
+  </Group>
+  <Group id="skill">
+    <ItemSpec id="140001" type1="0" type2="0" arm="0" courage="0" courage_in="0" rate="0" rate_in="0" object="0" area="0" status="0" effect1="0" value1="0" value1_in="0" effect2="0" value2="0" value2_in="0" effect3="0" value3="0" value3_in="0" effect4="0" value4="0" value4_in="0" effect5="0" value5="0" value5_in="0" effect_art="0"/>
+    <ItemSpec id="5000100" type1="0" type2="1" courage="0" courage_in="0" object="0" area="0" effect1="10" value1="100" value1_in="10" effect2="17" value2="30" value2_in="0" effect3="18" value3="20" value3_in="0"/>
+    <ItemSpec id="5000101" type1="1" type2="1" courage="100" courage_in="0" rate="20" rate_in="10" object="0" area="4" effect1="10" value1="500" value1_in="100"/>
+  </Group>
+  <Group id="para">
+	<ItemSpec C11000="0" C1110="0" C1120="0" C12000="0" C1210="0" C1220="0" C13000="0" C1310="0" C1320="0" C21000="0" C2110="0" C2120="0" C22000="0" C2210="0" C2220="0" C23000="0" C2310="0" C2320="0" C31000="0" C3110="0" C3120="0" C32000="0" C3210="0" C3220="0" C33000="0" C3310="0" C3320="0" C41000="0" C4110="0" C4120="0" C42000="0" C4210="0" C4220="0" C43000="0" C4310="0" C4320="0"/>
+  </Group>
+</tns:database>

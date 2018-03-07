@@ -1,0 +1,43 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "活跃人数的相关金币消耗";?><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=stat&act=dauAndGoldCost&analyze=view" method="post" name="getaccount">
+$serverDiv
+当前大本等级<input class="input-small" id="levelMin" name='levelMin' type="text" value="{$levelMin}" size="50"/>-
+<input class="input-small" id="levelMax" name='levelMax' type="text" value="{$levelMax}" size="50"/>
+日期<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+-<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+用户<select id="users" name="users">
+	<option value="all">--ALL--</option>
+	<option value="payUser" {$paySelected}>付费用户</option>
+	<option value="ordinaryUser" {$ordinarySelected}>未付费用户</option>
+</select>
+
+<!--{if $allServerFlag}-->
+<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+<!--{else}-->
+<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+<!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+</form>
+<div>
+	{$html}
+</div>
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

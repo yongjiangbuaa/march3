@@ -1,0 +1,174 @@
+<!--{template header}-->
+<br>
+<br>
+
+<div class="alert alert-info"><?php echo "付费率查询(数据开始时间2015年12月23日)";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=rateOfPay" method="post" name="getaccount">
+
+$serverDiv
+
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+
+<!-- {else} -->
+国家
+<select id="selectCountry" name="selectCountry[]" onchange="" size="5" MULTIPLE>
+		<!--{loop $countryList $country $countryname}-->
+			<!--{if (in_array($country,$currCountry))}-->
+				<option value="{$country}" selected="selected">{$countryname}</option>
+			<!-- {else} -->
+				<option value="{$country}">{$countryname}</option>
+			<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!-- {/if} -->
+平台
+<select id="selectPf" name="selectPf[]" onchange="" size="5" MULTIPLE>
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($pf == 'ALL')}-->
+		
+		<!-- {else} -->
+			<!--{if (in_array($pf,$currPf))}-->
+				<option value="{$pf}" selected="selected">{$pfname}</option>
+			<!-- {else} -->
+				<option value="{$pf}">{$pfname}</option>
+			<!-- {/if} -->
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<!-- {if $showData} -->
+	<table class='listTable' style='text-align:center'>
+		<tr>
+			<th>日期</th>
+			<th>国家</th>
+			<th>日活跃</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老用户DAU</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>新注册用户数</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>新注册设备数</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>新注册当日付费人数</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>新注册付费率</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老玩儿家首冲人数</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老玩儿家首冲付费率</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老付费玩儿家当日登陆</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老付费玩儿家付费</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+			<th>老玩儿家付费率</th>
+			<!--{loop $currPf $pfKey $pfName}-->
+				<th>$pfName</th>
+			<!--{/loop}-->
+		
+		</tr>
+		<!--{loop $countryArray $countryKey $countryValue}-->
+			<!--{loop $dateArray $dK $dateKey}-->
+				<tr>
+					<td>$dateKey</td>
+					<td>$countryValue</td>
+					<td>$eventAll[$dateKey][$countryValue]['dau']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['dau']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['sdau']</td><!-- 老玩儿家DAU -->
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['sdau']</td><!-- 平台老玩儿家DAU -->
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['reg']</td><!-- 新注册人数 -->
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['reg']</td><!-- 平台新注册人数 -->
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['regDevice']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['regDevice']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['firstDayPay']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['firstDayPay']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['firstDayPayRate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['firstDayPayRate']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['oldUserFirstPay']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['oldUserFirstPay']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['oldUserFirstPayRate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['oldUserFirstPayRate']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['oldPayDAU']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['oldPayDAU']</td>
+					<!--{/loop}-->
+					
+					<td>$eventAll[$dateKey][$countryValue]['oldPayNewPay']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['oldPayNewPay']</td>
+					<!--{/loop}-->
+					<td>$eventAll[$dateKey][$countryValue]['oldUserPayRate']</td>
+					<!--{loop $currPf $pfKey $pfName}-->
+						<td>$pfData[$dateKey][$countryValue][$pfName]['oldUserPayRate']</td>
+					<!--{/loop}-->
+					
+				</tr>
+			<!--{/loop}-->
+		<!--{/loop}-->
+	</table>
+<!-- {/if} -->
+</form>
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'user';
+	document.getaccount.submit();
+			
+}
+
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

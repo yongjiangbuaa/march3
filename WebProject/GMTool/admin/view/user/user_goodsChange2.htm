@@ -1,0 +1,60 @@
+<!--{template header}-->
+<div class="alert alert-info">某个物品总的获得|消耗数量(获取消耗途径选其一) 11.23往后才能选择消耗获取途径<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=goodsChange2" method="post" name="getaccount">
+    <!--选择服务器-->
+    $serverDiv
+    <div class="row-fluid">
+        <div class="span11">
+            起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+            结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+            <span>物品Id</span>
+            <span><input type="text" id="itemId" name="itemId" value='{$itemId}'></span>
+            获取途径<select id="goodsget" name="goodsget">
+                $eventOptionsget
+            </select>
+            消耗途径<select id="goodscost" name="goodscost">
+                $eventOptionscost
+            </select>
+            <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+            <input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')"/>
+        </div>
+    </div>
+    <br/>
+</form>
+<div>
+{$html}
+</div>
+<script type="text/javascript">
+    init();
+    function init() {
+        $("#start_time").datetimepicker();
+        $("#end_time").datetimepicker();
+    }
+
+    function isEmpty(value) {
+        if (value == null || value == "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function isCommit() {
+        var inputItemId = $('#itemId').val();
+        inputItemId = jQuery.trim(inputItemId);
+        if (isEmpty(inputItemId)) {
+            alert("物品Id不能为空!");
+            $("#itemId").focus();
+            return false;
+        }
+        return true;
+    }
+    function check_submit(type) {
+        if (type == 'view') {
+//            if(isCommit()){
+            document.getElementById('action').value = type;
+            document.getaccount.submit();
+//            }
+        }
+    }
+</script>
+<!--{template footer}-->

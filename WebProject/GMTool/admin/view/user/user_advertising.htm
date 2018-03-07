@@ -1,0 +1,55 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "广告下载安装查询";?><font color="red"></font></div>
+<form action="admincp.php?mod=user&act=advertising&analyze=user" method="post" name="getaccount">
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+平台<select id="selectPf" name="selectPf" onchange="">
+	<option value="ALL">--ALL--</option>
+	<option value="ios">ios</option>
+	<option value="android">android</option>
+</select>
+
+<!-- 
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据"> 
+
+-->
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

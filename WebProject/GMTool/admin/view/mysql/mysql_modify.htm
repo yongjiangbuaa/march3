@@ -1,0 +1,95 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red">英文版服列表配置[表名]:serverlist 【备注】`是否新服`字段中 0-代表老服 1-代表新服</font></div>
+<div id='show' style="width:110%;float:left;height:auto;"></div>
+<script type="text/javascript" type="text/javascript"></script>
+<script type="text/javascript">
+//$("#start_time").datetimepicker();
+//$("#end_time").datetimepicker();
+init();
+function init(){
+	var url ='admincp.php?mod=mysql&act=modify&type=view';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function edit(id) {
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]==id)
+		{
+			document.getElementById(objs[i].id).disabled = false;
+		}
+	}
+}
+function modify(id){
+	var objs=document.getElementsByTagName("input");
+	var url = 'admincp.php?mod=mysql&act=modify&type=modify&uid='+id;
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]==id)
+		{
+			url += '&'+objId[1]+'='+objs[i].value;
+		}
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = backHandler;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function deleteItem(id){
+	var url = 'admincp.php?mod=mysql&act=modify&type=delete&uid='+id;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = backHandler;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function addItem(){
+	var url = 'admincp.php?mod=mysql&act=modify&type=add&serName='+$('#new_serName').val()+'&serKey='+$('#new_serKey').val()+'&serIp='+$('#new_serIp').val()+'&serUrl='+$('#new_serUrl').val()+'&startTime='+$('#new_startTime').val()+'&updateTime='+$('#new_updateTime').val()+'&isNew='+$('#new_isNew').val()+'&weight='+$('#new_weight').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = backHandler;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function clearCache(){
+	var url = 'admincp.php?mod=mysql&act=modify&type=clearCache';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = backHandler;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function backHandler(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		self.location = 'admincp.php?mod=mysql&act=modify';
+		return;
+	}
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(init);
+			return;
+		}
+		right.innerHTML=xmlHttp.responseText;
+		setDateFomate();
+		return;
+	}
+}
+function setDateFomate(){
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[1]=='startTime' || objId[1]=='updateTime')
+		{
+			$("#"+objs[i].id).datetimepicker();//todo
+		}
+	}
+}
+</script>
+<!--{template footer}-->

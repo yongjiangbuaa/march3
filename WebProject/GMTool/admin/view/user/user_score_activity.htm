@@ -1,0 +1,109 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "个人积分活动统计";?><font color="red" id="showtips">$headAlert</font></div>
+<!-- <input class="btn js-btn btn-primary" type="button" onclick="getData(1)" name="btn_view"  id="btn_submit" value="统计数据"> -->
+
+活动周<select id="weekNum" name="weekNum" onchange="changeWeek()">$weekList</select>
+<input class="input-medium focused" id="startDate" name="startDate" type="text" value="{$startDate}" placeholder="点击选择日期" value="{$startDate}">
+<input class="input-medium focused" id="endDate" name="endDate" type="text" value="{$endDate}" placeholder="点击选择日期" value="{$startDate}">
+<input id="uid" name="uid" type="text" placeholder="玩家uid,可写可不写" value='{$useruid}'/>UID
+<br>
+活动阶段 : <select id="round" name="round" onclick="changeEvemt()" >$roundList</select>
+<input class="btn js-btn btn-primary" type="button" id="viewInfo" onclick="showData(1)" name="btn_view" value="查询积分活动信息">&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" onclick="showData(2)" id="btn_view" name="btn_view" value="查询积分活动排名">
+<div id="modifyxishu" style="display:none;">$xishu</div>
+<hr />
+<div id='show' style="width:100%;float:left;height:auto"></div>
+
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function changeWeek(){
+	$.get("admincp.php?mod=user&act=score_activity&event=getTimeByWeek&weekNum="+$('#weekNum').val(),function(data){
+		var timeArr=data.split('|');
+		
+		$('#startDate').val(timeArr[0]);
+		$('#endDate').val(timeArr[1]);
+		
+		$("#startDate,#endDate").datetimepicker();
+		
+	});
+}
+
+function changeEvemt(){
+	if($("#round").val() == 'rank'){
+		$("#viewInfo").attr('disabled','disabled');
+		$("#modifyxishu").show();
+	}
+	else{
+		$("#viewInfo").removeAttr('disabled');
+		$("#modifyxishu").hide();
+	}
+}
+function showData(type){
+	if(type==1){
+		document.getElementById('viewInfo').disabled=true;
+	}else if(type==2){
+		document.getElementById('btn_view').disabled=true;
+	}
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var objs = document.getElementsByName('server');
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			selectServer = objs[i].value;
+			break;
+		}
+	}
+	var round = $("#round").val();
+	url = 'admincp.php?mod=user&act=score_activity&getData=true'+'&type='+type+'&round='+round+'&startDate='+$("#startDate").val()+'&endDate='+$("#endDate").val();
+	if(type == 2 && round == 'rank'){
+		str = '';
+		$('.xishu').each(function(i){
+			j = i+1;
+			str +=','+$("input[name=xishu_"+j+"]").val();
+		});
+		url +='&xishu='+str;
+	}
+	var uid=$('#uid').val();
+	if(uid){
+		url += '&userid='+uid;
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	//$("#start_time").datetimepicker();
+    //$("#end_time").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	var v1=document.getElementById('viewInfo').disabled;
+	var v2=document.getElementById('btn_view').disabled;
+	right.innerHTML = 'loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			if(v1){
+			document.getElementById('viewInfo').disabled = false;
+			}
+			if(v2){
+				document.getElementById('btn_view').disabled=false;
+			}
+			return;
+		}
+	}
+}
+
+
+</script>
+<!--{template footer}-->

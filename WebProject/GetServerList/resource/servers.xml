@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="1">
+    <ItemSpec id="1" name="COK1" ip="10.1.33.101" port="9933" inner_ip="10.1.33.101" db_ip="10.1.33.101" db_name="cokdb1" redis_port="6379" zone="COK1" recommend="false" hot="false" new="false" test="false" open_time="2014-9-30 10:30:00"/>
+
+    <!-- <ItemSpec id="1" name="COK1" ip="192.168.31.200" port="9933" redis_port="6379" zone="COK1" recommend="false" hot="false" new="false" test="false" open_time="2014-9-30 10:30:00" inner_ip="192.168.31.200" db_ip="192.168.31.200" db_name="cokdb1"/>
+  <!temSpec id="1" name="COK1" ip="10.1.37.220" port="9933" redis_port="6379" zone="COK1" recommend="false" hot="false" new="false" test="false" open_time="2014-9-30 10:30:00" inner_ip="10.1.37.220" db_ip="10.1.37.220" db_name="cokdb1"/>
+  test=true 玩家看不到。 -->
+    <!--
+    <ItemSpec id="1" name="COK1" ip="10.1.16.211" port="9933" zone="COK1" recommend="false" hot="false" new="false" test="false" open_time="2014-9-30 10:30:00" inner_ip="10.1.16.211" db_ip="10.1.16.211" db_name="cokdb1"/>
+    <ItemSpec id="1" name="COK1" ip="169.45.149.74" port="9933" zone="COK1" recommend="false" hot="false" new="false" test="false" open_time="2014-9-30 10:30:00" inner_ip="10.121.248.40" db_ip="10.43.227.11" db_name="cokdb1"/>
+     -->
+  </Group>
+</tns:database>

@@ -1,0 +1,80 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "累计充值活动查询";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=pay&act=cumulativeRecharge" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+	$serverDiv
+	<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+	<br>
+	起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+	结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+	充值等级:<select id="payGrade" name="payGrade">
+				<option value="all">all</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+			</select>
+	是否新手:<select id="paytype" name="paytype">
+		<option value="1">新玩家</option>
+		<option value="2">老玩家</option>
+</select>
+	<input class="" type="checkbox" name="showall" id="showall" checked="checked" />只显示合计
+	<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search('view')" />
+</div>
+</div>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  colspan="1" width="1%">日期</th>
+	<th align="center"  colspan="1" width="1%">服</th>
+	<th align="center" colspan="{$len}"  width="4%">付费等级|人数</th>
+	</tr>
+	<!--{loop $dates $dateValue}-->
+		<tr>
+			<td>$dateValue</td>
+			<td>合计</td>
+			<!--{loop $levels $key3 $levelValue}-->
+				<td> $levelValue|$total[$dateValue][$levelValue]</td>
+			<!--{/loop}-->
+		</tr>
+		<!--{loop $sids $key2 $sidValue}-->
+		<tr>
+			<td>$dateValue</td>
+			<td>$sidValue</td>
+			<!--{loop $levels $key3 $levelValue}-->
+			<td> $levelValue|$data[$dateValue][$sidValue][$levelValue]</td>
+			<!--{/loop}-->
+		</tr>
+		<!--{/loop}-->
+	<!--{/loop}-->
+</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(type){
+	document.getElementById('btn_view').disabled = true;
+	document.getElementById('action').value = type;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

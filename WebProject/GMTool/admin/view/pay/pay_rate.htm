@@ -1,0 +1,91 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "付费频率统计（根据大本等级统计）";?><font color="red"></font></div>
+<form action="admincp.php?mod=pay&act=rate&analyze=user" method="post" name="getaccount">
+
+$serverDiv
+
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{if $allServerFlag}-->
+<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+<!--{else}-->
+<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+<!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="统计充值数据">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+<div>
+	{$html}
+</div>
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{ */
+			document.getaccount.submit();
+			/* return;
+		}
+	}
+	alert("请选择需要查询的服"); */
+}
+
+function getXlsData(){
+	document.getElementById('btn_out').disabled=true;
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

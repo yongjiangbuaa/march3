@@ -1,0 +1,91 @@
+<!--{template header}-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Basic TreeGrid - jQuery EasyUI Demo</title>
+    <link rel="stylesheet" type="text/css" href="include/jquery-easyui-1.4.5/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="include/jquery-easyui-1.4.5/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="include/jquery-easyui-1.4.5/demo/demo.css">
+    <script type="text/javascript" src="include/jquery-easyui-1.4.5/jquery.easyui.min.js"></script>
+
+<style type="text/css">
+	.datagrid-header div{
+		height: 45px;
+	}
+</style>
+
+</head>
+<body>
+<br>
+<br>
+<form action="admincp.php?mod=ad&act=facebookAd" method="post" name="getaccount" style="display: inline-table;">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+</form>
+    <div style="margin:20px 0;"></div>
+    <table title="Facebook Ad" class="easyui-treegrid" style="width:1200px;height:550px"
+            data-options="
+                url: 'log/treegrid_data1.json',
+                method: 'get',
+                rownumbers: true,
+                idField: 'id',
+                treeField: 'name',
+                fitColumns: false
+            ">
+        <thead>
+            <tr>
+            		<th data-options="field:'name'" width="280">name</th>
+                <th data-options="field:'reach'" width="100">Reach</th>
+                <th data-options="field:'impressions'" width="100" align="right">Impressions</th>
+                <th data-options="field:'frequency'" width="100">Frequency</th>
+                <th data-options="field:'spend'" width="100">Spend</th>
+                <th data-options="field:'unique_clicks'" width="100">Clicks</th>
+                <th data-options="field:'actions'" width="100">APP Install</th>
+                <th data-options="field:'regcount'" width="100">新注册</th>
+                <th data-options="field:'pay1'" width="100">1日付费</th>
+                <th data-options="field:'roi1'" width="100">1日Roi(%)</th>
+                <th data-options="field:'pay3'" width="100">3日付费</th>
+                <th data-options="field:'roi3'" width="100">3日Roi(%)</th>
+                <th data-options="field:'pay7'" width="100">7日付费</th>
+                <th data-options="field:'roi7'" width="100">7日Roi(%)</th>
+                <th data-options="field:'pay14'" width="100">14日付费</th>
+                <th data-options="field:'roi14'" width="100">14日Roi(%)</th>
+                <th data-options="field:'pay30'" width="100">30日付费</th>
+                <th data-options="field:'roi30'" width="100">30日Roi(%)</th>
+                <th data-options="field:'pay60'" width="100">60日付费</th>
+                <th data-options="field:'roi60'" width="100">60日Roi(%)</th>
+                <th data-options="field:'remain1'" width="100">1日登录</th>
+                <th data-options="field:'rate1'" width="100">1日留存率(%)</th>
+                <th data-options="field:'remain3'" width="100">3日登录</th>
+                <th data-options="field:'rate3'" width="100">3日留存率(%)</th>
+                <th data-options="field:'remain7'" width="100">7日登录</th>
+                <th data-options="field:'rate7'" width="100">7日留存率(%)</th>
+                <th data-options="field:'remain14'" width="100">14日登录</th>
+                <th data-options="field:'rate14'" width="100">14日留存率(%)</th>
+                <th data-options="field:'remain30'" width="100">30日登录</th>
+                <th data-options="field:'rate30'" width="100">30日留存率(%)</th>
+                <th data-options="field:'remain60'" width="100">60日登录</th>
+                <th data-options="field:'rate60'" width="100">60日留存率(%)</th>
+            </tr>
+        </thead>
+    </table>
+ 
+<script type="text/javascript">
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+ 
+ 
+</body>
+</html>
+
+<!--{template footer}-->

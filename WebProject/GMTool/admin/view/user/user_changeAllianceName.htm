@@ -1,0 +1,67 @@
+<!--{template header}-->
+<div class="alert alert-info">根据联盟名称查询联盟并修改联盟名称<font color="red"><?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=changeAllianceName" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>联盟名称</span>
+<span><input type="text" id="allianceName" name="allianceName" value='{$allianceName}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  width="30%">属性</th>
+	<th align="center"  width="30%">值</th>
+	</tr>
+	<!--{loop $dbArray $dbName $dbData}-->
+		<tr>
+			<td><input type="text" id="key_{$dbName}" value="{$dbData['name']}" size="20" class="input-xlarge disabled uneditable-input" readonly="readonly"></td>
+			<td>$item[$dbName]</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var allianceName = $('#allianceName').val();
+	allianceName = jQuery.trim(allianceName);
+	if(isEmpty(allianceName)){
+		alert("联盟名称不能为空!");
+		$("#allianceName").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+function dochangename(uid){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('btn_change').disabled=true;
+	$.get('admincp.php?mod=user&act=changeAllianceName&dochangename=1&changeuid='+uid+'&changename='+$("#changename").val(),function(data){
+		alert(data);
+		check_submit('view');
+	});
+}
+</script>
+<!--{template footer}-->

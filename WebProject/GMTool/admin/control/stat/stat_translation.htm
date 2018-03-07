@@ -1,0 +1,124 @@
+<!--{template header}-->
+<div class="alert alert-info" ><?php echo "执行数据库语句，查询语句会展示结果";?><font color="red"></font></div>
+<style type="text/css">
+    .pie {
+  background-color: #ffffff;
+  border: 1px solid gray;
+  font: 10px sans-serif;
+  height: 300px;
+  text-shadow: none;
+  width: 450px;
+}
+.pie .total{
+  font-size: 18px;
+  font-weight: bold;
+}
+.pie .units{
+  fill: gray;
+  font-size: 12px;
+}
+.pie .label{
+  fill: #CCC;
+  font-size: 12px;
+  font-weight: bold;
+}
+.pie .value{
+  font-size: 12px;
+  font-weight: bold;
+}
+.pie .key{
+  fill: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+</style>
+<div class="span11">
+起始时间<input class="input-medium focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-medium focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+     <input class="btn js-btn btn-primary" type="button" onclick="getData()" name="btn_view"  id="btn_submit" value="统计数据">
+</div>
+$serverDiv
+<table>
+<tr>
+<th style="text-align:center;">目标语种所占比例</th>
+<th style="text-align:center;">翻译来源所占比例</th>
+</tr>
+<tr>
+<th><div class="pie" id="easy-as-pie-chart1"></div></th>
+<th><div class="pie" id="easy-as-pie-chart2"></div></th>
+</tr>
+</table>
+<div id='show' style="width:auto;float:left;height:auto;align:left;"></div>
+
+<script src="include/d3.js" charset="utf-8"></script>
+<script src="include/drawPie.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    init();
+});
+
+function init(){
+	pie1 = new PieCircle();
+	pie2 = new PieCircle();
+	pie1.draw('easy-as-pie-chart1');
+	pie2.draw('easy-as-pie-chart2');
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+	ajaxResult1 = [{key:'en', value:1}];
+	ajaxResult2 = [{key:'from MS', value:1}];
+	pie1.update(ajaxResult1);
+	pie2.update(ajaxResult2);
+}
+
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+
+function getData(){
+	var params="";
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked)
+		{
+			params = params +  "&" + objs[i].name + "=on" ;
+		}
+	} */
+	params = params+'&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&selectServer='+$('#selectServer');
+  var url = 'admincp.php?mod=stat&act=translation&ispost=1'+params;
+  $.ajax({  
+	  type: "get",  
+	  url: url,  
+	  dataType: "json",
+	  success: function(msg){  
+	  	var content = msg.content;
+	  	$("#show").html(content);
+	  	pie1.update(msg.data);
+	  	pie2.update(msg.resource);
+	  },
+  	  error: function(e){
+		  alert(e);
+	  }  
+	});  
+}
+
+</script>
+<!--{template footer}-->

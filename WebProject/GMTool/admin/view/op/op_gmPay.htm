@@ -1,0 +1,57 @@
+<!--{template header}-->
+<div class="alert alert-info">通过GM系统购买礼包<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=gmPay" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>UID</span>
+<span><input type="text" id="uid" name="uid" value='{$uid}'></input></span>
+<span>礼包ID</span>
+	<span><input type="text" id="packageId" name="packageId" value='{$packageId}' style="width:80px;"></input></span>
+
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" value="购买" id="btn_view" name="btn_view" onclick="check_buy()" />
+</div>
+</div><br/>
+
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var uid=$('#uid').val();
+	var packageId=$('#packageId').val();
+	uid = jQuery.trim(uid);
+	packageId = jQuery.trim(packageId);
+	if(isEmpty(uid)){
+		alert("UID不能为空!");
+		$("#uid").focus();
+		return false;
+	}
+	if(isEmpty(packageId)){
+		alert("礼包ID不能为空!");
+		$("#packageId").focus();
+		return false;
+	}
+	return true;
+}
+function check_buy(){
+	if(isCommit()){
+		if(confirm('是否确认要购买该礼包'))
+		{
+			document.getElementById('btn_view').disabled=true;
+			$.get('admincp.php?mod=op&act=gmPay&type=gmBuy&uid='+$('#uid').val()+'&packageId='+$('#packageId').val(),function(data){
+				alert(data);
+				document.getElementById('btn_view').disabled=false;
+			});
+		}
+	}
+}
+
+</script>
+<!--{template footer}-->

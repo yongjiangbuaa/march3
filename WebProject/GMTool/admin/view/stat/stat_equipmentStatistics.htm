@@ -1,0 +1,158 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "装备信息统计";?><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=stat&act=equipmentStatistics&analyze=view" method="post" name="getaccount">
+$serverDiv
+
+当前大本等级<input class="input-small" id="levelMin" name='levelMin' type="text" value='1' size="50"/>-
+<input class="input-small" id="levelMax" name='levelMax' type="text" value='99' size="50"/>
+充值金币数量<input class="input-small" id="goldMin" name='goldMin' type="text" value='1' size="100"/>-
+<input class="input-small" id="goldMax" name='goldMax' type="text" value='99999' size="100"/>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<!--{if $showData}-->
+
+		<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th align="center">服务器</th>
+			<th align="center">材料名称</th>
+			<th align="center">白</th>
+			<th align="center">绿</th>
+			<th align="center">蓝</th>
+			<th align="center">紫</th>
+			<th align="center">橙</th>
+			<th align="center">金</th>
+			</tr>
+			<!--{loop $itemDetail $serverKey $value}-->
+				<!--{loop $equNameArray $name}-->
+					<tr>
+						<td>$serverKey</td>
+						<td>$name</td>
+						<td>$value[$name][0]</td>
+						<td>$value[$name][1]</td>
+						<td>$value[$name][2]</td>
+						<td>$value[$name][3]</td>
+						<td>$value[$name][4]</td>
+						<td>$value[$name][5]</td>
+					</tr>
+				<!--{/loop}-->
+			<!--{/loop}-->
+		</tbody>
+	</table>
+	
+		<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th align="center">服务器</th>
+			<th align="center">等级</th>
+			<th align="center">装备名称</th>
+			<th align="center">白</th>
+			<th align="center">绿</th>
+			<th align="center">蓝</th>
+			<th align="center">紫</th>
+			<th align="center">橙</th>
+			<th align="center">金</th>
+			</tr>
+			<!--{loop $equipmentDetail $serverKey $value}-->
+				<!--{loop $value $levelKey $nameValue}-->
+					<!--{loop $nameValue $nameKey $dbData}-->
+						<tr>
+							<td>$serverKey</td>
+							<td>$levelKey</td>
+							<td>$nameKey</td>
+							<td>$dbData[0]</td>
+							<td>$dbData[1]</td>
+							<td>$dbData[2]</td>
+							<td>$dbData[3]</td>
+							<td>$dbData[4]</td>
+							<td>$dbData[5]</td>
+						</tr>
+					<!--{/loop}-->
+				<!--{/loop}-->
+			<!--{/loop}-->
+		</tbody>
+	</table>
+
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th align="center">服务器</th>
+			<th align="center">大本等级</th>
+			<th align="center">玩家名称</th>
+			<th align="center">Uid</th>
+			<th align="center">充值金币数量</th>
+			<th align="center">当前钢材</th>
+			<th align="center">材料总数量</th>
+			<th align="center">材料数量</th>
+			<th align="center">装备总数量</th>
+			<th align="center">1</th>
+			<th align="center">5</th>
+			<th align="center">10</th>
+			<th align="center">15</th>
+			<th align="center">20</th>
+			<th align="center">25</th>
+			</tr>
+			<!--{loop $data $serverKey $value}-->
+				<!--{loop $value $uid $dbData}-->
+					<tr>
+						<td>$serverKey</td>
+						<td>$dbData['level']</td>
+						<td>$dbData['name']</td>
+						<td><a href="javascript:void(edit('{$uid}','{$serverKey}'))">$uid</a></td>
+						<td>$dbData['payTotal']</td>
+						<td>$dbData['silver']</td>
+						<td>$itemTotal[$serverKey][$uid]</td>
+						<td>$itemStr[$serverKey][$uid]</td>
+						<td>$equipTotal[$serverKey][$uid]</td>
+						<td>$equipStr[$serverKey][$uid]['1']</td>
+						<td>$equipStr[$serverKey][$uid]['5']</td>
+						<td>$equipStr[$serverKey][$uid]['10']</td>
+						<td>$equipStr[$serverKey][$uid]['15']</td>
+						<td>$equipStr[$serverKey][$uid]['20']</td>
+						<td>$equipStr[$serverKey][$uid]['25']</td>
+					</tr>
+				<!--{/loop}-->
+			<!--{/loop}-->
+		</tbody>
+	</table>
+	
+
+	
+
+<!--{/if}-->
+</form>
+<div id='display' style="display:none;position:absolute;z-index:1; right:350px; top:100px; width:500px; background-color:#708090; color:#FFF; line-height:30px;">
+	<a href="#" onclick="javascript:turnoff()">点击关闭</a>&nbsp;&nbsp;
+	<div id='displayinner'></div>
+</div>
+
+<script type="text/javascript">
+
+function edit(uid,server) {
+	var url = 'admincp.php?mod=stat&act=equipmentStatistics&uid='+uid+'&server='+server+'&display=true';
+	$.get(url,function(data){
+			//document.getElementById('display').style.display="block";
+			var div = document.getElementById('display'); 
+			div.style.display="block"; 
+			div.style.left=event.clientX+10; 
+			div.style.top=event.clientY+5;    
+			div.style.position="absolute"; 
+			$("#displayinner").html(data);
+	},'html');
+}
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

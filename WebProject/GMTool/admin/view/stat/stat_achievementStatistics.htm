@@ -1,0 +1,72 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "已完成的成就人数统计";?><font color="red">$headerAlert</font></div>
+<form action="admincp.php?mod=stat&act=achievementStatistics&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<!--{if $allServerFlag}-->
+<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+<!--{else}-->
+<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+<!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!-- {if $showData} -->
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr class="listTr">
+			<th width=2%>日期</th>
+			<th width=4%>服</th>
+			<!--{loop $achieveIdArray  $key $achieveIdValue}-->
+			<th width=4%>成就$achieveIdValue</th>
+			<!--{/loop}-->
+		</tr>
+		<!-- {if $allServerFlag} -->
+			<!--{loop $data $dateKey $achieveIdData}-->
+				<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+					onMouseOut="this.style.background='#fff';"style="font-weight: bold; color: rgb(119, 125, 237);">
+					<td width="2%">$dateKey</td>
+					<td width="4%">合计</td>
+					<!--{loop $achieveIdArray  $key $achieveIdValue}-->
+						<td width="4%">$data[$dateKey]['allSum'][$achieveIdValue]</td>
+					<!--{/loop}-->
+				</tr>
+			<!--{/loop}-->
+		<!-- {else} -->
+			<!--{loop $data  $dateKey $serverValue}-->
+				<!--{loop $serverValue  $serverKey $achieveIdData}-->
+					<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+					onMouseOut="this.style.background='#fff';" <!--{if ($serverKey=='allSum')}-->style="font-weight: bold; color: rgb(119, 125, 237);"<!--{/if}-->>
+					<td width="2%">$dateKey</td>
+					<!-- {if ($serverKey=='allSum')} -->
+						<td width="4%">合计</td>
+					<!-- {else} -->
+						<td width="4%">$serverKey</td>
+					<!-- {/if} -->
+					<!--{loop $achieveIdArray  $key $achieveIdValue}-->
+						<td width="4%">$data[$dateKey][$serverKey][$achieveIdValue]</td>
+					<!--{/loop}-->
+				<!--{/loop}-->
+			<!--{/loop}-->
+		
+		<!-- {/if} -->
+	</table>
+<!-- {/if} -->
+
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

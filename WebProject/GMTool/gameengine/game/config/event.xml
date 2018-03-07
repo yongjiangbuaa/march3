@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- 事件监听配置文件 -->
+<!-- 添加事件监听器，添加规则为：<监听器类名>监听器完整路径 </监听器类名>-->
+<listeners>
+	<XLoggerListener>module.util.logger.XLoggerListener</XLoggerListener>
+	<XStatisticsListener>module.util.statistics.XStatisticsListener</XStatisticsListener>
+	<XContextCloseListener>module.event.context.XContextCloseListener</XContextCloseListener>
+</listeners>
+</xingcloud:config>

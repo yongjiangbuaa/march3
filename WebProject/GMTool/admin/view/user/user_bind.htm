@@ -1,0 +1,95 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $headLine;?><font color="red"><?php echo $headAlert;?></font></div>
+<div class="row-fluid">
+<div class="span11">
+<span>用户名</span>
+<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<br>
+<span>设备ID</span>
+<span><input type="text" id="deviceId" name="deviceId" value='{$deviceId}' style="width: 300px;"></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" id="btn_view" name="btn_view" onclick="getData(0)" />
+</div>
+</div><hr/>
+<div id='show' style="width:100%;float:left;height:auto"></div>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function edit(uid,type){
+	var alert=null;
+	if(type==2) {
+		alert = '是否确认要激活账号?';
+	}else if(type==10){
+		alert = '是否确认要删除账号?';
+	}else{
+		alert='是否确认要解除绑定?';
+	}
+	if(confirm(alert))
+	{
+		var url = 'admincp.php?mod=user&act=bind&action='+type+'&muid=' + uid;
+		$.get(url);
+		getData(true);
+	}
+}
+/* function unbindg(uid){
+    var url = 'admincp.php?mod=user&act=bind&action=3'+'&muid=' + uid;
+    $.get(url);
+    getData(true);
+}
+function unbindf(uid){
+    var url = 'admincp.php?mod=user&act=bind&action=4'+'&muid=' + uid;
+    $.get(url);
+    getData(true);
+}
+function unbindi(uid){
+    var url = 'admincp.php?mod=user&act=bind&action=6'+'&muid=' + uid;
+    $.get(url);
+    getData(true);
+} */
+function find(uid,deciceID,currentUid,curServer,server,obj){
+	if(confirm('是否确认要找回账号?'))
+	{
+		obj.disabled=true;
+		document.getElementById('btn_view').disabled=true;
+		var url = 'admincp.php?mod=user&act=bind&action=5'+'&newUid=' + uid+'&oldUid='+currentUid+'&oldServer='+curServer+'&deciceID='+deciceID+'&server='+server;
+		$.get(url);
+		getData(true);
+	}
+}
+
+
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputDeviceId = $('#deviceId').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputDeviceId = jQuery.trim(inputDeviceId);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputDeviceId)){
+		alert("<?php echo $MALANG['uid_noinput'];?>");
+		$("#username").val(" ");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function getData(flag) {
+	if(isCommit() || flag){
+		document.getElementById('btn_view').disabled=true;
+		var url = 'admincp.php?mod=user&act=bind&action=1'+'&username=' + $('#username').val() + '&useruid=' + $('#useruid').val() + '&deviceId=' + $('#deviceId').val();
+		$.get(url,function(data){
+			$("#show").html(data);
+			document.getElementById('btn_view').disabled=false;
+		})
+	}
+	return;
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,90 @@
+<!--{template header}-->
+<div>
+<div class="alert alert-info"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;$alertHead</font></div>
+<form action="admincp.php?mod=ad&act=adCost" method="post" name="getaccount" style="display: inline-table;">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+查看维度
+<select id="dimension" name="dimension" onchange="">
+		<!--{loop $dimensionArray $dimeKey $dimeVal}-->
+		<!--{if ($currdimension == $dimeKey)}-->
+			<option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+		<!-- {else} -->
+			<option value="{$dimeKey}">{$dimeVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+&nbsp;&nbsp;
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+
+<!--{if ($showData)}-->
+<div>
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr>
+			<th width=6%></th>
+			<!--{loop $paramArray $pVal}-->
+				<!--{loop $osArray $osVal}-->
+					<!--{if ($countryList[$pVal])}-->
+						<th colspan="3">$osVal	$countryList[$pVal]</th>
+					<!--{else}-->
+						<th colspan="3">$osVal	$pVal</th>
+					<!--{/if}-->
+				<!--{/loop}-->
+			<!--{/loop}-->
+		</tr>
+		<tr>
+			<th>日期</th>
+			<!--{loop $paramArray $pVal}-->
+				<!--{loop $osArray $osVal}-->
+					<th>Spend</th>
+					<th>Install</th>
+					<th>CPI</th>
+				<!--{/loop}-->
+			<!--{/loop}-->
+		</tr>
+		<tbody>
+		<!--{loop $dateArray $dateKey $dateVal}-->
+			<tr>
+				<td>$dateVal</td>
+				<!--{loop $paramArray $pVal}-->
+					<!--{loop $osArray $osVal}-->
+						<!--{if ($total[$dateVal][$pVal][$osVal])}-->
+							<td>$total[$dateVal][$pVal][$osVal]['cost']</td>
+							<td>$total[$dateVal][$pVal][$osVal]['install']</td>
+							<td>$total[$dateVal][$pVal][$osVal]['cpi']</td>
+						<!--{else}-->
+							<td>--</td>
+							<td>--</td>
+							<td>--</td>
+						<!--{/if}-->
+					<!--{/loop}-->
+				<!--{/loop}-->
+			</tr>
+		<!--{/loop}-->
+		</tbody>
+	</table>
+</div>
+<!--{/if}-->
+</div>
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+function getXlsData(){
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

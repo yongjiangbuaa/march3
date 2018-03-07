@@ -1,0 +1,71 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "联盟积分活动统计";?><font color="red" id="showtips">$headAlert</font></div>
+
+活动周<select id="weekNum" name="weekNum" onchange="changeWeek()">$weekList</select>
+<input class="input-medium focused" id="startDate" name="startDate" type="text" value="{$startDate}" placeholder="点击选择日期" value="{$startDate}">
+<input class="input-medium focused" id="endDate" name="endDate" type="text" value="{$endDate}" placeholder="点击选择日期" value="{$startDate}">
+玩家uid<input class="input-large" id="userId" name='userId' type="text" value=''  />
+<input class="btn js-btn btn-primary" type="button" id="viewUserInfo" onclick="showData(1)" name="btn_view_user" value="查询个人积分">
+<br>
+联盟名称<input type="text" id="allianceName" name="allianceName" value='{$allianceName}' />
+<input class="btn js-btn btn-primary" type="button" id="viewAllianceInfo" onclick="showData(2)" name="btn_view_alliance" value="查询联盟积分">
+<div id="modifyxishu" style="display:none;"></div>
+<hr />
+<div id='show' style="width:100%;float:left;height:auto"></div>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function changeWeek(){
+	$.get("admincp.php?mod=user&act=alliance_score_activity&event=getTimeByWeek&weekNum="+$('#weekNum').val(),function(data){
+		var timeArr=data.split('|');
+
+		$('#startDate').val(timeArr[0]);
+		$('#endDate').val(timeArr[1]);
+
+		$("#startDate,#endDate").datetimepicker();
+
+	});
+}
+
+function showData(type){
+	if (type == 1) {
+		document.getElementById('viewUserInfo').disabled=true;
+	} else if (type == 2) {
+		document.getElementById('viewAllianceInfo').disabled=true;
+	}
+
+	url = 'admincp.php?mod=user&act=alliance_score_activity&getData=true'+'&startDate='+$("#startDate").val()
+			+'&endDate='+$("#endDate").val()+'&userId='+$("#userId").val()+'&type='+type+'&allianceName='+$("#allianceName").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	var v1 = document.getElementById('viewUserInfo').disabled;
+	var v2 = document.getElementById('viewAllianceInfo').disabled;
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			if (v1) {
+				document.getElementById('viewUserInfo').disabled=false;
+			}
+			if (v2) {
+				document.getElementById('viewAllianceInfo').disabled=false;
+			}
+			return;
+		}
+	}
+}
+
+
+</script>
+<!--{template footer}-->

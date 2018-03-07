@@ -1,0 +1,257 @@
+<!--{template header}-->
+<form action="admincp.php?mod=stat&act=regremain" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "每日注册留存";?><font color="red"></font></div>
+
+$serverDiv
+
+<div class="row-fluid">
+<div class="span11">
+注册日期
+<input id="start" name='start' type="text" value='{$start}' class="input-medium" onchange="changeDate()" />
+<input id="end" name='end' type="text" value='{$end}' class="input-medium" onchange="changeDate()" />
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+渠道
+<select id="selectReferrer" name="selectReferrer" onchange="">
+		<!--{loop $referrerList $referrer $referrername}-->
+		<!--{if ($currReferrer == $referrer)}-->
+		<option value="{$referrer}" selected="selected">{$referrername}</option>
+		<!-- {else} -->
+		<option value="{$referrer}">{$referrername}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+版本号
+<select id="selectAppVersion" name="selectAppVersion" onchange="">
+		<!--{loop $appVersionList $appVersion $appVersionname}-->
+		<!--{if ($currAppVersion == $appVersion)}-->
+		<option value="{$appVersion}" selected="selected">{$appVersionname}</option>
+		<!-- {else} -->
+		<option value="{$appVersion}">{$appVersionname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{if $allServerFlag}-->
+<input class="" type="checkbox" name="allServers" id="allServers" checked="checked"  />只显示合计
+<!--{else}-->
+<input class="" type="checkbox" name="allServers" id="allServers"   />只显示合计
+<!--{/if}-->
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="search()" />
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" id="btn_out" name="btn_out" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<br />
+<input id="reconnect" name='reconnect' type="hidden" value='{$reconnect}' class="input-large" placeholder="" />
+<!--请输入再登陆天数
+<span class="help-inline">默认为1,3,7,30，支持x,y,z和x-y格式的查询，填写x~y可查询区间的总数</span>
+-->
+</div>
+</div>
+<!-- {if $registerUser} -->
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+	<tr class="listTr">
+		<th width=2%>日期</th>
+		<th width=2%>服</th>
+		<th width=2%>新注册</th>
+		<th width=2%>untrust</th>
+		<th width="2%" title="当日重玩人数">重玩</th>
+		<th width="2%" title="当日迁服人数">迁服</th>
+		<!--{for $i=0;$i<count($dayArr2);$i++}-->
+		<th width="2%" title="新注册+重玩且第$dayArr[$i]天登陆玩家">第$dayArr[$i]天登陆(新注册+重玩)</th>
+		<th width="2%">留存(%)</th>
+		<!--{/for}-->
+		<!--{for $i=0;$i<count($dayArr);$i++}-->
+		<th width="2%" title="新注册且第$dayArr[$i]天登陆">净第$dayArr[$i]天登陆</th>
+		<th width="2%">净留存(%)</th>
+		<!--{/for}-->
+		<th width=2%>运营备注信息</th>
+	</tr>
+	<!--{loop $registerUser  $regDate $temp}-->
+		<!-- {if $allServerFlag} -->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+			onMouseOut="this.style.background='#fff';"style="font-weight: bold; color: rgb(119, 125, 237);">
+			<td width="2%">$regDate</td>
+			<td width="2%">合计</td>
+			<td width="2%">$temp['allSum']</td>
+				<!-- {if $untrust[$regDate]['allSum'] > 0} -->
+				<td width="2%">$untrust[$regDate]['allSum']</td>
+				<!-- {else} -->
+				<td width="2%">-</td>
+				<!-- {/if} -->
+			<td width="2%">$replayUser[$regDate]['allSum']</td>
+			<td width="2%">$relocationUser[$regDate]['allSum']</td>
+			<!--{loop $dayArr2  $key $day}-->
+				<!-- {if $remainData['allSum'][$regDate]['rr']['count'] > 0} -->
+				<td width="2%">$remainData['allSum'][$regDate]['rr']['count']</td>
+				<td width="2%">$remainData['allSum'][$regDate]['rr']['rate']</td>
+				<!-- {else} -->
+				<td width="2%">-</td>
+				<td width="2%">-</td>
+				<!-- {/if} -->
+			<!--{/loop}-->
+			<!--{loop $dayArr  $key $day}-->
+				<!-- {if $remainData['allSum'][$regDate][$day]['count'] > 0} -->
+				<td width="2%">$remainData['allSum'][$regDate][$day]['count']</td>
+				<td width="2%">$remainData['allSum'][$regDate][$day]['rate']</td>
+				<!-- {else} -->
+				<td width="2%">-</td>
+				<td width="2%">-</td>
+				<!-- {/if} -->
+			<!--{/loop}-->
+				<!-- {if $num[$regDate]} -->
+				<td id="$regDate"><a href="javascript:void(edit('$regDate','$num[$regDate]'))">$num[$regDate]</a></td>
+				<!-- {else} -->
+				<td id="$regDate"><a href="javascript:void(edit('$regDate','$num[$regDate]'))">无</a></td>
+				<!-- {/if} -->
+			</tr>
+		<!-- {else} -->
+			<!--{loop $temp  $server $serverReg}-->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'"
+				onMouseOut="this.style.background='#fff';" <!--{if ($server=='allSum')}-->style="font-weight: bold; color: rgb(119, 125, 237);"<!--{/if}-->>
+				<td width="2%">$regDate</td>
+				<!-- {if ($server=='allSum')} -->
+				<td width="2%">合计</td>
+				<!-- {else} -->
+				<td width="2%">$server</td>
+				<!-- {/if} -->
+				<td width="2%">$serverReg </td>
+				<!-- {if $untrust[$regDate][$server] > 0} -->
+				<td width="2%">$untrust[$regDate][$server]</td>
+				<!-- {else} -->
+				<td width="2%">-</td>
+				<!-- {/if} -->
+				<td width="2%">$replayUser[$regDate][$server]</td>
+				<td width="2%">$relocationUser[$regDate][$server]</td>
+				<!--{loop $dayArr2  $key $day}-->
+					<!-- {if $remainData[$server][$regDate]['rr']['count'] > 0} -->
+					<td width="2%">$remainData[$server][$regDate]['rr']['count']</td>
+					<td width="2%">$remainData[$server][$regDate]['rr']['rate']</td>
+					<!-- {else} -->
+					<td width="2%">-</td>
+					<td width="2%">-</td>
+					<!-- {/if} -->
+				<!--{/loop}-->
+				<!--{loop $dayArr  $key $day}-->
+					<!-- {if $remainData[$server][$regDate][$day]['count'] > 0} -->
+					<td width="2%">$remainData[$server][$regDate][$day]['count']</td>
+					<td width="2%">$remainData[$server][$regDate][$day]['rate']</td>
+					<!-- {else} -->
+					<td width="2%">-</td>
+					<td width="2%">-</td>
+					<!-- {/if} -->
+				<!--{/loop}-->
+					<!-- {if ($server=='allSum')} -->
+						<!-- {if $num[$regDate]} -->
+						<td id="$regDate"><a href="javascript:void(edit('$regDate','$num[$regDate]'))">$num[$regDate]</a></td>
+						<!-- {else} -->
+						<td id="$regDate"><a href="javascript:void(edit('$regDate','$num[$regDate]'))">无</a></td>
+						<!-- {/if} -->
+					<!-- {else} -->
+					<td width="2%">-</td>
+					<!-- {/if} -->
+			</tr>
+			<!--{/loop}-->
+		<!-- {/if} -->
+	<!--{/loop}-->
+	</table>
+<!-- {/if} -->
+</form>
+
+
+<script type="text/javascript">
+$("#start,#end").datetimepicker();
+function changeDate(){
+	$("#reconnect").val(''); 
+}
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+function getXlsData(){
+	
+	document.getElementById('event').value = 'output';
+	document.getaccount.submit();
+}
+
+var count=0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+
+function edit(date,num) {
+	doClear()
+	datekey=date;
+	right =right=document.getElementById(date);
+	var str='<form id="form1" style="margin:0">输入值: <input class="input-mini" name="num" type="text" id="num'+date+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(num)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right.innerHTML=str;
+}
+
+function rightinfo() {
+	self.location='admincp.php?mod=stat&act=regremain&start='+$('#start').val()+'&end='+$('#end').val();
+}
+
+function save(num){
+	var url ='admincp.php?mod=stat&act=regremain&datekey='+datekey+'&num='+num.value+'&end='+$('#end').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+
+function getAction(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		rightinfo();
+		return;
+	}
+}
+</script>
+<!--{template footer}-->

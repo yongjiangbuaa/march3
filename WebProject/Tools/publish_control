@@ -1,0 +1,248 @@
+#!/bin/sh
+if [ $# -lt 2 ]; then
+        echo "Usage: $0  {deploy|deploywithdb|deployTemp|start|stop|restart|syncCrossFile|syncBadwords|changeDbStruct}  [ sid list. use sepreater {,|-} ]"
+        exit 1
+fi
+
+mode=$1
+sids=$2
+extra=$3
+
+if [ "$mode" = "deploywithdb" ]; then
+	php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_mybatis-cross.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_rmiClient.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_consumer.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_config.properties.php output_config_dir=/usr/local/cok/SFS2X/onlineconfig
+	PARSESIDS=`php /publish/util/parse_sids.php sids=$sids`
+	for i in $PARSESIDS
+	do
+	  DBIPNAME=`php /publish/util/get_dbipname_list.php sids=$i` 
+	  ROOTIP=`php /publish/util/get_server_list_with_root.php sids=$i`
+	  sh publish_oneserver_full.sh $ROOTIP $DBIPNAME $i &
+	done
+	wait
+	exit 0
+fi
+
+ROOTIPLIST=`/home/elex/php/bin/php /publish/util/get_server_list_with_root.php sids=$sids`
+case "$mode" in
+  'test')
+	for i in $ROOTIPLIST
+	do
+	  echo $i
+	done
+   ;;
+
+  'deploy')
+	php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_mybatis-cross.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_rmiClient.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_config.properties.php output_config_dir=/usr/local/cok/SFS2X/onlineconfig
+	for i in $ROOTIPLIST
+	do
+	  #fab stopsfs:host=$i setCurrentVersion upload:host=$i startsfs:host=$i &
+	  fab stopsfs:host=$i setCurrentVersion upload:host=$i uploadResourceXml:host=$i,xmlfiles="exchange.xml" startsfs:host=$i &
+	done
+   ;;
+
+  'deployPatch')
+        gameversion=$extra
+        #php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+        #php /publish/scripts/generate_config.properties.php output_config_dir=/usr/local/cok/SFS2X/onlineconfig
+        for i in $ROOTIPLIST
+        do
+          #fab stopsfs:host=$i uploadPatchJarFile:host=$i,ver=$gameversion &
+          fab stopsfs:host=$i uploadPatchJarFile:host=$i,ver=$gameversion startsfs:host=$i &
+          #fab stopsfs:host=$i uploadPatchJarFile:host=$i,ver=$gameversion uploadConfigProperties:host=$i startsfs:host=$i &
+          #fab stopsfs:host=$i uploadPatchJarFile:host=$i,ver=$gameversion uploadResourceXml:host=$i,xmlfiles="package.xml" startsfs:host=$i &
+          #fab stopsfs:host=$i uploadPatchJarFile:host=$i,ver=$gameversion uploadConfigProperties:host=$i uploadServerConfig:host=$i startsfs:host=$i &
+        done
+	wait
+   ;;
+
+  'deployTemp')
+	#php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+	#php /publish/scripts/generate_config.properties.php output_config_dir=/usr/local/cok/SFS2X/onlineconfig
+	for i in $ROOTIPLIST
+	do
+	  #echo "nothing to do !"
+	  fab puthadoop:host=$i &
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.12,clientVer="0|1.0.2213"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.11,clientVer="0|1.0.2183"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.10,clientVer="0|1.0.2165"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.9,clientVer="0|1.0.2140"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.8,clientVer="0|1.0.2106"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.7,clientVer="0|1.0.2096"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.6,clientVer="0|1.0.2063"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.5,clientVer="0|1.0.2042"
+	#fab updateGameconfigClientVersion:host=$i,appVer=1.1.4,clientVer="0|1.0.1988"
+	done
+	wait
+   ;;
+
+  'setstatus')
+	for i in $ROOTIPLIST
+	do
+	  fab setRedisServerStatus:host=$i,status=$extra 
+	done
+   ;;
+
+  'getstatus')
+	for i in $ROOTIPLIST
+	do
+	  fab getRedisServerStatus:host=$i 
+	done
+   ;;
+
+  'start')
+	for i in $ROOTIPLIST
+	do
+	  fab startsfs:host=$i &
+	done
+        echo "wait all subprocess exit"
+        wait
+   ;;
+
+  'stop')
+	for i in $ROOTIPLIST
+	do
+	  fab stopsfs:host=$i &
+	done
+   ;;
+
+  'restart')
+	#php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+	for i in $ROOTIPLIST
+	do
+	  #fab stopsfs:host=$i uploadServersXml:host=$i startsfs:host=$i &
+	  #fab stopsfs:host=$i uploadConfigProperties:host=$i startsfs:host=$i &
+	  fab stopsfs:host=$i startsfs:host=$i &
+	done
+	wait
+   ;;
+
+  'syncCrossFile')
+	php /publish/scripts/generate_servers.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_mybatis-cross.xml.php output_config_dir=/publish/update/config
+	php /publish/scripts/generate_rmiClient.xml.php output_config_dir=/publish/update/config
+	for i in $ROOTIPLIST
+	do
+	  fab uploadMybatisCross:host=$i uploadServersXml:host=$i &
+	done
+        echo "Wait all subprocess exit"
+        wait
+   ;;
+
+  'uploadXml')
+	uploadxmlfiles=$extra
+	for i in $ROOTIPLIST
+	do
+	  fab uploadResourceXml:host=$i,xmlfiles="$uploadxmlfiles" &
+	done
+	wait
+   ;;
+
+  'downloadXml')
+        uploadxmlfiles=$extra
+        for i in $ROOTIPLIST
+        do
+          fab downloadResourceXml2PatchDir:host=$i,xmlfiles="$uploadxmlfiles"
+        done
+   ;;
+
+  'uploadXmlFromPatchDir')
+        uploadxmlfiles=$extra
+        for i in $ROOTIPLIST
+        do
+          fab uploadPatchResourceXml:host=$i,xmlfiles="$uploadxmlfiles" &
+        done
+	wait
+   ;;
+
+  'findCrack')
+        for i in $ROOTIPLIST
+        do
+          fab findCrack:host=$i &
+        done
+   ;;
+
+  'setRedisKeyValue')
+	for i in $ROOTIPLIST
+	do
+	  #fab setRedisKeyValue:host=$i,key=realtime_translationTarget,val="'en|ru|de'" &
+	  #fab setRedisKeyValue:host=$i,key=realtime_translation,val=true &
+	  fab setRedisKeyValue:host=$i,key=realtime_ms_client_id,val='"elex-translator-1"' &
+          #fab setRedisKeyValue:host=$i,key=realtime_ms_client_secret,val=sEcC5WmTYYZfnXfHIECyh+a+uMenGFPACGSL5GRhVTI= &
+	done
+   ;;
+
+  'syncBadwords')
+ 	for i in $ROOTIPLIST
+	do
+	  fab syncBadwords:host=$i &
+	done
+  ;;
+
+  'changeDbStruct')
+	DBIPNAMELIST=`/home/elex/php/bin/php /publish/util/get_dbipname_list.php sids=$sids` 
+ 	for i in $DBIPNAMELIST
+	do
+	  	DBIPNAME=$i
+		dbipport=`echo $DBIPNAME|cut -d '/' -f 1`
+		dbname=`echo $DBIPNAME|cut -d '/' -f 2`
+		dbip=`echo $dbipport|cut -d ':' -f 1`
+		dbport=`echo $dbipport|cut -d ':' -f 2`
+		echo "mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport $dbname < currdeploy/db_struct_changes.sql"
+		/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport -f $dbname < currdeploy/db_struct_changes1.sql
+	  	#fab setCurrentVersion changeDbStruct:dbipname=$i
+	done
+  ;;
+
+  'execSql')
+	DBIPNAMELIST=`/home/elex/php/bin/php /publish/util/get_dbipname_list.php sids=$sids slave=1`
+	echo $extra
+ 	for i in $DBIPNAMELIST
+	do
+	  	DBIPNAME=$i
+		dbipport=`echo $DBIPNAME|cut -d '/' -f 1`
+		dbname=`echo $DBIPNAME|cut -d '/' -f 2`
+		dbip=`echo $dbipport|cut -d ':' -f 1`
+		dbport=`echo $dbipport|cut -d ':' -f 2`
+		#echo $dbname
+		#echo $dbname  >> batch_sql/ckf_repair_data2.log
+		/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport $dbname --skip-column-names -e "$extra"
+		#/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport --skip-column-names -f $dbname < batch_sql/batch.sql
+		#/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport -f $dbname < currdeploy/db_struct_changes.sql 
+		#/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport -f $dbname < batch_sql/xxxbatch.sql
+		#/usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport --skip-column-names $dbname < batch_sql/invaid_name.sql >> /publish/data/invalidname_$dbname.log
+	done
+  ;;
+
+  'execSlaveDBSql')
+        DBIPNAMELIST=`/home/elex/php/bin/php /publish/util/get_dbipname_list.php sids=$sids slave=1`
+	echo $extra
+        for i in $DBIPNAMELIST
+        do
+                DBIPNAME=$i
+                dbipport=`echo $DBIPNAME|cut -d '/' -f 1`
+                dbname=`echo $DBIPNAME|cut -d '/' -f 2`
+                dbip=`echo $dbipport|cut -d ':' -f 1`
+                dbport=`echo $dbipport|cut -d ':' -f 2`
+		echo $dbname
+                /usr/bin/mysql -uroot -pt9qUzJh1uICZkA -h $dbip -P $dbport --skip-column-names -f $dbname < batch_sql/$extra >> batch_sql/$extra.log
+        done
+  ;;
+
+  'clearGlobalDbData')
+	echo "mysql -uroot -pt9qUzJh1uICZkA -h10.81.92.75 cokdb_global < currdeploy/db_struct_changes_everytime.sql"
+	mysql -uroot -pt9qUzJh1uICZkA -h10.81.92.75 cokdb_global < currdeploy/db_struct_changes_everytime.sql
+	echo "done."
+  ;;
+
+   *)
+      # usage
+      echo "Usage: $0  {deploy|deploywithdb|deployTemp|start|stop|restart|uploadMybatisCross|uploadServersXml|changeDbStruct|syncBadwords}  [ sid list. use sepreater {,|-} ]"
+      exit 1
+    ;;
+esac

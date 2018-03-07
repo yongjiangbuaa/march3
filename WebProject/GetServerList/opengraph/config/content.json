@@ -1,0 +1,56 @@
+{
+	"common":{
+			"title": 100000,
+			"wide":"1",
+			"description": 100000,
+			"image":"http://coq.eleximg.com/coq/fbimg/quest_complete.png"
+	},
+	"level_up":{
+			"title": 110149,
+			"description": 110160,
+			"image":"http://coq.eleximg.com/coq/fbimg/levelup.jpg",
+			"wide":"1"
+	},
+	"wish_five":{
+			"title": 107111,
+			"description": 107112,
+			"image":"http://coq.eleximg.com/coq/fbimg/Wishing5.jpg",
+			"wide":"1"
+	},
+	"wish_ten":{
+			"title": 107111,
+			"description": 107112,
+			"image":"http://coq.eleximg.com/coq/fbimg/Wishing10.jpg",
+			"wide":"1"
+	},
+	"secret_mission":{
+			"title": 2000283,
+			"description": 2000284,
+			"image":"http://coq.eleximg.com/coq/fbimg/3.jpg",
+			"type":"clash-of-kings:secret_mission"
+	},
+	"freedom":{
+			"title": 103706,
+			"description": 103725,
+			"image":"http://coq.eleximg.com/coq/fbimg/freedom150825.jpg",
+			"wide":"1"
+	},
+	"treasure_help":{
+		"title": 107105,
+		"description": 107106,
+		"image":"http://coq.eleximg.com/coq/fbimg/2.jpg",
+		"wide":"1"
+	},
+	"join_alliance":{
+		"title": 110154,
+		"description": 110164,
+		"image": "http://coq.eleximg.com/coq/fbimg/alliance.png",
+		"wide":"1"
+	},
+	"luck_wheel":{
+			"title": 101369,
+			"description": 111129,
+			"image":"http://coq.eleximg.com/coq/fbimg/luckWheel.jpg",
+			"wide":"1"
+	}
+}

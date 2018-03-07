@@ -1,0 +1,530 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "活跃等级分布统计：";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=distribute" method="post" name="getaccount">
+	$serverDiv
+注册起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+注册截止时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+	平台
+	<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+		<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+		<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+<br>
+最后登陆时间不小于<input class="input-large focused" id="relogin_time" name="relogin_time" type="text" placeholder="点击选择日期" value="{$relogin}">
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" name="btn_view" value="统计数据">
+<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" name="btn_view" value="导出EXCEL">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<br />
+</form>
+<div id="levelChart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<div id="mainBuildingChart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<div id="countryChart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<div id="chart4" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<script type="text/javascript" src="include/highcharts/highcharts.js"></script>
+<script type="text/javascript">
+
+</script>
+<!-- {if $result['level']} -->
+	<script type="text/javascript">
+		var showData = [];
+		var xCategories = [];
+	</script>
+	<!--{loop $levelArr  $level}-->
+	<script type="text/javascript">
+		xCategories.push($level);
+	</script>
+	<!--{/loop}-->
+	<!--{loop $result['level']  $test $testData}-->
+		<script type="text/javascript">
+		var svData = [];
+		</script>
+		<!--{loop $levelArr  $level}-->
+		<script type="text/javascript">
+			var temp = [];
+			temp.push($test+'');
+			temp.push($testData[$level]);
+			svData.push(temp);
+		</script>
+		<!--{/loop}-->
+		<script type="text/javascript">
+			showData.push({
+						"type":"column",
+						"name":"测试组"+$test,
+						"data":svData});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'levelChart',
+			type: 'column',
+			plotBorderWidth: 0
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '等级分布'
+		},
+		xAxis: {
+			title: {
+				text: '等级'
+			},
+			allowDecimals: false,
+			categories: xCategories,
+		},
+		yAxis: {
+			title: {
+				text: '人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		tooltip: {
+			 formatter: function() {
+				 var s = "";
+				 $.each(this.points, function(i, point) {
+						s += '<b>等级: </b>'+ point.x;
+						if(!point.y)
+							point.y = 0;
+						s += '<b>人数: </b>'+ point.y;
+						s += '<b>组别: </b>'+ point.key;
+						s += '<br />';
+					});
+				return s;
+			},
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				},
+				dataLabels: {
+					enabled: true,
+					rotation: 0,
+					color: '#FFFFFF',
+					align: 'center',
+					x: 0,
+					y: -1,
+					formatter: function() {
+						return '<tspan style="fill:'+ this.series.color + '" dy="16" x="5">' + this.y +'</tspan>';
+					},
+				},
+				pointWidth: parseInt(800/$group/svData.length)
+			}
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+<!-- {/if} -->
+<!-- {if $result['mainBuilding']} -->
+	<script type="text/javascript">
+		var showData = [];
+		var xCategories = [];
+	</script>
+	<!--{loop $maiBuildingArr  $level}-->
+	<script type="text/javascript">
+		xCategories.push($level);
+	</script>
+	<!--{/loop}-->
+	<!--{loop $result['mainBuilding']  $test $testData}-->
+		<script type="text/javascript">
+		var svData = [];
+		</script>
+		<!--{loop $maiBuildingArr  $level}-->
+		<script type="text/javascript">
+			var temp = [];
+			temp.push($test+'');
+			temp.push($testData[$level]);
+			svData.push(temp);
+		</script>
+		<!--{/loop}-->
+		<script type="text/javascript">
+			showData.push({
+						"type":"column",
+						"name":"测试组"+$test,
+						"data":svData});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'mainBuildingChart',
+			type: 'column',
+			plotBorderWidth: 0
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '大本等级分布'
+		},
+		xAxis: {
+			title: {
+				text: '等级'
+			},
+			allowDecimals: false,
+			categories: xCategories,
+		},
+		yAxis: {
+			title: {
+				text: '人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		tooltip: {
+			 formatter: function() {
+				 var s = "";
+				 $.each(this.points, function(i, point) {
+						s += '<b>等级: </b>'+ point.x;
+						if(!point.y)
+							point.y = 0;
+						s += '<b>人数: </b>'+ point.y;
+						s += '<b>组别: </b>'+ point.key;
+						s += '<br />';
+					});
+				return s;
+			},
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				},
+				dataLabels: {
+					enabled: true,
+					rotation: 0,
+					color: '#FFFFFF',
+					align: 'center',
+					x: 0,
+					y: -1,
+					formatter: function() {
+						return '<tspan style="fill:'+ this.series.color + '" dy="16" x="5">' + this.y +'</tspan>';
+					},
+				},
+				pointWidth: parseInt(800/$group/svData.length)
+			}
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+<!-- {/if} -->
+<!-- {if $result['country']} -->
+	<script type="text/javascript">
+	 var countryLink = new Object();
+	 countryLink[8000] = '史塔克';
+	 countryLink[8001] = '兰尼斯特';
+	 countryLink[8002] = '拜拉席恩';
+		var showData = [];
+		var svData = [];
+	</script>
+	<!--{loop $result['country']  $country $count}-->
+		<script type="text/javascript">
+			var temp = [];
+			temp.push(countryLink[$country]+'');
+			temp.push($count);
+			svData.push(temp);
+		</script>
+	<!--{/loop}-->
+		<script type="text/javascript">
+			showData.push({
+						"type":"column",
+						"name":"国家分布",
+						"data":svData});
+		</script>
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'countryChart',
+			type: 'line',
+			plotBorderWidth: 0
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '国家分布'
+		},
+		xAxis: {
+			title: {
+				text: ''
+			},
+			categories: ['史塔克','兰尼斯特','拜拉席恩']
+		},
+		yAxis: {
+			title: {
+				text: '人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		tooltip: {
+			 formatter: function() {
+				 var s = "";
+				 $.each(this.points, function(i, point) {
+						s += '<b>国家: </b>'+ point.key;
+						s += '<b>人数: </b>'+ point.y;
+					});
+				return s;
+			},
+			shared: true,
+		},
+		legend: {
+			enabled: false
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				},
+				dataLabels: {
+					enabled: true,
+					rotation: 0,
+					color: '#FFFFFF',
+					align: 'center',
+					x: 0,
+					y: -1,
+					formatter: function() {
+						return '<tspan style="fill:'+ this.series.color + '" dy="16" x="5">' + this.y +'</tspan>';
+					},
+				},
+			},
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+<!-- {/if} -->
+<!-- {if $result['power']} -->
+	<script type="text/javascript">
+		var showData = [];
+		var svData = [];
+	</script>
+	<!--{loop $result['power']  $powerId $count}-->
+		<script type="text/javascript">
+			var temp = [];
+			temp.push($powerId+'');
+			temp.push($count);
+			svData.push(temp);
+		</script>
+	<!--{/loop}-->
+		<script type="text/javascript">
+			showData.push({
+						"type":"spline",
+						"name":"副本进度分布",
+						"data":svData});
+		</script>
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart4',
+			type: 'line',
+			plotBorderWidth: 1
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '副本进度分布'
+		},
+		xAxis: {
+			title: {
+				text: ''
+			},
+			labels: {
+				enabled: false
+			},
+			allowDecimals:false,
+		},
+		yAxis: {
+			title: {
+				text: '完成人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		tooltip: {
+			 formatter: function() {
+				 var s = "";
+				 $.each(this.points, function(i, point) {
+						s += '<b>副本ID: </b>'+ point.key;
+						s += '<b>完成人数: </b>'+ point.y;
+					});
+				return s;
+			},
+			shared: true,
+		},
+		legend: {
+			enabled: false
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			}
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+<!-- {/if} -->
+<!-- {if $result['quest']} -->
+	<script type="text/javascript">
+		var showData = [];
+	</script>
+	<!--{loop $result['quest']  $questType $questData}-->
+		<script type="text/javascript">
+			var svData = [];
+		</script>
+		<!--{loop $questData $questId $count}-->
+			<script type="text/javascript">
+				var temp = [];
+				temp.push($questId+'');
+				temp.push($count);
+				svData.push(temp);
+			</script>
+		<!--{/loop}-->
+		<script type="text/javascript">
+			showData.push({
+						"type":"spline",
+						"name":"$questType",
+						"data":svData});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart4',
+			type: 'line',
+			plotBorderWidth: 1
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '完成任务分布'
+		},
+		xAxis: {
+			title: {
+				text: ''
+			},
+			labels: {
+				enabled: false
+			},
+			allowDecimals:false,
+		},
+		yAxis: {
+			title: {
+				text: '完成人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		tooltip: {
+			 formatter: function() {
+				 var s = "";
+				s += '<b>任务ID: </b>'+ this.key;
+				s += '<b>完成人数: </b>'+ this.y;
+				return s;
+			},
+			shared: false,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			}
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+<!-- {/if} -->
+
+
+<script type="text/javascript">
+function getLogData(){
+	document.getElementById('action').value = '';
+	document.getaccount.submit();
+}
+function getXlsData(){
+	document.getElementById('action').value = 'output';
+	document.getaccount.submit();
+}
+init();
+function init(){
+	$("#start_time,#relogin_time,#end_time").datetimepicker();
+}
+</script>
+<!--{template footer}-->

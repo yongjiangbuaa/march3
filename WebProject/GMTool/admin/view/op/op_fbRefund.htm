@@ -1,0 +1,185 @@
+<!--{template header}-->
+<div class="alert alert-info">facebook订单的详细信息<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=op&act=fbRefund" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+状态<select id="orderStatus" name="orderStatus">
+	<!--{if $flag}-->
+	<option value="resolved">resolved</option>
+	<option value="pending" selected="selected">pending</option>
+	<!--{else}-->
+	<option value="resolved" selected="selected">resolved</option>
+	<option value="pending">pending</option>
+	<!--{/if}-->
+</select>&nbsp;&nbsp;
+订单号<input type="text" id="orderId" name="orderId" value='{$orderId}'></input>&nbsp;&nbsp;
+fbuid<input type="text" id="fbuid" name="fbuid" value='{$fbuid}'></input>&nbsp;&nbsp;
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div>
+</form>
+<!--{if $showData}-->
+<div style="height: auto; margin-top: 5px; margin-left: 12px; padding-top: -2px; padding-bottom: 5px;">
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tr>
+	<th align="center" width="5%" class="fixedtd">订单号</th>
+	<th align="center" width="5%" class="fixedtd">fbuid</th>
+	<th align="center" width="5%" class="fixedtd">姓名</th>
+	<th align="center" width="3%" class="fixedtd">金额</th>
+	<th align="center" width="3%" class="fixedtd">货币</th>
+	<th align="center" width="5%" class="fixedtd">订单时间</th>
+	<th align="center" width="3%" class="fixedtd">国家</th>
+	<th align="center" width="4%" class="fixedtd">状态</th>
+	<th align="center" width="5%" class="fixedtd">争议时间</th>
+	<th align="center" width="10%" class="fixedtd">玩家评论</th>
+	<th align="center" width="5%" class="fixedtd">玩家邮箱</th>
+	<th align="center" width="10%" class="fixedtd">原因</th>
+	<th align="center" width="12%" class="fixedtd">操作</th>
+	</tr>
+</table>
+</div>
+<div class="divStyle">
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<!-- <tr>
+	<th align="center" width="5%" class="fixedtd">订单号</th>
+	<th align="center" width="5%" class="fixedtd">fbuid</th>
+	<th align="center" width="5%" class="fixedtd">姓名</th>
+	<th align="center" width="3%" class="fixedtd">金额</th>
+	<th align="center" width="3%" class="fixedtd">货币</th>
+	<th align="center" width="5%" class="fixedtd">订单时间</th>
+	<th align="center" width="3%" class="fixedtd">国家</th>
+	<th align="center" width="4%" class="fixedtd">状态</th>
+	<th align="center" width="5%" class="fixedtd">争议时间</th>
+	<th align="center" width="10%" class="fixedtd">玩家评论</th>
+	<th align="center" width="5%" class="fixedtd">玩家邮箱</th>
+	<th align="center" width="10%" class="fixedtd">原因</th>
+	<th align="center" width="12%" class="fixedtd">操作</th>
+	</tr> -->
+	<!--{loop $data $paymentidKey $dbData}-->
+			<tr>
+				<td width="5%">$paymentidKey</td>
+				<td width="5%">$dbData['fbuid']</td>
+				<td width="5%">$dbData['name']</td>
+				<td width="3%">$dbData['amount']</td>
+				<td width="3%">$dbData['currency']</td>
+				<td width="5%">$dbData['charge_time']</td>
+				<td width="3%">$dbData['country']</td>
+				<td width="4%" id="{$paymentidKey}_status">$dbData['status']</td>
+				<td width="5%">$dbData['dispute_time']</td>
+				<td width="10%">$dbData['user_comment']</td>
+				<td width="5%">$dbData['user_email']</td>
+				<td width="10%" id="{$paymentidKey}_reason">$dbData['reason']</td>
+				<td width="12%">
+					<select id="{$paymentidKey}_refundReason">
+						<option value="CUSTOMER_SERVICE">CUSTOMER_SERVICE</option>
+						<option value="MALICIOUS_FRAUD">MALICIOUS_FRAUD</option>
+						<option value="FRIENDLY_FRAUD">FRIENDLY_FRAUD</option>
+					</select>&nbsp;&nbsp;
+					<input class="btn js-btn btn-primary" type="button" value="退款" id="btn_refund_{$paymentidKey}" name="btn_deduct" onclick="refund_submit('refund','{$paymentidKey}','{$dbData['fbuid']}','{$dbData['amount']}','{$dbData['currency']}')" />
+					<br>
+					<select id="{$paymentidKey}_updateReason">
+						<option value="GRANTED_REPLACEMENT_ITEM">GRANTED_REPLACEMENT_ITEM</option>
+						<option value="DENIED_REFUND">DENIED_REFUND</option>
+						<option value="BANNED_USER">BANNED_USER</option>
+					</select>&nbsp;&nbsp;
+					<input class="btn js-btn btn-primary" type="button" value="更新状态" id="btn_update_{$paymentidKey}" name="btn_deduct" onclick="update_submit('update','{$paymentidKey}')" />
+				</td>
+			</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+</div>
+<!--{/if}-->
+
+<style type="text/css"> 
+.divStyle{ 
+overflow-y: scroll; 
+overflow-x: hidden; 
+height: 600px; 
+margin-top: 5px; 
+margin-left: 12px; 
+padding-top: -2px; 
+padding-bottom: 5px; 
+border: 3px solid #009933; 
+} 
+table{ 
+width: 100%; 
+border-color: #d2f1ac; 
+border-collapse: collapse; 
+border-top: 0px solid #ffffff; 
+} 
+.fixedtd{ 
+position: relative; 
+z-index: 1; 
+background: #009933; 
+text-align: center; 
+} 
+</style> 
+
+<script type="text/javascript">
+
+function check_submit(type) {
+	if(type=='view')
+	{
+		document.getElementById('btn_view').disabled=true;
+		document.getElementById('action').value = type;
+		document.getaccount.submit();
+	}
+}
+
+function refund_submit(type,paymentid,fbUid,amount,currency){
+	var reason=document.getElementById(paymentid+'_refundReason').value;
+	if(confirm('是否确认要退款'))
+	{
+		var typeValue=document.getElementsByName("btn_deduct");
+		for(var i=0;i<typeValue.length;i++)
+		{
+			   typeValue[i].disabled=true;
+	  	}
+		$.get('admincp.php?mod=op&act=fbRefund&event='+type+'&paymentid='+paymentid+'&fbUid='+fbUid+'&amount='+amount+'&currency='+currency+'&reason='+reason,function(data){
+			if(data=='CUSTOMER_SERVICE'||data=='MALICIOUS_FRAUD'||data=='FRIENDLY_FRAUD'){
+				alert('退款成功');
+				$('#'+paymentid+'_status').text('resolved');
+				$('#'+paymentid+'_reason').text(data);
+			}else{
+				alert(data);
+			}
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=false;
+		  	}
+		});
+		
+	}
+}
+
+function update_submit(type,paymentid){
+	var reason=document.getElementById(paymentid+'_updateReason').value;
+	if(confirm('是否确认要更新状态'))
+	{
+		var typeValue=document.getElementsByName("btn_deduct");
+		for(var i=0;i<typeValue.length;i++)
+		{
+			   typeValue[i].disabled=true;
+	  	}
+		$.get('admincp.php?mod=op&act=fbRefund&event='+type+'&paymentid='+paymentid+'&reason='+reason,function(data){
+			if(data=='GRANTED_REPLACEMENT_ITEM'||data=='DENIED_REFUND'||data=='BANNED_USER'){
+				alert('状态更新成功');
+				$('#'+paymentid+'_status').text('resolved');
+				$('#'+paymentid+'_reason').text(data);
+			}else{
+				alert(data);
+			}
+			for(var i=0;i<typeValue.length;i++)
+			{
+				   typeValue[i].disabled=false;
+		  	}
+		});
+	}
+}
+
+</script>
+
+<!--{template footer}-->

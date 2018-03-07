@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- SDK日志配置 -->
+<!-- 
+在appender数组中添加日志记录器，格式为：<日志记录器名称>日志级别、类型等内容的设定</日志记录器名称>
+支持添加多个日志记录器，实现不同的日志需求
+例如：
+	<consoleLogger>
+		<type>console</type>
+		<threshold>ERROR</threshold>
+		<target>STDERR</target>
+	</consoleLogger>
+	<fileLogger>
+		<type>dailyFile</type>
+		<threshold>INFO</threshold>
+	</fileLogger>
+几个参数的作用：
+type: console|dailyFile 日志输出类型，console表示将日志写到标准输出php://stdout或php://stderr；dailyFile表示将日志以文件形式按天写到game/logs目录下
+threshold: ALL|DEBUG|INFO|WARN|ERROR|FATAL|CRITICAL|OFF 日志级别
+target: STDOUT|STDERR 对type=console的日志有用，选择日志输出目标
+maxfilesize: 作为文件输出时日志文件大小的上限，单位为K，文件超过上限后将会被保存为xingcloud.2011-08-17.log.1的形式
+slowrequest: 超时请求时间阈值，单位为s，超过该时间的请求都会作为WARNING级别的日志记录下来，没有这项设置视为关闭超时日志
+ -->
+<appender>
+	<xingcloud>
+		<type>dailyFile</type>
+		<threshold>DEBUG</threshold>
+		<maxfilesize>200000</maxfilesize>
+		<slowrequest>10</slowrequest>
+	</xingcloud>
+</appender>
+<!-- 
+default=0表示默认不记录日志，但是会对services中enabled数组中定义的service进行安全认证
+default=1表示默认记录日志，但是不会对services中disabled数组中定义的service进行安全认证
+ -->
+<default>1</default>
+<services>
+	<enabled>
+		<UserService.doPlatformLogin/>
+	</enabled>
+	<disabled>
+		<ActionService.doExecute/>
+	</disabled>
+</services>
+<!-- 选择哪些Action需要记录日志 -->
+<actions>
+	<enabled>
+		<BuyAction/>
+	</enabled>
+	<disabled>
+	</disabled>
+</actions>
+<!-- 选择哪些Audit Change需要记录日志 -->
+<changes>
+	<enabled>
+		<BuyAuditChange/>
+	</enabled>
+	<disabled>
+	</disabled>
+</changes>
+</xingcloud:config>

@@ -1,0 +1,622 @@
+<!--{template header}-->
+<style type="text/css">
+    #checkDiv {
+
+    	clear: both;
+    	padding:20px;
+  		height: 500px;
+  		width: 1200px;
+  		float:left;
+	}
+	#addDiv {
+	  clear:both;
+	  padding:20px;
+	  float: left;
+	  width: 1200px;
+	  height: 850px;
+	border-color:#a9a9a9;
+	overflow-x:auto;
+	overflow-y:auto;
+	}
+	.content{
+	  width:700px;
+	  height:50px;
+	}
+	.leftclass{
+		float:left;
+	}
+</style>
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#checkDiv" data-toggle="tab">查看</a>
+  </li>
+  <li>
+    <a href="#addDiv" data-toggle="tab">添加</a>
+  </li>
+</ul>
+<div class="modal fade" id="loading" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>loading..</h3>
+			</div>		
+		</div>
+	</div>
+</div>
+<div class="tab-content">
+<div class="tab-pane fade in active" id='checkDiv'>
+	<div style="width:200px;height:300px;float:left;border-bottom:1px solid #dddddd;overflow-x:auto;overflow-y:auto;">
+		<table class="table table-hover" width="100%" >
+		<thead><tr><th>版本</th></tr></thead>
+		<tbody id='version_table'>
+		</tbody>
+		</table>
+	</div>
+	<div style="width:800px;height:300px;float:left;border-bottom:1px solid #dddddd;overflow-x:auto;overflow-y:auto;">
+		
+		<table class="table table-hover" width="100%" >
+				<thead><tr><th>更新内容</th></tr></thead>
+				<tbody id='items_table'>
+				</tbody>
+			</table>
+
+	</div>
+	<div style="width:160px;height:800px;float:right;border-left:1px solid #dddddd;overflow-x:auto;overflow-y:auto;">
+		
+		<div style="border-style:hidden;width:160px;height:700px;float:left;overflow-x:auto;overflow-y:auto;">
+
+			<table class="table table-hover" width="100%" >
+				<thead><tr><th>玩家列表</th></tr></thead>
+				<tbody id='player_list'>
+				</tbody>
+			</table>
+
+		</div>
+		<br/>
+		<a href="javascript:getPlayerList(-1)">prev</a>
+		<a href="javascript:getPlayerList(1)">next</a>
+		第<input id="page" value="1" style="width:25px;clear:both">页
+		<a href="javascript:getPlayerList(0)">go</a>
+		<br/>
+		共<label id="wholePage">0</label>页
+	</div>
+	<div style="width:500px;height:500px;float:left;overflow-x:auto;overflow-y:auto;">
+		
+		<table class="table table-hover" width="100%" >
+				<thead><tr><th>玩家建议</th></tr></thead>
+				<tbody id='suggestion_table'>
+				</tbody>
+		</table>
+
+	</div>
+	<div id='detailDiv' style="width:500px;height:500px;float:left;padding-left:50px;padding-top:20px;">
+		<form action="admincp.php?mod=op&act=updates" role="form" method="post" name="getaccount" enctype="multipart/form-data">
+		<input type="hidden" id="userId">
+		<input type="hidden" id="updateId">
+		<input type="hidden" id="hidden_end_time">
+			<div class="form-group">
+				<input type="text" class="form-control" style="width:400px" placeholder="王国" readonly="readonly" id="server">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" style="width:400px" placeholder="昵称" readonly="readonly" id="real_name">
+			</div>
+			<div class="form-group">
+				<label for="server">建议</label>
+				 <textarea class="form-control" style="height:300px;width:400px" id="content" readonly="readonly"></textarea>
+			</div>
+		</form>
+		<button class="btn btn-success" onclick="reward(1)">一等奖</button>
+		<button class="btn btn-info" onclick="reward(2)">二等奖</button>
+		<button class="btn btn-warning" onclick="reward(3)">三等奖</button>
+		<button class="btn btn-danger" onclick="reward(4)">没有</button>
+	</div>
+</div>
+<div class="tab-pane fade" id='addDiv'>
+	<form role="form" action="admincp.php?mod=op&act=updates&type=add" method="post" name="add" enctype="multipart/form-data" onSubmit="return checkForm()">
+		<div class="form-group">
+			<lable for="version">版本</lable>
+			<input class="form-control" data-toggle="tooltip" data-placement="left" title="输入版本号" type="text" name="version" id="version" onkeydown="checkVersion(event)" onblur="checkVersion()"/>
+		</div>
+		<div class="form-group">
+			<lable for="end_time" id="label_end_time">截止日期</lable>
+			<input class="form-control" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end_time}">
+		</div>
+		<div class="form-group" id="addform">
+			<lable for="content">内容   (可以直接修改或删除某条内容)</lable>
+			<textarea class="form-control" name="item1"></textarea>
+			<textarea class="form-control" name="item2"></textarea>
+			<textarea class="form-control" name="item3"></textarea>
+			<textarea class="form-control" name="item4"></textarea>
+			<textarea class="form-control" name="item5"></textarea>
+		</div>
+		<button class="btn btn-default" type="button" onclick="addInput()">增加一项</button>
+		<button class="btn btn-default" type="button" onclick="removeInput()">删除一项</button>
+		<button class="btn btn-danger"  type="button" onclick="if(checkForm()) submit()">提交</button>
+		<button class="btn btn-info"    type="button" onclick="reset()">重置</button>
+	</form>
+</div>
+</div>
+
+<script src="include/d3.js" charset="utf-8"></script>
+<script type="text/javascript"><!--
+$(document).ready(function(){  
+	refreshVersion();
+	$("#end_time").datetimepicker();
+	$("[data-toggle='tooltip']").tooltip();
+})
+function reward(level){
+	var uid = $('#userId').val();
+	var server = $('#server').val();
+	var version = $('#updateId').val();
+	var real_name= $('#real_name').val();
+	var end_time=$('#hidden_end_time').val();
+	if(uid == '' || server == ''){
+		alert("你特么逗我？  让我给谁发？")
+		return;
+	}
+	var url = "admincp.php?mod=op&act=updates&type=reward&level="+level+"&userid="+uid+"&server="+server+"&version="+version+"&realname="+real_name+"&end_time="+end_time;
+	//alert(url);
+	$.ajax({  
+		  type: "get",  
+		  url: url,  
+		  dataType: "json",
+		  success: function(msg){  
+		    alert(msg.stat);
+		  },
+	  	  error: function(e){
+			  alert("失败，不好意思");
+		  }  
+	});  
+	
+}
+
+function checkForm(){
+	if($('#version').val()==""){
+		$('#version').focus();
+		return false;
+	}
+	return true;
+}
+
+function addInput(){
+	
+	var count = $('#addform').children().length;
+	d3.select("#addform").append("textarea")
+	.attr("class","form-control")
+	.attr("name", "item"+count)
+	;
+}
+
+function removeInput(){
+	
+	var count = $('#addform').children().length - 1;
+	d3.select("#addform").selectAll("textarea")
+	.each(function(d, i){
+		if( i+1 >= count){ 
+			d3.select(this).remove();
+		}
+	 })
+}
+
+//加载时刷新版本信息
+function refreshVersion(){ 
+	var url = 'admincp.php?mod=op&act=updates&type=refresh_version';
+	showLoading();
+	$.ajax({ 
+  			type: "get",  
+	  		url: url,  
+			dataType: "json",
+			success: function(data){
+				d3.select('#version_table').selectAll('tr').style("background", "white");
+				d3.select('#items_table').selectAll('tr').style("background", "white");
+				d3.select('#player_list').selectAll('tr').style("background", "white");
+				d3.select('#suggestion_table').selectAll('tr').style("background", "white");
+
+				var rows = d3.select('#version_table').selectAll('tr').data(data);
+				rows.html(function(d){return "<td>"+d+"</td>"})
+				
+
+				rows.enter().append('tr')
+					rows.html(function(d){return "<td>"+d+"</td>"})
+					.on("click", function(d){
+						rows.style("background","white")
+						versionId=d;
+						d3.select(this).style("background","#dddddd");
+					 	refreshItems(d);
+					});
+				rows.exit().remove();
+				hideLoading();
+			},
+			error: function(e){
+				hideLoading();
+				alert(e);
+			}  
+		}); 
+}
+//点击版本时刷新对应版本的更新条目和玩家列表
+function refreshItems(versionId){ 
+	var url = 'admincp.php?mod=op&act=updates&type=refresh_items&version='+versionId;
+	showLoading();
+	$("[data-toggle='tooltip']").tooltip('destroy');
+	$.ajax({ 
+  			type: "get",  
+	  		url: url,  
+			dataType: "json",
+			success: function(data){
+
+				d3.select('#items_table').selectAll('tr').style("background", "white");
+				d3.select('#player_list').selectAll('tr').style("background", "white");
+				d3.select('#suggestion_table').selectAll('tr').style("background", "white");
+				var timeVal = Number(data[0].endTime);
+				$('#hidden_end_time').val(timeVal);
+				_rewarded = false;
+				var endTime = new Date(timeVal);
+				
+				if(endTime.valueOf() + 4*3600*1000 < (new Date()).valueOf()){ 
+					_rewarded = true;
+				}
+				var timeStr = endTime.toLocaleString();
+
+				//已发奖的话下面的三个发奖按钮disable
+				if(_rewarded){ 
+					$('#detailDiv>button').attr("disabled", true);
+				}else{ 
+					$('#detailDiv>button').removeAttr("disabled");
+				}
+				
+					d3.select('#version_table').selectAll('tr')
+				.each(function(d){ 
+					if(d == versionId){
+						if(_rewarded){ 
+							d3.select(this).style("background", "#77ddff")
+							.html(function(d){return "<td>"+d+" (已发奖)</td>"})
+						}else{ 
+							d3.select(this).style("background", "#dddddd")
+							.html(function(d){return "<td>"+d+' <span style="font-size:8px">('+ timeStr +")</span> </td>"})
+						}
+					 }else{ 
+					 	d3.select(this).style("background", "white")
+							.html(function(d){return "<td>"+d+"</td>"})
+					 }
+				})
+
+				var rows = d3.select('#items_table').selectAll('tr').data(data);
+					
+rows.html(function(d){
+                    var content = typeof d.chineseContent == "undefined" ? d.content : d.chineseContent;
+                    return "<td>"+ content +'<span class="badge pull-right">'+d.num+'</span></td>'
+                });
+				
+				rows.enter().append('tr')
+					rows.html(
+                            function(d){
+                                var content = typeof d.chineseContent == "undefined" ? d.content : d.chineseContent;
+                                return "<td>"+ content +'<span class="badge pull-right">'+d.num+'</span></td>'
+                            })
+.on("click", function(d){ 
+						refreshSuggestion(d.version, d.idx);
+						rows.style("background","white");
+						d3.select(this).style("background","#dddddd");
+					});
+				rows.exit().remove();
+
+				$.ajax({
+					type:"get",
+					url:'admincp.php?mod=op&act=updates&type=list_player&version='+versionId,
+					dataType: "json",
+					success:function(data){
+						
+						
+											
+						globalPlayerData = data;
+						globalWholePage = Math.ceil(data.length / 40);
+						$('#wholePage').html(globalWholePage);
+						var page = $('#page').val() - 1;
+						var curData = data.slice(page*40, (page+1)*40);
+
+
+
+						d3.select('#player_list').selectAll('tr').remove();
+											
+						var playerlist = d3.select('#player_list').selectAll('tr').data(curData);
+				
+						
+						playerlist.enter().append('tr')
+							.style("background", "white")
+							.style("color", function(d){ 
+								if(d.reward_status > 0){ 
+									return "#77ddff";
+								}else{ 
+									return "black";
+								}
+							})				
+							.html(function(d){return "<td>"+d.uid+"</td>"})
+							.attr("data-toggle","tooltip")
+							.attr("data-placement", "right")
+							.attr("data-title",function(d){ 
+								var unixTimestamp = new Date(Number(d.createTime)); 
+								var commonTime = unixTimestamp.toLocaleString();
+								if(d.reward_status > 0 && d.reward_status != 4){ 
+									return "["+d.reward_status+"等奖] 最后回复: " + commonTime;
+								}else if(d.reward_status == 4){
+									return "[没有奖励] 最后回复: " + commonTime;
+								}else{ 
+									return "最后回复: " + commonTime;
+								}
+							})
+							.on("click", function(d){ 
+								playerlist.style("background","white");
+								d3.select(this).style("background","#dddddd");
+								if(d.reward_status == 1){ 
+									$('#detailDiv>button').attr("disabled", true);
+								}else{
+									if(_rewarded==false) 
+										$('#detailDiv>button').removeAttr("disabled");
+								}
+								refreshDetailByUser(d.uid, versionId);
+							});
+
+
+						playerlist.exit().remove();
+
+					
+						hideLoading();
+
+						$("[data-toggle='tooltip']").tooltip();
+					}
+				})
+			},
+			error: function(e){
+				hideLoading();
+				alert(e);
+			}  
+		}); 
+}
+//显示第几页的玩家列表
+function getPlayerList(stat){
+	var page = $('#page').val();
+	if(stat == -1) page--;
+	if(stat == 1) page++;
+	if(page <= 0){
+		alert('第一页了')
+		return;
+	}
+	if(page > globalWholePage){
+		alert('最后一页了')
+		return;
+	}
+	$("[data-toggle='tooltip']").tooltip('destroy');
+	var dataPerPage = 30;
+	var curData = globalPlayerData.slice((page-1)*40, page*40);
+	d3.select('#player_list').selectAll('tr').remove();
+											
+						var playerlist = d3.select('#player_list').selectAll('tr').data(curData);
+				
+						
+						playerlist.enter().append('tr')
+							.style("background", "white")
+							.style("color", function(d){ 
+								if(d.reward_status > 0){ 
+									return "#77ddff";
+								}else{ 
+									return "black";
+								}
+							})				
+							.html(function(d){return "<td>"+d.uid+"</td>"})
+							.attr("data-toggle","tooltip")
+							.attr("data-placement", "right")
+							.attr("data-title",function(d){ 
+								var unixTimestamp = new Date(Number(d.createTime)); 
+								var commonTime = unixTimestamp.toLocaleString();
+								if(d.reward_status > 0 && d.reward_status != 4){ 
+									return "["+d.reward_status+"等奖] 最后回复: " + commonTime;
+								}else if(d.reward_status == 4){
+									return "[没有奖励] 最后回复: " + commonTime;
+								}else{ 
+									return "最后回复: " + commonTime;
+								}
+							})
+							.on("click", function(d){ 
+								playerlist.style("background","white");
+								d3.select(this).style("background","#dddddd");
+								if(d.reward_status == 1){ 
+									$('#detailDiv>button').attr("disabled", true);
+								}else{
+									if(_rewarded==false) 
+										$('#detailDiv>button').removeAttr("disabled");
+								}
+								refreshDetailByUser(d.uid, versionId);
+							});
+
+
+						playerlist.exit().remove();
+						$("[data-toggle='tooltip']").tooltip();
+	$('#page').val(page);
+}
+//刷新玩家反馈
+function refreshSuggestion(versionId, idx){ 
+	var url = 'admincp.php?mod=op&act=updates&type=suggestion&version='+versionId+'&idx='+idx;
+	showLoading();
+	$.ajax({ 
+  			type: "get",  
+	  		url: url,  
+			dataType: "json",
+			success: function(data){
+				var rows = d3.select('#suggestion_table').selectAll('tr').data(data);
+				rows.html(function(d){return "<td>"+d.content+"</td>"})
+				.style("background", "white")
+
+
+				rows.enter().append('tr')
+					.html(function(d){return "<td>"+d.content+"</td>"})
+					.on("click", function(d){ 
+						rows.style("background","white");
+						d3.select(this).style("background","#dddddd");
+						//使对应玩家列表那一行高亮
+						var userId = d.userId;
+						d3.select("#player_list").selectAll('tr').style("background", function(d){ 
+							if(userId == d.uid){ 
+								return "#dddddd";
+							}else{ 
+								return "white";
+							}
+						})
+						refreshDetail(d);
+					});
+				rows.exit().remove();
+				hideLoading();
+			},
+			error: function(e){
+				hideLoading();
+				alert(e);
+			}  
+		}); 
+}
+//刷新某个玩家具体对应的所有反馈内容 
+function refreshDetail(data){ 
+	var userId = data.userId;
+	var updateId = data.updateId;
+	var real_name = data.real_name;
+	var server = data.server;
+	var content = data.all;
+	$('#userId').val(userId);
+	$('#server').val(server);
+	$('#real_name').val(real_name);
+	$('#content').val(content);
+	$('#updateId').val(updateId);
+}
+//点击玩家列表后刷新某个玩家具体对应的所有反馈内容
+function refreshDetailByUser(uid, versionId){
+
+	var url = 'admincp.php?mod=op&act=updates&type=player&version='+versionId+'&uid='+uid;
+	showLoading();
+	$.ajax({ 
+  			type: "get",  
+	  		url: url,  
+			dataType: "json",
+			success: function(data){
+				var userId = data.userId;
+				var updateId = data.updateId;
+				var real_name = data.real_name;
+				var server = data.server;
+				var content = data.all;
+				$('#userId').val(userId);
+				$('#server').val(server);
+				$('#real_name').val(real_name);
+				$('#content').val(content);
+				$('#updateId').val(updateId);
+				hideLoading();
+				},
+			error: function(e){
+				hideLoading();
+				alert(e);
+			}  
+		}); 
+	
+}
+
+function checkVersion(e){
+	if(event){ 
+		if(window.event){ // IE
+  			keynum = e.keyCode
+  		}
+		else if(e.which){ // Netscape/Firefox/Opera
+  			keynum = e.which
+  		}
+  		if(keynum != 13){ //不是回车就return
+  			return;
+  		}
+	}
+	
+	var versionId = $('#version').val();
+	if(versionId == version || versionId == ""){ 
+		return;
+	}
+	version = versionId;
+	var url = 'admincp.php?mod=op&act=updates&type=refresh_items&version='+versionId;
+	showLoading();
+	$.ajax({ 
+  			type: "get",  
+	  		url: url,  
+			dataType: "json",
+			success: function(data){
+				
+				var endTime;
+				var rewarded = true;
+				if(data.length == 0){ 
+					endTime = 0;
+					rewarded = false;
+				}else{
+					var timestamp = Number(data[0].endTime);
+					var time=new Date(timestamp); 
+					rewarded = time < (new Date());
+					var y = time.getFullYear();
+					var m = time.getMonth()+1;
+					var d = time.getDate()+1;
+					var h = time.getHours()+1;
+					var mm = time.getMinutes()+1;
+					endTime = y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm);
+				}
+
+				$('#end_time').val(endTime);
+				var textAreas = d3.select('#addform').selectAll('textarea').data(data);
+				textAreas.text(function(d){ 
+					return d.content;
+				})
+				.attr("name", function(d){ 
+					return "item"+d.idx;
+				})
+
+				textAreas.enter().append('textarea')
+				.attr("class", "form-control")
+				.text(function(d){ 
+					return d.content;
+				})
+				.attr("name", function(d){ 
+					return "item"+d.idx;
+				});
+
+				textAreas.exit()
+				.text("")
+				.each(function(d, i){ 
+					if(i > 4){ 
+						d3.select(this).remove();
+					}
+				});
+
+				if(rewarded){ 
+					d3.select('#end_time').attr("disabled", true);
+					d3.select('#addDiv').selectAll('button').attr("disabled", true);
+					d3.select('#addDiv').selectAll('textarea').attr("readonly", true);
+					d3.select('#label_end_time').html('截止日期<span style="color:red">(已发奖)</span>');
+				}else{
+					$('#addform>textarea').removeAttr("readonly")
+					$('#end_time').removeAttr("disabled");
+					$('button').removeAttr("disabled");
+					d3.select('#label_end_time').html('截止日期');
+				}
+				
+
+				hideLoading();
+				},
+			error: function(e){
+				hideLoading();
+				alert(e);
+			}  
+		}); 
+}
+
+function add0(m){return m<10?'0'+m:m }
+
+function showLoading(){ 
+	$('#loading').modal("show");
+}
+function hideLoading(){ 
+	$('#loading').modal("hide");
+}
+--></script>
+<!--{template footer}-->
+
+
+
+

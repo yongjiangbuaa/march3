@@ -1,0 +1,285 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=stat&act=dauCurve&event=search" method="post" name="getaccount"
+      style="display: inline-table;">
+    <div class="container" style="width: auto;">
+        <br>
+        服编号<input type="text" id="selectServer" name="selectServer" value="{$sttt}" style="width: 400px;"
+                  placeholder="逗号横杠分隔，如：1,3,8-22；留空则查询全服"/>
+        <br>
+        起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期"
+                   value="{$startDate}">
+        结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期"
+                   value="{$endDate}">
+        国家
+        <select id="selectCountry" name="selectCountry" onchange="">
+            <!--{loop $countryList $country $countryname}-->
+            <!--{if ($currCountry == $country)}-->
+            <option value="{$country}" selected="selected">{$countryname}</option>
+            <!-- {else} -->
+            <option value="{$country}">{$countryname}</option>
+            <!-- {/if} -->
+            <!--{/loop}-->
+        </select>
+        平台
+        <select id="selectPf" name="selectPf" onchange="">
+            <!--{loop $pfList $pf $pfname}-->
+            <!--{if ($currPf == $pf)}-->
+            <option value="{$pf}" selected="selected">{$pfname}</option>
+            <!-- {else} -->
+            <option value="{$pf}">{$pfname}</option>
+            <!-- {/if} -->
+            <!--{/loop}-->
+        </select>
+        渠道
+        <select id="selectReferrer" name="selectReferrer" onchange="">
+            <!--{loop $referrerList $referrer $referrername}-->
+            <!--{if ($currReferrer == $referrer)}-->
+            <option value="{$referrer}" selected="selected">{$referrername}</option>
+            <!-- {else} -->
+            <option value="{$referrer}">{$referrername}</option>
+            <!-- {/if} -->
+            <!--{/loop}-->
+        </select>
+        <!--{if $allServerFlag}-->
+        <input class="" type="checkbox" name="allServers" id="allServers" checked="checked"/>只显示合计(服)
+        <!--{else}-->
+        <input class="" type="checkbox" name="allServers" id="allServers"/>只显示合计(服)
+        <!--{/if}-->
+        <input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="search()"/>
+    </div>
+</form>
+<div id="chart" style="min-width: 400px; height: 600px; margin: 0 auto"></div>
+<!--{if $eventAll}-->
+<div align="center">
+    <table border="0">
+        <tr>
+            <!--{if $currCountry=='ALL'}-->
+            <td>
+                <div id="container2" style="height: 400px"></div>
+            </td>
+            <td>
+                <div id="container3" style="height: 400px"></div>
+            </td>
+            <!--{else}-->
+            <td colspan="2" align="center">
+                <div id="container2" style="height: 400px"></div>
+            </td>
+            <!--{/if}-->
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript">
+    var timeFix = new Date().getTimezoneOffset() * 3600;
+    var showData = [];
+</script>
+<!--{loop $eventAll $server $serverData}-->
+<script type="text/javascript">
+    var svData = [];
+    <!--{loop $serverData  $key $value}-->
+    svData.push($value['y']);
+    <!--{/loop}-->
+    showData.push({
+        "type": "spline",
+        "name": "s" + "$server",
+        "pointInterval": 24 * 3600 * 1000,
+        "pointStart": $startTime * 1000, //php代码里有初始化
+        "data": svData,
+        "lineWidth": 2
+    });
+</script>
+<!--{/loop}-->
+<script type="text/javascript">
+    var chart;
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'chart',
+            type: 'area',
+            plotBorderWidth: 1
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'datetime',
+            tickInterval: 24 * 3600 * 1000,
+            title: {
+                text: '日期'
+            }
+        },
+        yAxis: {
+            title: {
+                text: '日活跃'
+            },
+            min: 0,
+            startOnTick: true,
+            showFirstLabel: true,
+            minPadding: 1
+        },
+        tooltip: {
+            formatter: function () {
+                var d = new Date(this.x);
+                var s = '<b>' + d.getFullYear() + "-";
+                s += ("0" + (d.getMonth() + 1)).slice(-2) + "-";
+                s += ("0" + d.getDate()).slice(-2) + " ";
+                s += '</b>';
+                $.each(this.points, function (i, point) {
+                    s += '<br/>' + '<tspan style="fill:' + point.series.color + '" dy="16" x="5">' + point.series.name + '</tspan>';
+                    s += '<b>: </b>' + point.y;
+                });
+                return s;
+            },
+            shared: true,
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            series: {
+                marker: {
+                    enabled: false,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            },
+        },
+        credits: {
+            enabled: false
+        },
+        series: showData
+    });
+</script>
+
+<!--{/if}-->
+
+<script type="text/javascript">
+    var pfPieData = [];
+    var couPieData = [];
+</script>
+
+<!--{loop $pfPie $pVal}-->
+<script language="javascript">
+    pfPieData.push($pVal);
+</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+    $(function () {
+        $('#container2').highcharts({
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: "$titleDate 每个平台的dau比例图"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '占比',
+                data: pfPieData
+            }]
+        });
+    });
+</script>
+
+<!--{if $currCountry=='ALL'}-->
+<!--{loop $countryPie $cPal}-->
+<script language="javascript">
+    couPieData.push($cPal);
+</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+    $(function () {
+        $('#container3').highcharts({
+            chart: {
+                type: 'pie',
+                options3d: {
+                    enabled: true,
+                    alpha: 45,
+                    beta: 0
+                }
+            },
+            title: {
+                text: "$titleDate 每个国家的dau比例图"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name}'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: '占比',
+                data: couPieData
+            }]
+        });
+    });
+</script>
+
+<!--{/if}-->
+
+<script type="text/javascript">
+    $("#startDate,#endDate").datetimepicker();
+    function serverall() {
+        var currentObj = document.getElementById('all_server');
+        var objs = document.getElementsByTagName("input");
+        for (i = 0; i < objs.length; i++) {
+            var objId = objs[i].id.split('_');
+            if (objId[0] == 'server') {
+                objs[i].checked = currentObj.checked;
+            }
+        }
+    }
+    function checkserverall() {
+        document.getElementById('all_server').checked = true;
+        var objs = document.getElementsByTagName("input");
+        for (i = 0; i < objs.length; i++) {
+            var objId = objs[i].id.split('_');
+            if (!objs[i].checked && objId[0] == 'server') {
+                document.getElementById('all_server').checked = false;
+                break;
+            }
+        }
+    }
+    function search() {
+        document.getaccount.submit();
+        return;
+    }
+</script>
+
+<!--{template footer}-->

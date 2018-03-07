@@ -1,0 +1,397 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<style type="text/css">
+    .af-kpi-box .af-kpi-box-pieces-container .af-kpi-box-piece {
+        display: inline-block;
+        position: relative;
+        width: 50%;
+        border-right: 1px dashed #e8e8e8;
+        padding: 10px 20px 0;
+        vertical-align: top;
+        height: 100px;
+    }
+    div{
+        box-sizing:border-box;
+        -moz-box-sizing:border-box; /* Firefox */
+        -webkit-box-sizing:border-box; /* Safari */
+        /*float:left;*/
+    }
+    #quitdoor {
+        float: none;
+        display: none;
+    }
+    .nav .navbar-nav .navbar-right {
+        float: none;
+    }
+    .af-kpi-box {
+        display: inline-block;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+        height: 130px;
+        margin-right: 1.5%;
+        text-align: left;
+        float: left;
+        transition: width .5s;
+        position: relative;
+    }
+    .af-kpi-box .af-kpi-box-footer {
+        margin-top: 0;
+        padding-top: 10px;
+        border-top: 1px solid #e8e8e8;
+        text-align: center;
+        line-height: 14px;
+    }
+    h5 {
+        display: block;
+        font-size: 0.83em;
+        -webkit-margin-before: 0.7em;
+        -webkit-margin-after: 0.7em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        font-weight: bold;
+    }
+</style>
+<form action="admincp.php?mod=ad&act=dashboard" method="post" name="getaccount">
+	<span style="
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">起始</span><input class="input-large focused" id="start_time"
+                                     name="start_time" type="text" style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;"
+                                     placeholder="起始日期" value="{$start}">
+	<span style="
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">结束</span><input
+        class="input-large focused" id="end_time" name="end_time" type="text"
+        style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;" placeholder="点击选择日期" value="{$end}">
+
+    <select id="selectCountry" name="selectCountry" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+        <!--{loop $countryList $country $countryname}-->
+        <!--{if ($currCountry == $country)}-->
+        <option value="{$country}" selected="selected">{$countryname}</option>
+        <!--{else}-->
+        <option value="{$country}">{$countryname}</option>
+        <!--{/if}-->
+        <!--{/loop}-->
+    </select>
+	<!--{if $organicFlag}-->
+		<input class="" type="checkbox" name="includeOrganic" id="includeOrganic" checked="checked"  /> <label for="includeOrganic"><span style="
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">Organic</span></label>
+	<!--{else}-->
+		<input class="" type="checkbox" name="includeOrganic" id="includeOrganic"   /><label for="includeOrganic"><span style="
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">Organic</span></label>
+	<!--{/if}-->
+    <input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc;
+    cursor: pointer;" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+    <input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+
+<div style="float:left; width:100%;"> 
+  <div id="1" style=" float:left; width:30%;height:180px;background-color: #fff;margin-right: 30px;">
+	  <div style="text-align: center;width: 100%;height: 100px;padding-top: 15px;background-color: #fff;border-bottom: 1px solid #ccc;"><h3 class="af-kpi-box-footer" style="margin-top: 10px;margin-bottom: 5px;">昨日活跃: $yesterdaydau</h3>
+	  	 <h3 style="margin-top: 10px;margin-bottom: 5px;">
+             <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$dauRateStr</text>
+         </h3>
+	  </div>
+	  <div id="11" style=" float:left; width:50%;height:80px;text-align: center;border-right: 1px dashed #000;">
+	  	 <h5>自然用户</h5>
+	  	 <h4>
+	  	 	<span></span>
+             <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$yesterdayorganicdau</text>
+             <span></span>
+          </h4>
+         <h5 class="af-box-trend af-neutral-text">
+             <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$organicDauRateStr</text>
+         </h5>
+	  </div>
+	  <div id="12" style=" float:right; width:50%;height:80px;text-align: center;"> 
+	  	<h5>广告用户</h5>
+	  	<h4>
+	  		<span></span>
+            <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$yesterdayaddau</text>
+            <span></span>
+        </h4>
+        <h5 class="af-box-trend af-neutral-text">
+            <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$adDauRateStr</text>
+        </h5>
+	  </div>
+  </div>
+  <div id="2" style=" float:left;  width:30%;height:180px;background-color: #fff;margin-right: 10px;margin-left: 20px;">
+  	<div style="float:left; text-align: center;width: 100%;height: 100px;padding-top: 15px;background-color: #fff;border-bottom: 1px solid #ccc;"><h3 class="af-kpi-box-footer" style="margin-top: 10px;margin-bottom: 5px;">昨日新增: $yesterdayreg</h3>
+  		<h3 style="margin-top: 10px;margin-bottom: 5px;">
+             <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$regRateStr</text>
+         </h3>
+  	</div>
+  	<div id="21" style=" float:left; width:50%;height:80px;text-align: center;border-right: 1px dashed #000;">
+  	 <h5>自然用户</h5>
+  	 <h4><span></span>
+        <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$yesterdayorganicreg</text>
+        <span></span></h4>
+    <h5 class="af-box-trend af-neutral-text">
+        <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$organicRegRateStr</text>
+    </h5>
+	</div>
+	<div id="22" style=" float:right; width:50%;height:80px;text-align: center;"> 
+	  <h5>广告用户</h5>
+	  <h4><span></span>
+          <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$yesterdayadreg</text>
+          <span></span></h4>
+      <h5 class="af-box-trend af-neutral-text">
+          <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$adRegRateStr</text>
+      </h5>
+	</div>	
+  </div> 
+  <div id="3" style=" float:right; width:30%;height:180px;background-color: #fff;margin-right: 20px;"> 
+  	<div style="text-align: center;width: 100%;height: 100px;padding-top: 15px;background-color: #fff;border-bottom: 1px solid #ccc;"><h3 class="af-kpi-box-footer" style="margin-top: 10px;margin-bottom: 5px;">昨日收入: $ $yesterdaypay</h3>
+  		<h3 style="margin-top: 10px;margin-bottom: 5px;">
+             <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$payRateStr</text>
+         </h3>
+  	</div>
+  	<div id="31" style=" float:left; width:50%;height:80px;text-align: center;border-right: 1px dashed #000;">
+  	 <h5>自然用户</h5>
+  	 <h4>
+  	 	<span></span>
+        <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$ $yesterdayorganicpay</text>
+        <span></span>
+     </h4>
+    <h5 class="af-box-trend af-neutral-text">
+        <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$organicPayRateStr</text>
+    </h5>
+	</div>
+	<div id="32" style=" float:right; width:50%;height:80px;text-align: center;"> 
+	  <h5>广告用户</h5>
+	  <h4>
+	  	<span></span>
+         <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$ $yesterdayadpay</text>
+         <span></span>
+     </h4>
+     <h5 class="af-box-trend af-neutral-text">
+         <text value="0" style="transition:0.8s ease-out;transition-property:background-color, color, opacity;">$adPayRateStr</text>
+     </h5>
+	</div>	
+  </div> 
+</div> 
+
+<div id="container" style="float:left; min-width: 400px; height: 500px; margin: 0 auto;margin-top: 30px;width: 100%"></div>
+<div id="container2" style="float:left; min-width: 400px; height: 500px; margin: 0 auto;margin-top: 30px;width: 100%"></div>
+
+<script type="text/javascript">
+	var showData = [];
+	var chartTitle='';
+</script>
+
+	<script language="javascript">
+		chartTitle="新增、收入、花费 (日数据)";
+	</script>
+	<!--{loop $indexArr  $iKey $dataVal}-->
+		<script language="javascript">
+			showData.push({
+							"name":"{$dataVal}",
+							"data":$showchart[$iKey],
+							"yAxis": $coordinates[$iKey]
+						});
+		</script>
+	<!--{/loop}-->
+	
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: chartTitle
+        },
+        xAxis: {
+            categories: $datestr,
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            },
+            labels: {
+                rotation: -45
+            }
+        },
+        yAxis:
+	        [{
+	            min: 0,
+	            title: {
+	                text: '数量'
+	            }
+	        }, {
+	            title: {
+	                text: '金额($)'
+	            },
+	            opposite: true
+	        }],
+        tooltip: {
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: showData
+    });
+});
+</script>
+
+<script type="text/javascript">
+	var showData2 = [];
+	var chartTitle2='';
+</script>
+
+	<script language="javascript">
+		chartTitle2="留存曲线图";
+	</script>
+	<!--{loop $curvesIndex  $cKey $cVal}-->
+		<script language="javascript">
+			showData2.push({
+							"name":"{$cVal}",
+							"data":$showchart[$cKey]
+						});
+		</script>
+	<!--{/loop}-->
+<script type="text/javascript">
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'spline'
+        },
+        title: {
+            text: chartTitle2
+        },
+        xAxis: {
+            categories: $datestr,
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            },
+            labels: {
+                rotation: -45
+            }
+        },
+        yAxis: {
+            title: {
+                text: '留存率(%)'
+            }
+        },
+        tooltip: {
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: showData2
+    });
+});
+</script>
+
+	
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#os").change(function () {
+            var i = $('#os').prop('selectedIndex');
+            $(".topChannel").hide();
+            $(".topChannel").eq(i).show();
+        });
+        $("#os").change();
+    });
+</script>
+
+<script type="text/javascript">
+    window.onload = function () {
+        people = document.getElementById("adDataTable");
+    }
+    function sort_table(tbody, col, asc) {
+        var rows = tbody.rows,
+                rlen = rows.length,
+                arr = new Array(),
+                i, j, cells, clen;
+        // fill the array with values from the table
+        for (i = 0; i < rlen; i++) {
+            cells = rows[i].cells;
+            clen = cells.length;
+            arr[i] = new Array();
+            for (j = 0; j < clen; j++) {
+                arr[i][j] = cells[j].innerHTML;
+            }
+        }
+        // sort the array by the specified column number (col) and order (asc)
+        arr.sort(function (a, b) {
+            return (a[col] == b[col]) ? 0 : ((Number(a[col].replace(/,|-/g, "")) > Number(b[col].replace(/,|-/g, ""))) ? asc : -1 * asc);
+        });
+        // replace existing rows with new rows created from the sorted array
+        for (i = 0; i < rlen; i++) {
+            rows[i].innerHTML = "<td style='word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;'>" + arr[i].join("</td><td style='text-align: -webkit-right;padding: 10px;'>") + "</td>";
+        }
+    }
+
+    init();
+    function init() {
+        $("#start_time,#end_time").datetimepicker();
+    }
+    function search() {
+        document.getElementById('btn_view').disabled = true;
+        document.getElementById('event').value = 'view';
+        document.getaccount.submit();
+    }
+
+</script>
+
+<!--{if ($param=='country' || $param=='channelTop1')}-->
+<script type="text/javascript">
+    sort_table(document.getElementById("adDataTable"), '1', -1);
+    $('table tr:eq(0) th:not(:eq(1))').attr('asc', '1');
+    $("table tr:eq(0) th:eq(1)").attr('asc', 1);
+    $('th').removeClass();
+    $('table tr:eq(0) th:eq(1)').addClass('desc');
+</script>
+<!--{/if}-->
+
+
+<!--{template footer}-->

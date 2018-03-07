@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Group id="data_config">
+		<ItemSpec id="player_max" k1="50" k2="38" k3="30" k4="50" k5="8" k6="1" k7="5" k8="100"/>
+		<ItemSpec id="battle_damage" k1="32" k2="32" k3="1000" k4="0" k5="200" k6="0" k7="100" k8="75" k9="4" k10="1"/>
+		<ItemSpec id="effect" k1="59;100" k2="10"/>
+		<ItemSpec id="affairs" k1="5" k2="100" k3="200014" k4="200015"/>
+		<ItemSpec id="affair_quality" k1="600" k2="300" k3="150" k4="150" k5="50" k6="20" k7="600" k8="0" k9="0" k10="0" k11="0" k12="0"/>
+		<ItemSpec id="mail" k1="500" k2="500" k3="500" k4="1000" k5="10" k6="500"/>
+		<ItemSpec id="march" k1="3"/>
+		<ItemSpec id="walls" k1="10"/>
+		<ItemSpec id="building_base" k1="2" k2="10" k3="10" k4="15" k5="1000" k6="86400" k7="100" k8="172800" k9="250" k10="0"/>
+		<ItemSpec id="cd_gold" k1="24" k2="10" k3="600" k4="100"/>
+		<ItemSpec id="cd_time" k1="300" k2="900" k3="3600" k4="10800" k5="28800" k6="54000" k7="86400" k8="259200" k9="604800" k10="2592000"/>
+		<ItemSpec id="cd_cost" k1="1" k2="55" k3="150" k4="400" k5="1000" k6="1800" k7="2500" k8="6500" k9="15000" k10="60000"/>
+		<ItemSpec id="resource_num1" k1=".01" k2=".9" k3="1" k4=".0092" k5=".9" k6="4.2" k7=".0084" k8=".9" k9="18" k10=".00898" k11=".9" k12="-8.4"/>
+		<ItemSpec id="resource_num2" k1=".009416" k2=".9" k3="-67"/>
+		<ItemSpec id="resource_num3" k1="1" k2="1" k3="6.25" k4="25" k5=".25"/>
+		<ItemSpec id="resource_cost" k1="10000" k2="50000" k3="150000" k4="500000"/>
+		<ItemSpec id="tavern_base" k1="6" k2="5" k3="200011" k4="200012" k5="200013"/>
+		<ItemSpec id="tavern1" k1="850" k2="100" k3="10" k4="2" k5="0" k6="0" k7="100"/>
+		<ItemSpec id="tavern2" k1="700" k2="300" k3="50" k4="2" k5="0" k6="0" k7="100"/>
+		<ItemSpec id="tavern3" k1="0" k2="790" k3="300" k4="40" k5="0" k6="0" k7="100" k8="0" k9="0"/>
+		<ItemSpec id="store" k1="43200" k2="3;0|4;5|5;10|6;20|7;30|8;40|9;60|10;80|11;100|12;150|13;200" k3="4" k4="1;1;1;1;1;1;1" k5="2015-05-10-00-00" k6="2015-05-12-00-00" k7="0" k8="150"/>
+		<ItemSpec id="compensation" k1="1000" k2="14400" k3="120" k4="70" k5="30" k6="239400;239401;239402;239403;239404;239405;239406;239407;239408;239409;239410;239411;239412;239413" k7="239414;239415;239416"/>
+		<ItemSpec id="shield_battle" k1="50000" k2="14400" k3="500008" k4="10"/>
+		<ItemSpec id="account" k1="3" k2="1" k3="10" k4="24" k5="1" k6="500000" k7="1" k8="6" k9="0" k10="120"/>
+		<ItemSpec id="ranking" k1="100" k2="150" k3="5"/>
+		<ItemSpec id="resource_pray" k1="2" k2="2" k3="50" k4="3" k5="200"/>
+		<ItemSpec id="snowball" k1="50" k2="7200" k3="1000;500;300;200;100" k4="100" k5="700;400;100;300" k6="0;1000" k7="50" k8="3" k9="2014-12-29-00-00" k10="2015-01-05-00-00"/>
+		<ItemSpec id="check_in" k1="230110;230111;230112;230113;230114;230115;230116;230117;230118;230119;230120;230121;230122;230123" k2="2014-12-22-00-00" k3="2015-01-05-00-00" k4="2014-12-20-00-00" k5="2014-12-28-00-00" k6="2015-01-04-00-00"/>
+		<ItemSpec id="chrisms" k1="43200" k2="232621;5;15|232622;5;20|232623;5;20|232624;5;20|232625;5;30|232626;5;30|232627;5;50|232628;5;10|232629;5;10|232630;5;10|232631;5;10|232632;5;40" k3="232633;40;20|232634;40;40|232635;40;40|232637;40;20|232638;40;20|232639;40;10|232640;40;20" k4="232641;80;20|232642;80;10|232643;80;20|232644;80;10|232645;80;10|232646;80;30|232647;80;10|232648;80;40|232649;80;40|232650;80;40|232651;80;30" k5="232652;150;20|232653;150;20|232654;150;20|232655;150;20|232656;150;10|232657;150;20|232658;150;10|232659;150;10" k6="232661;200;10|232662;200;10|232663;200;10|232664;200;10|232665;200;10|232666;200;10|232667;200;10|232668;200;10|232669;200;10|232670;200;10|232671;200;10|232672;200;10|232673;200;20|232674;200;10|232675;200;10" k12="0"/>
+		<ItemSpec id="chrisms1" k1="0" k2="1" k3="10000" k4="100" k5="1000" k6="300" k7="2016-07-05-00-00" k8="2016-07-15-00-00" k9="1004609" k10="80"/>
+		<ItemSpec id="egg" k1="14400" k2="20"/>
+		<ItemSpec id="notice" k1="5000" k2="140" k3="500"/>
+		<ItemSpec id="chat" k1="600" k2="1" k3="1000" k4="200" k5="10|60|4|0" k6="0.9|0.001|0.1" k7="6|300|3" k8="300|3600|86400"/>
+		<ItemSpec id="chat_switch" k1="0" k2="0" k3="1|0" k4="1" k5="0|0|0" k6="1.1.7|1.2.0" k7="1.1.7|1.1.7|1.1.7|1.1.10" k8="1" k9="1.1.99|1.2.0" k10="1" audio="1" />
+		<ItemSpec id="hero_ability" k1="8" k2="8" k3="8" k4="8" k5="8" k6="8"/>
+		<ItemSpec id="ability_lv" k1="1" k2="5" k3="10" k4="15" k5="20" k6="30" k7="40" k8="50"/>
+		<ItemSpec id="hero_skillpoint" k1="3" k2="3" k3="3" k4="3" k5="3" k6="3"/>
+		<ItemSpec id="ability_cost" k1="500" k2="500" k3="1000"/>
+		<ItemSpec id="resources_basics" k1="20000" k2="0" k3="0" k4="20000" k5="10000" k6="100" k7="8" k8="300" k9="3000" k10="10"/>
+		<ItemSpec id="worldmap_city" k1="60" k2="2" k3="1201" k4="30" k5="1;2;2;2" k6="50" k7="15" k8="22" k9="500" k10="10" k11="100"/>
+		<ItemSpec id="worldmap_num" k1="200" k2="150" k3="200"/>
+		<ItemSpec id="worldmap_explore" k1="20" k2="1" k3="40" k4="48" k5="3" k6="50"/>
+		<ItemSpec id="worldmap_time" k1="15" k2="60" k3="240" k4="480"/>
+		<ItemSpec id="worldmap_map" k1="1201" k2="8" k3="61" k4="31" k5="20" k6="300" k7="1"/>
+		<ItemSpec id="world_distance" k1="100"/>
+		<ItemSpec id="world_marchtime" k1=".82" k2="120" k3="3" k4="20" k5="10"/>
+		<ItemSpec id="world_detect" k1="14" k2="6" k3="140"/>
+		<ItemSpec id="world_despoil" k1=".5" k2="6" k3="1"/>
+		<ItemSpec id="world_wood" k1="27000" k2="36000" k3="72000" k4="126000" k5="198000" k6="288000" k7="396000" k8="522000"/>
+		<ItemSpec id="world_stone" k1="1125" k2="1500" k3="3000" k4="5250" k5="8250" k6="12000" k7="16500" k8="21750"/>
+		<ItemSpec id="world_iron" k1="4500" k2="6000" k3="12000" k4="21000" k5="33000" k6="48000" k7="66000" k8="87000"/>
+		<ItemSpec id="world_food" k1="27000" k2="36000" k3="72000" k4="126000" k5="198000" k6="288000" k7="396000" k8="522000"/>
+		<ItemSpec id="world_silver" k1="43200" k2="86400" k3="158400" k4="259200" k5="388800" k6="547200" k7="734400" k8="950400" k9="1195200" k10="1468800"/>
+		<ItemSpec id="world_gold" k1="10" k2="20" k3="34" k4="52" k5="74" k6="100" k7="130" k8="164" k9="202" k10="244"/>
+		<ItemSpec id="world_rally" k1="5" k2="10" k3="30" k4="60" k5="1" k6="2" k7="5" k8="10"/>
+		<ItemSpec id="world_alliancewar" k1="6" k2="3"/>
+		<ItemSpec id="resources_weight" k1="1" k2="24" k3="6" k4="1" k5="1" k6="1000" k7="2" k8="4"/>
+		<ItemSpec id="resources_speed" k1="15" k2=".625" k3="2.5" k4="15" k5="24" k6=".00083"/>
+		<ItemSpec id="resources_speed2" k1="18" k2=".75" k3="3" k4="18" k5="360000000" k6="15000000" k7="60000000" k8="360000000"/>
+		<ItemSpec id="resources_life" k1="6" k2="9" k3="12" k4="12" k5="12" k6="12" k7="12" k8="12" k9="12" k10="12"/>
+		<ItemSpec id="resources_death" k1="1" k2="3" k3="5" k4="7" k5="9" k6="11" k7="13" k8="15" k9="17" k10="19"/>
+		<ItemSpec id="world_fire1" k1="30" k2="30" k3="80" k4="50"/>
+		<ItemSpec id="world_fire2" k1="200" k2="3200" k3="120000"/>
+		<ItemSpec id="shield_base" k1="72" k2="6"/>
+		<ItemSpec id="alliance_science" k1="200" k2="50" k3="14400" k4="120" k5="720" k6="14400" k7="4" k8="2" k9="750" k10="500" k11="5" k12="25"/>
+		<ItemSpec id="alliance_science1" k1="1" k2="1" k3="10" k4="20"/>
+		<ItemSpec id="alliance_science2" k1="1" k2="1" k3="6" k4="24" k5="400"/>
+		<ItemSpec id="alliance_gift" k1="10" k2="30" k3="1000000"/>
+		<ItemSpec id="alliance_color" k1="177036036"/>
+		<ItemSpec id="alliance_cost" k1="500" k2="200" k3="1000" k4="200" k5="200" k6="8" k7="1000" k8="5"/>
+		<ItemSpec id="alliance_war" k1="3"/>
+		<ItemSpec id="alliance_territory" k1="12" k2="1" k3="0" k4=".32" k5=".000004" k6="180000" k7=".5" k8=".2" k9="5000" k10="20000" k11="5" k12="4" k13="6"/>
+		<ItemSpec id="alliance_territory1" k1=".0005" k2="10000" k3="1000" k4="2000" k9="9"/>
+		<ItemSpec id="alliance_territory2" k1="5000" k2=".2" k3="0.01158" k4="3000" k5="30" k6="8"/>
+		<ItemSpec id="shake" k1="5" k2="20" k3="30" k4="40" k5="600" k6="7200" k7="girl006|girl007||girl008|girl009|girl010|girl011|girl012|girl013|girl014|girl015|girl016|girl017|girl018|girl019|girl020|girl021|girl022|girl023|girl024|girl025|girl026|girl027|girl028|girl029|girl030|girl031|girl032|girl033|girl034|girl035|girl036|girl037|girl038|girl039|girl040|girl041|girl042|girl043|girl044"/>
+		<ItemSpec id="shake2" k1="5" k2="10" k3="20" k4="30" k5="40" k6="50"/>
+		<ItemSpec id="vip" k1="100" k2="0" k3="0" k4="100" k5="0" k6="0"/>
+		<ItemSpec id="hero" k1="240020" k2="10" k6="30" k7="86400" k8="172800" k9="3"/>
+		<ItemSpec id="hero_number" k1="16" k2="3" k3="3" k4="2000|4000|6000"/>
+		<ItemSpec id="hero_soulstone" k1="10" k2="10" k3="10" k4="10"/>
+		<ItemSpec id="goldmine_fb" k1="20" k2="100" k3="0" k4="10"/>
+		<ItemSpec id="beginner_move" k1="6" k2="24" k3="15" k4="48" k5="0"/>
+		<ItemSpec id="wonder" k1="7200" k2="480" k3="30" k4="60" k5="5" k6="8" k7="1440" k8="600" k9="1440" k10="720"/>
+		<ItemSpec id="monster" k1="35" k2="200" k3="100" k4="1;360" k5="7200" k6="5" k7="107000,300;107100,300;107200,300" k8="13,2014-10-20;14,2014-10-20;15,2014-10-22;16,2014-10-29;17,2014-10-29;18,2014-10-29" k9="9415" k10="20" k11="2;6"/>
+		<ItemSpec id="monster_life" k1="2;4" k2="2;4" k3="2;4"/>
+		<ItemSpec id="monster_death" k1=".5" k2=".5" k3=".5"/>
+		<ItemSpec id="function_on" k1="1" k2="1" k3="0" k4="1" k5="1" k6="1" k7="1" k8="1" k9="1" k10="0" k11="1" k12="0"/>
+		<ItemSpec id="function_on2" k1="1" k2="1" k3="0" k4="1" k5="0" k6="1" k7="0" k8="1" k9="1" k10="1" k11="1" k12="0"/>
+		<ItemSpec id="function_on3" k1="1" k2="2" k3="1" k4="0" k5="1" k6="0" k7="1" k8="1" k9="1,1000" k10="0" k11="2" k12="0"/>
+		<ItemSpec id="function_on4" k1="0" k2="1|2" k3="-1" k4="1|0" k5="0" k6="0" k7="1" k8="1" k9="0" k10="0" k11="300" k12="1"/>
+		<ItemSpec id="function_on5" k1="1" k2="1" k3="0" k4="0" k5=" [MEmu], [Droid4X], [iToolsVM], [umEM], [Liaoran], [3.4.67-qemu+]" k6="0,1000" k7="1|2" k8="" k9="9.0.0" k10="1.1.9" k11="1.1.12" k12="1"/>
+		<ItemSpec id="function_on6" k1="0" k2="1;com.cyjh.gundam.service.ScriptService.p;com.cyjh.gundam;com.cyjh.gundam:download_server|3" k3="1" k4="0" k5="0" k6="0" k7="0" k8="1" k9="1.1.12" k10="1" k11="0" k12="400-405;700-705;780-800;912;913"/>
+		<ItemSpec id="function_on7" k1="1" k2="1" k3="1" k4="0" k5="1.1.12" k6="1-100;415-430;869;870" k8="1" k9="1" k10="0-100;564"/>
+		<ItemSpec id="function_on10" k1="1" k2="1" k3="1" k4="1" k5="0" k6="1" k7="0" k8="1" k9="1" k10="1" k11="1" k12="1" k13="1" k14="0" threeDayRight="1"/>
+		<ItemSpec id="function_on11" k1="1" k2="8" k3="1" k4="4" k5="0" k6="1" k7="0"/>
+		<ItemSpec id="function_on12" k1="5" k2="50" k3="0" k4="1" k5="7" k6="0" k7="0"/>
+		<ItemSpec id="function_on13" k1="0" k2="1" k3="1" k4="1" k5="1" k6="60" k7="1" k8="1" k9="1" k10="1"/>
+		<ItemSpec id="timed_event" k1=".01" k2=".1" k3=".05" k4=".18" k5="1"/>
+		<ItemSpec id="alliance_help" k1="60"/>
+		<ItemSpec id="worldmap_life1" k1="25;26;27;28;29;30" k2="31;42;53;64;75;86" k3="97;96;95;94;93;92" k4="91;80;69;58;47;36" k5="37;38;39;40" k6="41;52;63;74" k7="85;84;83;82" k8="81;70;59;48" k9="49;50" k10="51;62" k11="73;72" k12="71;60"/>
+		<ItemSpec id="worldmap_life2" k1="13;14;15;16" k2="17;18;19;20" k3="21;32;43;54" k4="65;76;87;98" k5="109;108;107;106" k6="105;104;103;102" k7="101;90;79;68" k8="57;46;35;24" k9="1;2;3;4;5" k10="6;7;8;9;10" k11="11;22;33;44;55" k12="66;77;88;99;110"/>
+		<ItemSpec id="worldmap_life3" k1="121;120;119;118;117" k2="116;115;114;113;112" k3="111;100;89;78;67" k4="56;45;34;23;12"/>
+		<ItemSpec id="worldmap_8000" k1="50;50" k2="100;50" k3="150;50" k4="200;50" k5="300;50" k6="350;50" k7="400;50" k8="450;50" k9="50;100" k10="50;150"/>
+		<ItemSpec id="worldmap_8001" k1="50;200" k2="50;300" k3="50;350" k4="50;400" k5="50;450" k6="450;100" k7="450;150" k8="450;200" k9="450;300" k10="450;350"/>
+		<ItemSpec id="worldmap_8002" k1="450;400" k2="450;450" k3="100;450" k4="150;450" k5="200;450" k6="300;450" k7="350;450" k8="400;450"/>
+		<ItemSpec id="worldmap_pve" k1="20" k2="1" k3="22" k4="26" k5="5" k6="3" k7="50"/>
+		<ItemSpec id="worldmap_pvenum" k1="100" k2="200" k3="300" k4="500" k5="1000"/>
+		<ItemSpec id="fight_number" k1="0|3" k2="10|4" k3="20|5" k4="30|6"/>
+		<ItemSpec id="fight_position" k1="0|1;2;3;4;5;6" k2="10|1;2;3;4;5;6" k3="20|1;2;3;4;5;6" k4="30|1;2;3;4;5;6"/>
+		<ItemSpec id="arena_base" k1="1" k2="3" k3="5" k4="10" k5="1" k6="60" k7="20" k8="5" k9="1"/>
+		<ItemSpec id="arena_reputation" k1="2" k2="5" k3="7" k4="4" k5="5" k6="6" k7="6" k8="7" k9="8" k10="1"/>
+		<ItemSpec id="arena_buy" k1="10" k2="20" k3="30"/>
+		<ItemSpec id="arena_inspire" k1="120" k2="2000"/>
+		<ItemSpec id="hero_soul" k1="10" k2="20" k3="40" k4="80" k5="200"/>
+		<ItemSpec id="battle_round" k1="20"/>
+		<ItemSpec id="battle_general1" k1="8" k2="8"/>
+		<ItemSpec id="physical_bug" k1="10" k2="20" k3="30" k4="40"/>
+		<ItemSpec id="lv_guard" k1="1"/>
+		<ItemSpec id="status_queue" k1="3"/>
+		<ItemSpec id="tactics_cost" k1="10" k2="10" k3="3"/>
+		<ItemSpec id="lost_soldier" k1="60" k2="120" k3="100" k4="1"/>
+		<ItemSpec id="world_reward" k1="20" k2="24" k3="40"/>
+		<ItemSpec id="warehouse" k1="20" k2="100"/>
+		<ItemSpec id="hero_up" k1="8" k2="8" k3="20"/>
+		<ItemSpec id="physical" k1="20000" k2="300" k3="4" k4="20000"/>
+		<ItemSpec id="online_reward" k1="5" k2="10" k3="15" k4="30" k5="60" k6="90"/>
+		<ItemSpec id="equip" k1="0|0|0|0|0|0" k2="0|0|0|0|0|0" k3="26|20|15|10|5|2" k4="11.57" k5="28" k6="4" k7=".5" k8="1.5" k9="0|0|0|0|0|0" k10="1;2|5;4|10;7|15;10|20;13|25;17|30;21|35;25|40;29|45;33|50;37" k11="100010001;1|100020001;1"/>
+		<ItemSpec id="wood_material" k1="232536|1004612" k2="232537|1004612" k3="232538|1004612" k4="232539|1004612" k5="232540|1004612" k6="232541|1004612" k7="232542|1004612" k8="232543|245727" k9="232544|245727" k10="232545|245727" k11="11.57|0" activity_drop_speed="11.57|27.78" activity_start_time="2016-07-15-12-00" activity_end_time="2016-07-27-00-00"/>
+		<ItemSpec id="food_material" k1="232546|1004612" k2="232547|1004612" k3="232548|1004612" k4="232549|1004612" k5="232550|1004612" k6="232551|1004612" k7="232552|1004612" k8="232553|245727" k9="232554|245727" k10="232555|245727" k11="11.57|0" activity_drop_speed="11.57|27.78" activity_start_time="2016-07-15-12-00" activity_end_time="2016-07-27-00-00"/>
+		<ItemSpec id="iron_material" k1="232556|1004612" k2="232557|1004612" k3="232558|1004612" k4="232559|1004612" k5="232560|1004612" k6="232561|1004612" k7="232562|1004612" k8="232563|245727" k9="232564|245727" k10="232565|245727" k11="11.57|0" activity_drop_speed="11.57|27.78" activity_start_time="2016-07-15-12-00" activity_end_time="2016-07-27-00-00"/>
+		<ItemSpec id="mithril_material" k1="232566|1004612" k2="232567|1004612" k3="232568|1004612" k4="232569|1004612" k5="232570|1004612" k6="232571|1004612" k7="232572|1004612" k8="232573|245727" k9="232574|245727" k10="232575|245727" k11="11.57|0" activity_drop_speed="11.57|27.78" activity_start_time="2016-07-15-12-00" activity_end_time="2016-07-27-00-00"/>
+		<ItemSpec id="goldmine_gift" k1="0|0" k2="0|0" k3="0|0" k4="0|0" k5="0|0" k6="0|0" k7="0|0" k8="0|0" k9="0|0" k10="0|0" k11="0|0"/>
+		<ItemSpec id="invite_cost" k1="200"/>
+		<ItemSpec id="world_clean" k1="3" k2="4320" k3="21600" k4="61000"/>
+		<ItemSpec id="normal_lottery" k1="0|2" k2="0|2" k3="0|2" k4="0|2" k5="231002|2" k6="231003|2" k7="231008|1" k8="231006|2" k9="100|5"/>
+		<ItemSpec id="super_lottery" k1="0|1" k2="0|1" k3="0|1" k4="0|1" k5="231003|3" k6="231004|2" k7="231007|2" k8="231008|2" k9="100|6"/>
+		<ItemSpec id="lottery_cost" k1="1000" k2="5000" k3="6000" k4="6000" k5="1200" k6="300" k7="2" k8="5" k9="1"/>
+		<ItemSpec id="lottery_cost2" k1="0" k2="1" k3="2" k4="4" k5="8" k6="16" k7="32" k8="64" k9="128" k10=".01" k11="20"/>
+		<ItemSpec id="strategy_mode" k1="1|650" k2="2|349" k3="3|1"/>
+		<ItemSpec id="kingpresent" k1="110119" k2="231100" k3="5" k4="110120" k5="231101" k6="10" k7="110121" k8="231102" k9="20"/>
+		<ItemSpec id="lookfor" k1="6" k2="50" k3="8"/>
+		<ItemSpec id="facebook_gift" k1="10060" k2="231957" k3="10061" k4="231958" k5="1" k6="20" k7="1"/>
+		<ItemSpec id="blackland_resource" k1="21" k2="31"/>
+		<ItemSpec id="cargo_stage" k1="1" k2="6" k3="6" k4="23" k5="23" k6="62" k7="62" k8="150"/>
+		<ItemSpec id="cargo_reward" k1="1;0;0;0" k2="5" k3="7;3;0;0" k4="5" k5="3;7;0;0" k6="4" k7="0;3;7;0" k8="2" k9="0;0;0;1" k10="24"/>
+		<ItemSpec id="monster_siege" k1="1:1|2:0|3:0|4:1|5:0|6:0|7:0" k2="1440" k3="60" k4="120" k5="1" k6="50" k7="2880" k8="1440"/>
+		<ItemSpec id="monster_event_config" k1="0" k2="0" k3="209178" k4="5" k5="720" k6="111672" k7="2016-07-01-00-00" k8="2016-07-08-00-00" k9="20"/>
+		<ItemSpec id="monster_event_exchange" k1="232621;5;15|232622;5;20|232623;5;20|232624;5;20|232625;5;30|232626;5;30|232627;5;50|232628;5;10|232629;5;10|232630;5;10|232631;5;10|232632;5;40" k2="232633;40;20|232634;40;40|232635;40;40|232637;40;20|232638;40;20|232639;40;10|232640;40;20" k3="232641;80;20|232642;80;10|232643;80;20|232644;80;10|232645;80;10|232646;80;30|232647;80;10|232648;80;40|232649;80;40|232650;80;40|232651;80;30" k4="232652;150;20|232653;150;20|232654;150;20|232655;150;20|232656;150;10|232657;150;20|232658;150;10|232659;150;10" k5="232661;200;10|232662;200;10|232663;200;10|232664;200;10|232665;200;10|232666;200;10|232667;200;10|232668;200;10|232669;200;10|232670;200;10|232671;200;10|232672;200;10|232673;200;20|232674;200;10|232675;200;10"/>
+		<ItemSpec id="recharge_event" k1="2016-07-20-04-00" k2="2016-07-23-16-00" k3="2015-09-04-00-00" k4="2015-10-04-00-00" k5="7"/>
+		<ItemSpec id="daily quest" k1="1" k2="1440"/>
+		<ItemSpec id="lost_battle" k1="1" k2="1" k3="1" k4="2" k5="1" k6="4" k7="2" k8="200"/>
+		<ItemSpec id="dragon" k1="1"/>
+		<ItemSpec id="wb_info" k1="2" k2="1" k3="3" k4="5" k5="6" k6="24" k7="3" k8="301" k9="5" k10=".9" k11="3" k12="16"/>
+		<ItemSpec id="wb_condition" k1="15" k2="200007" k3="1"/>
+		<ItemSpec id="wb_random" k1="30|7" k2="26|19" k3="22|95" k4="19|211" k5="16|437"/>
+		<ItemSpec id="wb_score" k1="99;5|50" k2="4;3|30" k3="2;1|10" k4="-1;-2|-10" k5="-3;-4|-50" k6="-5;-99|-100" k7="500" k8="600" k9="10"/>
+		<ItemSpec id="wb_fire" k1="48000"/>
+		<ItemSpec id="wb_timing" k1="600" k2="120" k3="300"/>
+		<ItemSpec id="wb_skill" k1=".0005" k2="2" k3="2.5"/>
+		<ItemSpec id="wb_switch" k1="1" k2="1.1.5" k3="1" k4="1.1.7" k5="1" k6="0"/>
+		<ItemSpec id="heritage" k1="5"/>
+		<ItemSpec id="pop_rate" k1="sign_pop;10" k2="month_pop;10|event_pop;90" k3="event_pop;50|gift_pop;50" k4="event_pop;50|gift_pop;50" k5="event_pop;50|gift_pop;50" k6="event_pop;5|gift_pop;95" k7="event_pop;5|gift_pop;95" k8="event_pop;5|gift_pop;95" k9="event_pop;5|gift_pop;95" k10="event_pop;5|gift_pop;95"/>
+		<ItemSpec id="activityconfig" k1="60;30;10" k2="7;4;2" k3="15" k4="1;3;5" k5="0" k6="50" k7="50" k8="5" k9="6" k10="20" k11="3" k12="3;3;2" k13="0"/>
+		<ItemSpec id="activityconfig2" k1="241172" k2="3" k3="2015-09-22-00-00" k4="2015-09-29-00-00" k5="36000" k6=".999583333333333" k7="1.1.9" k8="10;20;50" k9="10;20;50" k10="10;20;50" k11="1.1.10"/>
+		<ItemSpec id="monster_time" k1="10800"/>
+		<ItemSpec id="dragonglass_control" k1="1.1.7" k2="1"/>
+		<ItemSpec id="wa_info" k1="120" k2="24" k3="2" k4="6" k5="200" k6="0" k7="3" k8="300" k9="0" k10="10" k11="50" k12="1"/>
+		<ItemSpec id="wa_score" k1=".00001" k2="30;5" k3="26;1" k4="15" k5="5" k6="1000;0.15" k7="2000;0.2" k8="3000;0.25" k9="5000;0.29" k10="10000"/>
+		<ItemSpec id="wa_mail" k1="30" k2="3" k3="16" k4="6" k5="6"/>
+		<ItemSpec id="wa_personnel" k1="100" k2="1" k3="20"/>
+		<ItemSpec id="wa_scene" k1="201" k2="16" k3="0;150|150;0"/>
+		<ItemSpec id="wa_reward_v" k1="1250" k2="250" k3="200;100" k4="160;80" k5="100;50" k6="241284" k7="241285" k8="0;30"/>
+		<ItemSpec id="wa_switch" k1="0" k2="1.1.8"/>
+		<ItemSpec id="wa_process" k1="3" k2="24" k3="24" k4="24"/>
+		<ItemSpec id="wa_army" k1="5" k2="1.06" k3="300" k4="60"/>
+		<ItemSpec id="wa_fire" k1="48000"/>
+		<ItemSpec id="wa_time" k1="30" k2="10" k3="5" k4="2" k5="1"/>
+		<ItemSpec id="wl_res_tile" k1="200000" k2="300000" k3="35000" k4="50000" k5="9000" k6="13000" k7="90" k8="130"/>
+		<ItemSpec id="smithy_history" k1="3|3|10"/>
+		<ItemSpec id="gold_exchange" k1="gold_5"/>
+		<ItemSpec id="hero_capture" k1="10"/>
+		<ItemSpec id="visit_friend" k1="20" k2="100" k3="100" k4="0.01" k5="150" k6="100"/>
+		<ItemSpec id="drift_bottle" k1="10" k2="20" k3="5" k4="5" k5="3" k6="50" k7="86400" k8="45000"/>
+		<ItemSpec id="kill_Titan" k1="25000" k2="20" k3="1" k4="1" k5="4" k6="100" k7="10" k8="1600" k9="0.25" k10="2" k11="5" k12="1000" k13="10" k14="4" k15="2016-05-06-06-00"/>
+		<ItemSpec id="user_nobility" k1="10" k2="15000" k3="5"/>
+		<ItemSpec id="resource_level" k1="7" k2="7" k3="6" k4="6" k5="6" k6="5" k7="5" k8="5" k9="4" k10="4" k11="4" k12="3" k13="3" k14="3" k15="2" k16="2" k17="2" k18="1" k19="1" k20="1"/>
+		<ItemSpec id="rose_crown" k1="1" k2="10" k3="100" k4="7200" k5="72000" k6="50" k7="2880" k8="500" k9="1"/>
+		<ItemSpec id="debris_clean" k1="1" k2="10" k3="4" k4="720" k5="1440" k6="1" k7="1"/>
+		<ItemSpec id="hunting" k1="1" k2="4" k3="60" k4="100"/>
+		<ItemSpec id="half_orcs" k1="10" k2="20" k3="0|3" k4="24" k5="4|8" k6="7200"/>
+		<ItemSpec id="explorer_npc" k1="3|6|9|12|30" k2="0.2;0.3;0.2;0.15;0.1;0.05|0.25;0.35;0.175;0.125;0.07;0.03|0.25;0.4;0.15;0.12;0.06;0.02|0.3;0.45;0.125;0.075;0.035;0.015|0.3;0.5;0.1;0.06;0.03;0.01" k3="1|1.3|1.8|2.5|3.4|5" k4="30|60|120|300|480" k5="1|2|3|4|5|6" k6="10|15|25|40|60|85" k7="50" k8="8" k9="1|2|3|0|4|5|0|0|8" timeRewardArr="0|1|2|0|0|3|0|0|4"/>
+		<!--explorer_reward_regular 探险家道具奖励数量规则  规则key前缀均为 rewardRegular，key中数字对应 explorer_reward 表中reward2中对应配置的规则id或者reward3中对应配置的规则id -->
+		<ItemSpec id="explorer_reward_regular" rewardRegular0="1|2|3|0|0|5|0|0|8" rewardRegular1="1|1|1|0|0|1|0|0|1"/>
+		<ItemSpec id="friend_circle" k1="100" k2="20" k3="10" k4="110" k5="50"/>
+		<ItemSpec id="resource_rose" k1="1000040" k2="1000040" k3="1000040" k4="1000041" k5="1000041" k6="1000042" k7="1000042" k8="1000042" k9="1000042" k10="1000042" k11="38.58"/>
+		<ItemSpec id="dungeons_hero" k1="100" k2="10" k3="1"/>
+		<ItemSpec id="dungeons" k1="10" k2="50" k3="20" k4="3|5|5" k5="1|2|3|4" k6="10|20|40|80" k7="20" k8="5" k9="1003000" k10="9" k11="3|5|7|" k12="2016-05-01-00-00" k13="2017-01-01-00-00" k14="0"/>
+		<ItemSpec id="alliance_tutorial" k1="20;1|21;2|22;1|23;1|24;1|25;1|26;1|27;1" /><!-- k1 1 2-3 2 3-4 0 guan -->
+		<ItemSpec id="quickdnf_config" initenergy="350000" viplevel="4" cost="0|100|600|5000|10000|50000|200000" pri25="2|3|4|6|8|10|12" pri50="3|4|5|8|11|15|20" A="0;100|100;100|5000;15|10000;14" N="0.8" C="0.4|0.4|0.4|0.1"/>
+		<ItemSpec id="casino" k1="1" k2="200" k3="10" k4="8" k5="5000" k6="0.3|0.1" k7="14000" k8="7928|15856|23780|31708|39636" k9="3204|6408|9608|12824|16028" k10="2374|1899|1424|960|949|768|576|475|384|192" k11="200" k12="2000"/>
+		<ItemSpec id="friend_hot_message" k1="30" k2="60" k3="30" k4="5" k5="100" />
+		<ItemSpec id="moments" k1="#dadiloveyou#" k2="57110" k3="111677" k4="5" k5="111678" />
+        <ItemSpec id="daily7Gift" k1="86400" k2="1.6.25" k3="2016-05-13" k4="2017-05-17" k5="15" k6="2016-07-15"/> 
+		<ItemSpec id="skill" k1="1.7.0"/>
+		<ItemSpec id="backgift" k1="0;1004508|30000;1004507|100000;1004506|230000;1004505" k2="3" k3="6"/>
+		<ItemSpec id="bust" k1="1" k2="1" noTimeLimitPics="100008|100053|100052|100041|100026|100015|100032|100038|100050|100054"/>
+		<ItemSpec id="function_on_alliance_score_activity" k1="1"/>
+		<ItemSpec id="push_monster" k1="1" k2="5" k3="15" k4="1;900300;1;1|2;900300;1;1|3;900300;1;1|4;900301;2;2|5;900302;3;3|6;900303;4;4" k5="20" k6="6" k7="300" />
+		<ItemSpec id="push_pseudo_scout" k1="1" k2="720" k3="2880" k4="50" k5="8"/>
+		<ItemSpec id="push_player_march" k1="1" k3="8" k4="600" k5="30" k6="2" k7="330001" />
+		<ItemSpec id="hatch_dragon_egg" k1="43200" k2="600"/>
+		<ItemSpec id="push_monster_mail" sendName="10037702" level_1="10037800;10037804" level_2="10037801;10037805" level_3="10037802;10037806" level_4="10037803;10037807" />
+		<ItemSpec id="speedCardEffectTypes" queueTypes="0|1|2|3|6|8|9|10"  />
+		<ItemSpec id="protect_monster" open="1" monsterId="900210|900211|900212" ratio="1|1|1" fulshTime="300" activityId="57111"/>
+		<ItemSpec id="specialRegisterAvtivity" lastTipTime="12" languageId="10037915" />
+		</Group>
+</tns:database>

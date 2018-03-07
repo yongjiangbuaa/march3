@@ -1,0 +1,86 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red">$alertHead</font></div>
+<form action="admincp.php?mod=pay&act=moneyOrderByBlv&analyze=user" method="post" name="getaccount">
+
+$serverDiv
+
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+平台
+<select id="pf" name="pf" onchange="">
+		<!--{loop $pfList $pfKey $pfVal}-->
+		<!--{if ($currPf == $pfKey)}-->
+			<option value="{$pfKey}" selected="selected">{$pfVal}</option>
+		<!-- {else} -->
+			<option value="{$pfKey}">{$pfVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+国家
+<select id="country" name="country" onchange="">
+		<!--{loop $countryList $countryKey $countryVal}-->
+		<!--{if ($currCountry == $countryKey)}-->
+			<option value="{$countryKey}" selected="selected">{$countryVal}</option>
+		<!-- {else} -->
+			<option value="{$countryKey}">{$countryVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+付费等级
+<select id="paylv" name="paylv" onchange="">
+		<!--{loop $paylv $paylvKey $paylvVal}-->
+		<!--{if ($currpaylv == $paylvKey)}-->
+			<option value="{$paylvKey}" selected="selected">{$paylvVal}</option>
+		<!-- {else} -->
+			<option value="{$paylvKey}">{$paylvVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+&nbsp;&nbsp;
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+
+<!--{if ($showData)}-->
+<div>
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%; text-align: center">
+		<tr>
+		<th width=7%>城堡等级</th>
+		<!--{loop $dateArray $aKey $aVal}-->
+			<th width=7%>$aVal</th>
+		<!--{/loop}-->
+		</tr>
+		<tbody id='DataTable'>
+		<!--{loop $blvArray $bKey $bVal}-->
+			<tr>
+				<td width=2%>$bVal</td>
+				<!--{loop $dateArray $aKey $aVal}-->
+					<!--{if ($data[$bVal][$aVal])}-->
+						<td width=2%>$data[$bVal][$aVal]</td>
+					<!--{else}-->
+						<td width=2%>-</td>
+					<!--{/if}-->
+				<!--{/loop}-->
+			</tr>
+		<!--{/loop}-->
+		</tbody>
+	</table>
+</div>
+<!--{/if}-->
+
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

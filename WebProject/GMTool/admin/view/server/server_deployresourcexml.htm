@@ -1,0 +1,121 @@
+<!--{template header}-->
+
+<div class="alert alert-info">
+<?php echo "后台XML发布。系统每分钟扫描计划列表，并执行到期的发布计划";?><br>
+<font color="red">$headAlert</font>
+</div>
+
+<span>发布计划列表</span>
+<form action="admincp.php?mod=server&act=deployresourcexml&subact=cancelplan" method="post" name="formcancelplan">
+<input class="display:none;" type="hidden" value="" id="planid" name="planid"/>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th align="center">计划时间</th>
+			<th align="center">XML</th>
+			<th align="center">服</th>
+			<th align="center">发布时间</th>
+			<th align="center">发布结果</th>
+			<th align="center">创建者</th>
+			<th align="center">创建时间</th>
+			<th align="center">操作</th>
+		</tr>
+		<!--{loop $xmlplanlist $plan}-->
+		<tr>
+			<td>$plan['plan_time']</td>
+			<td>$plan['files']</td>
+			<td>$plan['servers']</td>
+			<td>$plan['run_time']</td>
+			<td>$plan['run_result']</td>
+			<td>$plan['author']</td>
+			<td>$plan['create_time']</td>
+			<td>
+			<!--{if $plan['status']==0}-->
+			<a href="javascript:void(cancelplan({$plan['id']}))">取消</a>
+			<!--{else}-->
+			<span style="color: darkgray;">取消</span>
+			<!--{/if}-->
+			</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+</table>
+</form>
+
+<span>最新变动文件列表</span>
+<form action="admincp.php?mod=server&act=deployresourcexml&subact=addplan" method="post" name="formaddplan">
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th align="center">XML</th>
+			<th align="center">修改时间SVN (UTC)</th>
+			<th align="center">修改者</th>
+			<th align="center" width="500px">修改说明</th>
+			<th align="center">选择发布</th>
+		</tr>
+		<!--{loop $recentxmllist $recentxml}-->
+		<tr>
+			<td>
+			$recentxml['file']
+			</td>
+			<td>$recentxml['date']</td>
+			<td>$recentxml['author']</td>
+			<td>$recentxml['msg']</td>
+			<td>
+			<input type='checkbox' name="resxmls[]" value="{$recentxml['file']}" id="{$recentxml['file']}"/>
+			<label for="{$recentxml['file']}">{$recentxml['file']}</label>
+			</td>
+		</tr>
+		<!--{/loop}-->
+		<tr>
+			<td colspan="3" style="text-align: right;">
+			<input type="text" value="" id="selectServer" name="selectServer" style="width: 100%;" placeholder="服编号。（逗号横杠分隔;留空则为全服）"/>
+			</td>
+			<td colspan="1" style="text-align: right;">
+			<input type="text" value="" id="delaymin" name="delaymin" style="width: 100%;" placeholder="几分钟后实施？默认0"/>
+			</td>
+			<td colspan="1" style="text-align: right;">
+			<input class="btn js-btn btn-primary" type="button" value="创建发布计划" name="btn_view" onclick="addplan()" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+</form>
+<script type="text/javascript">
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function addplan(){
+	if(confirm('确认要创建该计划？'))
+	{
+		document.formaddplan.submit();
+	}
+}
+function cancelplan(planid){
+	if(confirm('确认要取消?'))
+	{
+		 document.getElementById('planid').value = planid;
+		 document.formcancelplan.submit();
+	}
+}
+</script>
+<!--{template footer}-->

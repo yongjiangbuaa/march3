@@ -1,0 +1,63 @@
+<!--{template header}-->
+<br>
+<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font>
+<form action="admincp.php?mod=op&act=refundAmount&analyze=user" method="post" name="getaccount">
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($regPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+<!--{if $isFbRefund}-->
+<input class="" type="checkbox" name="fbFlag" id="fbFlag" checked="checked"  />fb作弊退款
+<!--{else}-->
+<input class="" type="checkbox" name="fbFlag" id="fbFlag"   />fb作弊退款
+<!--{/if}-->
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+
+<!--{if $showData}-->
+<br>
+<br>
+<strong>共有$count笔退款,总金额:$sumSpend</strong>
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<!--{loop $dbIndex $indKey $indValue}-->
+			<td>$indValue</td>
+		<!--{/loop}-->
+	</tr>
+	<!--{loop $data $dKey $dbValue}-->
+		<tr>
+			<!--{loop $dbIndex $indKey $indValue}-->
+				<td>$dbValue[$indKey]</td>
+			<!--{/loop}-->
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

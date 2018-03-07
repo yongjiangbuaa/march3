@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" cellSize="1" id="1" packages="1" src="1">
+	<class id="user" class="UserProfile" label="用户">
+		<attribute name='uid' label='用户ID' description='用户ID' visible='true' editable='false'>
+		</attribute>
+		<attribute name='level' label='等级' description='等级' visible='true' editable='true'>
+		</attribute>
+	</class>
+</tns:database>

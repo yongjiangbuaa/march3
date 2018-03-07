@@ -1,0 +1,123 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "玩家转账号";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red"><?php echo "【警告】转帐号后：新设备ID 绑定到 旧UID；旧设备ID-旧UID 的对应关系将会删除！不可互转！";?>&nbsp;&nbsp;&nbsp;&nbsp;<strong>$alertHeader</strong></font></div>
+<form action="admincp.php?mod=user&act=switchAccount" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			<span>新设备ID</span><input type="text" id="newDeviceId" name="newDeviceId" style="width: 330px;" value='{$newDeviceId}'></input>
+			<span>新UID</span><input type="text" id="newUid" name="newUid" style="width: 330px;" value='{$newUid}'></input>
+			<br>
+			<span>旧设备ID</span><input type="text" id="oldDeviceId" name="oldDeviceId" style="width: 330px;" value='{$oldDeviceId}'></input>
+			<span>旧UID</span><input type="text" id="oldUid" name="oldUid" style="width: 330px;" value='{$oldUid}'></input>
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+			<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+		</div>
+	</div>
+	<br>
+	<!--{if $showData}-->
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th>字段名</th>
+			<th>新设备</th>
+			<th>旧设备</th>
+		</tr>
+		<!--{loop $indexArray $key $name}-->
+		<tr>
+			<td>{$name}</td>
+			<td>$newData[$key]</td>
+			<td>$oldData[$key]</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	</table>
+	
+	<input class="btn js-btn btn-primary"  type="button" value="转账号" id="btn_turn" name="btn_turn" onclick="turn_submit('turn')" />
+	<!--{/if}-->
+	
+	<!--{if $afterData}-->
+	
+	<span>转账号之后的信息:</span>
+	<br>
+
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+				<th>字段名</th>
+				<th>新设备</th>
+				<th>旧设备</th>
+			</tr>
+			<!--{loop $indexArray $key $name}-->
+			<tr>
+				<td>{$name}</td>
+				<td>$resultNewDevice[$key]</td>
+				<td>$resultOldDevice[$key]</td>
+			</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>	
+	<!--{/if}-->
+</form>
+<script type="text/javascript">
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var newDeviceId = $('#newDeviceId').val();
+	var newUid = $('#newUid').val();
+	var oldDeviceId = $('#oldDeviceId').val();
+	var oldUid = $('#oldUid').val();
+	newDeviceId = jQuery.trim(newDeviceId);
+	newUid = jQuery.trim(newUid);
+	oldDeviceId = jQuery.trim(oldDeviceId);
+	oldUid = jQuery.trim(oldUid);
+	if(isEmpty(newDeviceId)){
+		alert("<?php echo '请输入新设备ID';?>");
+		$("#newDeviceId").focus();
+		return false;
+	}
+	if(isEmpty(newUid)){
+		alert("<?php echo '请输入新UID';?>");
+		$("#newUid").focus();
+		return false;
+	}
+	if(isEmpty(oldDeviceId)){
+		alert("<?php echo '请输入旧设备ID';?>");
+		$("#oldDeviceId").focus();
+		return false;
+	}
+	if(isEmpty(oldUid)){
+		alert("<?php echo '请输入旧UID';?>");
+		$("#oldUid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+	if(type=='turn'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+}
+function turn_submit(type){
+	if(confirm('是否确认转账号'))
+	{
+		check_submit(type);	
+	}
+}
+
+</script>
+
+<!--{template footer}-->

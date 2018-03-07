@@ -1,0 +1,69 @@
+{
+	"medal1":{
+			"title": 137026,
+			"description": 137001,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal1-%s.png",
+			"type":"game.achievement"
+	},
+	"medal2":{
+			"title": 137027,
+			"description": 137050,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal2-%s.png",
+			"type":"game.achievement"
+	},
+	"medal3":{
+			"title": 137030,
+			"description": 137008,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal3-%s.png",
+			"type":"game.achievement"
+	},
+	"medal4":{
+			"title": 137039,
+			"description": 137017,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal4-%s.png",
+			"type":"game.achievement"
+	},
+	"medal5":{
+			"title": 137044,
+			"description": 137020,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal5-%s.png",
+			"type":"game.achievement"
+	},
+	"medal6":{
+			"title": 137100,
+			"description": 137235,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal6-%s.png",
+			"type":"game.achievement"
+	},
+	"medal7":{
+			"title": 137102,
+			"description": 2000284,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal7-%s.png",
+			"type":"game.achievement"
+	},
+	"medal8":{
+			"title": 137148,
+			"description": 137226,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal8-%s.png",
+			"type":"game.achievement"
+	},
+	"medal9":{
+			"title": 137111,
+			"description": 137211,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal9-%s.png",
+			"type":"game.achievement"
+	},
+	"medal10":{
+			"title": 137150,
+			"description": 137261,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal10-%s.png",
+			"type":"game.achievement"
+	},
+	"medal11":{
+			"title": 137151,
+			"description": 137260,
+			"image":"http://coq.eleximg.com/coq/fbimg/medal/medal11-%s.png",
+			"type":"game.achievement"
+	}
+	
+}

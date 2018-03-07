@@ -1,0 +1,55 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=server&act=shutdown&parm1=1" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "发送停服公告";?><font color="red"></font></div>
+服<input type="text" value="" id="selectServer" name="selectServer" style="width: 400px;" placeholder="逗号横杠分隔，如：1,3,8-22"/>
+于<input type="text" value="{$todotime}" id="todotime" name="todotime" style="width: 30px;"/>分钟后实施
+<br><br>
+时间戳为<input type="text" id="restart_time" name="restart_time" placeholder="填写日期" value="{$restart_time}" />将恢复正常(未知恢复时间时使用,总服redis存储)
+<br><br>
+<div class="span11">
+<input class="btn js-btn btn-primary" type="button" value="指定服推送停服公告" name="btn_view" onclick="search()" />
+</div>
+</div>
+</form>
+
+<script type="text/javascript">
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		if(objs[i].checked && objs[i].id != 'compare')
+		{ */
+			if(confirm("确定当前操作")){
+				document.getaccount.submit();
+				return;
+			}else{
+				return;
+			}
+		/* }
+	} */
+	alert("请选择需要查询的服");
+}
+</script>
+<!--{template footer}-->

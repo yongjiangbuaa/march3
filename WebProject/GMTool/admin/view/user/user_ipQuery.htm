@@ -1,0 +1,95 @@
+<!--{template header}-->
+<div class="alert alert-info">查询IP充值的游戏号数、设备数目，涉及订单金额总数<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=user&act=ipQuery" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+<span>订单号(多个ip以';'分割)</span>
+<textarea class="input-xlarge" id="queryIps" style="width: 600px;" name="queryIps" rows="6">$queryIps</textarea>
+<br>
+<!--  
+<span>IP</span>
+<span><input type="text" id="queryIp" name="queryIp" value='{$queryIp}'></input></span>&nbsp;&nbsp;
+-->
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+</div>
+</div><br/>
+
+<!--{if $showData}-->
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+			<th align="center">ip</th>
+			<th align="center">设备数</th>
+			<th align="center">uid数</th>
+			<th align="center">金额数</th>
+			</tr>
+			<!--{loop $data $key $dbData}-->
+					<tr>
+						<td>$dbData['ip']</td>
+						<td>$dbData['devCount']</td>
+						<td>$dbData['uidCount']</td>
+						<td>$dbData['sumSpend']</td>
+					</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>
+	<br>
+	<strong>订单详情:</strong>
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+				<!--{loop $dbIndex $indKey $indValue}-->
+					<th>$indValue</th>
+				<!--{/loop}-->
+			</tr>
+			<!--{loop $info $key $dbInfo}-->
+					<tr>
+						<!--{loop $dbIndex $indKey $indValue}-->
+							<td>$dbInfo[$indKey]</td>
+						<!--{/loop}-->
+					</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>
+
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+init();
+function init(){
+	$("#start_time").datetimepicker();
+    $("#end_time").datetimepicker();
+}
+
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var queryIps = $('#queryIps').val();
+	queryIps = jQuery.trim(queryIps);
+	if(isEmpty(queryIps)){
+		alert("IP不能为空!");
+		$("#queryIps").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+</script>
+<!--{template footer}-->

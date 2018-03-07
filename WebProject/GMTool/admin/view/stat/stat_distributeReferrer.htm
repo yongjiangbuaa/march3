@@ -1,0 +1,44 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "活跃天数分布统计：";?><font color="red">$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=distributeReferrer" method="post" name="getaccount" style="display: inline-table;">
+	$serverDiv
+	起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+	截止时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+		平台
+		<select id="selectPf" name="selectPf" onchange="">
+			<!--{loop $pfList $pf $pfname}-->
+			<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+			<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+			<!-- {/if} -->
+			<!--{/loop}-->
+		</select>
+	<br>
+	<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" name="btn_view" value="统计数据">
+	<!--<input class="btn js-btn btn-primary" type="button" onclick="getXlsData()" name="btn_view" value="导出EXCEL">-->
+	<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+	<br />
+	<div id="showdatamy" style="min-width: 400px; height: 300px; margin: 0 auto" > {$htmlmy} </div>
+</form>
+
+
+{$qin}
+
+<script type="text/javascript">
+	init();
+	function init(){
+		$("#start_time,#relogin_time,#end_time").datetimepicker();
+	}
+
+	function getLogData(){
+		document.getElementById('action').value = 'show';
+		document.getaccount.submit();
+	}
+	function getXlsData(){
+		document.getElementById('action').value = 'output';
+		document.getaccount.submit();
+	}
+
+</script>
+<!--{template footer}-->

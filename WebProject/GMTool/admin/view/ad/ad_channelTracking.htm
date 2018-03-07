@@ -1,0 +1,248 @@
+<!--{template header}-->
+<div class="alert alert-info"><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;$alertHead</font></div>
+<form action="admincp.php?mod=ad&act=channelTracking" method="post" name="getaccount">
+起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" style="width: 120px;" placeholder="点击选择日期" value="{$end}">
+OS
+<select id='os' name='os'>
+	<!--{loop $osList $osKey $osName}-->
+		<!--{if ($curOs == $osKey)}-->
+			<option value="{$osKey}" selected="selected">{$osName}</option>
+		<!--{else}-->
+			<option value="{$osKey}">{$osName}</option>
+		<!--{/if}-->
+	<!--{/loop}-->
+</select>
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+			<!--{if ($currCountry == $country)}-->
+				<option value="{$country}" selected="selected">{$countryname}</option>
+			<!--{else}-->
+				<option value="{$country}">{$countryname}</option>
+			<!--{/if}-->
+		<!--{/loop}-->
+</select>
+一级渠道
+<!--{if ($currCountry=='ALL')}-->
+	<select id="topChannel_ALL" name="topChannel_ALL" class="topChannel" onchange="">
+		<option value="ALL">ALL</option>
+		<!--{loop $countryList $country $countryname}-->
+			<!--{if ($country!='ALL')}-->
+				<!--{loop $countryChannel[$country] $channelValue}-->
+					<!--{if ($curTopChannel==$channelValue)}-->
+						<option value="{$channelValue}" selected="selected">$channelValue</option>
+					<!--{else}-->
+						<option value="{$channelValue}">$channelValue</option>
+					<!--{/if}-->
+		       <!--{/loop}-->
+		    <!--{/if}-->  
+		<!--{/loop}-->
+	</select>
+<!--{else}-->
+	<select name="topChannel_ALL" class="topChannel" style="display: none;">
+		<option value="ALL">ALL</option>
+		<!--{loop $countryList $country $countryname}-->
+			<!--{if ($country!='ALL')}-->
+				<!--{loop $countryChannel[$country] $channelValue}-->
+					<option value="{$channelValue}">$channelValue</option>
+		       <!--{/loop}-->
+		    <!--{/if}-->  
+		<!--{/loop}-->
+	</select>	
+<!--{/if}-->
+
+<!--{loop $countryList $country $countryname}-->
+	<!--{if ($country!='ALL')}-->
+	
+		<!--{if ($currCountry==$country)}-->
+			<select id="topChannel_{$country}" name="topChannel_{$country}" class="topChannel"  onchange="">
+				<option value="ALL">ALL</option>
+				<!--{loop $countryChannel[$country] $channelValue}-->
+					<!--{if ($curTopChannel==$channelValue)}-->
+						<option value="{$channelValue}" selected="selected">$channelValue</option>
+					<!--{else}-->
+						<option value="{$channelValue}">$channelValue</option>
+					<!--{/if}-->
+		       <!--{/loop}-->
+		   </select>  
+		<!--{else}-->
+			<select id="topChannel_{$country}" name="topChannel_{$country}" class="topChannel" style="display: none;" onchange="">
+				<option value="ALL">ALL</option>
+				<!--{loop $countryChannel[$country] $channelValue}-->
+					<option value="{$channelValue}">$channelValue</option>
+		       <!--{/loop}-->
+		   </select>  
+		<!--{/if}-->
+		
+   <!--{/if}-->
+<!--{/loop}-->
+<br>
+二级渠道
+<input class="input-mini" id="channelSecond" name="channelSecond" type="text" value="$channelSecond">
+BY TIME
+<select id="timeValue" name="timeValue" onchange="changeEven()">
+	<!--{loop $timeArray $timeKey $timeVal}-->
+		<!--{if ($currentTime==$timeKey)}-->
+			<option value="{$timeKey}" selected="selected">$timeVal</option>
+		<!--{else}-->
+			<option value="{$timeKey}">$timeVal</option>
+		<!--{/if}-->	 	
+	<!--{/loop}-->
+</select>
+
+<!--{if ($currentTime=='none')}-->
+  <span id="displayDimension">
+    查看维度
+    <select id="dimension" name="dimension" onchange="">
+      <!--{loop $dimensionArray $dimeKey $dimeVal}-->
+      <!--{if ($currdimension == $dimeKey)}-->
+        <option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+      <!-- {else} -->
+        <option value="{$dimeKey}">{$dimeVal}</option>
+      <!-- {/if} -->
+      <!--{/loop}-->
+    </select>
+  </span>
+  <!--{else}-->
+  <span id="displayDimension" style="display: none;">
+    查看维度
+    <select id="dimension" name="dimension" onchange="">
+      <!--{loop $dimensionArray $dimeKey $dimeVal}-->
+      <!--{if ($currdimension == $dimeKey)}-->
+        <option value="{$dimeKey}" selected="selected">{$dimeVal}</option>
+      <!-- {else} -->
+        <option value="{$dimeKey}">{$dimeVal}</option>
+      <!-- {/if} -->
+      <!--{/loop}-->
+    </select>
+  </span>
+ <!--{/if}-->
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+
+<div style="background: aliceblue;font-size: 16px;font-weight: bold;color: #0E2D5F;height: 20px;line-height: 20px;">Adjust广告数据</div>
+	<table border="1" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;">
+    			<tr>
+				<!--{loop $titleArray $tKey $tVal}-->
+					<!--{if ($tKey=='install')}-->
+						<th width="200px" style="text-align: -webkit-center;"><a href="#" onclick="sort_table(people, '1', asc1); asc1 *= -1; asc2 = 1; asc3 = 1; asc4 = 1;">$tVal</a></th>
+					<!--{elseif ($tKey=='roi1')}-->
+						<th width="200px" style="text-align: -webkit-center;"><a href="#" onclick="sort_table(people, '5', asc2); asc2 *= -1; asc4 = 3; asc3 = 1; asc1 = 1;">$tVal</a></th>
+					<!--{elseif ($tKey=='roi3')}-->
+						<th width="200px" style="text-align: -webkit-center;"><a href="#" onclick="sort_table(people, '7', asc3); asc3 *= -1; asc4 = 1; asc1 = 1; asc2 = 1;">$tVal</a></th>
+					<!--{elseif ($tKey=='roi7')}-->
+						<th width="200px" style="text-align: -webkit-center;"><a href="#" onclick="sort_table(people, '9', asc4); asc4 *= -1; asc1 = 1; asc2 = 1; asc3 = 1;">$tVal</a></th>
+					<!--{else}-->
+						<th width="200px" style="text-align: -webkit-center;">$tVal</th>
+					<!--{/if}-->
+				<!--{/loop}-->
+    			</tr>
+    	</table>
+	<div style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;">
+		<table border="1">
+			<tr>
+				<!--{loop $titleArray $tKey $tVal}-->
+					<!--{if ($tKey=='date' || $tKey=='channelSecond')}-->
+						<td width="200px" style="text-align: -webkit-center;">合计</td>
+					<!--{else}-->
+						<td width="200px" style="text-align: -webkit-center;">$total[$tKey]</td>
+					<!--{/if}-->
+				<!--{/loop}-->
+			</tr>
+			
+			<tbody id='adDataTable'>
+			<!--{loop $data $dbData}-->
+				<tr>
+					<!--{loop $titleArray $tKey $tVal}-->
+					
+						<!--{if ($tKey=='date')}-->
+						
+							<!--{if ($param=='country' && $countryList[$dbData[$param]])}-->
+								<td width="200px" style="text-align: -webkit-center;">$countryList[$dbData[$param]]</td>
+							<!--{else}-->
+								<td width="200px" style="text-align: -webkit-center;">$dbData[$param]</td>
+							<!--{/if}-->
+						<!--{else}-->
+							<td width="200px" style="text-align: -webkit-center;">$dbData[$tKey]</td>
+						<!--{/if}-->
+					<!--{/loop}-->
+				</tr>
+			<!--{/loop}-->
+			</tbody>
+		</table>
+	</div>
+
+<script type="text/javascript">
+       $(document).ready(function(){
+           $("#selectCountry").change(function(){
+        	   		var i=$('#selectCountry').prop('selectedIndex');
+        	   		$(".topChannel").hide();
+                	$(".topChannel").eq(i).show();
+           });
+           $("#selectCountry").change();
+       });
+</script>
+
+<script type="text/javascript">
+        var people, asc1 = 1,
+            asc2 = 1,
+            asc3 = 1;
+        		asc4 = 1;
+        window.onload = function () {
+            people = document.getElementById("adDataTable");
+        }
+
+        function sort_table(tbody, col, asc) {
+            var rows = tbody.rows,
+                rlen = rows.length,
+                arr = new Array(),
+                i, j, cells, clen;
+            // fill the array with values from the table
+            for (i = 0; i < rlen; i++) {
+                cells = rows[i].cells;
+                clen = cells.length;
+                arr[i] = new Array();
+                for (j = 0; j < clen; j++) {
+                    arr[i][j] = cells[j].innerHTML;
+                }
+            }
+            // sort the array by the specified column number (col) and order (asc)
+            arr.sort(function (a, b) {
+                return (a[col] == b[col]) ? 0 : ((Number(a[col]) > Number(b[col])) ? asc : -1 * asc);
+            });
+            // replace existing rows with new rows created from the sorted array
+            for (i = 0; i < rlen; i++) {
+                rows[i].innerHTML = "<td width='200px' style='text-align: -webkit-center;'>" + arr[i].join("</td><td width='200px' style='text-align: -webkit-center;'>") + "</td>";
+            }
+        }
+        
+</script>
+
+<script type="text/javascript">
+function changeEven(){
+  var topVal=$('#timeValue option:selected').val();
+    if(topVal == 'none')
+    {
+        document.getElementById('displayDimension').style.display="";
+    }else{
+        document.getElementById('displayDimension').style.display="none";
+    }
+}
+
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getElementById('event').value = 'view';
+	document.getaccount.submit();
+}
+</script>
+<!--{template footer}-->

@@ -1,0 +1,36 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+排名前<input class="input-mini" id="rankNumber" name="rankNumber" type="text" value="1">－
+<input class="input-mini" id="toRankNumber" name="toRankNumber" type="text" value="1000">名
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询">
+<input type="text" id="uid" name="uid" placeholder="uid">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
+<script type="text/javascript">
+function getData(){
+	document.getElementById('btn_view').disabled=true;
+	url = 'admincp.php?mod=pay&act=topPay&analyze=user&rankNumber='+$('#rankNumber').val()+'&toRankNumber='+$('#toRankNumber').val();
+	url = url +'&uid='+$('#uid').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML='loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

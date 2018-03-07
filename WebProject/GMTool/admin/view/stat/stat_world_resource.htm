@@ -1,0 +1,79 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "世界地图资源统计";?><font color="red">木石铁粮银金 蓝红黑绿白黄</font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=stat&act=world_resource" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+查询结束时间<input class="input-medium" id="date" name='date' type="text" value='$date' size="50"/>
+<input class="btn js-btn btn-primary" type="button" value="选定时间当天每小时数据" name="btn_view" onclick="getData()" />
+<input class="btn js-btn btn-primary" type="button" value="查看模拟地图" name="btn_view" onclick="getThisHour()" />
+<input class="btn js-btn btn-primary" id="next" style="visibility:hidden" type="button" value="前一个小时" name="btn_view" onclick="getPrevHour()" />
+<input class="btn js-btn btn-primary" id="prev" style="visibility:hidden" type="button" value="后一个小时" name="btn_view" onclick="getNextHour()" />
+</div>
+</div>
+</form>
+<div id='showImg'></div>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+<script type="text/javascript">
+hourFix = 0;
+function getNextHour(){
+	hourFix++;
+	getImg();
+}
+function getPrevHour(){
+	hourFix--;
+	getImg();
+}
+function getThisHour(){
+	hourFix = 0;
+	getImg();
+}
+function getImg(){
+	refreshIMG();
+	document.getElementById('next').style.visibility = "visible";
+	document.getElementById('prev').style.visibility = "visible";
+	document.getElementById('show').innerHTML = "";
+	var url ='admincp.php?mod=stat&act=world_resource&getImg=true';
+	if(document.getElementById('date').value){
+		url += '&date=' + document.getElementById('date').value;
+	}
+	url += '&hourFix=' + hourFix;
+	var img = document.getElementById("img");
+	img.src = url+"&randid="+Math.random();
+}
+function refreshIMG(){
+	if(document.getElementById("img"))
+		document.getElementById("img").parentNode.removeChild(document.getElementById("img"));
+	var img = document.createElement("img");
+	img.id = "img";
+	document.getElementById("showImg").appendChild(img); 
+}
+function getData(){
+	refreshIMG();
+	document.getElementById('next').style.visibility = "hidden";
+	document.getElementById('prev').style.visibility = "hidden";
+	var url ='admincp.php?mod=stat&act=world_resource&getData=true';
+	if(document.getElementById('date').value){
+		url += '&date=' + document.getElementById('date').value;
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+$("#date").datetimepicker();
+</script>
+<!--{template footer}-->

@@ -1,0 +1,61 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "怪物攻城活动的参与情况统计";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=monsterSiegeInfo&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!--{if $showData}-->
+<!--<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">-->
+<table style=" width:auto">
+	<!--上边那个不能复制-->
+<tbody>
+	<tr>
+	<th>活动时间</th>
+	<th>服</th>
+	<th>总联盟数</th>
+	<th>有玩家登陆过的联盟数</th>
+	<th>有玩家登陆过且成员大于30的联盟数</th>
+	<th>有玩家登陆过且成员大于40的联盟数</th>
+	<th>有玩家登陆过且成员大于50的联盟数</th>
+	<th>参与活动联盟数</th>
+	<th>参与活动总人数</th>
+	</tr>
+	<tr>
+	<!--{loop $data $time $serveValue}-->
+		<!--{loop $serveValue $serverKey $value}-->
+		<tr>
+			<td>$time</td>
+			<td>$serverKey</td>
+			<td>$value['allianceCount']</td>
+			<td>$value['activityAllianceCount']</td>
+			<td>$value['activity30AllianceCount']</td>
+			<td>$value['activity40AllianceCount']</td>
+			<td>$value['activity50AllianceCount']</td>
+			<td>$value['allianceNum']</td>
+			<td>$value['validMemberCount']</td>
+		</tr>
+		<!--{/loop}-->
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

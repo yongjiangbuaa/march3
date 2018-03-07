@@ -1,0 +1,191 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=pay&act=daily_graph&server={$selectServer}" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "查看收入曲线(曲线横着,因为还没到时间....)";?><font color="red"></font></div>
+
+$serverDiv
+
+<div class="row-fluid">
+<div class="span11">
+请选择查询起始日期<input id="date" name='date' type="text" value='{$rDate}' class="input-medium"/>
+跟踪天数<input id="day" name='day' type="text" value='{$rDay}' class="input-medium"/>
+<!--{if ($_COOKIE['u']=='xiaomi')}-->
+平台
+<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+			<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+			<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<!--{else}-->
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+支付渠道<select id="selectPayMethod" name="selectPayMethod" onchange="">
+<?php echo $pfOptions;?>
+</select>
+<!--{/if}-->
+<!-- 
+<!--{if $tosid}-->
+<input class="" type="checkbox" name="to150" id="to150" checked="checked"  />前150服
+<!--{else}-->
+<input class="" type="checkbox" name="to150" id="to150"   />前150服
+<!--{/if}-->
+<!--{if $fromsid}-->
+<input class="" type="checkbox" name="from151" id="from151" checked="checked"  />后150服
+<!--{else}-->
+<input class="" type="checkbox" name="from151" id="from151"   />后150服
+<!--{/if}-->
+
+<input class="btn js-btn btn-primary" type="button" value="付费人数曲线" name="btn_view" onclick="search('payuser')" />
+	-->
+<input class="btn js-btn btn-primary" type="button" value="收入曲线" name="btn_view" onclick="search('pay')" />
+<input class="btn js-btn btn-primary" type="button" value="付费次数曲线" name="btn_view" onclick="search('paytimes')" />
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>
+</div>
+</div>
+</form>
+<div id="chart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<!-- {if $data} -->
+	<script language="javascript">
+		var timeFix = new Date().getTimezoneOffset()*60;
+		var showData = [];
+	</script>
+	<!--{loop $data  $server $serverData}-->
+		<script language="javascript">
+			var svData = [];
+		</script>
+		<!--{loop $serverData  $key $value}-->
+		<script language="javascript">
+			svData.push($value['y']);
+		</script>
+		<!--{/loop}-->
+		<script language="javascript">
+			showData.push({
+						"type":"spline",
+						"name":"$server",
+						"pointInterval": 300 * 1000,
+		                "pointStart": $dayStart*1000 + $timeFix*1000,
+						"data":svData,
+						"lineWidth": 2,});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart',
+			type: 'area',
+			plotBorderWidth: 1,
+			height:600
+		},
+		title: {
+			text: ''
+		},
+		subtitle: {
+			text: ''
+		},
+        xAxis: {
+            type: 'datetime',
+            maxZoom: 24 * 3600000,
+            title: {
+                text: null
+            }
+        },
+		yAxis: {
+			title: {
+				text: $title
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+			minPadding:1,
+		},
+		tooltip: {
+			formatter: function() {
+			var d = new Date(this.x + timeFix*1000);
+			var s = '<b>'+d.getFullYear() + "-";
+				s += ("0"+(d.getMonth()+1)).slice(-2) + "-";
+				s += ("0"+d.getDate()).slice(-2) + " ";
+				s += ("0"+d.getHours()).slice(-2) + ":";
+				s += ("0"+d.getMinutes()).slice(-2);
+				s += '</b>';
+				$.each(this.points, function(i, point) {
+				    s += '<br/>'+ '<tspan style="fill:'+ point.series.color + '" dy="16" x="5">' + point.series.name +'</tspan>';
+				    s += '<b>: </b>'+ point.y;
+				});
+				return s;
+            },
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			},
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+	<!--{loop $data  $server $serverData}-->
+	$server: $total[$server]<br />
+	<!--{/loop}-->
+<!-- {/if} -->
+<script language="javascript">
+$("#date").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(type){
+	/* var objs = document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){ */
+		document.getElementById('action').value = type;
+		document.getaccount.submit();
+		/* return;
+	}
+	alert("请选择需要查询的服"); */
+}
+</script>
+
+<!--{template footer}-->

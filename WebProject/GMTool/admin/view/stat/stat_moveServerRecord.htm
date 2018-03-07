@@ -1,0 +1,40 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "迁服数据统计";?><font color="red"></font></div>
+起始时间<input class="input-large focused" id="start" name="start" type="text" placeholder="点击选择日期" value="{$start}" />
+结束时间<input class="input-large focused" id="end" name="end" type="text" placeholder="点击选择日期" value="{$end}" />
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据" />
+<hr/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<script type="text/javascript">
+    function getLogData(){
+        document.getElementById('btn_view').disabled=true;
+        var url = 'mod=stat&act=moveServerRecord&analyze=platform&start='+$('#start').val()+'&end='+$('#end').val();
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("POST",'admincp.php',true);
+        xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlHttp.send(url);
+    }
+    init();
+    function init(){
+        $("#start").datetimepicker();
+        $("#end").datetimepicker();
+    }
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                    showLogin(getLogData);
+                    return;
+                }
+                right.innerHTML=xmlHttp.responseText;
+                document.getElementById('btn_view').disabled=false;
+                document.getaccount.submit();
+                return;
+            }
+        }
+    }
+</script>
+<!--{template footer}-->

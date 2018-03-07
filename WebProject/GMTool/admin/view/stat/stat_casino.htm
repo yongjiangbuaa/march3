@@ -1,0 +1,92 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "女王系统";?><font color="red"></font></div>
+<div id="tip" style="width:auto;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+$serverDiv
+起始日期<input class="input focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+结束时间<input class="input focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+玩家id<input class="input focused" id="user_id" name="user_id" type="text" placeholder="玩家uid" value="{$userId}">
+统计方式 : <select name="statType" id="statType">
+	$options
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查看数据">
+<br /><hr />
+<div id='show' style="width:100%;float:left;"></div>
+
+
+
+<script type="text/javascript">
+var thisPage;
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	document.getElementById('btn_view').disabled=true;
+	thisPage = page;
+	showData();
+}
+function showData(allianceId){
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url ='admincp.php?mod=stat&act=casino&dotype=getPageData&page='+thisPage;
+		url += '&start='+$("#start_time").val()+'&end='+$("#end_time").val()+'&statType='+$("#statType").val()+'&selectServer='+$('#selectServer').val()+'&userId='+$("#user_id").val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			//new superTable("table", {
+			//headerRows : 1,
+			//fixedCols : 2
+		    //});
+			return;
+		}
+	}
+}
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+</script>
+
+<!--{template footer}-->

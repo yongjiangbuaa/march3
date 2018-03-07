@@ -1,0 +1,125 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "玩家找回账号";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red"><?php echo "输入当前账号信息";?></font></div>
+<form action="admincp.php?mod=user&act=findAccount" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			<span>设备Id</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="text" id="deviceId" name="deviceId" style="width: 330px;" value='{$deviceId}'></input>
+			<br>
+			<span>当前账号gameUid</span><input type="text" id="currentGameUid" name="currentGameUid" style="width: 330px;" value='{$currentGameUid}'></input>
+			<br>
+			<span>想用账号gameUid</span><input type="text" id="wantGameUid" name="wantGameUid" style="width: 330px;" value='{$wantGameUid}'></input>
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+			<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+		</div>
+	</div>
+	<br>
+	<!--{if $showData}-->
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th>字段名</th>
+			<th>当前账号</th>
+			<th>想用账号</th>
+		</tr>
+		<!--{loop $indexArray $key $name}-->
+		<tr>
+			<td>{$name}</td>
+			<td>$currentData[$key]</td>
+			<td>$wantData[$key]</td>
+		</tr>
+		<!--{/loop}-->
+	</tbody>
+	</table>
+	<input class="btn js-btn btn-primary"  type="button" value="找回账号" id="btn_find" name="btn_find" onclick="find_submit('find')" />
+	<!--{/if}-->
+	
+	<!--{if $afterData}-->
+	
+	<span>找回账号之后的信息:</span>
+	<br>
+
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+				<th>字段名</th>
+				<th>当前账号</th>
+				<th>想用账号</th>
+			</tr>
+			<!--{loop $indexArray $key $name}-->
+			<tr>
+				<td>{$name}</td>
+				<td>$currentData[$key]</td>
+				<td>$wantData[$key]</td>
+			</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>	
+	<!--{/if}-->
+</form>
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var deviceId = $('#deviceId').val();
+	var currentGameUid = $('#currentGameUid').val();
+	var wantGameUid = $('#wantGameUid').val();
+	deviceId = jQuery.trim(deviceId);
+	currentGameUid = jQuery.trim(currentGameUid);
+	wantGameUid = jQuery.trim(wantGameUid);
+	if(isEmpty(deviceId)){
+		alert("<?php echo '请输入设备Id';?>");
+		$("#deviceId").focus();
+		return false;
+	}
+	if(isEmpty(currentGameUid)){
+		alert("<?php echo '请输入当前账号的gameUid';?>");
+		$("#currentGameUid").focus();
+		return false;
+	}
+	if(isEmpty(wantGameUid)){
+		alert("<?php echo '请输入想用账号的gameUid';?>");
+		$("#wantGameUid").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+	if(type=='find'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+}
+function find_submit(type){
+	if(confirm('是否确认找回账号'))
+	{
+		check_submit(type);	
+	}
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<!--{template footer}-->

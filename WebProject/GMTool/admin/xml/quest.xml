@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ItemSpec id="2100502" accept1="1" accept2="400001" type1="1" type2="0" para1="404000" para2="2" reward="234121"/>
+	<ItemSpec id="2100503" accept1="1" accept2="400001" pre="2100502" type1="1" type2="0" para1="404000" para2="3" reward="234122"/>
+	<ItemSpec id="2100504" accept1="1" accept2="400001" pre="2100503" type1="1" type2="0" para1="404000" para2="4" reward="234123"/>
+	<ItemSpec id="2100505" accept1="1" accept2="400001" pre="2100504" type1="1" type2="0" para1="404000" para2="5" reward="234124"/>
+	<ItemSpec id="2100506" accept1="1" accept2="400001" pre="2100505" type1="1" type2="0" para1="404000" para2="6" reward="234125"/>
+	<ItemSpec id="2100507" accept1="1" accept2="400001" pre="2100506" type1="1" type2="0" para1="404000" para2="7" reward="234126"/>
+	<ItemSpec id="2100508" accept1="1" accept2="400001" pre="2100507" type1="1" type2="0" para1="404000" para2="8" reward="234127"/>
+	<ItemSpec id="2100509" accept1="1" accept2="400001" pre="2100508" type1="1" type2="0" para1="404000" para2="9" reward="234128"/>
+	<ItemSpec id="2100510" accept1="1" accept2="400001" pre="2100509" type1="1" type2="0" para1="404000" para2="10" reward="234129"/>
+	<ItemSpec id="2100511" accept1="1" accept2="400001" pre="2100510" type1="1" type2="0" para1="404000" para2="11" reward="234130"/>
+	<ItemSpec id="2100512" accept1="1" accept2="400001" pre="2100511" type1="1" type2="0" para1="404000" para2="12" reward="234131"/>
+	<ItemSpec id="2100513" accept1="1" accept2="400001" pre="2100512" type1="1" type2="0" para1="404000" para2="13" reward="234132"/>
+	<ItemSpec id="2100514" accept1="1" accept2="400001" pre="2100513" type1="1" type2="0" para1="404000" para2="14" reward="234133"/>
+	<ItemSpec id="2100515" accept1="1" accept2="400001" pre="2100514" type1="1" type2="0" para1="404000" para2="15" reward="234134"/>
+	<ItemSpec id="2100516" accept1="1" accept2="400001" pre="2100515" type1="1" type2="0" para1="404000" para2="16" reward="234135"/>
+	<ItemSpec id="2100517" accept1="1" accept2="400001" pre="2100516" type1="1" type2="0" para1="404000" para2="17" reward="234136"/>
+	<ItemSpec id="2100518" accept1="1" accept2="400001" pre="2100517" type1="1" type2="0" para1="404000" para2="18" reward="234137"/>
+	<ItemSpec id="2100519" accept1="1" accept2="400001" pre="2100518" type1="1" type2="0" para1="404000" para2="19" reward="234138"/>
+	<ItemSpec id="2100520" accept1="1" accept2="400001" pre="2100519" type1="1" type2="0" para1="404000" para2="20" reward="234139"/>
+	<ItemSpec id="2100521" accept1="1" accept2="400001" pre="2100520" type1="1" type2="0" para1="404000" para2="21" reward="234140"/>
+	<ItemSpec id="2100522" accept1="1" accept2="400001" pre="2100521" type1="1" type2="0" para1="404000" para2="22" reward="234141"/>
+	<ItemSpec id="2100523" accept1="1" accept2="400001" pre="2100522" type1="1" type2="0" para1="404000" para2="23" reward="234142"/>
+	<ItemSpec id="2100524" accept1="1" accept2="400001" pre="2100523" type1="1" type2="0" para1="404000" para2="24" reward="234143"/>
+	<ItemSpec id="2100525" accept1="1" accept2="400001" pre="2100524" type1="1" type2="0" para1="404000" para2="25" reward="234144"/>
+	<ItemSpec id="2100526" accept1="1" accept2="400001" pre="2100525" type1="1" type2="0" para1="404000" para2="26" reward="234145"/>
+	<ItemSpec id="2100527" accept1="1" accept2="400001" pre="2100526" type1="1" type2="0" para1="404000" para2="27" reward="234146"/>
+	<ItemSpec id="2100528" accept1="1" accept2="400001" pre="2100527" type1="1" type2="0" para1="404000" para2="28" reward="234147"/>
+	<ItemSpec id="2100529" accept1="1" accept2="400001" pre="2100528" type1="1" type2="0" para1="404000" para2="29" reward="234148"/>
+	<ItemSpec id="2100530" accept1="1" accept2="400001" pre="2100529" type1="1" type2="0" para1="404000" para2="30" reward="234149"/>
+	<ItemSpec id="2100601" accept1="1" accept2="400008" type1="1" type2="0" para1="428000" para2="1" reward="234120"/>
+	<ItemSpec id="2100602" accept1="1" accept2="400008" pre="2100601" type1="1" type2="0" para1="428000" para2="2" reward="234121"/>
+	<ItemSpec id="2100603" accept1="1" accept2="400008" pre="2100602" type1="1" type2="0" para1="428000" para2="3" reward="234122"/>
+	<ItemSpec id="2100604" accept1="1" accept2="400008" pre="2100603" type1="1" type2="0" para1="428000" para2="4" reward="234123"/>
+	<ItemSpec id="2100605" accept1="1" accept2="400008" pre="2100604" type1="1" type2="0" para1="428000" para2="5" reward="234124"/>
+	<ItemSpec id="2100606" accept1="1" accept2="400008" pre="2100605" type1="1" type2="0" para1="428000" para2="6" reward="234125"/>
+	<ItemSpec id="2100607" accept1="1" accept2="400008" pre="2100606" type1="1" type2="0" para1="428000" para2="7" reward="234126"/>
+	<ItemSpec id="2100608" accept1="1" accept2="400008" pre="2100607" type1="1" type2="0" para1="428000" para2="8" reward="234127"/>
+	<ItemSpec id="2100609" accept1="1" accept2="400008" pre="2100608" type1="1" type2="0" para1="428000" para2="9" reward="234128"/>
+	<ItemSpec id="2100610" accept1="1" accept2="400008" pre="2100609" type1="1" type2="0" para1="428000" para2="10" reward="234129"/>
+	<ItemSpec id="2100611" accept1="1" accept2="400008" pre="2100610" type1="1" type2="0" para1="428000" para2="11" reward="234130"/>
+	<ItemSpec id="2100612" accept1="1" accept2="400008" pre="2100611" type1="1" type2="0" para1="428000" para2="12" reward="234131"/>
+	<ItemSpec id="2100613" accept1="1" accept2="400008" pre="2100612" type1="1" type2="0" para1="428000" para2="13" reward="234132"/>
+	<ItemSpec id="2100614" accept1="1" accept2="400008" pre="2100613" type1="1" type2="0" para1="428000" para2="14" reward="234133"/>
+	<ItemSpec id="2100615" accept1="1" accept2="400008" pre="2100614" type1="1" type2="0" para1="428000" para2="15" reward="234134"/>
+	<ItemSpec id="2100616" accept1="1" accept2="400008" pre="2100615" type1="1" type2="0" para1="428000" para2="16" reward="234135"/>
+	<ItemSpec id="2100617" accept1="1" accept2="400008" pre="2100616" type1="1" type2="0" para1="428000" para2="17" reward="234136"/>
+	<ItemSpec id="2100618" accept1="1" accept2="400008" pre="2100617" type1="1" type2="0" para1="428000" para2="18" reward="234137"/>
+	<ItemSpec id="2100619" accept1="1" accept2="400008" pre="2100618" type1="1" type2="0" para1="428000" para2="19" reward="234138"/>
+	<ItemSpec id="2100620" accept1="1" accept2="400008" pre="2100619" type1="1" type2="0" para1="428000" para2="20" reward="234139"/>
+	<ItemSpec id="2100621" accept1="1" accept2="400008" pre="2100620" type1="1" type2="0" para1="428000" para2="21" reward="234140"/>
+	<ItemSpec id="2100622" accept1="1" accept2="400008" pre="2100621" type1="1" type2="0" para1="428000" para2="22" reward="234141"/>
+	<ItemSpec id="2100623" accept1="1" accept2="400008" pre="2100622" type1="1" type2="0" para1="428000" para2="23" reward="234142"/>
+	<ItemSpec id="2100624" accept1="1" accept2="400008" pre="2100623" type1="1" type2="0" para1="428000" para2="24" reward="234143"/>
+	<ItemSpec id="2100625" accept1="1" accept2="400008" pre="2100624" type1="1" type2="0" para1="428000" para2="25" reward="234144"/>
+	<ItemSpec id="2100626" accept1="1" accept2="400008" pre="2100625" type1="1" type2="0" para1="428000" para2="26" reward="234145"/>
+	<ItemSpec id="2100627" accept1="1" accept2="400008" pre="2100626" type1="1" type2="0" para1="428000" para2="27" reward="234146"/>
+	<ItemSpec id="2100628" accept1="1" accept2="400008" pre="2100627" type1="1" type2="0" para1="428000" para2="28" reward="234147"/>
+	<ItemSpec id="2100629" accept1="1" accept2="400008" pre="2100628" type1="1" type2="0" para1="428000" para2="29" reward="234148"/>
+	<ItemSpec id="2100630" accept1="1" accept2="400008" pre="2100629" type1="1" type2="0" para1="428000" para2="30" reward="234149"/>
+	<ItemSpec id="2104101" accept1="1" accept2="400001" pre="2102501" type1="1" type2="9" para1="0" para2="500" add="1" reward="234190"/>
+	<ItemSpec id="2104201" accept1="1" accept2="400001" pre="2100201" type1="1" type2="9" para1="3" para2="500" add="1" reward="234191"/>
+	<ItemSpec id="2200102" accept1="1" accept2="400001" type1="1" type2="0" para1="423000" para2="2" reward="234193"/>
+	<ItemSpec id="2200103" accept1="1" accept2="400001" pre="2200102" type1="1" type2="0" para1="423000" para2="3" reward="234194"/>
+	<ItemSpec id="2200104" accept1="1" accept2="400001" pre="2200103" type1="1" type2="0" para1="423000" para2="4" reward="234195"/>
+	<ItemSpec id="2200105" accept1="1" accept2="400001" pre="2200104" type1="1" type2="0" para1="423000" para2="5" reward="234196"/>
+	<ItemSpec id="2200106" accept1="1" accept2="400001" pre="2200105" type1="1" type2="0" para1="423000" para2="6" reward="234197"/>
+	<ItemSpec id="2200107" accept1="1" accept2="400001" pre="2200106" type1="1" type2="0" para1="423000" para2="7" reward="234198"/>
+	<ItemSpec id="2200108" accept1="1" accept2="400001" pre="2200107" type1="1" type2="0" para1="423000" para2="8" reward="234199"/>
+	<ItemSpec id="2200109" accept1="1" accept2="400001" pre="2200108" type1="1" type2="0" para1="423000" para2="9" reward="234200"/>
+	<ItemSpec id="2200110" accept1="1" accept2="400001" pre="2200109" type1="1" type2="0" para1="423000" para2="10" reward="234201"/>
+	<ItemSpec id="2200111" accept1="1" accept2="400001" pre="2200110" type1="1" type2="0" para1="423000" para2="11" reward="234202"/>
+	<ItemSpec id="2200112" accept1="1" accept2="400001" pre="2200111" type1="1" type2="0" para1="423000" para2="12" reward="234203"/>
+	<ItemSpec id="2200113" accept1="1" accept2="400001" pre="2200112" type1="1" type2="0" para1="423000" para2="13" reward="234204"/>
+	<ItemSpec id="2200114" accept1="1" accept2="400001" pre="2200113" type1="1" type2="0" para1="423000" para2="14" reward="234205"/>
+	<ItemSpec id="2200115" accept1="1" accept2="400001" pre="2200114" type1="1" type2="0" para1="423000" para2="15" reward="234206"/>
+	<ItemSpec id="2200116" accept1="1" accept2="400001" pre="2200115" type1="1" type2="0" para1="423000" para2="16" reward="234207"/>
+	<ItemSpec id="2200117" accept1="1" accept2="400001" pre="2200116" type1="1" type2="0" para1="423000" para2="17" reward="234208"/>
+	<ItemSpec id="2200118" accept1="1" accept2="400001" pre="2200117" type1="1" type2="0" para1="423000" para2="18" reward="234209"/>
+	<ItemSpec id="2200119" accept1="1" accept2="400001" pre="2200118" type1="1" type2="0" para1="423000" para2="19" reward="234210"/>
+	<ItemSpec id="2200120" accept1="1" accept2="400001" pre="2200119" type1="1" type2="0" para1="423000" para2="20" reward="234211"/>
+	<ItemSpec id="2200121" accept1="1" accept2="400001" pre="2200120" type1="1" type2="0" para1="423000" para2="21" reward="234212"/>
+	<ItemSpec id="2200122" accept1="1" accept2="400001" pre="2200121" type1="1" type2="0" para1="423000" para2="22" reward="234213"/>
+	<ItemSpec id="2200123" accept1="1" accept2="400001" pre="2200122" type1="1" type2="0" para1="423000" para2="23" reward="234214"/>
+	<ItemSpec id="2200124" accept1="1" accept2="400001" pre="2200123" type1="1" type2="0" para1="423000" para2="24" reward="234215"/>
+	<ItemSpec id="2200125" accept1="1" accept2="400001" pre="2200124" type1="1" type2="0" para1="423000" para2="25" reward="234216"/>
+	<ItemSpec id="2200126" accept1="1" accept2="400001" pre="2200125" type1="1" type2="0" para1="423000" para2="26" reward="234217"/>
+	<ItemSpec id="2200127" accept1="1" accept2="400001" pre="2200126" type1="1" type2="0" para1="423000" para2="27" reward="234218"/>
+	<ItemSpec id="2200128" accept1="1" accept2="400001" pre="2200127" type1="1" type2="0" para1="423000" para2="28" reward="234219"/>
+	<ItemSpec id="2200129" accept1="1" accept2="400001" pre="2200128" type1="1" type2="0" para1="423000" para2="29" reward="234220"/>
+	<ItemSpec id="2200130" accept1="1" accept2="400001" pre="2200129" type1="1" type2="0" para1="423000" para2="30" reward="234221"/>
+	<ItemSpec id="2200202" accept1="1" accept2="400001" type1="1" type2="0" para1="424000" para2="2" reward="234223"/>
+	<ItemSpec id="2200203" accept1="1" accept2="400001" pre="2200202" type1="1" type2="0" para1="424000" para2="3" reward="234224"/>
+	<ItemSpec id="2200204" accept1="1" accept2="400001" pre="2200203" type1="1" type2="0" para1="424000" para2="4" reward="234225"/>
+	<ItemSpec id="2200205" accept1="1" accept2="400001" pre="2200204" type1="1" type2="0" para1="424000" para2="5" reward="234226"/>
+	<ItemSpec id="2200206" accept1="1" accept2="400001" pre="2200205" type1="1" type2="0" para1="424000" para2="6" reward="234227"/>
+	<ItemSpec id="2200207" accept1="1" accept2="400001" pre="2200206" type1="1" type2="0" para1="424000" para2="7" reward="234228"/>
+	<ItemSpec id="2200208" accept1="1" accept2="400001" pre="2200207" type1="1" type2="0" para1="424000" para2="8" reward="234229"/>
+	<ItemSpec id="2200209" accept1="1" accept2="400001" pre="2200208" type1="1" type2="0" para1="424000" para2="9" reward="234230"/>
+	<ItemSpec id="2200210" accept1="1" accept2="400001" pre="2200209" type1="1" type2="0" para1="424000" para2="10" reward="234231"/>
+	<ItemSpec id="2200211" accept1="1" accept2="400001" pre="2200210" type1="1" type2="0" para1="424000" para2="11" reward="234232"/>
+	<ItemSpec id="2200212" accept1="1" accept2="400001" pre="2200211" type1="1" type2="0" para1="424000" para2="12" reward="234233"/>
+	<ItemSpec id="2200213" accept1="1" accept2="400001" pre="2200212" type1="1" type2="0" para1="424000" para2="13" reward="234234"/>
+	<ItemSpec id="2200214" accept1="1" accept2="400001" pre="2200213" type1="1" type2="0" para1="424000" para2="14" reward="234235"/>
+	<ItemSpec id="2200215" accept1="1" accept2="400001" pre="2200214" type1="1" type2="0" para1="424000" para2="15" reward="234236"/>
+	<ItemSpec id="2200216" accept1="1" accept2="400001" pre="2200215" type1="1" type2="0" para1="424000" para2="16" reward="234237"/>
+	<ItemSpec id="2200217" accept1="1" accept2="400001" pre="2200216" type1="1" type2="0" para1="424000" para2="17" reward="234238"/>
+	<ItemSpec id="2200218" accept1="1" accept2="400001" pre="2200217" type1="1" type2="0" para1="424000" para2="18" reward="234239"/>
+	<ItemSpec id="2200219" accept1="1" accept2="400001" pre="2200218" type1="1" type2="0" para1="424000" para2="19" reward="234240"/>
+	<ItemSpec id="2200220" accept1="1" accept2="400001" pre="2200219" type1="1" type2="0" para1="424000" para2="20" reward="234241"/>
+	<ItemSpec id="2200221" accept1="1" accept2="400001" pre="2200220" type1="1" type2="0" para1="424000" para2="21" reward="234242"/>
+	<ItemSpec id="2200222" accept1="1" accept2="400001" pre="2200221" type1="1" type2="0" para1="424000" para2="22" reward="234243"/>
+	<ItemSpec id="2200223" accept1="1" accept2="400001" pre="2200222" type1="1" type2="0" para1="424000" para2="23" reward="234244"/>
+	<ItemSpec id="2200224" accept1="1" accept2="400001" pre="2200223" type1="1" type2="0" para1="424000" para2="24" reward="234245"/>
+	<ItemSpec id="2200225" accept1="1" accept2="400001" pre="2200224" type1="1" type2="0" para1="424000" para2="25" reward="234246"/>
+	<ItemSpec id="2200226" accept1="1" accept2="400001" pre="2200225" type1="1" type2="0" para1="424000" para2="26" reward="234247"/>
+	<ItemSpec id="2200227" accept1="1" accept2="400001" pre="2200226" type1="1" type2="0" para1="424000" para2="27" reward="234248"/>
+	<ItemSpec id="2200228" accept1="1" accept2="400001" pre="2200227" type1="1" type2="0" para1="424000" para2="28" reward="234249"/>
+	<ItemSpec id="2200229" accept1="1" accept2="400001" pre="2200228" type1="1" type2="0" para1="424000" para2="29" reward="234250"/>
+	<ItemSpec id="2200230" accept1="1" accept2="400001" pre="2200229" type1="1" type2="0" para1="424000" para2="30" reward="234251"/>
+	<ItemSpec id="2200301" accept1="1" accept2="400003" type1="1" type2="0" para1="425000" para2="1" reward="234252"/>
+	<ItemSpec id="2200302" accept1="1" accept2="400003" pre="2200301" type1="1" type2="0" para1="425000" para2="2" reward="234253"/>
+	<ItemSpec id="2200303" accept1="1" accept2="400003" pre="2200302" type1="1" type2="0" para1="425000" para2="3" reward="234254"/>
+	<ItemSpec id="2200304" accept1="1" accept2="400003" pre="2200303" type1="1" type2="0" para1="425000" para2="4" reward="234255"/>
+	<ItemSpec id="2200305" accept1="1" accept2="400003" pre="2200304" type1="1" type2="0" para1="425000" para2="5" reward="234256"/>
+	<ItemSpec id="2200306" accept1="1" accept2="400003" pre="2200305" type1="1" type2="0" para1="425000" para2="6" reward="234257"/>
+	<ItemSpec id="2200307" accept1="1" accept2="400003" pre="2200306" type1="1" type2="0" para1="425000" para2="7" reward="234258"/>
+	<ItemSpec id="2200308" accept1="1" accept2="400003" pre="2200307" type1="1" type2="0" para1="425000" para2="8" reward="234259"/>
+	<ItemSpec id="2200309" accept1="1" accept2="400003" pre="2200308" type1="1" type2="0" para1="425000" para2="9" reward="234260"/>
+	<ItemSpec id="2200310" accept1="1" accept2="400003" pre="2200309" type1="1" type2="0" para1="425000" para2="10" reward="234261"/>
+	<ItemSpec id="2200311" accept1="1" accept2="400003" pre="2200310" type1="1" type2="0" para1="425000" para2="11" reward="234262"/>
+	<ItemSpec id="2200312" accept1="1" accept2="400003" pre="2200311" type1="1" type2="0" para1="425000" para2="12" reward="234263"/>
+	<ItemSpec id="2200313" accept1="1" accept2="400003" pre="2200312" type1="1" type2="0" para1="425000" para2="13" reward="234264"/>
+	<ItemSpec id="2200314" accept1="1" accept2="400003" pre="2200313" type1="1" type2="0" para1="425000" para2="14" reward="234265"/>
+	<ItemSpec id="2200315" accept1="1" accept2="400003" pre="2200314" type1="1" type2="0" para1="425000" para2="15" reward="234266"/>
+	<ItemSpec id="2200316" accept1="1" accept2="400003" pre="2200315" type1="1" type2="0" para1="425000" para2="16" reward="234267"/>
+	<ItemSpec id="2200317" accept1="1" accept2="400003" pre="2200316" type1="1" type2="0" para1="425000" para2="17" reward="234268"/>
+	<ItemSpec id="2200318" accept1="1" accept2="400003" pre="2200317" type1="1" type2="0" para1="425000" para2="18" reward="234269"/>
+	<ItemSpec id="2200319" accept1="1" accept2="400003" pre="2200318" type1="1" type2="0" para1="425000" para2="19" reward="234270"/>
+	<ItemSpec id="2200320" accept1="1" accept2="400003" pre="2200319" type1="1" type2="0" para1="425000" para2="20" reward="234271"/>
+	<ItemSpec id="2200321" accept1="1" accept2="400003" pre="2200320" type1="1" type2="0" para1="425000" para2="21" reward="234272"/>
+	<ItemSpec id="2200322" accept1="1" accept2="400003" pre="2200321" type1="1" type2="0" para1="425000" para2="22" reward="234273"/>
+	<ItemSpec id="2200323" accept1="1" accept2="400003" pre="2200322" type1="1" type2="0" para1="425000" para2="23" reward="234274"/>
+	<ItemSpec id="2200324" accept1="1" accept2="400003" pre="2200323" type1="1" type2="0" para1="425000" para2="24" reward="234275"/>
+	<ItemSpec id="2200325" accept1="1" accept2="400003" pre="2200324" type1="1" type2="0" para1="425000" para2="25" reward="234276"/>
+	<ItemSpec id="2200326" accept1="1" accept2="400003" pre="2200325" type1="1" type2="0" para1="425000" para2="26" reward="234277"/>
+	<ItemSpec id="2200327" accept1="1" accept2="400003" pre="2200326" type1="1" type2="0" para1="425000" para2="27" reward="234278"/>
+	<ItemSpec id="2200328" accept1="1" accept2="400003" pre="2200327" type1="1" type2="0" para1="425000" para2="28" reward="234279"/>
+	<ItemSpec id="2200329" accept1="1" accept2="400003" pre="2200328" type1="1" type2="0" para1="425000" para2="29" reward="234280"/>
+	<ItemSpec id="2200330" accept1="1" accept2="400003" pre="2200329" type1="1" type2="0" para1="425000" para2="30" reward="234281"/>
+	<ItemSpec id="2200401" accept1="1" accept2="400005" type1="1" type2="0" para1="426000" para2="1" reward="234282"/>
+	<ItemSpec id="2200402" accept1="1" accept2="400005" pre="2200401" type1="1" type2="0" para1="426000" para2="2" reward="234283"/>
+	<ItemSpec id="2200403" accept1="1" accept2="400005" pre="2200402" type1="1" type2="0" para1="426000" para2="3" reward="234284"/>
+	<ItemSpec id="2200404" accept1="1" accept2="400005" pre="2200403" type1="1" type2="0" para1="426000" para2="4" reward="234285"/>
+	<ItemSpec id="2200405" accept1="1" accept2="400005" pre="2200404" type1="1" type2="0" para1="426000" para2="5" reward="234286"/>
+	<ItemSpec id="2200406" accept1="1" accept2="400005" pre="2200405" type1="1" type2="0" para1="426000" para2="6" reward="234287"/>
+	<ItemSpec id="2200407" accept1="1" accept2="400005" pre="2200406" type1="1" type2="0" para1="426000" para2="7" reward="234288"/>
+	<ItemSpec id="2200408" accept1="1" accept2="400005" pre="2200407" type1="1" type2="0" para1="426000" para2="8" reward="234289"/>
+	<ItemSpec id="2200409" accept1="1" accept2="400005" pre="2200408" type1="1" type2="0" para1="426000" para2="9" reward="234290"/>
+	<ItemSpec id="2200410" accept1="1" accept2="400005" pre="2200409" type1="1" type2="0" para1="426000" para2="10" reward="234291"/>
+	<ItemSpec id="2200411" accept1="1" accept2="400005" pre="2200410" type1="1" type2="0" para1="426000" para2="11" reward="234292"/>
+	<ItemSpec id="2200412" accept1="1" accept2="400005" pre="2200411" type1="1" type2="0" para1="426000" para2="12" reward="234293"/>
+	<ItemSpec id="2200413" accept1="1" accept2="400005" pre="2200412" type1="1" type2="0" para1="426000" para2="13" reward="234294"/>
+	<ItemSpec id="2200414" accept1="1" accept2="400005" pre="2200413" type1="1" type2="0" para1="426000" para2="14" reward="234295"/>
+	<ItemSpec id="2200415" accept1="1" accept2="400005" pre="2200414" type1="1" type2="0" para1="426000" para2="15" reward="234296"/>
+	<ItemSpec id="2200416" accept1="1" accept2="400005" pre="2200415" type1="1" type2="0" para1="426000" para2="16" reward="234297"/>
+	<ItemSpec id="2200417" accept1="1" accept2="400005" pre="2200416" type1="1" type2="0" para1="426000" para2="17" reward="234298"/>
+	<ItemSpec id="2200418" accept1="1" accept2="400005" pre="2200417" type1="1" type2="0" para1="426000" para2="18" reward="234299"/>
+	<ItemSpec id="2200419" accept1="1" accept2="400005" pre="2200418" type1="1" type2="0" para1="426000" para2="19" reward="234300"/>
+	<ItemSpec id="2200420" accept1="1" accept2="400005" pre="2200419" type1="1" type2="0" para1="426000" para2="20" reward="234301"/>
+	<ItemSpec id="2200421" accept1="1" accept2="400005" pre="2200420" type1="1" type2="0" para1="426000" para2="21" reward="234302"/>
+	<ItemSpec id="2200422" accept1="1" accept2="400005" pre="2200421" type1="1" type2="0" para1="426000" para2="22" reward="234303"/>
+	<ItemSpec id="2200423" accept1="1" accept2="400005" pre="2200422" type1="1" type2="0" para1="426000" para2="23" reward="234304"/>
+	<ItemSpec id="2200424" accept1="1" accept2="400005" pre="2200423" type1="1" type2="0" para1="426000" para2="24" reward="234305"/>
+	<ItemSpec id="2200425" accept1="1" accept2="400005" pre="2200424" type1="1" type2="0" para1="426000" para2="25" reward="234306"/>
+	<ItemSpec id="2200426" accept1="1" accept2="400005" pre="2200425" type1="1" type2="0" para1="426000" para2="26" reward="234307"/>
+	<ItemSpec id="2200427" accept1="1" accept2="400005" pre="2200426" type1="1" type2="0" para1="426000" para2="27" reward="234308"/>
+	<ItemSpec id="2200428" accept1="1" accept2="400005" pre="2200427" type1="1" type2="0" para1="426000" para2="28" reward="234309"/>
+	<ItemSpec id="2200429" accept1="1" accept2="400005" pre="2200428" type1="1" type2="0" para1="426000" para2="29" reward="234310"/>
+	<ItemSpec id="2200430" accept1="1" accept2="400005" pre="2200429" type1="1" type2="0" para1="426000" para2="30" reward="234311"/>
+	<!--<ItemSpec id="2200501" accept1="1" accept2="400001" type1="1" type2="0" para1="417000" para2="1" reward="234312"/>-->
+	<ItemSpec id="2200502" accept1="1" accept2="400001" default="1" type1="1" type2="0" para1="417000" para2="2" reward="234313"/>
+	<ItemSpec id="2200503" accept1="1" accept2="400001" pre="2200502" type1="1" type2="0" para1="417000" para2="3" reward="234314"/>
+	<ItemSpec id="2200504" accept1="1" accept2="400001" pre="2200503" type1="1" type2="0" para1="417000" para2="4" reward="234315"/>
+	<ItemSpec id="2200505" accept1="1" accept2="400001" pre="2200504" type1="1" type2="0" para1="417000" para2="5" reward="234316"/>
+	<ItemSpec id="2200506" accept1="1" accept2="400001" pre="2200505" type1="1" type2="0" para1="417000" para2="6" reward="234317"/>
+	<ItemSpec id="2200507" accept1="1" accept2="400001" pre="2200506" type1="1" type2="0" para1="417000" para2="7" reward="234318"/>
+	<ItemSpec id="2200508" accept1="1" accept2="400001" pre="2200507" type1="1" type2="0" para1="417000" para2="8" reward="234319"/>
+	<ItemSpec id="2200509" accept1="1" accept2="400001" pre="2200508" type1="1" type2="0" para1="417000" para2="9" reward="234320"/>
+	<ItemSpec id="2200510" accept1="1" accept2="400001" pre="2200509" type1="1" type2="0" para1="417000" para2="10" reward="234321"/>
+	<ItemSpec id="2200511" accept1="1" accept2="400001" pre="2200510" type1="1" type2="0" para1="417000" para2="11" reward="234322"/>
+	<ItemSpec id="2200512" accept1="1" accept2="400001" pre="2200511" type1="1" type2="0" para1="417000" para2="12" reward="234323"/>
+	<ItemSpec id="2200513" accept1="1" accept2="400001" pre="2200512" type1="1" type2="0" para1="417000" para2="13" reward="234324"/>
+	<ItemSpec id="2200514" accept1="1" accept2="400001" pre="2200513" type1="1" type2="0" para1="417000" para2="14" reward="234325"/>
+	<ItemSpec id="2200515" accept1="1" accept2="400001" pre="2200514" type1="1" type2="0" para1="417000" para2="15" reward="234326"/>
+	<ItemSpec id="2200516" accept1="1" accept2="400001" pre="2200515" type1="1" type2="0" para1="417000" para2="16" reward="234327"/>
+	<ItemSpec id="2200517" accept1="1" accept2="400001" pre="2200516" type1="1" type2="0" para1="417000" para2="17" reward="234328"/>
+	<ItemSpec id="2200518" accept1="1" accept2="400001" pre="2200517" type1="1" type2="0" para1="417000" para2="18" reward="234329"/>
+	<ItemSpec id="2200519" accept1="1" accept2="400001" pre="2200518" type1="1" type2="0" para1="417000" para2="19" reward="234330"/>
+	<ItemSpec id="2200520" accept1="1" accept2="400001" pre="2200519" type1="1" type2="0" para1="417000" para2="20" reward="234331"/>
+	<ItemSpec id="2200521" accept1="1" accept2="400001" pre="2200520" type1="1" type2="0" para1="417000" para2="21" reward="234332"/>
+	<ItemSpec id="2200522" accept1="1" accept2="400001" pre="2200521" type1="1" type2="0" para1="417000" para2="22" reward="234333"/>
+	<ItemSpec id="2200523" accept1="1" accept2="400001" pre="2200522" type1="1" type2="0" para1="417000" para2="23" reward="234334"/>
+	<ItemSpec id="2200524" accept1="1" accept2="400001" pre="2200523" type1="1" type2="0" para1="417000" para2="24" reward="234335"/>
+	<ItemSpec id="2200525" accept1="1" accept2="400001" pre="2200524" type1="1" type2="0" para1="417000" para2="25" reward="234336"/>
+	<ItemSpec id="2200526" accept1="1" accept2="400001" pre="2200525" type1="1" type2="0" para1="417000" para2="26" reward="234337"/>
+	<ItemSpec id="2200527" accept1="1" accept2="400001" pre="2200526" type1="1" type2="0" para1="417000" para2="27" reward="234338"/>
+	<ItemSpec id="2200528" accept1="1" accept2="400001" pre="2200527" type1="1" type2="0" para1="417000" para2="28" reward="234339"/>
+	<ItemSpec id="2200529" accept1="1" accept2="400001" pre="2200528" type1="1" type2="0" para1="417000" para2="29" reward="234340"/>
+	<ItemSpec id="2200530" accept1="1" accept2="400001" pre="2200529" type1="1" type2="0" para1="417000" para2="30" reward="234341"/>
+	<ItemSpec id="2200601" accept1="1" accept2="400001" default="1" type1="1" type2="0" para1="419000" para2="1" reward="234342"/>
+	<ItemSpec id="2200602" accept1="1" accept2="400001" pre="2200601" type1="1" type2="0" para1="419000" para2="2" reward="234343"/>
+	<ItemSpec id="2200603" accept1="1" accept2="400001" pre="2200602" type1="1" type2="0" para1="419000" para2="3" reward="234344"/>
+	<ItemSpec id="2200604" accept1="1" accept2="400001" pre="2200603" type1="1" type2="0" para1="419000" para2="4" reward="234345"/>
+	<ItemSpec id="2200605" accept1="1" accept2="400001" pre="2200604" type1="1" type2="0" para1="419000" para2="5" reward="234346"/>
+	<ItemSpec id="2200606" accept1="1" accept2="400001" pre="2200605" type1="1" type2="0" para1="419000" para2="6" reward="234347"/>
+	<ItemSpec id="2200607" accept1="1" accept2="400001" pre="2200606" type1="1" type2="0" para1="419000" para2="7" reward="234348"/>
+	<ItemSpec id="2200608" accept1="1" accept2="400001" pre="2200607" type1="1" type2="0" para1="419000" para2="8" reward="234349"/>
+	<ItemSpec id="2200609" accept1="1" accept2="400001" pre="2200608" type1="1" type2="0" para1="419000" para2="9" reward="234350"/>
+	<ItemSpec id="2200610" accept1="1" accept2="400001" pre="2200609" type1="1" type2="0" para1="419000" para2="10" reward="234351"/>
+	<ItemSpec id="2200611" accept1="1" accept2="400001" pre="2200610" type1="1" type2="0" para1="419000" para2="11" reward="234352"/>
+	<ItemSpec id="2200612" accept1="1" accept2="400001" pre="2200611" type1="1" type2="0" para1="419000" para2="12" reward="234353"/>
+	<ItemSpec id="2200613" accept1="1" accept2="400001" pre="2200612" type1="1" type2="0" para1="419000" para2="13" reward="234354"/>
+	<ItemSpec id="2200614" accept1="1" accept2="400001" pre="2200613" type1="1" type2="0" para1="419000" para2="14" reward="234355"/>
+	<ItemSpec id="2200615" accept1="1" accept2="400001" pre="2200614" type1="1" type2="0" para1="419000" para2="15" reward="234356"/>
+	<ItemSpec id="2200616" accept1="1" accept2="400001" pre="2200615" type1="1" type2="0" para1="419000" para2="16" reward="234357"/>
+	<ItemSpec id="2200617" accept1="1" accept2="400001" pre="2200616" type1="1" type2="0" para1="419000" para2="17" reward="234358"/>
+	<ItemSpec id="2200618" accept1="1" accept2="400001" pre="2200617" type1="1" type2="0" para1="419000" para2="18" reward="234359"/>
+	<ItemSpec id="2200619" accept1="1" accept2="400001" pre="2200618" type1="1" type2="0" para1="419000" para2="19" reward="234360"/>
+	<ItemSpec id="2200620" accept1="1" accept2="400001" pre="2200619" type1="1" type2="0" para1="419000" para2="20" reward="234361"/>
+	<ItemSpec id="2200621" accept1="1" accept2="400001" pre="2200620" type1="1" type2="0" para1="419000" para2="21" reward="234362"/>
+	<ItemSpec id="2200622" accept1="1" accept2="400001" pre="2200621" type1="1" type2="0" para1="419000" para2="22" reward="234363"/>
+	<ItemSpec id="2200623" accept1="1" accept2="400001" pre="2200622" type1="1" type2="0" para1="419000" para2="23" reward="234364"/>
+	<ItemSpec id="2200624" accept1="1" accept2="400001" pre="2200623" type1="1" type2="0" para1="419000" para2="24" reward="234365"/>
+	<ItemSpec id="2200625" accept1="1" accept2="400001" pre="2200624" type1="1" type2="0" para1="419000" para2="25" reward="234366"/>
+	<ItemSpec id="2200626" accept1="1" accept2="400001" pre="2200625" type1="1" type2="0" para1="419000" para2="26" reward="234367"/>
+	<ItemSpec id="2200627" accept1="1" accept2="400001" pre="2200626" type1="1" type2="0" para1="419000" para2="27" reward="234368"/>
+	<ItemSpec id="2200628" accept1="1" accept2="400001" pre="2200627" type1="1" type2="0" para1="419000" para2="28" reward="234369"/>
+	<ItemSpec id="2200629" accept1="1" accept2="400001" pre="2200628" type1="1" type2="0" para1="419000" para2="29" reward="234370"/>
+	<ItemSpec id="2200630" accept1="1" accept2="400001" pre="2200629" type1="1" type2="0" para1="419000" para2="30" reward="234371"/>
+	<ItemSpec id="2200802" accept1="1" accept2="400002" type1="1" type2="0" para1="427000" para2="2" reward="234378"/>
+	<ItemSpec id="2200803" accept1="1" accept2="400002" pre="2200802" type1="1" type2="0" para1="427000" para2="3" reward="234379"/>
+	<ItemSpec id="2200804" accept1="1" accept2="400002" pre="2200803" type1="1" type2="0" para1="427000" para2="4" reward="234380"/>
+	<ItemSpec id="2200805" accept1="1" accept2="400002" pre="2200804" type1="1" type2="0" para1="427000" para2="5" reward="234381"/>
+	<ItemSpec id="2200806" accept1="1" accept2="400002" pre="2200805" type1="1" type2="0" para1="427000" para2="6" reward="234382"/>
+	<ItemSpec id="2200807" accept1="1" accept2="400002" pre="2200806" type1="1" type2="0" para1="427000" para2="7" reward="234383"/>
+	<ItemSpec id="2200808" accept1="1" accept2="400002" pre="2200807" type1="1" type2="0" para1="427000" para2="8" reward="234384"/>
+	<ItemSpec id="2200809" accept1="1" accept2="400002" pre="2200808" type1="1" type2="0" para1="427000" para2="9" reward="234385"/>
+	<ItemSpec id="2200810" accept1="1" accept2="400002" pre="2200809" type1="1" type2="0" para1="427000" para2="10" reward="234386"/>
+	<ItemSpec id="2200811" accept1="1" accept2="400002" pre="2200810" type1="1" type2="0" para1="427000" para2="11" reward="234387"/>
+	<ItemSpec id="2200812" accept1="1" accept2="400002" pre="2200811" type1="1" type2="0" para1="427000" para2="12" reward="234388"/>
+	<ItemSpec id="2200813" accept1="1" accept2="400002" pre="2200812" type1="1" type2="0" para1="427000" para2="13" reward="234389"/>
+	<ItemSpec id="2200814" accept1="1" accept2="400002" pre="2200813" type1="1" type2="0" para1="427000" para2="14" reward="234390"/>
+	<ItemSpec id="2200815" accept1="1" accept2="400002" pre="2200814" type1="1" type2="0" para1="427000" para2="15" reward="234391"/>
+	<ItemSpec id="2200816" accept1="1" accept2="400002" pre="2200815" type1="1" type2="0" para1="427000" para2="16" reward="234392"/>
+	<ItemSpec id="2200817" accept1="1" accept2="400002" pre="2200816" type1="1" type2="0" para1="427000" para2="17" reward="234393"/>
+	<ItemSpec id="2200818" accept1="1" accept2="400002" pre="2200817" type1="1" type2="0" para1="427000" para2="18" reward="234394"/>
+	<ItemSpec id="2200819" accept1="1" accept2="400002" pre="2200818" type1="1" type2="0" para1="427000" para2="19" reward="234395"/>
+	<ItemSpec id="2200820" accept1="1" accept2="400002" pre="2200819" type1="1" type2="0" para1="427000" para2="20" reward="234396"/>
+	<ItemSpec id="2200821" accept1="1" accept2="400002" pre="2200820" type1="1" type2="0" para1="427000" para2="21" reward="234397"/>
+	<ItemSpec id="2200822" accept1="1" accept2="400002" pre="2200821" type1="1" type2="0" para1="427000" para2="22" reward="234398"/>
+	<ItemSpec id="2200823" accept1="1" accept2="400002" pre="2200822" type1="1" type2="0" para1="427000" para2="23" reward="234399"/>
+	<ItemSpec id="2200824" accept1="1" accept2="400002" pre="2200823" type1="1" type2="0" para1="427000" para2="24" reward="234400"/>
+	<ItemSpec id="2200825" accept1="1" accept2="400002" pre="2200824" type1="1" type2="0" para1="427000" para2="25" reward="234401"/>
+	<ItemSpec id="2200826" accept1="1" accept2="400002" pre="2200825" type1="1" type2="0" para1="427000" para2="26" reward="234402"/>
+	<ItemSpec id="2200827" accept1="1" accept2="400002" pre="2200826" type1="1" type2="0" para1="427000" para2="27" reward="234403"/>
+	<ItemSpec id="2200828" accept1="1" accept2="400002" pre="2200827" type1="1" type2="0" para1="427000" para2="28" reward="234404"/>
+	<ItemSpec id="2200829" accept1="1" accept2="400002" pre="2200828" type1="1" type2="0" para1="427000" para2="29" reward="234405"/>
+	<ItemSpec id="2200830" accept1="1" accept2="400002" pre="2200829" type1="1" type2="0" para1="427000" para2="30" reward="234406"/>
+	<ItemSpec id="2200901" accept1="1" accept2="400004" type1="1" type2="0" para1="416000" para2="1" reward="234407"/>
+	<ItemSpec id="2200902" accept1="1" accept2="400004" pre="2200901" type1="1" type2="0" para1="416000" para2="2" reward="234408"/>
+	<ItemSpec id="2200903" accept1="1" accept2="400004" pre="2200902" type1="1" type2="0" para1="416000" para2="3" reward="234409"/>
+	<ItemSpec id="2200904" accept1="1" accept2="400004" pre="2200903" type1="1" type2="0" para1="416000" para2="4" reward="234410"/>
+	<ItemSpec id="2200905" accept1="1" accept2="400004" pre="2200904" type1="1" type2="0" para1="416000" para2="5" reward="234411"/>
+	<ItemSpec id="2200906" accept1="1" accept2="400004" pre="2200905" type1="1" type2="0" para1="416000" para2="6" reward="234412"/>
+	<ItemSpec id="2200907" accept1="1" accept2="400004" pre="2200906" type1="1" type2="0" para1="416000" para2="7" reward="234413"/>
+	<ItemSpec id="2200908" accept1="1" accept2="400004" pre="2200907" type1="1" type2="0" para1="416000" para2="8" reward="234414"/>
+	<ItemSpec id="2200909" accept1="1" accept2="400004" pre="2200908" type1="1" type2="0" para1="416000" para2="9" reward="234415"/>
+	<ItemSpec id="2200910" accept1="1" accept2="400004" pre="2200909" type1="1" type2="0" para1="416000" para2="10" reward="234416"/>
+	<ItemSpec id="2200911" accept1="1" accept2="400004" pre="2200910" type1="1" type2="0" para1="416000" para2="11" reward="234417"/>
+	<ItemSpec id="2200912" accept1="1" accept2="400004" pre="2200911" type1="1" type2="0" para1="416000" para2="12" reward="234418"/>
+	<ItemSpec id="2200913" accept1="1" accept2="400004" pre="2200912" type1="1" type2="0" para1="416000" para2="13" reward="234419"/>
+	<ItemSpec id="2200914" accept1="1" accept2="400004" pre="2200913" type1="1" type2="0" para1="416000" para2="14" reward="234420"/>
+	<ItemSpec id="2200915" accept1="1" accept2="400004" pre="2200914" type1="1" type2="0" para1="416000" para2="15" reward="234421"/>
+	<ItemSpec id="2200916" accept1="1" accept2="400004" pre="2200915" type1="1" type2="0" para1="416000" para2="16" reward="234422"/>
+	<ItemSpec id="2200917" accept1="1" accept2="400004" pre="2200916" type1="1" type2="0" para1="416000" para2="17" reward="234423"/>
+	<ItemSpec id="2200918" accept1="1" accept2="400004" pre="2200917" type1="1" type2="0" para1="416000" para2="18" reward="234424"/>
+	<ItemSpec id="2200919" accept1="1" accept2="400004" pre="2200918" type1="1" type2="0" para1="416000" para2="19" reward="234425"/>
+	<ItemSpec id="2200920" accept1="1" accept2="400004" pre="2200919" type1="1" type2="0" para1="416000" para2="20" reward="234426"/>
+	<ItemSpec id="2200921" accept1="1" accept2="400004" pre="2200920" type1="1" type2="0" para1="416000" para2="21" reward="234427"/>
+	<ItemSpec id="2200922" accept1="1" accept2="400004" pre="2200921" type1="1" type2="0" para1="416000" para2="22" reward="234428"/>
+	<ItemSpec id="2200923" accept1="1" accept2="400004" pre="2200922" type1="1" type2="0" para1="416000" para2="23" reward="234429"/>
+	<ItemSpec id="2200924" accept1="1" accept2="400004" pre="2200923" type1="1" type2="0" para1="416000" para2="24" reward="234430"/>
+	<ItemSpec id="2200925" accept1="1" accept2="400004" pre="2200924" type1="1" type2="0" para1="416000" para2="25" reward="234431"/>
+	<ItemSpec id="2200926" accept1="1" accept2="400004" pre="2200925" type1="1" type2="0" para1="416000" para2="26" reward="234432"/>
+	<ItemSpec id="2200927" accept1="1" accept2="400004" pre="2200926" type1="1" type2="0" para1="416000" para2="27" reward="234433"/>
+	<ItemSpec id="2200928" accept1="1" accept2="400004" pre="2200927" type1="1" type2="0" para1="416000" para2="28" reward="234434"/>
+	<ItemSpec id="2200929" accept1="1" accept2="400004" pre="2200928" type1="1" type2="0" para1="416000" para2="29" reward="234435"/>
+	<ItemSpec id="2200930" accept1="1" accept2="400004" pre="2200929" type1="1" type2="0" para1="416000" para2="30" reward="234436"/>
+	<ItemSpec id="2201002" accept1="1" accept2="411001" type1="1" type2="0" para1="410000" para2="2" reward="234438"/>
+	<ItemSpec id="2201003" accept1="1" accept2="411002" pre="2201002" type1="1" type2="0" para1="410000" para2="3" reward="234439"/>
+	<ItemSpec id="2201004" accept1="1" accept2="411003" pre="2201003" type1="1" type2="0" para1="410000" para2="4" reward="234440"/>
+	<ItemSpec id="2201005" accept1="1" accept2="411004" pre="2201004" type1="1" type2="0" para1="410000" para2="5" reward="234441"/>
+	<ItemSpec id="2201006" accept1="1" accept2="411005" pre="2201005" type1="1" type2="0" para1="410000" para2="6" reward="234442"/>
+	<ItemSpec id="2201007" accept1="1" accept2="411006" pre="2201006" type1="1" type2="0" para1="410000" para2="7" reward="234443"/>
+	<ItemSpec id="2201008" accept1="1" accept2="411007" pre="2201007" type1="1" type2="0" para1="410000" para2="8" reward="234444"/>
+	<ItemSpec id="2201009" accept1="1" accept2="411008" pre="2201008" type1="1" type2="0" para1="410000" para2="9" reward="234445"/>
+	<ItemSpec id="2201010" accept1="1" accept2="411009" pre="2201009" type1="1" type2="0" para1="410000" para2="10" reward="234446"/>
+	<ItemSpec id="2201011" accept1="1" accept2="411010" pre="2201010" type1="1" type2="0" para1="410000" para2="11" reward="234447"/>
+	<ItemSpec id="2201012" accept1="1" accept2="411011" pre="2201011" type1="1" type2="0" para1="410000" para2="12" reward="234448"/>
+	<ItemSpec id="2201013" accept1="1" accept2="411012" pre="2201012" type1="1" type2="0" para1="410000" para2="13" reward="234449"/>
+	<ItemSpec id="2201014" accept1="1" accept2="411013" pre="2201013" type1="1" type2="0" para1="410000" para2="14" reward="234450"/>
+	<ItemSpec id="2201015" accept1="1" accept2="411014" pre="2201014" type1="1" type2="0" para1="410000" para2="15" reward="234451"/>
+	<ItemSpec id="2201016" accept1="1" accept2="411015" pre="2201015" type1="1" type2="0" para1="410000" para2="16" reward="234452"/>
+	<ItemSpec id="2201017" accept1="1" accept2="411016" pre="2201016" type1="1" type2="0" para1="410000" para2="17" reward="234453"/>
+	<ItemSpec id="2201018" accept1="1" accept2="411017" pre="2201017" type1="1" type2="0" para1="410000" para2="18" reward="234454"/>
+	<ItemSpec id="2201019" accept1="1" accept2="411018" pre="2201018" type1="1" type2="0" para1="410000" para2="19" reward="234455"/>
+	<ItemSpec id="2201020" accept1="1" accept2="411019" pre="2201019" type1="1" type2="0" para1="410000" para2="20" reward="234456"/>
+	<ItemSpec id="2201021" accept1="1" accept2="411020" pre="2201020" type1="1" type2="0" para1="410000" para2="21" reward="234457"/>
+	<ItemSpec id="2201022" accept1="1" accept2="411021" pre="2201021" type1="1" type2="0" para1="410000" para2="22" reward="234458"/>
+	<ItemSpec id="2201023" accept1="1" accept2="411022" pre="2201022" type1="1" type2="0" para1="410000" para2="23" reward="234459"/>
+	<ItemSpec id="2201024" accept1="1" accept2="411023" pre="2201023" type1="1" type2="0" para1="410000" para2="24" reward="234460"/>
+	<ItemSpec id="2201025" accept1="1" accept2="411024" pre="2201024" type1="1" type2="0" para1="410000" para2="25" reward="234461"/>
+	<ItemSpec id="2201026" accept1="1" accept2="411025" pre="2201025" type1="1" type2="0" para1="410000" para2="26" reward="234462"/>
+	<ItemSpec id="2201027" accept1="1" accept2="411026" pre="2201026" type1="1" type2="0" para1="410000" para2="27" reward="234463"/>
+	<ItemSpec id="2201028" accept1="1" accept2="411027" pre="2201027" type1="1" type2="0" para1="410000" para2="28" reward="234464"/>
+	<ItemSpec id="2201029" accept1="1" accept2="411028" pre="2201028" type1="1" type2="0" para1="410000" para2="29" reward="234465"/>
+	<ItemSpec id="2201030" accept1="1" accept2="411029" pre="2201029" type1="1" type2="0" para1="410000" para2="30" reward="234466"/>
+	<ItemSpec id="2201102" accept1="1" accept2="400001" type1="1" type2="0" para1="411000" para2="2" reward="234468"/>
+	<ItemSpec id="2201103" accept1="1" accept2="400002" pre="2201102" type1="1" type2="0" para1="411000" para2="3" reward="234469"/>
+	<ItemSpec id="2201104" accept1="1" accept2="400003" pre="2201103" type1="1" type2="0" para1="411000" para2="4" reward="234470"/>
+	<ItemSpec id="2201105" accept1="1" accept2="400004" pre="2201104" type1="1" type2="0" para1="411000" para2="5" reward="234471"/>
+	<ItemSpec id="2201106" accept1="1" accept2="400005" pre="2201105" type1="1" type2="0" para1="411000" para2="6" reward="234472"/>
+	<ItemSpec id="2201107" accept1="1" accept2="400006" pre="2201106" type1="1" type2="0" para1="411000" para2="7" reward="234473"/>
+	<ItemSpec id="2201108" accept1="1" accept2="400007" pre="2201107" type1="1" type2="0" para1="411000" para2="8" reward="234474"/>
+	<ItemSpec id="2201109" accept1="1" accept2="400008" pre="2201108" type1="1" type2="0" para1="411000" para2="9" reward="234475"/>
+	<ItemSpec id="2201110" accept1="1" accept2="400009" pre="2201109" type1="1" type2="0" para1="411000" para2="10" reward="234476"/>
+	<ItemSpec id="2201111" accept1="1" accept2="400010" pre="2201110" type1="1" type2="0" para1="411000" para2="11" reward="234477"/>
+	<ItemSpec id="2201112" accept1="1" accept2="400011" pre="2201111" type1="1" type2="0" para1="411000" para2="12" reward="234478"/>
+	<ItemSpec id="2201113" accept1="1" accept2="400012" pre="2201112" type1="1" type2="0" para1="411000" para2="13" reward="234479"/>
+	<ItemSpec id="2201114" accept1="1" accept2="400013" pre="2201113" type1="1" type2="0" para1="411000" para2="14" reward="234480"/>
+	<ItemSpec id="2201115" accept1="1" accept2="400014" pre="2201114" type1="1" type2="0" para1="411000" para2="15" reward="234481"/>
+	<ItemSpec id="2201116" accept1="1" accept2="400015" pre="2201115" type1="1" type2="0" para1="411000" para2="16" reward="234482"/>
+	<ItemSpec id="2201117" accept1="1" accept2="400016" pre="2201116" type1="1" type2="0" para1="411000" para2="17" reward="234483"/>
+	<ItemSpec id="2201118" accept1="1" accept2="400017" pre="2201117" type1="1" type2="0" para1="411000" para2="18" reward="234484"/>
+	<ItemSpec id="2201119" accept1="1" accept2="400018" pre="2201118" type1="1" type2="0" para1="411000" para2="19" reward="234485"/>
+	<ItemSpec id="2201120" accept1="1" accept2="400019" pre="2201119" type1="1" type2="0" para1="411000" para2="20" reward="234486"/>
+	<ItemSpec id="2201121" accept1="1" accept2="400020" pre="2201120" type1="1" type2="0" para1="411000" para2="21" reward="234487"/>
+	<ItemSpec id="2201122" accept1="1" accept2="400021" pre="2201121" type1="1" type2="0" para1="411000" para2="22" reward="234488"/>
+	<ItemSpec id="2201123" accept1="1" accept2="400022" pre="2201122" type1="1" type2="0" para1="411000" para2="23" reward="234489"/>
+	<ItemSpec id="2201124" accept1="1" accept2="400023" pre="2201123" type1="1" type2="0" para1="411000" para2="24" reward="234490"/>
+	<ItemSpec id="2201125" accept1="1" accept2="400024" pre="2201124" type1="1" type2="0" para1="411000" para2="25" reward="234491"/>
+	<ItemSpec id="2201126" accept1="1" accept2="400025" pre="2201125" type1="1" type2="0" para1="411000" para2="26" reward="234492"/>
+	<ItemSpec id="2201127" accept1="1" accept2="400026" pre="2201126" type1="1" type2="0" para1="411000" para2="27" reward="234493"/>
+	<ItemSpec id="2201128" accept1="1" accept2="400027" pre="2201127" type1="1" type2="0" para1="411000" para2="28" reward="234494"/>
+	<ItemSpec id="2201129" accept1="1" accept2="400028" pre="2201128" type1="1" type2="0" para1="411000" para2="29" reward="234495"/>
+	<ItemSpec id="2201130" accept1="1" accept2="400029" pre="2201129" type1="1" type2="0" para1="411000" para2="30" reward="234496"/>
+	<ItemSpec id="2201500" accept1="1" accept2="400002" type1="1" type2="8" para1="410000" para2="2" reward="241063"/>
+	<ItemSpec id="2201600" accept1="1" accept2="400006" type1="1" type2="8" para1="411000" para2="2" reward="234125"/>
+	<ItemSpec id="2202101" accept1="1" accept2="400002" type1="1" type2="2" para1="107000" para2="10" add="1" reward="234498"/>
+	<ItemSpec id="2202102" accept1="1" accept2="423001" pre="2202101" type1="1" type2="2" para1="107000" para2="30" add="1" reward="234499"/>
+	<ItemSpec id="2202103" accept1="1" accept2="423001" pre="2202102" type1="1" type2="2" para1="107000" para2="60" add="1" reward="234500"/>
+	<ItemSpec id="2202201" accept1="1" accept2="423004" type1="1" type2="2" para1="107001" para2="100" add="1" reward="234501"/>
+	<ItemSpec id="2202202" accept1="1" accept2="423004" pre="2202201" type1="1" type2="2" para1="107001" para2="150" add="1" reward="234502"/>
+	<ItemSpec id="2202203" accept1="1" accept2="423004" pre="2202202" type1="1" type2="2" para1="107001" para2="250" add="1" reward="234503"/>
+	<ItemSpec id="2202301" accept1="1" accept2="423007" type1="1" type2="2" para1="107002" para2="500" add="1" reward="234504"/>
+	<ItemSpec id="2202302" accept1="1" accept2="423007" pre="2202301" type1="1" type2="2" para1="107002" para2="800" add="1" reward="234505"/>
+	<ItemSpec id="2202303" accept1="1" accept2="423007" pre="2202302" type1="1" type2="2" para1="107002" para2="1000" add="1" reward="234506"/>
+	<ItemSpec id="2202401" accept1="1" accept2="423010" type1="1" type2="2" para1="107003" para2="2000" add="1" reward="234507"/>
+	<ItemSpec id="2202402" accept1="1" accept2="423010" pre="2202401" type1="1" type2="2" para1="107003" para2="2500" add="1" reward="234508"/>
+	<ItemSpec id="2202403" accept1="1" accept2="423010" pre="2202402" type1="1" type2="2" para1="107003" para2="3500" add="1" reward="234509"/>
+	<ItemSpec id="2202501" accept1="1" accept2="423013" type1="1" type2="2" para1="107004" para2="2000" add="1" reward="234510"/>
+	<ItemSpec id="2202502" accept1="1" accept2="423013" pre="2202501" type1="1" type2="2" para1="107004" para2="3000" add="1" reward="234511"/>
+	<ItemSpec id="2202503" accept1="1" accept2="423013" pre="2202502" type1="1" type2="2" para1="107004" para2="4000" add="1" reward="234512"/>
+	<ItemSpec id="2202601" accept1="1" accept2="423016" type1="1" type2="2" para1="107005" para2="5000" add="1" reward="234513"/>
+	<ItemSpec id="2202602" accept1="1" accept2="423016" pre="2202601" type1="1" type2="2" para1="107005" para2="9000" add="1" reward="234514"/>
+	<ItemSpec id="2202603" accept1="1" accept2="423016" pre="2202602" type1="1" type2="2" para1="107005" para2="15000" add="1" reward="234515"/>
+	<ItemSpec id="2202701" accept1="1" accept2="423019" type1="1" type2="2" para1="107006" para2="8000" add="1" reward="234516"/>
+	<ItemSpec id="2202702" accept1="1" accept2="423019" pre="2202701" type1="1" type2="2" para1="107006" para2="12000" add="1" reward="234517"/>
+	<ItemSpec id="2202703" accept1="1" accept2="423019" pre="2202702" type1="1" type2="2" para1="107006" para2="20000" add="1" reward="234518"/>
+	<ItemSpec id="2202801" accept1="1" accept2="423022" type1="1" type2="2" para1="107007" para2="15000" add="1" reward="234519"/>
+	<ItemSpec id="2202802" accept1="1" accept2="423022" pre="2202801" type1="1" type2="2" para1="107007" para2="20000" add="1" reward="234520"/>
+	<ItemSpec id="2202803" accept1="1" accept2="423022" pre="2202802" type1="1" type2="2" para1="107007" para2="30000" add="1" reward="234521"/>
+	<ItemSpec id="2202901" accept1="1" accept2="423026" type1="1" type2="2" para1="107008" para2="30000" add="1" reward="234522"/>
+	<ItemSpec id="2202902" accept1="1" accept2="423026" pre="2202901" type1="1" type2="2" para1="107008" para2="45000" add="1" reward="234523"/>
+	<ItemSpec id="2202903" accept1="1" accept2="423026" pre="2202902" type1="1" type2="2" para1="107008" para2="60000" add="1" reward="234524"/>
+	<ItemSpec id="2203001" accept1="1" accept2="423030" type1="1" type2="2" para1="107009" para2="55000" add="1" reward="234525"/>
+	<ItemSpec id="2203002" accept1="1" accept2="423030" pre="2203001" type1="1" type2="2" para1="107009" para2="80000" add="1" reward="234526"/>
+	<ItemSpec id="2203003" accept1="1" accept2="423030" pre="2203002" type1="1" type2="2" para1="107009" para2="100000" add="1" reward="234527"/>
+	<ItemSpec id="2203101" accept1="1" accept2="424001" type1="1" type2="2" para1="107100" para2="30" add="1" reward="234528"/>
+	<ItemSpec id="2203102" accept1="1" accept2="424001" pre="2203101" type1="1" type2="2" para1="107100" para2="50" add="1" reward="234529"/>
+	<ItemSpec id="2203103" accept1="1" accept2="424001" pre="2203102" type1="1" type2="2" para1="107100" para2="100" add="1" reward="234530"/>
+	<ItemSpec id="2203201" accept1="1" accept2="424004" type1="1" type2="2" para1="107101" para2="100" add="1" reward="234531"/>
+	<ItemSpec id="2203202" accept1="1" accept2="424004" pre="2203201" type1="1" type2="2" para1="107101" para2="150" add="1" reward="234532"/>
+	<ItemSpec id="2203203" accept1="1" accept2="424004" pre="2203202" type1="1" type2="2" para1="107101" para2="250" add="1" reward="234533"/>
+	<ItemSpec id="2203301" accept1="1" accept2="424007" type1="1" type2="2" para1="107102" para2="500" add="1" reward="234534"/>
+	<ItemSpec id="2203302" accept1="1" accept2="424007" pre="2203301" type1="1" type2="2" para1="107102" para2="800" add="1" reward="234535"/>
+	<ItemSpec id="2203303" accept1="1" accept2="424007" pre="2203302" type1="1" type2="2" para1="107102" para2="1000" add="1" reward="234536"/>
+	<ItemSpec id="2203401" accept1="1" accept2="424010" type1="1" type2="2" para1="107103" para2="2000" add="1" reward="234537"/>
+	<ItemSpec id="2203402" accept1="1" accept2="424010" pre="2203401" type1="1" type2="2" para1="107103" para2="2500" add="1" reward="234538"/>
+	<ItemSpec id="2203403" accept1="1" accept2="424010" pre="2203402" type1="1" type2="2" para1="107103" para2="3000" add="1" reward="234539"/>
+	<ItemSpec id="2203501" accept1="1" accept2="424013" type1="1" type2="2" para1="107104" para2="2000" add="1" reward="234540"/>
+	<ItemSpec id="2203502" accept1="1" accept2="424013" pre="2203501" type1="1" type2="2" para1="107104" para2="3000" add="1" reward="234541"/>
+	<ItemSpec id="2203503" accept1="1" accept2="424013" pre="2203502" type1="1" type2="2" para1="107104" para2="4000" add="1" reward="234542"/>
+	<ItemSpec id="2203601" accept1="1" accept2="424016" type1="1" type2="2" para1="107105" para2="5000" add="1" reward="234543"/>
+	<ItemSpec id="2203602" accept1="1" accept2="424016" pre="2203601" type1="1" type2="2" para1="107105" para2="8000" add="1" reward="234544"/>
+	<ItemSpec id="2203603" accept1="1" accept2="424016" pre="2203602" type1="1" type2="2" para1="107105" para2="10000" add="1" reward="234545"/>
+	<ItemSpec id="2203701" accept1="1" accept2="424019" type1="1" type2="2" para1="107106" para2="10000" add="1" reward="234546"/>
+	<ItemSpec id="2203702" accept1="1" accept2="424019" pre="2203701" type1="1" type2="2" para1="107106" para2="15000" add="1" reward="234547"/>
+	<ItemSpec id="2203703" accept1="1" accept2="424019" pre="2203702" type1="1" type2="2" para1="107106" para2="25000" add="1" reward="234548"/>
+	<ItemSpec id="2203801" accept1="1" accept2="424022" type1="1" type2="2" para1="107107" para2="33000" add="1" reward="234549"/>
+	<ItemSpec id="2203802" accept1="1" accept2="424022" pre="2203801" type1="1" type2="2" para1="107107" para2="43150" add="1" reward="234550"/>
+	<ItemSpec id="2203803" accept1="1" accept2="424022" pre="2203802" type1="1" type2="2" para1="107107" para2="43000" add="1" reward="234551"/>
+	<ItemSpec id="2203901" accept1="1" accept2="424026" type1="1" type2="2" para1="107108" para2="53000" add="1" reward="234552"/>
+	<ItemSpec id="2203902" accept1="1" accept2="424026" pre="2203901" type1="1" type2="2" para1="107108" para2="53150" add="1" reward="234553"/>
+	<ItemSpec id="2203903" accept1="1" accept2="424026" pre="2203902" type1="1" type2="2" para1="107108" para2="53000" add="1" reward="234554"/>
+	<ItemSpec id="2204001" accept1="1" accept2="424030" type1="1" type2="2" para1="107109" para2="70000" add="1" reward="234555"/>
+	<ItemSpec id="2204002" accept1="1" accept2="424030" pre="2204001" type1="1" type2="2" para1="107109" para2="70150" add="1" reward="234556"/>
+	<ItemSpec id="2204003" accept1="1" accept2="424030" pre="2204002" type1="1" type2="2" para1="107109" para2="70000" add="1" reward="234557"/>
+	<ItemSpec id="2204101" accept1="1" accept2="425001" type1="1" type2="2" para1="107200" para2="30" add="1" reward="234558"/>
+	<ItemSpec id="2204102" accept1="1" accept2="425001" pre="2204101" type1="1" type2="2" para1="107200" para2="50" add="1" reward="234559"/>
+	<ItemSpec id="2204103" accept1="1" accept2="425001" pre="2204102" type1="1" type2="2" para1="107200" para2="100" add="1" reward="234560"/>
+	<ItemSpec id="2204201" accept1="1" accept2="425004" type1="1" type2="2" para1="107201" para2="100" add="1" reward="234561"/>
+	<ItemSpec id="2204202" accept1="1" accept2="425004" pre="2204201" type1="1" type2="2" para1="107201" para2="150" add="1" reward="234562"/>
+	<ItemSpec id="2204203" accept1="1" accept2="425004" pre="2204202" type1="1" type2="2" para1="107201" para2="250" add="1" reward="234563"/>
+	<ItemSpec id="2204301" accept1="1" accept2="425007" type1="1" type2="2" para1="107202" para2="500" add="1" reward="234564"/>
+	<ItemSpec id="2204302" accept1="1" accept2="425007" pre="2204301" type1="1" type2="2" para1="107202" para2="800" add="1" reward="234565"/>
+	<ItemSpec id="2204303" accept1="1" accept2="425007" pre="2204302" type1="1" type2="2" para1="107202" para2="1000" add="1" reward="234566"/>
+	<ItemSpec id="2204401" accept1="1" accept2="425010" type1="1" type2="2" para1="107203" para2="2000" add="1" reward="234567"/>
+	<ItemSpec id="2204402" accept1="1" accept2="425010" pre="2204401" type1="1" type2="2" para1="107203" para2="2500" add="1" reward="234568"/>
+	<ItemSpec id="2204403" accept1="1" accept2="425010" pre="2204402" type1="1" type2="2" para1="107203" para2="3000" add="1" reward="234569"/>
+	<ItemSpec id="2204501" accept1="1" accept2="425013" type1="1" type2="2" para1="107204" para2="2000" add="1" reward="234570"/>
+	<ItemSpec id="2204502" accept1="1" accept2="425013" pre="2204501" type1="1" type2="2" para1="107204" para2="3000" add="1" reward="234571"/>
+	<ItemSpec id="2204503" accept1="1" accept2="425013" pre="2204502" type1="1" type2="2" para1="107204" para2="4000" add="1" reward="234572"/>
+	<ItemSpec id="2204601" accept1="1" accept2="425016" type1="1" type2="2" para1="107205" para2="5000" add="1" reward="234573"/>
+	<ItemSpec id="2204602" accept1="1" accept2="425016" pre="2204601" type1="1" type2="2" para1="107205" para2="7000" add="1" reward="234574"/>
+	<ItemSpec id="2204603" accept1="1" accept2="425016" pre="2204602" type1="1" type2="2" para1="107205" para2="9000" add="1" reward="234575"/>
+	<ItemSpec id="2204701" accept1="1" accept2="425019" type1="1" type2="2" para1="107206" para2="10000" add="1" reward="234576"/>
+	<ItemSpec id="2204702" accept1="1" accept2="425019" pre="2204701" type1="1" type2="2" para1="107206" para2="15000" add="1" reward="234577"/>
+	<ItemSpec id="2204703" accept1="1" accept2="425019" pre="2204702" type1="1" type2="2" para1="107206" para2="25000" add="1" reward="234578"/>
+	<ItemSpec id="2204801" accept1="1" accept2="425022" type1="1" type2="2" para1="107207" para2="33000" add="1" reward="234579"/>
+	<ItemSpec id="2204802" accept1="1" accept2="425022" pre="2204801" type1="1" type2="2" para1="107207" para2="43150" add="1" reward="234580"/>
+	<ItemSpec id="2204803" accept1="1" accept2="425022" pre="2204802" type1="1" type2="2" para1="107207" para2="43000" add="1" reward="234581"/>
+	<ItemSpec id="2204901" accept1="1" accept2="425026" type1="1" type2="2" para1="107208" para2="53000" add="1" reward="234582"/>
+	<ItemSpec id="2204902" accept1="1" accept2="425026" pre="2204901" type1="1" type2="2" para1="107208" para2="53150" add="1" reward="234583"/>
+	<ItemSpec id="2204903" accept1="1" accept2="425026" pre="2204902" type1="1" type2="2" para1="107208" para2="53000" add="1" reward="234584"/>
+	<ItemSpec id="2205001" accept1="1" accept2="425030" type1="1" type2="2" para1="107209" para2="70000" add="1" reward="234585"/>
+	<ItemSpec id="2205002" accept1="1" accept2="425030" pre="2205001" type1="1" type2="2" para1="107209" para2="70150" add="1" reward="234586"/>
+	<ItemSpec id="2205003" accept1="1" accept2="425030" pre="2205002" type1="1" type2="2" para1="107209" para2="70000" add="1" reward="234587"/>
+	<ItemSpec id="2205101" accept1="1" accept2="426001" type1="1" type2="2" para1="107300" para2="30" add="1" reward="234588"/>
+	<ItemSpec id="2205102" accept1="1" accept2="426001" pre="2205101" type1="1" type2="2" para1="107300" para2="50" add="1" reward="234589"/>
+	<ItemSpec id="2205103" accept1="1" accept2="426001" pre="2205102" type1="1" type2="2" para1="107300" para2="100" add="1" reward="234590"/>
+	<ItemSpec id="2205201" accept1="1" accept2="426004" type1="1" type2="2" para1="107301" para2="100" add="1" reward="234591"/>
+	<ItemSpec id="2205202" accept1="1" accept2="426004" pre="2205201" type1="1" type2="2" para1="107301" para2="150" add="1" reward="234592"/>
+	<ItemSpec id="2205203" accept1="1" accept2="426004" pre="2205202" type1="1" type2="2" para1="107301" para2="250" add="1" reward="234593"/>
+	<ItemSpec id="2205301" accept1="1" accept2="426007" type1="1" type2="2" para1="107302" para2="500" add="1" reward="234594"/>
+	<ItemSpec id="2205302" accept1="1" accept2="426007" pre="2205301" type1="1" type2="2" para1="107302" para2="800" add="1" reward="234595"/>
+	<ItemSpec id="2205303" accept1="1" accept2="426007" pre="2205302" type1="1" type2="2" para1="107302" para2="1000" add="1" reward="234596"/>
+	<ItemSpec id="2205401" accept1="1" accept2="426010" type1="1" type2="2" para1="107303" para2="2000" add="1" reward="234597"/>
+	<ItemSpec id="2205402" accept1="1" accept2="426010" pre="2205401" type1="1" type2="2" para1="107303" para2="2500" add="1" reward="234598"/>
+	<ItemSpec id="2205403" accept1="1" accept2="426010" pre="2205402" type1="1" type2="2" para1="107303" para2="3000" add="1" reward="234599"/>
+	<ItemSpec id="2205501" accept1="1" accept2="426013" type1="1" type2="2" para1="107304" para2="2000" add="1" reward="234600"/>
+	<ItemSpec id="2205502" accept1="1" accept2="426013" pre="2205501" type1="1" type2="2" para1="107304" para2="3000" add="1" reward="234601"/>
+	<ItemSpec id="2205503" accept1="1" accept2="426013" pre="2205502" type1="1" type2="2" para1="107304" para2="4000" add="1" reward="234602"/>
+	<ItemSpec id="2205601" accept1="1" accept2="426016" type1="1" type2="2" para1="107305" para2="5000" add="1" reward="234603"/>
+	<ItemSpec id="2205602" accept1="1" accept2="426016" pre="2205601" type1="1" type2="2" para1="107305" para2="7000" add="1" reward="234604"/>
+	<ItemSpec id="2205603" accept1="1" accept2="426016" pre="2205602" type1="1" type2="2" para1="107305" para2="9000" add="1" reward="234605"/>
+	<ItemSpec id="2205701" accept1="1" accept2="426019" type1="1" type2="2" para1="107306" para2="10000" add="1" reward="234606"/>
+	<ItemSpec id="2205702" accept1="1" accept2="426019" pre="2205701" type1="1" type2="2" para1="107306" para2="15000" add="1" reward="234607"/>
+	<ItemSpec id="2205703" accept1="1" accept2="426019" pre="2205702" type1="1" type2="2" para1="107306" para2="25000" add="1" reward="234608"/>
+	<ItemSpec id="2205801" accept1="1" accept2="426022" type1="1" type2="2" para1="107307" para2="33000" add="1" reward="234609"/>
+	<ItemSpec id="2205802" accept1="1" accept2="426022" pre="2205801" type1="1" type2="2" para1="107307" para2="43150" add="1" reward="234610"/>
+	<ItemSpec id="2205803" accept1="1" accept2="426022" pre="2205802" type1="1" type2="2" para1="107307" para2="43000" add="1" reward="234611"/>
+	<ItemSpec id="2205901" accept1="1" accept2="426026" type1="1" type2="2" para1="107308" para2="53000" add="1" reward="234612"/>
+	<ItemSpec id="2205902" accept1="1" accept2="426026" pre="2205901" type1="1" type2="2" para1="107308" para2="53150" add="1" reward="234613"/>
+	<ItemSpec id="2205903" accept1="1" accept2="426026" pre="2205902" type1="1" type2="2" para1="107308" para2="53000" add="1" reward="234614"/>
+	<ItemSpec id="2206001" accept1="1" accept2="426030" type1="1" type2="2" para1="107309" para2="70000" add="1" reward="234615"/>
+	<ItemSpec id="2206002" accept1="1" accept2="426030" pre="2206001" type1="1" type2="2" para1="107309" para2="70150" add="1" reward="234616"/>
+	<ItemSpec id="2206003" accept1="1" accept2="426030" pre="2206002" type1="1" type2="2" para1="107309" para2="70000" add="1" reward="234617"/>
+	<ItemSpec id="2206101" accept1="1" accept2="416001" type1="1" type2="22" para2="50" add="1" reward="234618"/>
+	<ItemSpec id="2206102" accept1="1" accept2="416001" pre="2206101" type1="1" type2="22" para2="500" add="1" reward="234619"/>
+	<ItemSpec id="2206103" accept1="1" accept2="416001" pre="2206102" type1="1" type2="22" para2="3000" add="1" reward="234620"/>
+	<ItemSpec id="2206104" accept1="1" accept2="416001" pre="2206103" type1="1" type2="22" para2="10000" add="1" reward="234621"/>
+	<ItemSpec id="2206105" accept1="1" accept2="416001" pre="2206104" type1="1" type2="22" para2="50000" add="1" reward="234622"/>
+	<ItemSpec id="2206106" accept1="1" accept2="416001" pre="2206105" type1="1" type2="22" para2="50000" add="1" reward="234623"/>
+	<ItemSpec id="2206107" accept1="1" accept2="416001" pre="2206106" type1="1" type2="22" para2="50000" add="1" reward="234624"/>
+	<ItemSpec id="2206108" accept1="1" accept2="416001" pre="2206107" type1="1" type2="22" para2="50000" add="1" reward="234625"/>
+	<ItemSpec id="2206601" accept1="1" accept2="400006" type1="1" type2="17" para2="1" add="1" reward="234626"/>
+	<ItemSpec id="2206602" accept1="1" accept2="400006" pre="2206601" type1="1" type2="17" para2="10" add="1" reward="234627"/>
+	<ItemSpec id="2206603" accept1="1" accept2="400006" pre="2206602" type1="1" type2="17" para2="20" add="1" reward="234628"/>
+	<ItemSpec id="2206604" accept1="1" accept2="400006" pre="2206603" type1="1" type2="17" para2="30" add="1" reward="234629"/>
+	<ItemSpec id="2206605" accept1="1" accept2="400006" pre="2206604" type1="1" type2="17" para2="40" add="1" reward="234630"/>
+	<ItemSpec id="2206606" accept1="1" accept2="400006" pre="2206605" type1="1" type2="17" para2="50" add="1" reward="234631"/>
+	<ItemSpec id="2206607" accept1="1" accept2="400006" pre="2206606" type1="1" type2="17" para2="50" add="1" reward="234632"/>
+	<ItemSpec id="2206608" accept1="1" accept2="400006" pre="2206607" type1="1" type2="17" para2="50" add="1" reward="234633"/>
+	<ItemSpec id="2206609" accept1="1" accept2="400006" pre="2206608" type1="1" type2="17" para2="50" add="1" reward="234634"/>
+	<ItemSpec id="2206610" accept1="1" accept2="400006" pre="2206609" type1="1" type2="17" para2="50" add="1" reward="234635"/>
+	<ItemSpec id="2206701" accept1="1" accept2="400004" type1="1" type2="16" para2="1" add="1" reward="234636"/>
+	<ItemSpec id="2206702" accept1="1" accept2="400004" pre="2206701" type1="1" type2="16" para2="3" add="1" reward="234637"/>
+	<ItemSpec id="2206703" accept1="1" accept2="400004" pre="2206702" type1="1" type2="16" para2="6" add="1" reward="234638"/>
+	<ItemSpec id="2206704" accept1="1" accept2="400004" pre="2206703" type1="1" type2="16" para2="12" add="1" reward="234639"/>
+	<ItemSpec id="2206705" accept1="1" accept2="400004" pre="2206704" type1="1" type2="16" para2="35" add="1" reward="234640"/>
+	<ItemSpec id="2206706" accept1="1" accept2="400004" pre="2206705" type1="1" type2="16" para2="50" add="1" reward="234641"/>
+	<ItemSpec id="2206707" accept1="1" accept2="400004" pre="2206706" type1="1" type2="16" para2="50" add="1" reward="234642"/>
+	<ItemSpec id="2206708" accept1="1" accept2="400004" pre="2206707" type1="1" type2="16" para2="50" add="1" reward="234643"/>
+	<ItemSpec id="2206709" accept1="1" accept2="400004" pre="2206708" type1="1" type2="16" para2="50" add="1" reward="234644"/>
+	<ItemSpec id="2206710" accept1="1" accept2="400004" pre="2206709" type1="1" type2="16" para2="50" add="1" reward="234645"/>
+	<ItemSpec id="2206801" accept1="1" accept2="400001" type1="1" type2="25" para2="1" add="1" reward="234646"/>
+	<ItemSpec id="2206802" accept1="1" accept2="400001" pre="2102501" type1="1" type2="25" para2="2" add="1" reward="234647"/>
+	<ItemSpec id="2206803" accept1="1" accept2="400003" pre="2206802" type1="1" type2="25" para2="3" add="1" reward="234648"/>
+	<ItemSpec id="2206804" accept1="1" accept2="400004" pre="2206803" type1="1" type2="25" para2="4" add="1" reward="234649"/>
+	<ItemSpec id="2206805" accept1="1" accept2="400005" pre="2206804" type1="1" type2="25" para2="5" add="1" reward="234650"/>
+	<ItemSpec id="2206806" accept1="1" accept2="400006" pre="2206805" type1="1" type2="25" para2="6" add="1" reward="234651"/>
+	<ItemSpec id="2206807" accept1="1" accept2="400007" pre="2206806" type1="1" type2="25" para2="7" add="1" reward="234652"/>
+	<ItemSpec id="2206808" accept1="1" accept2="400008" pre="2206807" type1="1" type2="25" para2="8" add="1" reward="234653"/>
+	<ItemSpec id="2206809" accept1="1" accept2="400009" pre="2206808" type1="1" type2="25" para2="9" add="1" reward="234654"/>
+	<ItemSpec id="2206810" accept1="1" accept2="400010" pre="2206809" type1="1" type2="25" para2="10" add="1" reward="234655"/>
+	<ItemSpec id="2206811" accept1="1" accept2="400011" pre="2206810" type1="1" type2="25" para2="11" add="1" reward="234656"/>
+	<ItemSpec id="2206812" accept1="1" accept2="400012" pre="2206811" type1="1" type2="25" para2="12" add="1" reward="234657"/>
+	<ItemSpec id="2206813" accept1="1" accept2="400013" pre="2206812" type1="1" type2="25" para2="13" add="1" reward="234658"/>
+	<ItemSpec id="2206814" accept1="1" accept2="400014" pre="2206813" type1="1" type2="25" para2="14" add="1" reward="234659"/>
+	<ItemSpec id="2206815" accept1="1" accept2="400015" pre="2206814" type1="1" type2="25" para2="15" add="1" reward="234660"/>
+	<ItemSpec id="2206821" accept1="1" accept2="400002" accept3="400004" type1="1" type2="28" para1="1" para2="1" add="1" reward="234661"/>
+	<ItemSpec id="2206822" accept1="1" accept2="400002" accept3="400005" type1="1" type2="28" para1="2" para2="1" add="1" reward="234661"/>
+	<ItemSpec id="2206823" accept1="1" accept2="400002" accept3="400006" type1="1" type2="28" para1="3" para2="1" add="1" reward="234663"/>
+	<ItemSpec id="2206824" accept1="1" accept2="400002" accept3="400009" type1="1" type2="28" para1="4" para2="1" add="1" reward="234646"/>
+	<ItemSpec id="2206825" accept1="1" accept2="400002" accept3="4000010" type1="1" type2="28" para1="5" para2="1" add="1" reward="234649"/>
+	<ItemSpec id="2206901" accept1="1" accept2="400001" type1="1" type2="28" para1="1" para2="3" add="1" reward="234661"/>
+	<ItemSpec id="2207001" accept1="1" accept2="400002" type1="1" type2="28" para1="2" para2="3" add="1" reward="234662"/>
+	<ItemSpec id="2207101" accept1="1" accept2="400003" type1="1" type2="28" para1="3" para2="3" add="1" reward="234663"/>
+	<ItemSpec id="2207102" accept1="1" accept2="400004" type1="1" type2="28" para1="4" para2="3" add="1" reward="234833"/>
+	<ItemSpec id="2207103" accept1="1" accept2="400005" type1="1" type2="28" para1="5" para2="3" add="1" reward="234834"/>
+	<ItemSpec id="2207104" accept1="1" accept2="400006" type1="1" type2="28" para1="6" para2="3" add="1" reward="234835"/>
+	<ItemSpec id="2207105" accept1="1" accept2="400007" type1="1" type2="28" para1="7" para2="3" add="1" reward="234836"/>
+	<ItemSpec id="2207106" accept1="1" accept2="400008" type1="1" type2="28" para1="8" para2="3" add="1" reward="234837"/>
+	<ItemSpec id="2207107" accept1="1" accept2="400009" type1="1" type2="28" para1="9" para2="3" add="1" reward="234838"/>
+	<ItemSpec id="2207108" accept1="1" accept2="400010" type1="1" type2="28" para1="10" para2="3" add="1" reward="234839"/>
+	<ItemSpec id="2207109" accept1="1" accept2="400011" type1="1" type2="28" para1="11" para2="3" add="1" reward="234840"/>
+	<ItemSpec id="2207110" accept1="1" accept2="400012" type1="1" type2="28" para1="12" para2="3" add="1" reward="234841"/>
+	<ItemSpec id="2207111" accept1="1" accept2="400013" type1="1" type2="28" para1="13" para2="3" add="1" reward="234842"/>
+	<ItemSpec id="2207112" accept1="1" accept2="400014" type1="1" type2="28" para1="14" para2="3" add="1" reward="234843"/>
+	<ItemSpec id="2207113" accept1="1" accept2="400015" type1="1" type2="28" para1="15" para2="3" add="1" reward="234844"/>
+	<ItemSpec id="2207114" accept1="1" accept2="400016" type1="1" type2="28" para1="16" para2="3" add="1" reward="234845"/>
+	<ItemSpec id="2207115" accept1="1" accept2="400017" type1="1" type2="28" para1="17" para2="3" add="1" reward="234846"/>
+	<ItemSpec id="2207116" accept1="1" accept2="400018" type1="1" type2="28" para1="18" para2="3" add="1" reward="234847"/>
+	<ItemSpec id="2207117" accept1="1" accept2="400019" type1="1" type2="28" para1="19" para2="3" add="1" reward="234848"/>
+	<ItemSpec id="2207118" accept1="1" accept2="400020" type1="1" type2="28" para1="20" para2="3" add="1" reward="234849"/>
+	<ItemSpec id="2207119" accept1="1" accept2="400021" type1="1" type2="28" para1="21" para2="3" add="1" reward="234850"/>
+	<ItemSpec id="2207120" accept1="1" accept2="400022" type1="1" type2="28" para1="22" para2="3" add="1" reward="234851"/>
+	<ItemSpec id="2207121" accept1="1" accept2="400023" type1="1" type2="28" para1="23" para2="3" add="1" reward="234852"/>
+	<ItemSpec id="2207122" accept1="1" accept2="400024" type1="1" type2="28" para1="24" para2="3" add="1" reward="234853"/>
+	<ItemSpec id="2207123" accept1="1" accept2="400025" type1="1" type2="28" para1="25" para2="3" add="1" reward="234854"/>
+	<ItemSpec id="2207124" accept1="1" accept2="400026" type1="1" type2="28" para1="26" para2="3" add="1" reward="234855"/>
+	<ItemSpec id="2207125" accept1="1" accept2="400027" type1="1" type2="28" para1="27" para2="3" add="1" reward="234856"/>
+	<ItemSpec id="2207126" accept1="1" accept2="400028" type1="1" type2="28" para1="28" para2="3" add="1" reward="234857"/>
+	<ItemSpec id="2207127" accept1="1" accept2="400029" type1="1" type2="28" para1="29" para2="3" add="1" reward="234858"/>
+	<ItemSpec id="2207128" accept1="1" accept2="400030" type1="1" type2="28" para1="30" para2="3" add="1" reward="234859"/>
+	<ItemSpec id="2207201" accept1="1" accept2="400001" accept3="400007" type1="1" type2="26" para2="3" add="1" reward="241033"/>
+	<ItemSpec id="2207202" accept1="1" accept2="400001" accept3="400007" type1="1" type2="26" para2="4" add="1" reward="241034"/>
+	<ItemSpec id="2207301" accept1="1" accept2="400001" accept3="400008" type1="1" type2="26" para2="5" add="1" reward="241035"/>
+	<ItemSpec id="2207302" accept1="1" accept2="400001" accept3="400008" type1="1" type2="26" para2="6" add="1" reward="241036"/>
+	<ItemSpec id="2207401" accept1="1" accept2="400001" accept3="400009" type1="1" type2="26" para2="7" add="1" reward="241037"/>
+	<ItemSpec id="2207402" accept1="1" accept2="400001" accept3="400010" type1="1" type2="26" para2="8" add="1" reward="241038"/>
+	<ItemSpec id="2207403" accept1="1" accept2="400001" accept3="400011" type1="1" type2="26" para2="9" add="1" reward="241039"/>
+	<ItemSpec id="2207404" accept1="1" accept2="400001" accept3="400012" type1="1" type2="26" para2="10" add="1" reward="241040"/>
+	<ItemSpec id="2207405" accept1="1" accept2="400001" accept3="400013" type1="1" type2="26" para2="11" add="1" reward="241041"/>
+	<ItemSpec id="2207406" accept1="1" accept2="400001" accept3="400014" type1="1" type2="26" para2="12" add="1" reward="241042"/>
+	<ItemSpec id="2207407" accept1="1" accept2="400001" accept3="400015" type1="1" type2="26" para2="13" add="1" reward="241043"/>
+	<ItemSpec id="2207408" accept1="1" accept2="400001" accept3="400016" type1="1" type2="26" para2="14" add="1" reward="241044"/>
+	<ItemSpec id="2207409" accept1="1" accept2="400001" accept3="400017" type1="1" type2="26" para2="15" add="1" reward="241045"/>
+	<ItemSpec id="2207410" accept1="1" accept2="400001" accept3="400018" type1="1" type2="26" para2="16" add="1" reward="241046"/>
+	<ItemSpec id="2207411" accept1="1" accept2="400001" accept3="400019" type1="1" type2="26" para2="17" add="1" reward="241047"/>
+	<ItemSpec id="2207412" accept1="1" accept2="400001" accept3="400020" type1="1" type2="26" para2="18" add="1" reward="241048"/>
+	<ItemSpec id="2207413" accept1="1" accept2="400001" accept3="400021" type1="1" type2="26" para2="19" add="1" reward="241049"/>
+	<ItemSpec id="2207414" accept1="1" accept2="400001" accept3="400022" type1="1" type2="26" para2="20" add="1" reward="241050"/>
+	<ItemSpec id="2207415" accept1="1" accept2="400001" accept3="400023" type1="1" type2="26" para2="21" add="1" reward="241051"/>
+	<ItemSpec id="2207416" accept1="1" accept2="400001" accept3="400024" type1="1" type2="26" para2="22" add="1" reward="241052"/>
+	<ItemSpec id="2207417" accept1="1" accept2="400001" accept3="400025" type1="1" type2="26" para2="23" add="1" reward="241053"/>
+	<ItemSpec id="2207418" accept1="1" accept2="400001" accept3="400026" type1="1" type2="26" para2="24" add="1" reward="241054"/>
+	<ItemSpec id="2207419" accept1="1" accept2="400001" accept3="400027" type1="1" type2="26" para2="25" add="1" reward="241055"/>
+	<ItemSpec id="2207420" accept1="1" accept2="400001" accept3="400028" type1="1" type2="26" para2="26" add="1" reward="241056"/>
+	<ItemSpec id="2207421" accept1="1" accept2="400001" accept3="400029" type1="1" type2="26" para2="27" add="1" reward="241057"/>
+	<ItemSpec id="2207422" accept1="1" accept2="400001" accept3="400030" type1="1" type2="26" para2="28" add="1" reward="241058"/>
+	<ItemSpec id="2207423" accept1="1" accept2="400001" accept3="400030" type1="1" type2="26" para2="29" add="1" reward="241059"/>
+	<ItemSpec id="2207424" accept1="1" accept2="400001" accept3="400030" type1="1" type2="26" para2="30" add="1" reward="241060"/>
+	<ItemSpec id="2300102" accept1="1" accept2="400000" default="1" type1="1" type2="0" para1="400000" para2="2" reward="234666"/>
+	<ItemSpec id="2300103" accept1="1" accept2="400000" pre="2300102" type1="1" type2="0" para1="400000" para2="3" reward="234667"/>
+	<ItemSpec id="2300104" accept1="1" accept2="400000" pre="2300103" type1="1" type2="0" para1="400000" para2="4" reward="234668"/>
+	<ItemSpec id="2300105" accept1="1" accept2="400000" pre="2300104" type1="1" type2="0" para1="400000" para2="5" reward="234669"/>
+	<ItemSpec id="2300106" accept1="1" accept2="400000" pre="2300105" type1="1" type2="0" para1="400000" para2="6" reward="234670"/>
+	<ItemSpec id="2300107" accept1="1" accept2="400000" pre="2300106" type1="1" type2="0" para1="400000" para2="7" reward="234671"/>
+	<ItemSpec id="2300108" accept1="1" accept2="400000" pre="2300107" type1="1" type2="0" para1="400000" para2="8" reward="234672"/>
+	<ItemSpec id="2300109" accept1="1" accept2="400000" pre="2300108" type1="1" type2="0" para1="400000" para2="9" reward="234673"/>
+	<ItemSpec id="2300110" accept1="1" accept2="400000" pre="2300109" type1="1" type2="0" para1="400000" para2="10" reward="234674"/>
+	<ItemSpec id="2300111" accept1="1" accept2="400000" pre="2300110" type1="1" type2="0" para1="400000" para2="11" reward="234675"/>
+	<ItemSpec id="2300112" accept1="1" accept2="400000" pre="2300111" type1="1" type2="0" para1="400000" para2="12" reward="234676"/>
+	<ItemSpec id="2300113" accept1="1" accept2="400000" pre="2300112" type1="1" type2="0" para1="400000" para2="13" reward="234677"/>
+	<ItemSpec id="2300114" accept1="1" accept2="400000" pre="2300113" type1="1" type2="0" para1="400000" para2="14" reward="234678"/>
+	<ItemSpec id="2300115" accept1="1" accept2="400000" pre="2300114" type1="1" type2="0" para1="400000" para2="15" reward="234679"/>
+	<ItemSpec id="2300116" accept1="1" accept2="400000" pre="2300115" type1="1" type2="0" para1="400000" para2="16" reward="234680"/>
+	<ItemSpec id="2300117" accept1="1" accept2="400000" pre="2300116" type1="1" type2="0" para1="400000" para2="17" reward="234681"/>
+	<ItemSpec id="2300118" accept1="1" accept2="400000" pre="2300117" type1="1" type2="0" para1="400000" para2="18" reward="234682"/>
+	<ItemSpec id="2300119" accept1="1" accept2="400000" pre="2300118" type1="1" type2="0" para1="400000" para2="19" reward="234683"/>
+	<ItemSpec id="2300120" accept1="1" accept2="400000" pre="2300119" type1="1" type2="0" para1="400000" para2="20" reward="234684"/>
+	<ItemSpec id="2300121" accept1="1" accept2="400000" pre="2300120" type1="1" type2="0" para1="400000" para2="21" reward="234685"/>
+	<ItemSpec id="2300122" accept1="1" accept2="400000" pre="2300121" type1="1" type2="0" para1="400000" para2="22" reward="234686"/>
+	<ItemSpec id="2300123" accept1="1" accept2="400000" pre="2300122" type1="1" type2="0" para1="400000" para2="23" reward="234687"/>
+	<ItemSpec id="2300124" accept1="1" accept2="400000" pre="2300123" type1="1" type2="0" para1="400000" para2="24" reward="234688"/>
+	<ItemSpec id="2300125" accept1="1" accept2="400000" pre="2300124" type1="1" type2="0" para1="400000" para2="25" reward="234689"/>
+	<ItemSpec id="2300126" accept1="1" accept2="400000" pre="2300125" type1="1" type2="0" para1="400000" para2="26" reward="234690"/>
+	<ItemSpec id="2300127" accept1="1" accept2="400000" pre="2300126" type1="1" type2="0" para1="400000" para2="27" reward="234691"/>
+	<ItemSpec id="2300128" accept1="1" accept2="400000" pre="2300127" type1="1" type2="0" para1="400000" para2="28" reward="234692"/>
+	<ItemSpec id="2300129" accept1="1" accept2="400000" pre="2300128" type1="1" type2="0" para1="400000" para2="29" reward="234693"/>
+	<ItemSpec id="2300130" accept1="1" accept2="400000" pre="2300129" type1="1" type2="0" para1="400000" para2="30" reward="234694"/>
+	<ItemSpec id="2300201" accept1="1" accept2="400006" type1="1" type2="0" para1="402000" para2="1" reward="234695"/>
+	<ItemSpec id="2300202" accept1="1" accept2="400006" pre="2300201" type1="1" type2="0" para1="402000" para2="2" reward="234696"/>
+	<ItemSpec id="2300203" accept1="1" accept2="400006" pre="2300202" type1="1" type2="0" para1="402000" para2="3" reward="234697"/>
+	<ItemSpec id="2300204" accept1="1" accept2="400006" pre="2300203" type1="1" type2="0" para1="402000" para2="4" reward="234698"/>
+	<ItemSpec id="2300205" accept1="1" accept2="400006" pre="2300204" type1="1" type2="0" para1="402000" para2="5" reward="234699"/>
+	<ItemSpec id="2300206" accept1="1" accept2="400006" pre="2300205" type1="1" type2="0" para1="402000" para2="6" reward="234700"/>
+	<ItemSpec id="2300207" accept1="1" accept2="400006" pre="2300206" type1="1" type2="0" para1="402000" para2="7" reward="234701"/>
+	<ItemSpec id="2300208" accept1="1" accept2="400006" pre="2300207" type1="1" type2="0" para1="402000" para2="8" reward="234702"/>
+	<ItemSpec id="2300209" accept1="1" accept2="400006" pre="2300208" type1="1" type2="0" para1="402000" para2="9" reward="234703"/>
+	<ItemSpec id="2300210" accept1="1" accept2="400006" pre="2300209" type1="1" type2="0" para1="402000" para2="10" reward="234704"/>
+	<ItemSpec id="2300211" accept1="1" accept2="400006" pre="2300210" type1="1" type2="0" para1="402000" para2="11" reward="234705"/>
+	<ItemSpec id="2300212" accept1="1" accept2="400006" pre="2300211" type1="1" type2="0" para1="402000" para2="12" reward="234706"/>
+	<ItemSpec id="2300213" accept1="1" accept2="400006" pre="2300212" type1="1" type2="0" para1="402000" para2="13" reward="234707"/>
+	<ItemSpec id="2300214" accept1="1" accept2="400006" pre="2300213" type1="1" type2="0" para1="402000" para2="14" reward="234708"/>
+	<ItemSpec id="2300215" accept1="1" accept2="400006" pre="2300214" type1="1" type2="0" para1="402000" para2="15" reward="234709"/>
+	<ItemSpec id="2300216" accept1="1" accept2="400006" pre="2300215" type1="1" type2="0" para1="402000" para2="16" reward="234710"/>
+	<ItemSpec id="2300217" accept1="1" accept2="400006" pre="2300216" type1="1" type2="0" para1="402000" para2="17" reward="234711"/>
+	<ItemSpec id="2300218" accept1="1" accept2="400006" pre="2300217" type1="1" type2="0" para1="402000" para2="18" reward="234712"/>
+	<ItemSpec id="2300219" accept1="1" accept2="400006" pre="2300218" type1="1" type2="0" para1="402000" para2="19" reward="234713"/>
+	<ItemSpec id="2300220" accept1="1" accept2="400006" pre="2300219" type1="1" type2="0" para1="402000" para2="20" reward="234714"/>
+	<ItemSpec id="2300221" accept1="1" accept2="400006" pre="2300220" type1="1" type2="0" para1="402000" para2="21" reward="234715"/>
+	<ItemSpec id="2300222" accept1="1" accept2="400006" pre="2300221" type1="1" type2="0" para1="402000" para2="22" reward="234716"/>
+	<ItemSpec id="2300223" accept1="1" accept2="400006" pre="2300222" type1="1" type2="0" para1="402000" para2="23" reward="234717"/>
+	<ItemSpec id="2300224" accept1="1" accept2="400006" pre="2300223" type1="1" type2="0" para1="402000" para2="24" reward="234718"/>
+	<ItemSpec id="2300225" accept1="1" accept2="400006" pre="2300224" type1="1" type2="0" para1="402000" para2="25" reward="234719"/>
+	<ItemSpec id="2300226" accept1="1" accept2="400006" pre="2300225" type1="1" type2="0" para1="402000" para2="26" reward="234720"/>
+	<ItemSpec id="2300227" accept1="1" accept2="400006" pre="2300226" type1="1" type2="0" para1="402000" para2="27" reward="234721"/>
+	<ItemSpec id="2300228" accept1="1" accept2="400006" pre="2300227" type1="1" type2="0" para1="402000" para2="28" reward="234722"/>
+	<ItemSpec id="2300229" accept1="1" accept2="400006" pre="2300228" type1="1" type2="0" para1="402000" para2="29" reward="234723"/>
+	<ItemSpec id="2300230" accept1="1" accept2="400006" pre="2300229" type1="1" type2="0" para1="402000" para2="30" reward="234724"/>
+	<ItemSpec id="2300401" accept1="1" accept2="400005" type1="1" type2="0" para1="429000" para2="1" reward="234695"/>
+	<ItemSpec id="2302101" accept1="1" accept2="400003" type1="1" type2="5" para2="5" reward="234755"/>
+	<ItemSpec id="2302102" accept1="1" accept2="400006" pre="2302101" type1="1" type2="5" para2="10" reward="234756"/>
+	<ItemSpec id="2302103" accept1="1" accept2="400009" pre="2302102" type1="1" type2="5" para2="15" reward="234757"/>
+	<ItemSpec id="2302104" accept1="1" accept2="400012" pre="2302103" type1="1" type2="5" para2="20" reward="234758"/>
+	<ItemSpec id="2302105" accept1="1" accept2="400015" pre="2302104" type1="1" type2="5" para2="25" reward="234759"/>
+	<ItemSpec id="2302106" accept1="1" accept2="400018" pre="2302105" type1="1" type2="5" para2="30" reward="234760"/>
+	<ItemSpec id="2302107" accept1="1" accept2="400021" pre="2302106" type1="1" type2="5" para2="35" reward="234761"/>
+	<ItemSpec id="2302108" accept1="1" accept2="400024" pre="2302107" type1="1" type2="5" para2="40" reward="234762"/>
+	<ItemSpec id="2302109" accept1="1" accept2="400027" pre="2302108" type1="1" type2="5" para2="45" reward="234763"/>
+	<ItemSpec id="2302110" accept1="1" accept2="400030" pre="2302109" type1="1" type2="5" para2="50" reward="234764"/>
+	<ItemSpec id="2302201" accept1="1" accept2="400002" type1="1" type2="4" para2="10" reward="234765"/>
+	<ItemSpec id="2302202" accept1="1" accept2="400002" pre="2302201" type1="1" type2="4" para2="20" reward="234766"/>
+	<ItemSpec id="2302203" accept1="1" accept2="400002" pre="2302202" type1="1" type2="4" para2="50" reward="234767"/>
+	<ItemSpec id="2302204" accept1="1" accept2="400002" pre="2302203" type1="1" type2="4" para2="100" reward="234768"/>
+	<ItemSpec id="2302205" accept1="1" accept2="400002" pre="2302204" type1="1" type2="4" para2="150" reward="234769"/>
+	<ItemSpec id="2302206" accept1="1" accept2="400002" pre="2302205" type1="1" type2="4" para2="200" reward="234770"/>
+	<ItemSpec id="2302207" accept1="1" accept2="400002" pre="2302206" type1="1" type2="4" para2="250" reward="234771"/>
+	<ItemSpec id="2302208" accept1="1" accept2="400002" pre="2302207" type1="1" type2="4" para2="300" reward="234772"/>
+	<ItemSpec id="2302209" accept1="1" accept2="400002" pre="2302208" type1="1" type2="4" para2="350" reward="234773"/>
+	<ItemSpec id="2302210" accept1="1" accept2="400002" pre="2302209" type1="1" type2="4" para2="400" reward="234774"/>
+	<ItemSpec id="2302211" accept1="1" accept2="400002" pre="2302210" type1="1" type2="4" para2="450" reward="234775"/>
+	<ItemSpec id="2302212" accept1="1" accept2="400002" pre="2302211" type1="1" type2="4" para2="500" reward="234776"/>
+	<ItemSpec id="2302301" accept1="1" accept2="400004" type1="1" type2="13" para2="900" add="1" reward="234777"/>
+	<ItemSpec id="2302302" accept1="1" accept2="400004" type1="1" type2="13" para2="3600" add="1" reward="234778"/>
+	<ItemSpec id="2302303" accept1="1" accept2="400004" type1="1" type2="13" para2="14400" add="1" reward="234779"/>
+	<ItemSpec id="2302304" accept1="1" accept2="400004" type1="1" type2="13" para2="28800" add="1" reward="234780"/>
+	<ItemSpec id="2302305" accept1="1" accept2="400004" type1="1" type2="13" para2="43200" add="1" reward="234781"/>
+	<ItemSpec id="2302306" accept1="1" accept2="400004" type1="1" type2="13" para2="57600" add="1" reward="234782"/>
+	<ItemSpec id="2302307" accept1="1" accept2="400004" type1="1" type2="13" para2="72000" add="1" reward="234783"/>
+	<ItemSpec id="2302308" accept1="1" accept2="400004" type1="1" type2="13" para2="86400" add="1" reward="234784"/>
+	<ItemSpec id="2302309" accept1="1" accept2="400004" type1="1" type2="13" para2="100800" add="1" reward="234785"/>
+	<ItemSpec id="2400101" accept1="1" accept2="400003" type1="1" type2="0" para1="403000" para2="1" reward="234786"/>
+	<ItemSpec id="2400102" accept1="1" accept2="400002" pre="2402101" type1="1" type2="0" para1="403000" para2="2" reward="234787"/>
+	<ItemSpec id="2400103" accept1="1" accept2="400002" pre="2400102" type1="1" type2="0" para1="403000" para2="3" reward="234788"/>
+	<ItemSpec id="2400104" accept1="1" accept2="400002" pre="2400103" type1="1" type2="0" para1="403000" para2="4" reward="234789"/>
+	<ItemSpec id="2400105" accept1="1" accept2="400002" pre="2400104" type1="1" type2="0" para1="403000" para2="5" reward="234790"/>
+	<ItemSpec id="2400106" accept1="1" accept2="400002" pre="2400105" type1="1" type2="0" para1="403000" para2="6" reward="234791"/>
+	<ItemSpec id="2400107" accept1="1" accept2="400002" pre="2400106" type1="1" type2="0" para1="403000" para2="7" reward="234792"/>
+	<ItemSpec id="2400108" accept1="1" accept2="400002" pre="2400107" type1="1" type2="0" para1="403000" para2="8" reward="234793"/>
+	<ItemSpec id="2400109" accept1="1" accept2="400002" pre="2400108" type1="1" type2="0" para1="403000" para2="9" reward="234794"/>
+	<ItemSpec id="2400110" accept1="1" accept2="400002" pre="2400109" type1="1" type2="0" para1="403000" para2="10" reward="234795"/>
+	<ItemSpec id="2400111" accept1="1" accept2="400002" pre="2400110" type1="1" type2="0" para1="403000" para2="11" reward="234796"/>
+	<ItemSpec id="2400112" accept1="1" accept2="400002" pre="2400111" type1="1" type2="0" para1="403000" para2="12" reward="234797"/>
+	<ItemSpec id="2400113" accept1="1" accept2="400002" pre="2400112" type1="1" type2="0" para1="403000" para2="13" reward="234798"/>
+	<ItemSpec id="2400114" accept1="1" accept2="400002" pre="2400113" type1="1" type2="0" para1="403000" para2="14" reward="234799"/>
+	<ItemSpec id="2400115" accept1="1" accept2="400002" pre="2400114" type1="1" type2="0" para1="403000" para2="15" reward="234800"/>
+	<ItemSpec id="2400116" accept1="1" accept2="400002" pre="2400115" type1="1" type2="0" para1="403000" para2="16" reward="234801"/>
+	<ItemSpec id="2400117" accept1="1" accept2="400002" pre="2400116" type1="1" type2="0" para1="403000" para2="17" reward="234802"/>
+	<ItemSpec id="2400118" accept1="1" accept2="400002" pre="2400117" type1="1" type2="0" para1="403000" para2="18" reward="234803"/>
+	<ItemSpec id="2400119" accept1="1" accept2="400002" pre="2400118" type1="1" type2="0" para1="403000" para2="19" reward="234804"/>
+	<ItemSpec id="2400120" accept1="1" accept2="400002" pre="2400119" type1="1" type2="0" para1="403000" para2="20" reward="234805"/>
+	<ItemSpec id="2400121" accept1="1" accept2="400002" pre="2400120" type1="1" type2="0" para1="403000" para2="21" reward="234806"/>
+	<ItemSpec id="2400122" accept1="1" accept2="400002" pre="2400121" type1="1" type2="0" para1="403000" para2="22" reward="234807"/>
+	<ItemSpec id="2400123" accept1="1" accept2="400002" pre="2400122" type1="1" type2="0" para1="403000" para2="23" reward="234808"/>
+	<ItemSpec id="2400124" accept1="1" accept2="400002" pre="2400123" type1="1" type2="0" para1="403000" para2="24" reward="234809"/>
+	<ItemSpec id="2400125" accept1="1" accept2="400002" pre="2400124" type1="1" type2="0" para1="403000" para2="25" reward="234810"/>
+	<ItemSpec id="2400126" accept1="1" accept2="400002" pre="2400125" type1="1" type2="0" para1="403000" para2="26" reward="234811"/>
+	<ItemSpec id="2400127" accept1="1" accept2="400002" pre="2400126" type1="1" type2="0" para1="403000" para2="27" reward="234812"/>
+	<ItemSpec id="2400128" accept1="1" accept2="400002" pre="2400127" type1="1" type2="0" para1="403000" para2="28" reward="234813"/>
+	<ItemSpec id="2400129" accept1="1" accept2="400002" pre="2400128" type1="1" type2="0" para1="403000" para2="29" reward="234814"/>
+	<ItemSpec id="2400130" accept1="1" accept2="400002" pre="2400129" type1="1" type2="0" para1="403000" para2="30" reward="234815"/>
+	<ItemSpec id="2402101" accept1="1" accept2="403001" type1="1" type2="14" para2="1" add="1" reward="234816"/>
+	<ItemSpec id="2402102" accept1="1" accept2="403001" pre="2402101" type1="1" type2="14" para2="2" add="1" reward="234817"/>
+	<ItemSpec id="2402103" accept1="1" accept2="403001" pre="2402102" type1="1" type2="14" para2="3" add="1" reward="234818"/>
+	<ItemSpec id="2402104" accept1="1" accept2="403001" pre="2402103" type1="1" type2="14" para2="4" add="1" reward="234819"/>
+	<ItemSpec id="2402105" accept1="1" accept2="403001" pre="2402104" type1="1" type2="14" para2="5" add="1" reward="234820"/>
+	<ItemSpec id="2402106" accept1="1" accept2="403001" pre="2402105" type1="1" type2="14" para2="6" add="1" reward="234821"/>
+	<ItemSpec id="2402107" accept1="1" accept2="403001" pre="2402106" type1="1" type2="14" para2="8" add="1" reward="234822"/>
+	<ItemSpec id="2402108" accept1="1" accept2="403001" pre="2402107" type1="1" type2="14" para2="10" add="1" reward="234823"/>
+	<ItemSpec id="2402109" accept1="1" accept2="403001" pre="2402108" type1="1" type2="14" para2="12" add="1" reward="234824"/>
+	<ItemSpec id="2402110" accept1="1" accept2="403001" pre="2402109" type1="1" type2="14" para2="14" add="1" reward="234825"/>
+	<ItemSpec id="2402111" accept1="1" accept2="403001" pre="2402110" type1="1" type2="14" para2="16" add="1" reward="234826"/>
+	<ItemSpec id="2402112" accept1="1" accept2="403001" pre="2402111" type1="1" type2="14" para2="18" add="1" reward="234827"/>
+	<ItemSpec id="2402113" accept1="1" accept2="403001" pre="2402112" type1="1" type2="14" para2="20" add="1" reward="234828"/>
+	<ItemSpec id="2402114" accept1="1" accept2="403001" pre="2402113" type1="1" type2="14" para2="22" add="1" reward="234829"/>
+	<ItemSpec id="2402115" accept1="1" accept2="403001" pre="2402114" type1="1" type2="14" para2="24" add="1" reward="234830"/>
+	<ItemSpec id="2402116" accept1="1" accept2="403001" pre="2402115" type1="1" type2="14" para2="26" add="1" reward="234831"/>
+	<ItemSpec id="2402117" accept1="1" accept2="403001" pre="2402116" type1="1" type2="14" para2="30" add="1" reward="234832"/>
+	<ItemSpec id="2900101" accept1="1" accept2="400029" accept3="400004" pre="2400129" type1="1" type2="32" para1="1" para2="1"/>
+	<ItemSpec id="2900102" accept1="1" accept2="400005" accept3="400030" type1="1" type2="32" para1="2" para2="1" operator="cn_1"/>
+	<ItemSpec id="2900103" accept1="1" accept2="400001" accept3="400009" type1="1" type2="33" para1="1" para2="1" reward="234862"/>
+	<ItemSpec id="2402502" accept1="1" accept2="403001" pre="2400102" type1="1" type2="1" para1="700200" para2="1" reward="234343"/>
+	<ItemSpec id="2501201" accept1="1" accept2="400015" type1="3" type2="35" para2="750000" add="1" reward="239778" phase="1" min="15" max="19"/>
+	<ItemSpec id="2501202" accept1="1" accept2="400015" type1="3" type2="35" para2="787500" add="1" reward="239779" phase="1" min="15" max="19"/>
+	<ItemSpec id="2501203" accept1="1" accept2="400015" type1="3" type2="35" para2="825000" add="1" reward="239780" phase="1" min="15" max="19"/>
+	<ItemSpec id="2501204" accept1="1" accept2="400015" type1="3" type2="35" para2="862500" add="1" reward="239781" phase="1" min="15" max="19"/>
+	<ItemSpec id="2501205" accept1="1" accept2="400015" type1="3" type2="35" para2="900000" add="1" reward="239782" phase="1" min="15" max="19"/>
+	<ItemSpec id="2501206" accept1="1" accept2="400015" type1="3" type2="35" para2="937500" add="1" reward="239783" phase="1" min="20" max="25"/>
+	<ItemSpec id="2501207" accept1="1" accept2="400015" type1="3" type2="35" para2="975000" add="1" reward="239784" phase="1" min="20" max="25"/>
+	<ItemSpec id="2501208" accept1="1" accept2="400015" type1="3" type2="35" para2="1012500" add="1" reward="239785" phase="1" min="20" max="25"/>
+	<ItemSpec id="2501209" accept1="1" accept2="400015" type1="3" type2="35" para2="1050000" add="1" reward="239786" phase="1" min="20" max="25"/>
+	<ItemSpec id="2501210" accept1="1" accept2="400015" type1="3" type2="35" para2="1087500" add="1" reward="239787" phase="1" min="20" max="25"/>
+	<ItemSpec id="2501211" accept1="1" accept2="400015" type1="3" type2="35" para2="1125000" add="1" reward="239788" phase="1" min="26" max="30"/>
+	<ItemSpec id="2501212" accept1="1" accept2="400015" type1="3" type2="35" para2="1162500" add="1" reward="239789" phase="1" min="26" max="30"/>
+	<ItemSpec id="2501213" accept1="1" accept2="400015" type1="3" type2="35" para2="1200000" add="1" reward="239790" phase="1" min="26" max="30"/>
+	<ItemSpec id="2501214" accept1="1" accept2="400015" type1="3" type2="35" para2="1237500" add="1" reward="239791" phase="1" min="26" max="30"/>
+	<ItemSpec id="2501215" accept1="1" accept2="400015" type1="3" type2="35" para2="1275000" add="1" reward="239792" phase="1" min="26" max="30"/>
+	<ItemSpec id="2501216" accept1="1" accept2="400015" type1="3" type2="35" para2="1312500" add="1" reward="239793" phase="1" min="31" max="99"/>
+	<ItemSpec id="2501217" accept1="1" accept2="400015" type1="3" type2="35" para2="1350000" add="1" reward="239794" phase="1" min="31" max="99"/>
+	<ItemSpec id="2501218" accept1="1" accept2="400015" type1="3" type2="35" para2="1387500" add="1" reward="239795" phase="1" min="31" max="99"/>
+	<ItemSpec id="2501219" accept1="1" accept2="400015" type1="3" type2="35" para2="1425000" add="1" reward="239796" phase="1" min="31" max="99"/>
+	<ItemSpec id="2501220" accept1="1" accept2="400015" type1="3" type2="35" para2="1462500" add="1" reward="239797" phase="1" min="31" max="99"/>
+	<ItemSpec id="2502201" accept1="1" accept2="400015" type1="3" type2="35" para2="1500000" add="1" reward="239798" phase="2" min="15" max="19"/>
+	<ItemSpec id="2502202" accept1="1" accept2="400015" type1="3" type2="35" para2="1575000" add="1" reward="239799" phase="2" min="15" max="19"/>
+	<ItemSpec id="2502203" accept1="1" accept2="400015" type1="3" type2="35" para2="1650000" add="1" reward="239800" phase="2" min="15" max="19"/>
+	<ItemSpec id="2502204" accept1="1" accept2="400015" type1="3" type2="35" para2="1725000" add="1" reward="239801" phase="2" min="15" max="19"/>
+	<ItemSpec id="2502205" accept1="1" accept2="400015" type1="3" type2="35" para2="1800000" add="1" reward="239802" phase="2" min="15" max="19"/>
+	<ItemSpec id="2502206" accept1="1" accept2="400015" type1="3" type2="35" para2="1875000" add="1" reward="239803" phase="2" min="20" max="25"/>
+	<ItemSpec id="2502207" accept1="1" accept2="400015" type1="3" type2="35" para2="1950000" add="1" reward="239804" phase="2" min="20" max="25"/>
+	<ItemSpec id="2502208" accept1="1" accept2="400015" type1="3" type2="35" para2="2025000" add="1" reward="239805" phase="2" min="20" max="25"/>
+	<ItemSpec id="2502209" accept1="1" accept2="400015" type1="3" type2="35" para2="2100000" add="1" reward="239806" phase="2" min="20" max="25"/>
+	<ItemSpec id="2502210" accept1="1" accept2="400015" type1="3" type2="35" para2="2175000" add="1" reward="239807" phase="2" min="20" max="25"/>
+	<ItemSpec id="2502211" accept1="1" accept2="400015" type1="3" type2="35" para2="2250000" add="1" reward="239808" phase="2" min="26" max="30"/>
+	<ItemSpec id="2502212" accept1="1" accept2="400015" type1="3" type2="35" para2="2325000" add="1" reward="239809" phase="2" min="26" max="30"/>
+	<ItemSpec id="2502213" accept1="1" accept2="400015" type1="3" type2="35" para2="2400000" add="1" reward="239810" phase="2" min="26" max="30"/>
+	<ItemSpec id="2502214" accept1="1" accept2="400015" type1="3" type2="35" para2="2475000" add="1" reward="239811" phase="2" min="26" max="30"/>
+	<ItemSpec id="2502215" accept1="1" accept2="400015" type1="3" type2="35" para2="2550000" add="1" reward="239812" phase="2" min="26" max="30"/>
+	<ItemSpec id="2502216" accept1="1" accept2="400015" type1="3" type2="35" para2="2625000" add="1" reward="239813" phase="2" min="31" max="99"/>
+	<ItemSpec id="2502217" accept1="1" accept2="400015" type1="3" type2="35" para2="2700000" add="1" reward="239814" phase="2" min="31" max="99"/>
+	<ItemSpec id="2502218" accept1="1" accept2="400015" type1="3" type2="35" para2="2775000" add="1" reward="239815" phase="2" min="31" max="99"/>
+	<ItemSpec id="2502219" accept1="1" accept2="400015" type1="3" type2="35" para2="2850000" add="1" reward="239816" phase="2" min="31" max="99"/>
+	<ItemSpec id="2502220" accept1="1" accept2="400015" type1="3" type2="35" para2="2925000" add="1" reward="239817" phase="2" min="31" max="99"/>
+	<ItemSpec id="2503201" accept1="1" accept2="400015" type1="3" type2="35" para2="2250000" add="1" reward="239818" phase="3" min="15" max="19"/>
+	<ItemSpec id="2503202" accept1="1" accept2="400015" type1="3" type2="35" para2="2362500" add="1" reward="239819" phase="3" min="15" max="19"/>
+	<ItemSpec id="2503203" accept1="1" accept2="400015" type1="3" type2="35" para2="2475000" add="1" reward="239820" phase="3" min="15" max="19"/>
+	<ItemSpec id="2503204" accept1="1" accept2="400015" type1="3" type2="35" para2="2587500" add="1" reward="239821" phase="3" min="15" max="19"/>
+	<ItemSpec id="2503205" accept1="1" accept2="400015" type1="3" type2="35" para2="2700000" add="1" reward="239822" phase="3" min="15" max="19"/>
+	<ItemSpec id="2503206" accept1="1" accept2="400015" type1="3" type2="35" para2="2812500" add="1" reward="239823" phase="3" min="20" max="25"/>
+	<ItemSpec id="2503207" accept1="1" accept2="400015" type1="3" type2="35" para2="2925000" add="1" reward="239824" phase="3" min="20" max="25"/>
+	<ItemSpec id="2503208" accept1="1" accept2="400015" type1="3" type2="35" para2="3037500" add="1" reward="239825" phase="3" min="20" max="25"/>
+	<ItemSpec id="2503209" accept1="1" accept2="400015" type1="3" type2="35" para2="3150000" add="1" reward="239826" phase="3" min="20" max="25"/>
+	<ItemSpec id="2503210" accept1="1" accept2="400015" type1="3" type2="35" para2="3262500" add="1" reward="239827" phase="3" min="20" max="25"/>
+	<ItemSpec id="2503211" accept1="1" accept2="400015" type1="3" type2="35" para2="3375000" add="1" reward="239828" phase="3" min="26" max="30"/>
+	<ItemSpec id="2503212" accept1="1" accept2="400015" type1="3" type2="35" para2="3487500" add="1" reward="239829" phase="3" min="26" max="30"/>
+	<ItemSpec id="2503213" accept1="1" accept2="400015" type1="3" type2="35" para2="3600000" add="1" reward="239830" phase="3" min="26" max="30"/>
+	<ItemSpec id="2503214" accept1="1" accept2="400015" type1="3" type2="35" para2="3712500" add="1" reward="239831" phase="3" min="26" max="30"/>
+	<ItemSpec id="2503215" accept1="1" accept2="400015" type1="3" type2="35" para2="3825000" add="1" reward="239832" phase="3" min="26" max="30"/>
+	<ItemSpec id="2503216" accept1="1" accept2="400015" type1="3" type2="35" para2="3937500" add="1" reward="239833" phase="3" min="31" max="99"/>
+	<ItemSpec id="2503217" accept1="1" accept2="400015" type1="3" type2="35" para2="4050000" add="1" reward="239834" phase="3" min="31" max="99"/>
+	<ItemSpec id="2503218" accept1="1" accept2="400015" type1="3" type2="35" para2="4162500" add="1" reward="239835" phase="3" min="31" max="99"/>
+	<ItemSpec id="2503219" accept1="1" accept2="400015" type1="3" type2="35" para2="4275000" add="1" reward="239836" phase="3" min="31" max="99"/>
+	<ItemSpec id="2503220" accept1="1" accept2="400015" type1="3" type2="35" para2="4387500" add="1" reward="239837" phase="3" min="31" max="99"/>
+	<ItemSpec id="2504201" accept1="1" accept2="400015" type1="3" type2="35" para2="4500000" add="1" reward="239838" phase="4" min="15" max="19"/>
+	<ItemSpec id="2504202" accept1="1" accept2="400015" type1="3" type2="35" para2="4725000" add="1" reward="239839" phase="4" min="15" max="19"/>
+	<ItemSpec id="2504203" accept1="1" accept2="400015" type1="3" type2="35" para2="4950000" add="1" reward="239840" phase="4" min="15" max="19"/>
+	<ItemSpec id="2504204" accept1="1" accept2="400015" type1="3" type2="35" para2="5175000" add="1" reward="239841" phase="4" min="15" max="19"/>
+	<ItemSpec id="2504205" accept1="1" accept2="400015" type1="3" type2="35" para2="5400000" add="1" reward="239842" phase="4" min="15" max="19"/>
+	<ItemSpec id="2504206" accept1="1" accept2="400015" type1="3" type2="35" para2="5625000" add="1" reward="239843" phase="4" min="20" max="25"/>
+	<ItemSpec id="2504207" accept1="1" accept2="400015" type1="3" type2="35" para2="5850000" add="1" reward="239844" phase="4" min="20" max="25"/>
+	<ItemSpec id="2504208" accept1="1" accept2="400015" type1="3" type2="35" para2="6075000" add="1" reward="239845" phase="4" min="20" max="25"/>
+	<ItemSpec id="2504209" accept1="1" accept2="400015" type1="3" type2="35" para2="6300000" add="1" reward="239846" phase="4" min="20" max="25"/>
+	<ItemSpec id="2504210" accept1="1" accept2="400015" type1="3" type2="35" para2="6525000" add="1" reward="239847" phase="4" min="20" max="25"/>
+	<ItemSpec id="2504211" accept1="1" accept2="400015" type1="3" type2="35" para2="6750000" add="1" reward="239848" phase="4" min="26" max="30"/>
+	<ItemSpec id="2504212" accept1="1" accept2="400015" type1="3" type2="35" para2="6975000" add="1" reward="239849" phase="4" min="26" max="30"/>
+	<ItemSpec id="2504213" accept1="1" accept2="400015" type1="3" type2="35" para2="7200000" add="1" reward="239850" phase="4" min="26" max="30"/>
+	<ItemSpec id="2504214" accept1="1" accept2="400015" type1="3" type2="35" para2="7425000" add="1" reward="239851" phase="4" min="26" max="30"/>
+	<ItemSpec id="2504215" accept1="1" accept2="400015" type1="3" type2="35" para2="7650000" add="1" reward="239852" phase="4" min="26" max="30"/>
+	<ItemSpec id="2504216" accept1="1" accept2="400015" type1="3" type2="35" para2="7875000" add="1" reward="239853" phase="4" min="31" max="99"/>
+	<ItemSpec id="2504217" accept1="1" accept2="400015" type1="3" type2="35" para2="8100000" add="1" reward="239854" phase="4" min="31" max="99"/>
+	<ItemSpec id="2504218" accept1="1" accept2="400015" type1="3" type2="35" para2="8325000" add="1" reward="239855" phase="4" min="31" max="99"/>
+	<ItemSpec id="2504219" accept1="1" accept2="400015" type1="3" type2="35" para2="8550000" add="1" reward="239856" phase="4" min="31" max="99"/>
+	<ItemSpec id="2504220" accept1="1" accept2="400015" type1="3" type2="35" para2="8775000" add="1" reward="239857" phase="4" min="31" max="99"/>
+	<ItemSpec id="2505201" accept1="1" accept2="400015" type1="3" type2="35" para2="6000000" add="1" reward="239858" phase="5" min="15" max="19"/>
+	<ItemSpec id="2505202" accept1="1" accept2="400015" type1="3" type2="35" para2="6300000" add="1" reward="239859" phase="5" min="15" max="19"/>
+	<ItemSpec id="2505203" accept1="1" accept2="400015" type1="3" type2="35" para2="6600000" add="1" reward="239860" phase="5" min="15" max="19"/>
+	<ItemSpec id="2505204" accept1="1" accept2="400015" type1="3" type2="35" para2="6900000" add="1" reward="239861" phase="5" min="15" max="19"/>
+	<ItemSpec id="2505205" accept1="1" accept2="400015" type1="3" type2="35" para2="7200000" add="1" reward="239862" phase="5" min="15" max="19"/>
+	<ItemSpec id="2505206" accept1="1" accept2="400015" type1="3" type2="35" para2="7500000" add="1" reward="239863" phase="5" min="20" max="25"/>
+	<ItemSpec id="2505207" accept1="1" accept2="400015" type1="3" type2="35" para2="7800000" add="1" reward="239864" phase="5" min="20" max="25"/>
+	<ItemSpec id="2505208" accept1="1" accept2="400015" type1="3" type2="35" para2="8100000" add="1" reward="239865" phase="5" min="20" max="25"/>
+	<ItemSpec id="2505209" accept1="1" accept2="400015" type1="3" type2="35" para2="8400000" add="1" reward="239866" phase="5" min="20" max="25"/>
+	<ItemSpec id="2505210" accept1="1" accept2="400015" type1="3" type2="35" para2="8700000" add="1" reward="239867" phase="5" min="20" max="25"/>
+	<ItemSpec id="2505211" accept1="1" accept2="400015" type1="3" type2="35" para2="9000000" add="1" reward="239868" phase="5" min="26" max="30"/>
+	<ItemSpec id="2505212" accept1="1" accept2="400015" type1="3" type2="35" para2="9300000" add="1" reward="239869" phase="5" min="26" max="30"/>
+	<ItemSpec id="2505213" accept1="1" accept2="400015" type1="3" type2="35" para2="9600000" add="1" reward="239870" phase="5" min="26" max="30"/>
+	<ItemSpec id="2505214" accept1="1" accept2="400015" type1="3" type2="35" para2="9900000" add="1" reward="239871" phase="5" min="26" max="30"/>
+	<ItemSpec id="2505215" accept1="1" accept2="400015" type1="3" type2="35" para2="10200000" add="1" reward="239872" phase="5" min="26" max="30"/>
+	<ItemSpec id="2505216" accept1="1" accept2="400015" type1="3" type2="35" para2="10500000" add="1" reward="239873" phase="5" min="31" max="99"/>
+	<ItemSpec id="2505217" accept1="1" accept2="400015" type1="3" type2="35" para2="10800000" add="1" reward="239874" phase="5" min="31" max="99"/>
+	<ItemSpec id="2505218" accept1="1" accept2="400015" type1="3" type2="35" para2="11100000" add="1" reward="239875" phase="5" min="31" max="99"/>
+	<ItemSpec id="2505219" accept1="1" accept2="400015" type1="3" type2="35" para2="11400000" add="1" reward="239876" phase="5" min="31" max="99"/>
+	<ItemSpec id="2505220" accept1="1" accept2="400015" type1="3" type2="35" para2="11700000" add="1" reward="239877" phase="5" min="31" max="99"/>
+	<ItemSpec id="102300102" accept1="1" accept2="400000" default="1" type1="1" type2="0" para1="481000" para2="2" reward="234408"/>
+	<ItemSpec id="102300103" accept1="1" accept2="400000" pre="102300102" type1="1" type2="0" para1="481000" para2="3" reward="234409"/>
+	<ItemSpec id="102300104" accept1="1" accept2="400000" pre="102300103" type1="1" type2="0" para1="481000" para2="4" reward="234410"/>
+	<ItemSpec id="102300105" accept1="1" accept2="400000" pre="102300104" type1="1" type2="0" para1="481000" para2="5" reward="234411"/>
+	<ItemSpec id="102300106" accept1="1" accept2="400000" pre="102300105" type1="1" type2="0" para1="481000" para2="6" reward="234412"/>
+	<ItemSpec id="102300107" accept1="1" accept2="400000" pre="102300106" type1="1" type2="0" para1="481000" para2="7" reward="234413"/>
+	<ItemSpec id="102300108" accept1="1" accept2="400000" pre="102300107" type1="1" type2="0" para1="481000" para2="8" reward="234414"/>
+	<ItemSpec id="102300109" accept1="1" accept2="400000" pre="102300108" type1="1" type2="0" para1="481000" para2="9" reward="234415"/>
+	<ItemSpec id="102300110" accept1="1" accept2="400000" pre="102300109" type1="1" type2="0" para1="481000" para2="10" reward="234416"/>
+	<ItemSpec id="102300111" accept1="1" accept2="400000" pre="102300110" type1="1" type2="0" para1="481000" para2="11" reward="234417"/>
+	<ItemSpec id="102300112" accept1="1" accept2="400000" pre="102300111" type1="1" type2="0" para1="481000" para2="12" reward="234418"/>
+	<ItemSpec id="102300113" accept1="1" accept2="400000" pre="102300112" type1="1" type2="0" para1="481000" para2="13" reward="234419"/>
+	<ItemSpec id="102300114" accept1="1" accept2="400000" pre="102300113" type1="1" type2="0" para1="481000" para2="14" reward="234420"/>
+	<ItemSpec id="102300115" accept1="1" accept2="400000" pre="102300114" type1="1" type2="0" para1="481000" para2="15" reward="234421"/>
+	<ItemSpec id="102300116" accept1="1" accept2="400000" pre="102300115" type1="1" type2="0" para1="481000" para2="16" reward="234422"/>
+	<ItemSpec id="102300117" accept1="1" accept2="400000" pre="102300116" type1="1" type2="0" para1="481000" para2="17" reward="234423"/>
+	<ItemSpec id="102300118" accept1="1" accept2="400000" pre="102300117" type1="1" type2="0" para1="481000" para2="18" reward="234424"/>
+	<ItemSpec id="102300119" accept1="1" accept2="400000" pre="102300118" type1="1" type2="0" para1="481000" para2="19" reward="234425"/>
+	<ItemSpec id="102300120" accept1="1" accept2="400000" pre="102300119" type1="1" type2="0" para1="481000" para2="20" reward="234426"/>
+	<ItemSpec id="102300121" accept1="1" accept2="400000" pre="102300120" type1="1" type2="0" para1="481000" para2="21" reward="234427"/>
+	<ItemSpec id="102300122" accept1="1" accept2="400000" pre="102300121" type1="1" type2="0" para1="481000" para2="22" reward="234428"/>
+	<ItemSpec id="102300123" accept1="1" accept2="400000" pre="102300122" type1="1" type2="0" para1="481000" para2="23" reward="234429"/>
+	<ItemSpec id="102300124" accept1="1" accept2="400000" pre="102300123" type1="1" type2="0" para1="481000" para2="24" reward="234430"/>
+	<ItemSpec id="102300125" accept1="1" accept2="400000" pre="102300124" type1="1" type2="0" para1="481000" para2="25" reward="234431"/>
+	<ItemSpec id="102300126" accept1="1" accept2="400000" pre="102300125" type1="1" type2="0" para1="481000" para2="26" reward="234432"/>
+	<ItemSpec id="102300127" accept1="1" accept2="400000" pre="102300126" type1="1" type2="0" para1="481000" para2="27" reward="234433"/>
+	<ItemSpec id="102300128" accept1="1" accept2="400000" pre="102300127" type1="1" type2="0" para1="481000" para2="28" reward="234434"/>
+	<ItemSpec id="102300129" accept1="1" accept2="400000" pre="102300128" type1="1" type2="0" para1="481000" para2="29" reward="234435"/>
+	<ItemSpec id="102300130" accept1="1" accept2="400000" pre="102300129" type1="1" type2="0" para1="481000" para2="30" reward="234436"/>
+	<ItemSpec id="102000002" accept1="1" accept2="400000" default="1" type1="1" type2="81" para2="1" reward="234661"/>
+	<ItemSpec id="102000003" accept1="1" accept2="400001" pre="102000002" type1="1" type2="81" para2="2" add="1" reward="234662"/>
+	<ItemSpec id="102000004" accept1="1" accept2="400001" pre="102000003" type1="1" type2="81" para2="3" add="1" reward="234663"/>
+	<ItemSpec id="102000005" accept1="1" accept2="400001" pre="102000004" type1="1" type2="81" para2="4" add="1" reward="234833"/>
+	<ItemSpec id="102000006" accept1="1" accept2="400001" pre="102000005" type1="1" type2="81" para2="5" add="1" reward="234834"/>
+	<ItemSpec id="102000007" accept1="1" accept2="400001" pre="102000006" type1="1" type2="81" para2="6" add="1" reward="234835"/>
+	<ItemSpec id="102000008" accept1="1" accept2="400001" pre="102000007" type1="1" type2="81" para2="7" add="1" reward="234836"/>
+	<ItemSpec id="102000009" accept1="1" accept2="400001" pre="102000008" type1="1" type2="81" para2="8" add="1" reward="234837"/>
+	<ItemSpec id="102000010" accept1="1" accept2="400001" pre="102000009" type1="1" type2="81" para2="9" add="1" reward="234838"/>
+	<ItemSpec id="102000011" accept1="1" accept2="400001" pre="102000010" type1="1" type2="81" para2="10" add="1" reward="234839"/>
+</tns:database>

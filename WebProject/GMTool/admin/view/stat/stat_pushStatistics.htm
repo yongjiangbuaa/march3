@@ -1,0 +1,155 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "推送的详细信息统计";?><font color="red">$headerAlert</font></div>
+<form action="admincp.php?mod=stat&act=pushStatistics&analyze=user" method="post" name="getaccount">
+
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!-- {if $showData} -->
+	<table class='listTable' style='text-align:center'>
+		<tbody>
+			<tr>
+			<th>日期</th>
+			<th colspan="5">1天金币</th>
+			<th colspan="5">3天金币</th>
+			<th colspan="5">7天金币</th>
+			<th colspan="5">24小时不上线推送</th>
+			<th colspan="5">建筑升级完成</th>
+			<th colspan="5">部队训练完成</th>
+			<th colspan="5">陷阱建造完成</th>
+			<th colspan="5">科技研究完成</th>
+			<th colspan="5">被侦查</th>
+			<th colspan="5">被攻击</th>
+			<th colspan="5">部队回城</th>
+			<th colspan="5">个人邮件</th>
+			<th colspan="5">联盟群体邮件</th>
+			<th colspan="5">资源满</th>
+			<th colspan="5">联盟礼物</th>
+			<th colspan="5">港口物资</th>
+			</tr>
+			<!--{loop $data $dateKey $dbData}-->
+			<tr>
+				<td>$dateKey</td>
+				<td>$dbData[1]['pushCount']</td>
+				<td>$dbData[1]['entryUsers']</td>
+				<td>$dbData[1]['entryTimes']</td>
+				<td>$dbData[1]['10entryUsers']</td>
+				<td>$dbData[1]['10entryTimes']</td>
+				
+				<td>$dbData[2]['pushCount']</td>
+				<td>$dbData[2]['entryUsers']</td>
+				<td>$dbData[2]['entryTimes']</td>
+				<td>$dbData[2]['10entryUsers']</td>
+				<td>$dbData[2]['10entryTimes']</td>
+				
+				<td>$dbData[3]['pushCount']</td>
+				<td>$dbData[3]['entryUsers']</td>
+				<td>$dbData[3]['entryTimes']</td>
+				<td>$dbData[3]['10entryUsers']</td>
+				<td>$dbData[3]['10entryTimes']</td>
+				
+				<td>$dbData[4]['pushCount']</td>
+				<td>$dbData[4]['entryUsers']</td>
+				<td>$dbData[4]['entryTimes']</td>
+				<td>$dbData[4]['10entryUsers']</td>
+				<td>$dbData[4]['10entryTimes']</td>
+				
+				<td>$dbData[5]['pushCount']</td>
+				<td>$dbData[5]['entryUsers']</td>
+				<td>$dbData[5]['entryTimes']</td>
+				<td>$dbData[5]['10entryUsers']</td>
+				<td>$dbData[5]['10entryTimes']</td>
+				
+				<td>$dbData[6]['pushCount']</td>
+				<td>$dbData[6]['entryUsers']</td>
+				<td>$dbData[6]['entryTimes']</td>
+				<td>$dbData[6]['10entryUsers']</td>
+				<td>$dbData[6]['10entryTimes']</td>
+				
+				<td>$dbData[7]['pushCount']</td>
+				<td>$dbData[7]['entryUsers']</td>
+				<td>$dbData[7]['entryTimes']</td>
+				<td>$dbData[7]['10entryUsers']</td>
+				<td>$dbData[7]['10entryTimes']</td>
+				
+				<td>$dbData[8]['pushCount']</td>
+				<td>$dbData[8]['entryUsers']</td>
+				<td>$dbData[8]['entryTimes']</td>
+				<td>$dbData[8]['10entryUsers']</td>
+				<td>$dbData[8]['10entryTimes']</td>
+				
+				<td>$dbData[9]['pushCount']</td>
+				<td>$dbData[9]['entryUsers']</td>
+				<td>$dbData[9]['entryTimes']</td>
+				<td>$dbData[9]['10entryUsers']</td>
+				<td>$dbData[9]['10entryTimes']</td>
+				
+				<td>$dbData[10]['pushCount']</td>
+				<td>$dbData[10]['entryUsers']</td>
+				<td>$dbData[10]['entryTimes']</td>
+				<td>$dbData[10]['10entryUsers']</td>
+				<td>$dbData[10]['10entryTimes']</td>
+				
+				<td>$dbData[11]['pushCount']</td>
+				<td>$dbData[11]['entryUsers']</td>
+				<td>$dbData[11]['entryTimes']</td>
+				<td>$dbData[11]['10entryUsers']</td>
+				<td>$dbData[11]['10entryTimes']</td>
+				
+				<td>$dbData[12]['pushCount']</td>
+				<td>$dbData[12]['entryUsers']</td>
+				<td>$dbData[12]['entryTimes']</td>
+				<td>$dbData[12]['10entryUsers']</td>
+				<td>$dbData[12]['10entryTimes']</td>
+				
+				<td>$dbData[13]['pushCount']</td>
+				<td>$dbData[13]['entryUsers']</td>
+				<td>$dbData[13]['entryTimes']</td>
+				<td>$dbData[13]['10entryUsers']</td>
+				<td>$dbData[13]['10entryTimes']</td>
+				
+				<td>$dbData[14]['pushCount']</td>
+				<td>$dbData[14]['entryUsers']</td>
+				<td>$dbData[14]['entryTimes']</td>
+				<td>$dbData[14]['10entryUsers']</td>
+				<td>$dbData[14]['10entryTimes']</td>
+				
+				<td>$dbData[15]['pushCount']</td>
+				<td>$dbData[15]['entryUsers']</td>
+				<td>$dbData[15]['entryTimes']</td>
+				<td>$dbData[15]['10entryUsers']</td>
+				<td>$dbData[15]['10entryTimes']</td>
+				
+				<td>$dbData[16]['pushCount']</td>
+				<td>$dbData[16]['entryUsers']</td>
+				<td>$dbData[16]['entryTimes']</td>
+				<td>$dbData[16]['10entryUsers']</td>
+				<td>$dbData[16]['10entryTimes']</td>
+				
+			</tr>
+			<!--{/loop}-->
+		</tbody>
+	</table>
+<!-- {/if} -->
+
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

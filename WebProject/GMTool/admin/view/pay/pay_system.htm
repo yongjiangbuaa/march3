@@ -1,0 +1,123 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "S2S支付查询";?><font color="red"></font></div>
+
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input type='checkbox' id="onlyFail" name="onlyFail" checked />只看失败记录
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询">
+<div id='show2' style="float:left;width:95%;height:auto"></div>
+<div id='show' style="float:left;width:95%;height:auto"></div>
+
+<script type="text/javascript">
+$("#startDate,#endDate").datetimepicker();
+process = false;
+function getData(page){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;		
+	}
+	process = true;
+	document.getElementById('show2').innerHTML='';
+	document.getElementById('show').innerHTML='正在读取数据';
+	url = 'admincp.php?mod=pay&act=system&action=query&page='+page;
+	if(document.getElementById('startDate').value){
+		url += '&startDate=' + document.getElementById('startDate').value;
+	}
+	if(document.getElementById('endDate').value){
+		url += '&endDate=' + document.getElementById('endDate').value;
+	}
+	var onlyFailBtn=document.getElementById('onlyFail');
+	if(onlyFailBtn.checked){
+		url = url +'&onlyFail=true';
+	}
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+processRow = 0;
+function redoCallback(row,dbInfo){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;		
+	}
+	process = true;
+	processRow = row;
+	elementId = 'result_'+row;
+	document.getElementById(elementId).innerHTML='正在读取数据';
+	url = 'admincp.php?mod=pay&act=system&action=dropped&dbInfo='+dbInfo;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = callbackResult;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function runManual(row,dbInfo){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;		
+	}
+	process = true;
+	processRow = row;
+	elementId = 'result_'+row;
+	document.getElementById(elementId).innerHTML='正在读取数据';
+	url = 'admincp.php?mod=pay&act=system&action=manual&dbInfo='+dbInfo;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = callbackResult;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function showDetail(dbInfo){
+	if(process){
+		alert('请等待前一个操作完成');
+		return;		
+	}
+	process = true;
+	document.getElementById('show2').innerHTML='正在读取数据';
+	url = 'admincp.php?mod=pay&act=system&action=detail&dbInfo='+dbInfo;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = callbackDetail;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			process = false;
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			document.getElementById('show').innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+function callbackResult(){
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			process = false;
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			elementId = 'result_'+processRow;
+			document.getElementById(elementId).innerHTML= xmlHttp.responseText;
+			return;
+		}
+	}
+}
+function callbackDetail(){
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			process = false;
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getLogData);
+				return;
+			}
+			document.getElementById('show2').innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

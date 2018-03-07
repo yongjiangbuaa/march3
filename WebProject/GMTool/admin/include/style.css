@@ -1,0 +1,138 @@
+@CHARSET "UTF-8";
+body{
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+.title{
+	font-size:14px;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+.list a:link{
+color:blue;
+text-decoration:underline;
+}
+.list a:visited{
+color:red;
+text-decoration:underline;
+}
+
+.user-action {
+	color: #2A7AA3;
+	cursor: pointer;
+	text-decoration: underline;
+}
+table.border1px {
+	border: 1px solid #006699;
+	font-size: 9pt;
+}
+td.td1 {
+	border: 0px;
+}
+td.td2 {
+	border: 0px;
+	background-color: #FF0000;
+}
+td.line1px {
+	border: 0px;
+	background-color: #006699;
+	height: 1px;
+}
+td.line2px {
+	background-color: #006699;
+	height: 2px;
+}
+td.nowarp {
+	background-color: #D9E6F4;
+	white-space: nowrap;
+}
+tr.iec_blue {
+	background-color: #D9E6F4;
+	font-size: 9pt;
+	text-align: center;
+}
+tr.gray {
+	background-color: #F3F3F3;
+	font-size: 9pt;
+	text-align: center;
+}
+tr.line2px {
+	background-color: #006699;
+	height: 2px;
+}
+tr.pagetab {
+	font-size: 9pt;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0px;
+}
+.f9pt {
+	font-size: 9pt;
+}
+body {
+	margin: 10px;
+}
+td.title {
+	font-size: 9pt;
+	font-weight: bold;
+}
+INPUT.line1px {
+
+	FONT-SIZE: 9pt;
+	BACKGROUND-COLOR: #F0F0F0;
+	border: 1px #006699;
+}
+select.line1px {
+
+	background-color: #EBEBEB;
+	border: 1px #006699;
+	font-size: 9pt;
+}
+textarea.line1px {
+	background-color: #F2F2F2;
+	border: 1px #006699;
+}
+a:link {
+	color: #003399;
+	text-decoration: none;
+}
+a:visited {
+	color: #003366;
+	text-decoration: none;
+}
+a:active {
+	color: #0099CC;
+}
+a:hover {
+	color: #0099FF;
+}
+.suggestionsBox {
+	position: relative;
+	left: 30px;
+	margin: 10px 0px 0px 0px;
+	width: 200px;
+	background-color: #212427;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border: 2px solid #000;	
+	color: #fff;
+}
+
+.suggestionList {
+	margin: 0px;
+	padding: 0px;
+}
+
+.suggestionList li {
+	
+	margin: 0px 0px 3px 0px;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.suggestionList li:hover {
+	background-color: #659CD8;
+}
+
+

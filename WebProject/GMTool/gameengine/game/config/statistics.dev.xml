@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- 配置统计分析条目 -->
+<!-- 
+default=0表示默认不进行统计分析，但是会对services/actions/changes中enabled数组中定义的service进行统计分析
+default=1表示默进行统计分析，但是不会对services/actions/changes中disabled数组中定义的service进行统计分析
+ -->
+<default>0</default>
+<services>
+	<enabled>
+		<!--
+		<UserService.doPlatformLogin/>
+		-->
+	</enabled>
+	<disabled>
+		<ActionService.doExecute/>
+		<ChangeService.doApply/>
+	</disabled>
+</services>
+<!-- 选择哪些Action需要记录统计分析 -->
+<actions>
+	<enabled>
+		<!--
+		<BuyAction/>
+		-->
+	</enabled>
+	<disabled>
+	</disabled>
+</actions>
+<!-- 选择哪些Audit Change需要进行统计分析 -->
+<changes>
+	<enabled>
+		<!--
+		<BuyAuditChange/>
+		-->
+	</enabled>
+	<disabled>
+	</disabled>
+</changes>
+</xingcloud:config>

@@ -1,0 +1,50 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "联盟聊天";?></div>
+<div id="tip" style="width:auto;height:auto;padding: 10px;border:1px solid #cccccc;background-color
+:#ffffdd;position:absolute;visibility:hidden"></div>
+<hr />
+联盟名称<input class="input-large focused" id="alliancename" name="alliancename" type="text" placeholder="请输入联盟名称" value="{$alliancename}" />
+联盟ID<input class="input-large focused" id="allianceId" name="allianceId" type="text" placeholder="请输入联盟ID" value="{$allianceId}" />
+<br/>
+输入起始位置<input class="input-large focused" id="start" name="start" type="text" placeholder="请输入起始位置" value="{$start}" />
+输入结束位置<input class="input-large focused" id="end" name="end" type="text" placeholder="请输入结束位置" value="{$end}" />
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查看数据" />
+<hr/><br/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+<script type="text/javascript">
+    function getData(page){
+        var url ='admincp.php?mod=user&act=allianceMsg&page='+page+'&alliancename='+$('#alliancename').val()+'&allianceId='+$('#allianceId').val()
+                +'&start='+$('#start').val()+'&end='+$('#end').val();
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("GET",url,true);
+        xmlHttp.send(null);
+    }
+    function turnPage(){
+        var page = $("#turn").val();
+        getData(page);
+    }
+    function check(key){
+        var pattern = /[^0-9]/g;
+        if(pattern.test(key.value)){
+            alert('Please enter number');
+            $("#turn").val('');
+        }
+        return false;
+    }
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                    showLogin(getLogData);
+                    return;
+                }
+                right.innerHTML=xmlHttp.responseText;
+                return;
+            }
+        }
+    }
+
+</script>
+<!--{template footer}-->

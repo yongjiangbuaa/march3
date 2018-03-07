@@ -1,0 +1,81 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "联盟的怪物攻城活动的过关情况统计";?><font color="red">所选服不要超过10个!&nbsp;&nbsp;&nbsp;&nbsp;$alertHeader</font></div>
+<form action="admincp.php?mod=stat&act=monsterSiegeStatistics&analyze=user" method="post" name="getaccount">
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+		<th>服</th>
+		<th>活动时间</th>
+		<th>联盟名称</th>
+		<th>通过波次</th>
+		<th>积分</th>
+	</tr>
+	<!--{loop $data $serverKey $dbValue}-->
+		<!--{loop $dates $indexKey $date}-->
+			<!-- {if $dbValue[$date]} -->
+				<!--{loop $dbValue[$date] $key $colVal}-->
+					<tr>
+						<td>$serverKey</td>
+						<td>$date</td>
+						<td>
+							<a href="javascript:void(edit('{$colVal['alliancename']}'))">$colVal['alliancename']</a>
+						</td>
+						<td>
+							$colVal['siegeRound']
+						</td>
+						<td>
+							$colVal['killCount']
+						</td>
+					</tr>
+				<!--{/loop}-->
+			<!-- {/if} -->
+		<!--{/loop}-->
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+
+</form>
+
+<div id='display' style="display:none;position:fixed;z-index:1; right:350px; top:100px; width:300px; background-color:#708090; color:#FFF; line-height:30px;">
+	<a href="#" onclick="javascript:turnoff()">点击关闭</a>&nbsp;&nbsp;
+	<div id='displayinner'></div>
+</div>
+
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+
+function edit(allianceName) {
+	var url = 'admincp.php?mod=stat&act=monsterSiegeStatistics&allianceName='+allianceName+'&display=true';
+	$.get(url,function(data){
+			var div = document.getElementById('display'); 
+			div.style.display="block"; 
+			div.style.left=event.clientX+10; 
+			div.style.top=event.clientY+5;    
+			div.style.position="fixed"; 
+			//$("#displayinner").html(data);
+	});
+}
+
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

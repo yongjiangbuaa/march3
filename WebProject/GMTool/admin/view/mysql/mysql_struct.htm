@@ -1,0 +1,61 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "查询数据库结构";?><font color="red"></font></div>
+<div class="span11" style='TEXT-ALIGN:left;'>
+	需要查询的表名: <select id="selectTable" class="input-medium"></select>&nbsp; &nbsp; 
+	<input class="btn js-btn btn-primary" type="button" onclick="getTabelStruct()" id="btn_view" name="btn_view" value="查询表结构">
+</div>
+<div id='show' style="width:100%;float:left;height:500px;"></div>
+<script type="text/javascript">
+var tableAttr = new Array("name","scale","type","max_length","not_null","primary_key","auto_increment","binary","unsigned","zerofill","has_default","default_value");
+function getTabelStruct() {
+	document.getElementById('btn_view').disabled=true;
+	tableSelect = document.getElementById("selectTable");
+	var table = tableSelect.options[tableSelect.selectedIndex].id;
+	var url ='admincp.php?mod=mysql&act=struct&table='+table+'&type=read';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+//暂时无法修改
+function modifyTabelStruct(tablename) {
+	var url ='admincp.php?mod=mysql&act=struct&tablename='+tablename+'&type=modify';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin();
+				return;
+			}
+			right=document.getElementById('show');
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+tableList();
+function tableList() {
+	var url ='getstruct.php?tableList=true';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getTable;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getTable(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin(tableList);
+			return;
+		}
+		document.getElementById('selectTable').innerHTML=xmlHttp.responseText;
+		return;
+	}
+}
+</script>
+<!--{template footer}-->

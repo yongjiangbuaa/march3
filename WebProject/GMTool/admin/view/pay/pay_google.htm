@@ -1,0 +1,234 @@
+<!--{template header}-->
+<style type="text/css">
+    td input{
+        background-color:#CCFFFF;
+        margin-top:-1px;
+        margin-bottom:-1px;
+        height:100%;
+        width:100%;
+        border:none;
+    }
+</style>
+<br>
+<div class="alert alert-info"><?php echo "谷歌支付验证失败订单处理表";?><font color="red">$alertHeader</font></div>
+
+<form action="admincp.php?mod=pay&act=google&type=save" method="post" name="paygoogle">
+    <div id='timediv'>
+        起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}" />
+        结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}" />
+    </div>
+
+    <!--操作<select id="add" name="add">-->
+         <!--<option value="1">查询</option>-->
+    <!--</select>-->
+    <!--{if $mode}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="allpay" name="allpay"  onclick="changeclick()">所有数据
+    <!--{else}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="allpay" name="allpay" checked="checked" onclick="changeclick()">所有数据
+    <!--{/if}-->
+    <!--{if $countryShow}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="show_country" name="show_country" checked="checked">显示国家
+    <!--{else}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="show_country" name="show_country">显示国家
+    <!--{/if}-->
+
+    <!--{if $countryPay}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="show_pay_country" name="show_pay_country" checked="checked">显示购买时候的国家
+    <!--{else}-->
+    <input class="btn js-btn btn-primary" type="checkbox" id="show_pay_country" name="show_pay_country">显示购买时候的国家
+    <!--{/if}-->
+
+    <input class="btn js-btn btn-primary" type="checkbox" id="update_all" name="update_all" onclick="changeclick()">批量更新
+
+    <input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+    <input class="btn js-btn btn-primary" type="button" onclick="search2()" id="btn_view_index" name="btn_view" value="首页">
+    <input class="display:none;" type="hidden" value="" id="action" name="action"/>
+    <input class="display:none;" type="hidden" value="" id="action_op" name="action_op"/>
+    <input class="display:none;" type="hidden" value="" id="payid" name="payid"/>
+    <input class="display:none;" type="hidden" value="" id="pageNum" name="pageNum"/>
+    <input class="display:none;" type="hidden" value="" id="updateAl" name="updateAl"/>
+     <input class="btn js-btn btn-primary" type="button" onclick="search1(-1)" id="btn_view1" name="btn_view" value="上一页">
+    <label id="pageNumVal" value="$pageNum">$pageNum</label>
+    <input class="btn js-btn btn-primary" type="button" onclick="search1(1)" id="btn_view2" name="btn_view" value="下一页">
+
+    <input class="display:none;" value="" id="pageNumGo" name="pageNumGo"/>
+
+    <div id='update_timediv' type="hidden">
+        <input class="btn js-btn btn-primary" type="button" onclick="updateAll()" id="update_btn_view" name="update_btn_view" value="批量更新">
+        <label id="user">处理人</label>
+        <input class="display:none;" value="" id="userName" name="userName"/>
+        起始时间<input class="input-large focused" id="update_start_time" name="update_start_time" type="text" placeholder="点击选择日期" value="{$start}" />
+        结束时间<input class="input-large focused" id="update_end_time" name="update_end_time" type="text" placeholder="点击选择日期" value="{$end}" />
+    </div>
+
+
+
+</form>
+<!--{if $showData}-->
+
+<table class="listTable" style="text-align:center">
+    <tbody>
+    <tr>
+        <th style="text-align: center;">payId</th>
+        <th style="text-align: center;">uid</th>
+        <th style="text-align: center;">serverId</th>
+        <th style="text-align: center;">productid</th>
+        <th style="text-align: center;">orderid</th>
+        <th style="text-align: center;">timeshow</th>
+        <th style="text-align: center;">登录国家</th>
+        <th style="text-align: center;">注册国家</th>
+        <th style="text-align: center;">购买时IP</th>
+        <!--<th style="text-align: center;">购买时国家</th>-->
+        <th style="text-align: center;">状态(1完成)</th>
+        <th style="text-align: center;">礼包ID</th>
+        <th style="text-align: center;">完成人</th>
+        <th style="text-align: center;">处理完成</th>
+    </tr>
+    <!--{loop $data $item}-->
+    <tr class='listTr'>
+        <td>$item['payId']</td>
+        <td>$item['uid']</td>
+        <td>$item['serverId']</td>
+        <td>$item['productid']</td>
+        <td>$item['orderid']</td>
+        <td>$item['timeshow']</td>
+        <td>$item['loginCountry']</td>
+        <td>$item['con_reg']</td>
+        <td>$item['payIp']</td>
+        <!--<td>$item['payIpCountry']</td>-->
+        <td>$item['status']</td>
+        <td>$item['payData']</td>
+        <!--{if $item['ext']}-->
+        <td id="$item['payId']"><a href="javascript:void(edit('{$item['payId']}','{$item['ext']}' ))">$item['ext']</a></td>
+        <!--{else}-->
+        <td id="$item['payId']"><a href="javascript:void(edit('{$item['payId']}','{$item['ext']}' ))">无</a></td>
+        <!--{/if}-->
+
+        <!--{if $item['status']}-->
+        <td>OK</td>
+        <!--{else}-->
+        <td> <input type="checkbox" id="{$item['payId']}" name="{$item['payId']}"  onclick="markDone('{$item['payId']}')" /> </td>
+        <!--{/if}-->
+
+
+    </tr>
+    <!--{/loop}-->
+
+    </tbody>
+</table>
+
+<!--{/if}-->
+
+<script type="text/javascript">
+    init();
+    function init(){
+        $("#start_time").datetimepicker();
+        $("#end_time").datetimepicker();
+
+        $("#update_start_time").datetimepicker();
+        $("#update_end_time").datetimepicker();
+    }
+    function search() {
+        $('#action').val('search');
+
+        var pages=document.getElementById("pageNumVal").innerHTML;
+        pages=parseInt(pages);
+        $('#pageNum').val(pages);
+
+        document.paygoogle.submit();
+
+    }
+
+    function updateAll()
+    {
+        $('#action').val('search');
+        $('#updateAl').val('update');
+        var pages=document.getElementById("pageNumVal").innerHTML;
+        pages=parseInt(pages);
+        $('#pageNum').val(pages);
+        document.paygoogle.submit();
+    }
+
+    function search1(type) {
+        $('#action').val('search');
+        var pages=document.getElementById("pageNumVal").innerHTML;
+
+        pages=parseInt(pages)+type;
+//        alert(pages);
+        $('#pageNum').val(pages);
+//        document.getElementById("pageNum").innerHTML
+        document.paygoogle.submit();
+
+    }
+
+
+    function search2(type) {
+        $('#action').val('search');
+        $('#pageNum').val(0);
+
+        document.paygoogle.submit();
+
+    }
+
+    changeclick();
+    function changeclick(){
+        if(document.getElementById('allpay').checked)
+        {
+            $('#timediv').hide();
+        }else {
+            $('#timediv').show();
+        }
+
+        if(document.getElementById('update_all').checked)
+        {
+            $('#update_timediv').show();
+        }else {
+            $('#update_timediv').hide();
+        }
+    }
+    var count=0;
+    function doClear(){
+        count++;
+        if(count>=2)
+        {
+            alert('一次只能修改一项,请把未完成的项保存');
+            rightinfo();
+        }
+    }
+    function rightinfo() {
+        self.location='admincp.php?mod=pay&act=google';
+    }
+    function edit(id,num) {
+        doClear();
+        opid = id;
+        remarks = num;
+        var right = document.getElementById(opid);
+        var str='<form id="form1" style="margin:0">输入值: <input class="input-mini" name="num" type="text" id="payId'+opid+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(num)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+        right.innerHTML=str;
+    }
+    function save(num){
+//        var url ='admincp.php?mod=pay&act=google&useruid='+opid+'&value='+num.value;
+        $('#action_op').val(num.value);
+        $('#action').val('search');
+        $('#payid').val(opid);
+        var pages=document.getElementById("pageNumVal").innerHTML;
+        pages=parseInt(pages);
+        $('#pageNum').val(pages);
+        document.paygoogle.submit();
+
+//        xmlHttp=getAjax();
+//        xmlHttp.onreadystatechange = getAction;
+//        xmlHttp.open("GET",url,true);
+//        xmlHttp.send(null);
+    }
+    function markDone(id){
+        $('#payid').val(id);
+        $('#action').val('markdone');
+        var pages=document.getElementById("pageNumVal").innerHTML;
+        pages=parseInt(pages);
+        $('#pageNum').val(pages);
+        document.paygoogle.submit();
+
+    }
+</script>
+<!--{template footer}-->

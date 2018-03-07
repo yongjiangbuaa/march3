@@ -1,0 +1,60 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "时间段内付费排行";?><font color="red"></font></div>
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+
+支付渠道<select id="selectPayMethod" name="selectPayMethod" onchange="">
+<?php echo $pfOptions;?>
+</select>
+
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询注册数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+<div id='dis' style="float:left;display:none;z-index:99999;position:absolute;left:50px; top:70px; border-radius:20px;background-color:#708090;width:1024px;height:700px"><h2 align="center">正在加载数据，请稍后...</h2></div>
+
+
+<script type="text/javascript">
+function jumpUser(uid){
+	window.location.href = "admincp.php?mod=pay&act=goldlog_analyze&analyze=user&page=1&doShow=true&user="+uid;
+}
+function getData(page){
+	//document.getElementById('dis').style.display = 'block';
+	document.getElementById('btn_view').disabled=true;
+	url = 'admincp.php?mod=pay&act=payrank&analyze=user&page='+page+'&selectCountry='+$('#selectCountry').val()+'&selectPayMethod='+$('#selectPayMethod').val()+'&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val()+'&selectServer='+$('#selectServer').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function getAction(){
+	right=document.getElementById('show');
+	right.innerHTML='loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			//document.getElementById('dis').style.display = 'none';
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

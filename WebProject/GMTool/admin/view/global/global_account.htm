@@ -1,0 +1,84 @@
+<!--{template header}-->
+<form action="admincp.php?mod=global&act=account" method="post" name="getaccount" style="display: inline-table;">
+<div class="row-fluid">
+<div class="span11">
+<span>用户名</span>
+<span><input type="text" id="username" name="username" value='{$username}'></input></span>
+<span>UID</span>
+<span><input type="text" id="useruid" name="useruid" value='{$useruid}'></input></span>
+<span>FBUID</span>
+<span><input type="text" id="facebook" name="facebook" value='{$facebook}'></input></span>
+<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+<input class="btn js-btn btn-primary" type="button" value="{$MALANG['btn_view']}" name="btn_view" onclick="check_submit('view')" />
+<!--{if $showData}-->
+<input class="btn js-btn btn-primary" type="button" value="刷新" name="btn_view" onclick="refresh_submit('{$item['server']}','{$item['gameUid']}','{$item['gameUserName']}')" />
+<!--{/if}-->
+</div>
+</div><br/>
+<!--{if $showData}-->
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+<tbody>
+	<tr>
+	<th align="center"  width="30%">属性</th>
+	<th align="center"  width="30%">值</th>
+	</tr>
+	<!--{loop $item $key $val}-->
+		<tr>
+			<td><input type="text" id="key_{$key}" value="{$key}" size="20" class="input-xlarge disabled uneditable-input" readonly="readonly"></td>
+			<td>$val</td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+<!--{/if}-->
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var inputName = $('#username').val();
+	var inputUid = $('#useruid').val();
+	var inputfb = $('#facebook').val();
+	var inputPlat = $('#userplat').val();
+	inputName = jQuery.trim(inputName);
+	inputUid = jQuery.trim(inputUid);
+	inputPlat = jQuery.trim(inputPlat);
+	if(isEmpty(inputName)&&isEmpty(inputUid)&&isEmpty(inputfb)&&isEmpty(inputPlat)){
+		alert("pls input uid");
+		$("#username").val(" ");
+		$("#username").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view')
+	{
+		if(isCommit()){
+		  document.getElementById('action').value = type;
+		  document.getaccount.submit();
+		}
+	}
+}
+function refresh_submit(server,uid,name){
+	//alert(server+','+uid);
+	$.get('admincp.php?mod=global&act=account&refresh=1&uid='+uid+'&server='+server+'&oldname='+name,function(data){
+		//alert('数据已更新!');
+		alert(data);
+		check_submit('view');
+	});
+}
+function dochatban(uid,type){
+	$.get('admincp.php?mod=user&act=userinfo&dochatban=1&banuid='+uid+'&bantime='+$("#dateMax").val()+'&dotype='+type,function(){
+		alert('Success!');
+		check_submit('view');
+	});
+}
+$("#dateMax").datetimepicker();
+</script>
+<!--{template footer}-->

@@ -1,0 +1,46 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "巨龙+配对 相关统计(只有4,5输入uid有详细变化)";?><font color="red">{$headinfo}</font></div>
+$serverDiv
+起始时间<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}" />
+结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}" />
+UID
+<input type="text" id="useruid" name="useruid" value='{$useruid}'/>
+统计方式 : <select name="battleType" id="battleType">
+    $options
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="统计数据" />
+<hr/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<script type="text/javascript">
+    function getLogData(){
+        document.getElementById('btn_view').disabled=true;
+        var url = 'mod=stat&act=dragon&analyze=platform&start='+$('#start_time').val()+'&end='+$('#end_time').val()+'&battleType='+$("#battleType").val()+'&selectServer='+$('#selectServer').val()+'&userid='+$('#useruid').val();
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("POST",'admincp.php',true);
+        xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlHttp.send(url);
+    }
+    init();
+    function init(){
+        $("#start_time").datetimepicker();
+        $("#end_time").datetimepicker();
+    }
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                    showLogin(getLogData);
+                    return;
+                }
+                right.innerHTML=xmlHttp.responseText;
+                document.getElementById('btn_view').disabled=false;
+                document.getaccount.submit();
+                return;
+            }
+        }
+    }
+</script>
+<!--{template footer}-->

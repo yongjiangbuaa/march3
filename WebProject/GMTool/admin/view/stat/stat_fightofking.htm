@@ -1,0 +1,20 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "国王战相关统计：";?><font color="red"></font></div>
+<div class="span11" style='TEXT-ALIGN:center;float:left;'>
+    <form action="admincp.php?mod=stat&act=fightofking&type=search" method="post" name="getaccount">
+	    <div>
+	    		$serverDiv
+	    		<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+	   </div>
+    </form>
+</div>
+<div id='show' style="float:left;width:110%;height:auto;">
+    <?php echo $html;?>
+</div>
+<script type="text/javascript">
+    function search(){
+        document.getElementById('btn_view').disabled=true;
+        document.getaccount.submit();
+    }
+    </script>
+<!--{template footer}-->

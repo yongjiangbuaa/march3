@@ -1,0 +1,31 @@
+<!--{template header}-->
+<br>
+<br>
+<div class="alert alert-info"><?php echo "faceBook的Roi查询";?><font color="red"></font></div>
+<form action="admincp.php?mod=stat&act=fbAdRoi&analyze=user" method="post" name="getaccount">
+注册时间<input class="input-medium focused" id="regStartDate" name="regStartDate" type="text" placeholder="点击选择日期" value="{$regStartDate}">
+-<input class="input-medium focused" id="regEndDate" name="regEndDate" type="text" placeholder="点击选择日期" value="{$regEndDate}">
+<br>
+充值时间<input class="input-medium focused" id="payStartDate" name="payStartDate" type="text" placeholder="点击选择日期" value="{$payStartDate}">
+-<input class="input-medium focused" id="payEndDate" name="payEndDate" type="text" placeholder="点击选择日期" value="{$payEndDate}">
+
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+</form>
+<div>
+	{$html}
+</div>
+<script type="text/javascript">
+
+init();
+function init(){
+	$("#regStartDate,#regEndDate,#payStartDate,#payEndDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

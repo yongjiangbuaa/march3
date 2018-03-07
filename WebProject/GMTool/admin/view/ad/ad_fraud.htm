@@ -1,0 +1,540 @@
+<!--{template header}-->
+<style type="text/css">
+	.trTitle{
+		line-height: 20px;
+		font-family: museo_sans300;
+		border-bottom: 1px solid #e8e8e8;
+		background-color: #39434e;
+		color: #f5f6f8;
+		font-size: 13px;
+	}
+	.topChannel{
+		background-color: #fff;
+		border-radius: 5px;
+		border: 1px solid #00bcee;
+		color: #0090d0;
+		cursor: default;
+		height: 36px;
+	}
+	th.asc:after {
+		content:' \2191'
+	}
+	th.desc:after {
+		content:' \2193'
+	}
+</style>
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=ad&act=fraud" method="post" name="getaccount">
+	<span style="font-family: 'Gotham XNarrow SSm A', 'Gotham XNarrow SSm B';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">起始</span><input class="input-large focused" id="start_time"
+									 name="start_time" type="text" style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;"
+									 placeholder="起始日期" value="{$start}">
+	<span style="font-family: 'Gotham XNarrow SSm A', 'Gotham XNarrow SSm B';
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1;
+    font-size: 16px;
+    color: #08a0e1;">结束</span><input
+		class="input-large focused" id="end_time" name="end_time" type="text"
+		style="width: 120px;background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;" placeholder="点击选择日期" value="{$end}">
+	<select id='os' name='os' style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $osList $osKey $osName}-->
+		<!--{if ($curOs == $osKey)}-->
+		<option value="{$osKey}" selected="selected">{$osName}</option>
+		<!--{else}-->
+		<option value="{$osKey}">{$osName}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<select id="selectCountry" name="selectCountry" onchange="" style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+		<option value="{$country}" selected="selected">{$countryname}</option>
+		<!--{else}-->
+		<option value="{$country}">{$countryname}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<!--{if ($curOs=='ALL')}-->
+	<select id="topChannel_ALL" name="topChannel_ALL" class="topChannel" onchange="">
+		<option value="ALL">一级渠道: ALL</option>
+		<!--{loop $osChannel $osK $channels}-->
+		<!--{if ($osK!='ALL')}-->
+		<!--{loop $channels $channelValue}-->
+		<!--{if ($curTopChannel==$channelValue)}-->
+		<option value="{$channelValue}" selected="selected">$channelValue</option>
+		<!--{else}-->
+		<option value="{$channelValue}">$channelValue</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<!--{else}-->
+	<select name="topChannel_ALL" class="topChannel" style="display: none;">
+		<option value="ALL">一级渠道: ALL</option>
+		<!--{loop $osChannel $osK $channels}-->
+		<!--{if ($osK!='ALL')}-->
+		<!--{loop $channels $channelValue}-->
+		<option value="{$channelValue}">$channelValue</option>
+		<!--{/loop}-->
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<!--{/if}-->
+
+	<!--{loop $osChannel $osK $channels}-->
+	<!--{if ($osK!='ALL')}-->
+	<!--{if ($curOs==$osK)}-->
+	<select id="topChannel_{$osK}" name="topChannel_{$osK}"
+			class="topChannel" onchange="">
+		<option value="ALL">一级渠道: ALL</option>
+		<!--{loop $channels $channelValue}-->
+		<!--{if ($curTopChannel==$channelValue)}-->
+		<option value="{$channelValue}" selected="selected">$channelValue</option>
+		<!--{else}-->
+		<option value="{$channelValue}">$channelValue</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<!--{else}-->
+	<select id="topChannel_{$osK}" name="topChannel_{$osK}" class="topChannel" style="display: none;" onchange="">
+		<option value="ALL">一级渠道: ALL</option>
+		<!--{loop $channels $channelValue}-->
+		<option value="{$channelValue}">$channelValue</option>
+		<!--{/loop}-->
+	</select>
+	<!--{/if}-->
+	<!--{/if}-->
+	<!--{/loop}-->
+	<select id='ifPay' name='ifPay' style="background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00bcee;
+    color: #0090d0;
+    cursor: default;
+    height: 36px;">
+		<!--{loop $ifPayList $Key $Name}-->
+		<!--{if ($curIfPay == $Key)}-->
+		<option value="{$Key}" selected="selected">{$Name}</option>
+		<!--{else}-->
+		<option value="{$Key}">{$Name}</option>
+		<!--{/if}-->
+		<!--{/loop}-->
+	</select>
+	<input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc;
+    cursor: pointer;" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+	<input class="display:none;" type="hidden" value="" id="event" name="event" />
+	<input style="background-color: #009fdf;color: #fff;border-radius: 5px;padding: 0 15px;height: 40px;border: 1px solid #ccc; cursor: pointer;" type="button" onclick="getXlsPage()" id="btn_page" name="btn_view" value="导出">
+</form>
+<div id="container2" style="height: 400px;margin: 20px auto;width: 1000px;"></div>
+<div>
+	<table class='listTable' style='text-align: center;margin: 10px auto;width: 100%;'>
+		<thead>
+		<tr class="trTitle">
+			<!--{if ($flag=='countrycode')}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">作弊国家</th>
+			<!--{else}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">一级渠道</th>
+			<!--{/if}-->
+			<!--{loop $xarray $dk $dv}-->
+			<!--{if ($flag=='countrycode' && $countrysAdd[$dv])}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$countrysAdd[$dv]</th>
+			<!--{else}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dv</th>
+			<!--{/if}-->
+			<!--{/loop}-->
+		</tr>
+		</thead>
+		<tr>
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">作弊量</td>
+			<!--{loop $cnt2 $dk $dv}-->
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dv</td>
+			<!--{/loop}-->
+		</tr>
+	</table>
+</div>
+
+<div id="containercli" style="height: 400px;margin: 20px auto;width: 1000px;"></div>
+<div>
+	<table class='listTable' style='text-align: center;margin: 10px auto;width: 100%;'>
+		<thead>
+		<tr class="trTitle">
+			<!--{if ($flag=='countrycode')}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">国家</th>
+			<!--{else}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">一级渠道</th>
+			<!--{/if}-->
+			<!--{loop $clixarray $dk $dv}-->
+			<!--{if ($flag=='countrycode' && $countrysAdd[$dv])}-->
+			<th colspan="2" style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$countrysAdd[$dv]</th>
+			<!--{else}-->
+			<th colspan="2" style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dv</th>
+			<!--{/if}-->
+			<!--{/loop}-->
+		</tr>
+		<tr>
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;"></th>
+			<!--{loop $clixarray $dk $dv}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">数量</th>
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">百分比(%)</th>
+			<!--{/loop}-->
+		</tr>
+		</thead>
+		<tr>
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;"></td>
+			<!--{loop $clixarray $dk $dv}-->
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;">$chartscnt[$dv]</td>
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;">$chartspercent[$dv]</td>
+			<!--{/loop}-->
+		</tr>
+	</table>
+</div>
+
+<div id="containerlt" style="height: 400px;margin: 20px auto;width: 1000px;"></div>
+<div>
+	<table class='listTable' style='text-align: center;margin: 10px auto;width: 100%;'>
+		<thead>
+		<tr class="trTitle">
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">生命周期</th>
+			<!--{loop $ltxarray $dk $dv}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dv</th>
+			<!--{/loop}-->
+		</tr>
+		</thead>
+		<tr>
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">数量</td>
+			<!--{loop $ltxarray $dk $dv}-->
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;">$ltchartscnt[$dv]</td>
+			<!--{/loop}-->
+		</tr>
+	</table>
+</div>
+
+<div id="containerlv" style="height: 400px;margin: 20px auto;width: 1000px;"></div>
+<div>
+	<table class='listTable' style='text-align: center;margin: 10px auto;width: 100%;'>
+		<thead>
+		<tr class="trTitle">
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">等级</th>
+			<!--{loop $lvxarray $dk $dv}-->
+			<th style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">$dv</th>
+			<!--{/loop}-->
+		</tr>
+		</thead>
+		<tr>
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;">数量</td>
+			<!--{loop $lvxarray $dk $dv}-->
+			<td style="word-break: keep-all;white-space:nowrap; text-align: -webkit-right;padding: 10px;">$lvchartscnt[$dv]</td>
+			<!--{/loop}-->
+		</tr>
+	</table>
+</div>
+
+<script type="text/javascript">
+	var showDatalt = [];
+	var chartTitlelt='生命周期';
+</script>
+
+<script language="javascript">
+	showDatalt.push({
+		"name":"人数",
+		"data":$ltshowChart,
+	});
+</script>
+
+<script type="text/javascript">
+	$(function () {
+		$('#containerlt').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: chartTitlelt
+			},
+			xAxis: {
+				categories: $ltxStr,
+				tickmarkPlacement: 'on',
+				title: {
+					enabled: false
+				},
+				labels: {
+					rotation: -45
+				}
+			},
+			yAxis: {
+				title: {
+					text: '数量'
+				}
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					lineColor: '#666666',
+					lineWidth: 1,
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+				}
+			},
+			series: showDatalt
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	var showDatalv = [];
+	var chartTitlelv='流失等级分布';
+</script>
+
+<script language="javascript">
+	showDatalv.push({
+		"name":"人数",
+		"data":$lvshowChart,
+	});
+</script>
+
+
+
+<script type="text/javascript">
+	$(function () {
+		$('#containerlv').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: chartTitlelv
+			},
+			xAxis: {
+				categories: $lvxStr,
+				tickmarkPlacement: 'on',
+				title: {
+					enabled: false
+				},
+				labels: {
+					rotation: -45
+				}
+			},
+			yAxis: {
+				title: {
+					text: '数量'
+				}
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					lineColor: '#666666',
+					lineWidth: 1,
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+				}
+			},
+			series: showDatalv
+		});
+	});
+</script>
+
+
+
+<script type="text/javascript">
+	var percentVal = {};
+	var showDatacli = [];
+	var chartTitlecli='广告作弊时间差分布';
+</script>
+
+<script language="javascript">
+	showDatacli.push({
+		"name":"时间差",
+		"data":$clishowChart,
+	});
+</script>
+<!--{loop $clixarray $xVal}-->
+<script language="javascript">
+	percentVal["{$xVal}"]=$chartspercent[$xVal];
+</script>
+<!--{/loop}-->
+
+
+<script type="text/javascript">
+	$(function () {
+		$('#containercli').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: chartTitlecli
+			},
+			xAxis: {
+				categories: $clickxStr,
+				tickmarkPlacement: 'on',
+				title: {
+					enabled: false
+				},
+				labels: {
+					rotation: -45
+				}
+			},
+			yAxis: {
+				title: {
+					text: '数量'
+				}
+			},
+			tooltip: {
+				formatter: function () {
+					return '<b>' + this.x + '</b><br/>' +
+							this.series.name + ': ' + this.y + '<br/>' +
+							'百分比(%): ' + percentVal[this.x];
+				}
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					lineColor: '#666666',
+					lineWidth: 1,
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+				}
+			},
+			series: showDatacli
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	var showData2 = [];
+	var chartTitle2='广告IP作弊分布';
+</script>
+
+<script language="javascript">
+	showData2.push({
+		"name":"作弊量",
+		"data":$showChart2,
+	});
+</script>
+
+<script type="text/javascript">
+	$(function () {
+		$('#container2').highcharts({
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: chartTitle2
+			},
+			xAxis: {
+				categories: $firstchannelStr,
+				tickmarkPlacement: 'on',
+				title: {
+					enabled: false
+				},
+				labels: {
+					rotation: -45
+				}
+			},
+			yAxis: {
+				title: {
+					text: '数量'
+				}
+			},
+			tooltip: {
+				shared: true
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					lineColor: '#666666',
+					lineWidth: 1,
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+				}
+			},
+			series: showData2
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#os").change(function(){
+			var i=$('#os').prop('selectedIndex');
+			$(".topChannel").hide();
+			$(".topChannel").eq(i).show();
+		});
+		$("#os").change();
+	});
+</script>
+
+<script type="text/javascript">
+	function getXlsPage(){
+		window.location.href='admincp.php?mod=ad&act=fraud&start_time='+$('#start_time').val()+'&end_time='+$('#end_time').val()+'&os='+$('#os').val()+'&selectCountry='+$('#selectCountry').val()+'&topChannel_'+$('#os').val()+'='+$('#topChannel_'+$('#os').val()).val()+'&event=output';
+	}
+	window.onload = function () {
+		people = document.getElementById("adDataTable");
+	}
+	function sort_table(tbody, col, asc) {
+		var rows = tbody.rows,
+				rlen = rows.length,
+				arr = new Array(),
+				i, j, cells, clen;
+		// fill the array with values from the table
+		for (i = 0; i < rlen; i++) {
+			cells = rows[i].cells;
+			clen = cells.length;
+			arr[i] = new Array();
+			for (j = 0; j < clen; j++) {
+				arr[i][j] = cells[j].innerHTML;
+			}
+		}
+		// sort the array by the specified column number (col) and order (asc)
+		arr.sort(function (a, b) {
+			return (a[col] == b[col]) ? 0 : ((Number(a[col].replace(/,|-/g, "")) > Number(b[col].replace(/,|-/g, ""))) ? asc : -1 * asc);
+		});
+		// replace existing rows with new rows created from the sorted array
+		for (i = 0; i < rlen; i++) {
+			rows[i].innerHTML = "<td style='word-break: keep-all;white-space:nowrap; text-align: -webkit-left;padding: 10px;'>" + arr[i].join("</td><td style='text-align: -webkit-right;padding: 10px;'>") + "</td>";
+		}
+	}
+
+	init();
+	function init(){
+		$("#start_time,#end_time").datetimepicker();
+	}
+	function search(){
+		document.getElementById('btn_view').disabled=true;
+		document.getElementById('event').value = 'view';
+		document.getaccount.submit();
+	}
+</script>
+
+
+<!--{template footer}-->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="npc">
+    <ItemSpec id="200001" power_id="100001" fb_type="1" battle_id="7101001" player_lv="1" city_lv="0"/>
+    <ItemSpec id="200002" power_id="100001" fb_type="1" battle_id="7101001" player_lv="2" city_lv="0" fb_id="200001"/>
+    <ItemSpec id="200003" power_id="100001" fb_type="1" battle_id="7101001" player_lv="3" city_lv="2" fb_id="200002"/>
+    <ItemSpec id="210001" power_id="110001" fb_type="2" battle_id="7101001" player_lv="0" city_lv="0" fb_id="200001"/>
+    <ItemSpec id="210002" power_id="110001" fb_type="2" battle_id="7101001" player_lv="0" city_lv="0" fb_id="200002"/>
+    <ItemSpec id="210003" power_id="110001" fb_type="2" battle_id="7101001" player_lv="0" city_lv="0" fb_id="200003"/>
+  </Group>
+</tns:database>

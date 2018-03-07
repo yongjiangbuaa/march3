@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xingcloud:config xmlns:xingcloud="http://www.iw.com/sns/config/">
+<!-- 全局信息配置文件 -->
+<!-- 设置默认语言种类 -->
+<language>cn</language>
+<!-- 设置默认时区 -->
+<timezone>Asia/Shanghai</timezone>
+<!-- 设置默认字符编码 -->
+<encode>utf-8</encode>
+</xingcloud:config>

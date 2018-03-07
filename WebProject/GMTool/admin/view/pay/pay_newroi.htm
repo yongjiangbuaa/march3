@@ -1,0 +1,110 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "ROI,1.所有查询均不包含重玩和迁服 2.渠道选择ALL时不包括自然量";?><font color="red"> $tip </font></div>
+注册起始<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+
+平台
+<select id="selectPf" name="selectPf" onchange="">
+	<!--{loop $pfList $pf $pfname}-->
+	<!--{if ($currPf == $pf)}-->
+	<option value="{$pf}" selected="selected">{$pfname}</option>
+	<!-- {else} -->
+	<option value="{$pf}">{$pfname}</option>
+	<!-- {/if} -->
+	<!--{/loop}-->
+</select>
+渠道
+<select id="selectReferrer" name="selectReferrer" onchange="">
+	<!--{loop $referrerList_own $referrer $referrername}-->
+	<!--{if ($currReferrer == $referrer)}-->
+	<option value="{$referrer}" selected="selected">{$referrername}</option>
+	<!-- {else} -->
+	<option value="{$referrer}">{$referrername}</option>
+	<!-- {/if} -->
+	<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="getData(1)" id="btn_view" name="btn_view" value="查询ROI">
+<input class="btn js-btn btn-primary" type="button" onclick="modifyAD(1)" name="btn_view" value="修改android广告花费">
+<input class="btn js-btn btn-primary" type="button" onclick="modifyAD(2)" name="btn_view" value="修改IOS广告花费">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+<div id='ADInfo' style="display:none;float:left;width:100%;height:auto"></div>
+<div id='dis' style="float:left;display:none;z-index:99999;position:absolute;left:50px; top:70px; border-radius:20px;background-color:#708090;width:1024px;height:700px"><h2 align="center">正在加载数据，请稍后...</h2></div>
+ 
+<script type="text/javascript">
+function getData(page){
+	//document.getElementById('dis').style.display = 'block';
+	document.getElementById('btn_view').disabled=true;
+	url = 'admincp.php?mod=pay&act=newroi&getData=true&page='+page+'&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val()+'&selectPf='+$('#selectPf').val()+'&selectReferrer='+$('#selectReferrer').val();
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function modifyAD( type){
+	if(type == 1){//1安卓
+		$.get('admincp.php?mod=pay&act=newroi&phonetype=1&modifyAD=get'+'&startDate='+$('#startDate').val(),function(data){
+			$('#show').hide();
+			$('#ADInfo').html(data).show();
+		});
+	}else if(type == 2){//2iphone
+		$.get('admincp.php?mod=pay&act=newroi&phonetype=2&modifyAD=get'+'&startDate='+$('#startDate').val(),function(data){
+			$('#show').hide();
+			$('#ADInfo').html(data).show();
+		});
+	}
+
+}
+function cancelModify(){
+	$('#ADInfo').html('').hide();
+	$('#show').show();
+}
+function submitModify(type){
+	var data = '?';
+	$('.datekey').each(function(){
+		data += '&'+$(this).attr('name')+'='+$(this).val();
+	});
+	var url = "admincp.php?mod=pay&act=newroi&modifyAD=modify&type="+type;
+	$.post(url,data,function(sda){
+		if(sda == 'fail'){
+			alert("\n操作失败! "+sda);
+		}else {
+			alert("\n操作成功! "+sda);
+		}
+		modifyAD(type);
+		/* $('#ADInfo').html('').hide();
+		$('#show').show();
+		getData(); */
+	});
+}
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function getAction(){
+	$('#ADInfo').html('').hide();
+	$('#show').show();
+	right=document.getElementById('show');
+	right.innerHTML='loading';
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(getData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			$('tr').each(function() {
+			    $(this).find("td").eq(2).css("color","blue");
+			    $(this).find("td").eq(5).css("color","blue");
+			   	$(this).find("td").eq(7).css("color","blue");
+			    $(this).find("td").eq(10).css("color","blue");
+			    $(this).find("td").eq(11).css("color","red");
+			    $(this).find("td").eq(12).css("color","blue");
+			});
+			//document.getElementById('dis').style.display = 'none';
+			document.getElementById('btn_view').disabled=false;
+			return;
+		}
+	}
+}
+</script>
+<!--{template footer}-->

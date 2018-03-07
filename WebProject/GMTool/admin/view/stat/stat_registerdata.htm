@@ -1,0 +1,185 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=stat&act=registerdata&server={$selectServer}" method="post" name="getaccount" style="display: inline-table;">
+<div class="alert alert-info"><?php echo "查看每小时注册用户数";?><font color="red"></font></div>
+<div class="container" style="width: auto;">
+服编号<input type="text" value="{$sttt}" id="selectServer" name="selectServer" style="width: 400px;" placeholder="逗号横杠分隔，如：1,3,8-22；留空则查询全服"/>
+	<br>
+	版本号
+	<select class="input-medium focused" id="zone" name="appVersionName">
+		<!--{loop $appVersionList $appKey $appVal}-->
+		<!--{if ($appVersion == $appKey)}-->
+		<option id="{$appKey}" selected="selected">{$appVal}</option>
+		<!-- {else} -->
+		<option id="{$appKey}">{$appVal}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	国家
+	<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+		<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+		<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	平台
+	<select id="selectPf" name="selectPf" onchange="">
+		<!--{loop $pfList $pf $pfname}-->
+		<!--{if ($currPf == $pf)}-->
+		<option value="{$pf}" selected="selected">{$pfname}</option>
+		<!-- {else} -->
+		<option value="{$pf}">{$pfname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+	渠道
+	<select id="selectReferrer" name="selectReferrer" onchange="">
+		<!--{loop $referrerList $referrer $referrername}-->
+		<!--{if ($currReferrer == $referrer)}-->
+		<option value="{$referrer}" selected="selected">{$referrername}</option>
+		<!-- {else} -->
+		<option value="{$referrer}">{$referrername}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</select>
+<br>
+日期<input id="date" name='date' type="text" value='{$date}' class="input-medium"/>
+～
+<input id="dateEnd" name='dateEnd' type="text" value='{$dateEnd}' class="input-medium"/>
+<input type='checkbox' name="regtype[]" value="0" {$mark0}/>新注册
+<input type='checkbox' name="regtype[]" value="1" {$mark1}/>重玩
+<input type='checkbox' name="regtype[]" value="2" {$mark2}/>迁服
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="partition" value="hour" {$markhour}/>按时间分
+<input type="radio" name="partition" value="country" {$markcountry}/>按国家分
+<input type="radio" name="partition" value="pf" {$markpf}/>按平台分
+<input type="radio" name="partition" value="ip" {$markip}/>按IP分(只显示>5的)
+<input type="radio" name="partition" value="referrer" {$markreferrer}/>按渠道分(只要>5个的)
+<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="search(1)" />
+<input class="btn js-btn btn-primary" type="checkbox" id="noserver" name="noserver" checked="checked">不显示服
+
+	<!--<input class="btn js-btn btn-primary" type="button" value="分渠道展示" name="btn_view" onclick="search(2)" />-->
+	<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+</div>
+</form>
+
+<!-- {if $data} -->
+
+<table class="listTable" cellspacing=1 padding=0>
+	<tr style="text-align: right"><th>$part_name</th><th>服</th><th>合计</th>
+	<!--{loop $totaldate $date $count}-->
+	<th>$date</th>
+	<!--{/loop}-->
+	</tr>
+	<tr style="text-align: right"><th>合计</th><th>--</th>
+	<th>$totalsum</th>
+	<!--{loop $totaldate $date $count}-->
+	<th>$count</th>
+	<!--{/loop}-->
+	</tr>
+	
+	<!--{loop $partition_all $part $val}-->	
+	<tr style="text-align: right"><td>$part</td><td>$IPServerArr[$part]['s']</td>
+	<td>$totalpart[$part]</td>
+	<!--{loop $totaldate $date $count}-->
+		<td>$data[$date][$part]['y']</td>
+	<!--{/loop}-->
+	</tr>
+	<!--{/loop}-->
+	<tr style="text-align: right"><th>运营备注信息</th><th></th>
+		<!--{loop $totaldate $date $count}-->
+		<!-- {if $num[$date]} -->
+		<td id="$date" width="200"><a href="javascript:void(edit('$date','$num[$date]'))">$num[$date]</a></td>
+		<!-- {else} -->
+		<td id="$date"><a href="javascript:void(edit('$date','$num[$date]'))">无</a></td>
+		<!-- {/if} -->
+		<!--{/loop}-->
+	</tr>
+</table>
+
+<!-- {/if} -->
+
+
+<script type="text/javascript">
+$("#date").datetimepicker();
+$("#dateEnd").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(type){
+	document.getElementById('event').value = type;
+	document.getaccount.submit();
+}
+
+var count=0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+
+function edit(date,num) {
+	doClear()
+	datekey=date;
+	right =right=document.getElementById(date);
+	var str='<form id="form1" style="margin:0">输入值: <input class="input-mini" name="num" type="text" id="num'+date+'" value="'+num+'"><br/>当前:'+num+' <input type="button" id="savebtn" value="保存" onclick=save(num)> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right.innerHTML=str;
+}
+
+function rightinfo() {
+	var obj=document.getElementsByName('regtype[]');
+	var type='';
+	for(var i=0; i<obj.length; i++){
+		if(obj[i].checked) type+=obj[i].value+',';
+	}
+	self.location='admincp.php?mod=stat&act=registerdata&server={$selectServer}&date='+$('#date').val()+'&dateEnd='+$('#dateEnd').val()+'&type='+type;
+}
+
+function save(num){
+	var url ='admincp.php?mod=stat&act=registerdata&datekey='+datekey+'&num='+num.value+'&date='+$('#date').val();
+	alert(url);
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+
+function getAction(){
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+			showLogin();
+			return;
+		}
+		rightinfo();
+		return;
+	}
+}
+
+</script>
+
+<!--{template footer}-->

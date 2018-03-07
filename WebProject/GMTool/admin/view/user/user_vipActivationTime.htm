@@ -1,0 +1,109 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "Vip激活时间修改";?><font color="red" id="showtips"></font></div>
+<form action="admincp.php?mod=user&act=vipActivationTime" method="post" name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			uid<input type="text" id="uid" name="uid" value='{$uid}'></input>
+			<input class="display:none;" type="hidden" value="" id="action" name="action"/>	
+			<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="check_submit('view')" />
+		</div>
+	</div>
+	<br>
+	<input class="display:none;" type="hidden" value="{$time}" id="endTime" name="endTime"/>
+	<!--{if $showData}-->
+	减去VIP的小时数<input type="text" id="minusHour" name="minusHour" value='{$minusHour}'></input>
+	<input class="btn js-btn btn-primary"  type="button" value="减VIP时间" id="btn_find" name="btn_find" onclick="minus_submit('minus')" />
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+	<tbody>
+		<tr>
+			<th>uid</th>
+			<th>积分</th>
+			<th>Vip截止时间</th>
+		</tr>
+		<tr>
+			<td>$info['uid']</td>
+			<td>$info['score']</td>
+			<td>$info['vipEndTime']</td>
+		</tr>
+	</tbody>
+	</table>
+	<!--{/if}-->
+	<div><font style="color: red;" id="showtips">$output</font></div>
+	<!--{if $afterData}-->
+	<span>VIP时间减去之后的信息:</span>
+	<br>
+	<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:auto;">
+		<tbody>
+			<tr>
+				<th>uid</th>
+				<th>积分</th>
+				<th>Vip截止时间</th>
+			</tr>
+			<tr>
+				<td>$infoAfter['uid']</td>
+				<td>$infoAfter['score']</td>
+				<td>$infoAfter['vipEndTime']</td>
+			</tr>
+		</tbody>
+	</table>	
+	<!--{/if}-->
+</form>
+
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+function isCommit(){
+	var uid = $('#uid').val();
+	uid = jQuery.trim(uid);
+	if(isEmpty(uid)){
+		alert("<?php echo '请输入uid';?>");
+		$("#uid").focus();
+		return false;
+	}
+	return true;
+}
+function isMinus(){
+	var minusHour = $('#minusHour').val();
+	minusHour = jQuery.trim(minusHour);
+	if(isEmpty(minusHour)){
+		alert("<?php echo '请输入减去的小时数';?>");
+		$("#minusHour").focus();
+		return false;
+	}
+	
+	if(minusHour<=0){
+		alert("<?php echo '减去的小时数必须大于0';?>");
+		$("#minusHour").focus();
+		return false;
+	}
+	return true;
+}
+function check_submit(type) {
+	if(type=='view'){
+		if(isCommit()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+	if(type=='minus'&&isCommit()){
+		if(isMinus()){
+			document.getElementById('action').value = type;
+			document.getaccount.submit();
+		}
+	}
+}
+function minus_submit(type){
+	if(confirm('是否确认要减去VIP时间'))
+	{
+		check_submit(type);	
+	}
+}
+
+</script>
+
+<!--{template footer}-->

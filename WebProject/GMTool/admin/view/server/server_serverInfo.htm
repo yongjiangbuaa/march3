@@ -1,0 +1,79 @@
+<!--{template header}-->
+<br>
+<strong><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></strong>
+<br>
+<form action="admincp.php?mod=server&act=serverInfo&analyze=user" method="post" name="getaccount">
+$serverDiv
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询">
+
+<!--{if $developer}-->
+<br>
+编辑导量策略:&nbsp;&nbsp;
+服<input type="text" id="editSids" name="editSids" value='' placeholder="多个服以','分割"></input>&nbsp;&nbsp;
+策略<input type="text" id="strategy" name="strategy" value='' placeholder="导量策略"></input>&nbsp;&nbsp;
+<input class="btn js-btn btn-primary" type="button" value="保存" name="btn_add" onclick="check_add()" />
+<!--{/if}-->
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+<!--{if $showData}-->
+	<table class="listTable" style="text-align:center">
+		<tbody>
+			<tr>
+				<!--{loop $dbIndex $indKey $indValue}-->
+					<th style="text-align: center;">$indValue</th>
+				<!--{/loop}-->
+			</tr>
+			<!--{loop $data $key $dbInfo}-->
+				<!--{if strlen($dbInfo['daoliangPeriod'])<=11}-->
+					<tr style="background:aliceblue;" class='listTr'>
+					<!--{loop $dbIndex $indKey $indValue}-->
+						<td>$dbInfo[$indKey]</td>
+					<!--{/loop}-->
+					</tr>
+				<!--{else}-->
+					<tr class='listTr'>
+					<!--{loop $dbIndex $indKey $indValue}-->
+						<td>$dbInfo[$indKey]</td>
+					<!--{/loop}-->
+					</tr>
+				<!--{/if}-->
+				
+			<!--{/loop}-->
+	
+		</tbody>
+	</table>
+<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+function isEmpty(value){
+	if(value == null || value ==""){
+       return true;
+	}else{
+       return false;
+	}
+}
+
+function check_add(){
+	var editSids = $('#editSids').val();
+	editSids=jQuery.trim(editSids);
+	if(isEmpty(editSids)){
+		alert("<?php echo "请输入编辑导量的服";?>");
+		$("#editSids").focus();
+		return false;
+	}
+	
+	$.get('admincp.php?mod=server&act=serverInfo&addStrategy=1&editSids='+editSids+'&strategy='+$('#strategy').val(),function(data){
+		alert(data);
+		search()
+	});
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

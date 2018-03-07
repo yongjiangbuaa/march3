@@ -1,0 +1,98 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+
+<div class="alert alert-info"><?php echo "装备信息统计(输入玩家uid时,请输入具体服信息)";?><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font></div>
+<form action="admincp.php?mod=stat&act=equipmentStatistics2&analyze=view" method="post" name="getaccount">
+$serverDiv
+	起始日期<input class="input focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+	结束时间<input class="input focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+	玩家id<input class="input focused" id="user_id" name="user_id" type="text" placeholder="玩家uid" value="{$userId}">
+	装备id<input class="input focused" id="itemid" name="itemid" type="text" placeholder="装备id" value="{$itemid}">
+	付费等级<select id="paylevel" name="paylevel">
+			{$option}
+		</select>
+	领主等级最小<input class="input focused" id="lordlevel1" name="lordlevel1" type="text" placeholder="领主等级" value="{$lordlevel1}">
+	领主等级最大<input class="input focused" id="lordlevel2" name="lordlevel2" type="text" placeholder="领主等级" value="{$lordlevel2}">
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+
+</form>
+
+<div >
+	{$disHtml}
+</div>
+<div id="container1" style="min-width: 310px; height: 500px; margin: 0 auto;"></div>
+
+
+<script type="text/javascript">
+	var showData = [];
+	var chartTitle='';
+</script>
+
+<!--{loop $sum  $iKey $value}-->
+<script language="javascript">
+	showData.push({
+		"name":$charArr[$iKey]['name'],
+		"data":$charArr[$iKey]['rate'],
+		"visible":$charArr[$iKey]['dis']
+	});
+</script>
+<!--{/loop}-->
+
+<script type="text/javascript">
+	$(function () {
+		$('#container1').highcharts({
+			chart: {
+				type: 'spline'
+			},
+			title: {
+				text: "每日不同装备覆盖率变化曲线"
+			},
+			xAxis: {
+				categories: $dateStr,
+				tickmarkPlacement: 'on',
+				title: {
+					enabled: false
+				},
+				labels: {
+					rotation: -45
+				}
+			},
+			yAxis: {
+				title: {
+					text: '个数'
+				}
+			},
+			tooltip: {
+				shared: true
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					lineColor: '#666666',
+					lineWidth: 1,
+					marker: {
+						lineWidth: 1,
+						lineColor: '#666666'
+					}
+				}
+			},
+			series: showData
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$("#start_time,#end_time").datetimepicker();
+
+function turnoff(){
+	document.getElementById('display').style.display="none";
+}
+
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,36 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "屏蔽字管理";?><font color="red"></font></div>
+	<input class="btn js-btn btn-primary" type="button" value="查看当前屏蔽字" name="btn_view" onclick="check_submit('view')" />
+	<input class="btn js-btn btn-primary" type="button" value="屏蔽字批量添加(每行一个)" name="btn_view" onclick="check_submit('add')" />
+	<input class="btn js-btn btn-primary" type="button" value="同步全服" name="btn_view" onclick="check_submit('sync')" />
+	<textarea id='badwordslist'></textarea>
+	<div id='show' style="width:100%;float:left;height:auto"></div>
+<script type="text/javascript">
+function check_submit(type) {
+	var wordstr = $("#badwordslist").val();
+	if(type == 'add' && wordstr){
+		var wordArr = wordstr.split('\n');
+		var words = wordArr.join(',');
+		
+	}
+	$.post('admincp.php?mod=user&act=badwords&action='+type+'&words='+words,function(data){
+		$("#show").html(data);
+	});
+}
+function domodify(id){
+	var old_value = $('#value_'+id).attr('original');
+	console.log($('#value_'+id).val());
+	var new_value = $('#value_'+id).val();
+	$.get('admincp.php?mod=user&act=badwords&action=delete&old_value='+old_value+'&new_value='+new_value,function(){
+		check_submit('view');
+	});
+}
+function dodelete(id){
+	var old_value = $('#value_'+id).attr('original');
+	console.log($('#value_'+id).attr('original'));
+	$.get('admincp.php?mod=user&act=badwords&action=delete&old_value='+old_value,function(){
+		check_submit('view');
+	});
+}
+</script>
+<!--{template footer}-->

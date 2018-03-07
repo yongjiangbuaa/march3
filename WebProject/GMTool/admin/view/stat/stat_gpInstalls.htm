@@ -1,0 +1,130 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<br>
+<form action="admincp.php?mod=stat&act=gpInstalls&analyze=user" method="post" name="getaccount">
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+国家
+<select id="selectCountry" name="selectCountry" onchange="">
+		<!--{loop $countryList $country $countryname}-->
+		<!--{if ($currCountry == $country)}-->
+			<option value="{$country}" selected="selected">{$countryname}</option>
+		<!-- {else} -->
+			<option value="{$country}">{$countryname}</option>
+		<!-- {/if} -->
+		<!--{/loop}-->
+</select>
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<input class="display:none;" type="hidden" value="" id="event" name="event"/>
+
+</form>
+
+<div id="chart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<!-- {if $showData} -->
+	<script language="javascript">
+		var datashow = [];
+	</script>
+	<!--{loop $showData  $countryKey $dateData}-->
+		<script language="javascript">
+			var svData = [];
+		</script>
+		<!--{loop $dateData  $key $value}-->
+		<script language="javascript">
+			svData.push($value['y']);
+		</script>
+		<!--{/loop}-->
+		<script language="javascript">
+			datashow.push({
+						"type":"spline",
+						"name":"$countryKey",
+						"data":svData,
+						"lineWidth": 2,});
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart',
+			type: 'area',
+			plotBorderWidth: 1,
+			height:600
+		},
+		title: {
+			text: 'gp每日注册统计'
+		},
+		subtitle: {
+			text: ''
+		},
+        xAxis: {
+            type: 'linear',
+			categories:$dateStr,
+            title: {
+                text: null
+            }
+        },
+		yAxis: {
+			title: {
+				text: '注册人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+			minPadding:1,
+		},
+		tooltip: {
+			formatter: function() {
+			var s =  '<b>{series.name}</b>';
+				$.each(this.points, function(i, point) {
+				    s += '<br/>'+ '<tspan style="fill:'+ point.series.color + '" dy="16" x="5">' + point.series.name +'</tspan>';
+				    s += '<b>: </b>'+ point.y;
+				});
+				return s;
+            },
+			shared: true,
+		},
+		legend: {
+			enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				}
+			},
+		},
+		credits:{
+			enabled:false
+		},
+		series: datashow
+	});
+	</script>
+	<!--{loop $showData  $cou $dData}-->
+		$cou: $total[$cou]<br />
+	<!--{/loop}-->
+<!-- {/if} -->
+
+
+<div>
+	$html
+</div>
+<script type="text/javascript">
+init();
+function init(){
+	$("#startDate,#endDate").datetimepicker();
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+
+
+</script>
+<!--{template footer}-->

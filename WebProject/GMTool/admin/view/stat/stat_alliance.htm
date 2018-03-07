@@ -1,0 +1,249 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "联盟管理";?><font color="red"></font></div>
+<div id="tip" style="width:auto;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<input type="radio" id="alliList" name="keyType" value="alliList" onclick="changeType()" checked /> 查看联盟列表
+<input type="radio" id="allistat" name="keyType" value="allistat" onclick="changeType()" /> 查看联盟相关统计
+<input type="radio" id="territory" name="keyType" value="territory" onclick="changeType()" /> 查看联盟领地相关统计
+<!-- 
+<input class="btn js-btn btn-primary" type="button" value="点击进行联盟补偿 (务必谨慎)" name="btn_view" onclick="getAllianceMail()" />
+ -->
+<hr />
+<div id="AllianceList">
+<form action="admincp.php?mod=stat&act=alliance" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+联盟名称<input class="input-large" id="allianceName" name='allianceName' type="text" value=''  />
+<input class="btn js-btn btn-primary" type="button" id="btn_view" value="点击开始查询" name="btn_view" onclick="getData(1)" />
+<br>
+<input class="" type="checkbox" name="bynum" id="bynum" >按照联盟人数排序
+<input class="" type="checkbox" name="bydau" id="bydau" >按照日活跃人数排序
+<input class="" type="checkbox" name="bypower" id="bypower" >按照总战力排序
+<!--  <input class="" type="checkbox" name="byScience" id="byScience" >按照科技使用人数排序 -->
+</div>
+</div>
+</form>
+<div id='show' style="width:100%;float:left;"></div>
+<div id='showMember' style="width:100%;float:left;"></div>
+</div>
+<div id="RegJoin" style="display:none;">
+统计类型
+<select id="selectEvent" onchange="changeevent()">
+		$eventOptions
+</select>
+
+注册起始日期<input class="input-large focused" id="start_time" name="start_time" type="text" placeholder="点击选择日期" value="{$start}">
+注册结束时间<input class="input-large focused" id="end_time" name="end_time" type="text" placeholder="点击选择日期" value="{$end}">
+<div id="alliancescience" style="display:none;">
+联盟名称 : <input class="input-large" id="allName" name='allName' type="text" value=''  /> 
+</div> 
+<div id="allianceChief" style="display:none;">
+服 : $serverDiv
+</div>
+<input class="btn js-btn btn-primary" type="button" onclick="getStatData()" name="btn_view" value="查看数据">
+<br />
+<div id='showStat' style="width:100%;float:left;"></div>
+</div>
+
+<div id="statTerritory" style="display:none;">
+	服编号<input type="text" id="selectServer" name="selectServer" value="" style="width: 400px;"/>(逗号横杠分隔。如：1,3,8-22)
+	<input class="btn js-btn btn-primary" type="button" value="查询" name="btn_view" onclick="search()" />
+	<div id='showTerritory' style="width:100%;float:left;"></div>
+</div>
+
+
+<script type="text/javascript">
+function changeevent(){
+	var selectVal = $("#selectEvent").val();
+	$("#alliancescience").hide();
+	switch (selectVal) {
+	case 'alliancescience':
+	case 'memberDonate':
+	case 'shop':
+	case 'shopBuy':
+	case 'shopSell':
+		$("#alliancescience").show();
+		break;
+	case 'allianceChief':
+		$("#allianceChief").show();
+		break
+	}
+}
+function getAllianceMail(){
+	if(confirm("确定操作?")){
+		var url = 'admincp.php?mod=stat&act=alliance&fixmail';
+		$.get(url,function(data){
+			$("#show").html(data);
+		})
+	}
+
+}
+function viewAlli(alliUid){
+	$('#AllianceList').show();
+	$("#alliList").attr("checked",true);
+	$('#RegJoin').hide();
+	showData(alliUid);
+}
+function changeType(){
+	if(document.getElementById('alliList').checked)
+	{
+		$('#AllianceList').show();
+		$('#RegJoin').hide();
+		$('#statTerritory').hide();
+	}
+	if(document.getElementById('allistat').checked)
+	{
+		$('#AllianceList').hide();
+		$('#RegJoin').show();
+		$('#statTerritory').hide();
+	}
+	if(document.getElementById('territory').checked)
+	{
+		$('#AllianceList').hide();
+		$('#RegJoin').hide();
+		$('#statTerritory').show();
+	}
+}
+var thisPage;
+function check(key){
+	var pattern = /[^0-9]/g;
+	if(pattern.test(key.value)){
+		alert('Please enter number');
+		$("#turn").val('');
+	}
+	return false;
+}
+function turnPage(){
+	var page = $("#turn").val();
+	getData(page);
+}
+function getData(page){
+	document.getElementById('btn_view').disabled=true;
+	thisPage = page;
+	showData();
+}
+function showData(allianceId){
+	$("#show").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url ='admincp.php?mod=stat&act=alliance&dotype=getPageData&page='+thisPage+'&allianceName='+$("#allianceName").val();
+	if(document.getElementById('bynum').checked)
+		url += '&bynum=true';
+	if(document.getElementById('bydau').checked)
+		url += '&bydau=true';
+	if(document.getElementById('bypower').checked)
+		url += '&bypower=true';
+//	if(document.getElementById('byScience').checked)
+//	url += '&byScience=true';
+	if($.trim(allianceId))
+		url += '&AlliUid='+allianceId;
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin(showData);
+				return;
+			}
+			right.innerHTML=xmlHttp.responseText;
+			document.getElementById('btn_view').disabled=false;
+			//new superTable("table", {
+			//headerRows : 1,
+			//fixedCols : 2
+		    //});
+			return;
+		}
+	}
+}
+init();
+function init(){
+	$("#start_time,#end_time").datetimepicker();
+}
+
+function getMember(uid){
+	$("#showMember").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url='admincp.php?mod=stat&act=alliance&dotype=getmember&alUid='+uid;
+	$.get(url,function(data){
+		var offset = $("#showMember").offset();
+		$("#showMember").html(data);
+		$(document).scrollTop(offset.top);
+	})
+}
+function getStatData(){
+	$("#showStat").html("<h3 style='color:red;'>Loading.......</h3>");
+	type = $("#selectEvent").val(); 
+	var url='admincp.php?mod=stat&act=alliance&dotype='+type+'&dayStart='+$("#start_time").val()+'&dayEnd='+$("#end_time").val();
+	var selectVal = $("#selectEvent").val();
+	switch (selectVal) {
+	case 'alliancescience':
+	case 'memberDonate':
+	case 'shop':
+	case 'shopBuy':
+	case 'shopSell':
+		url += '&allianceName='+$("#allName").val()
+		break
+	case 'allianceChief':
+		url += '&selectServer='+$("#selectServer").val()
+		break
+	}
+	$.get(url,function(data){
+		if (data == 'no') {
+			alert("联盟名称不存在");
+		} else {
+			$("#showStat").html(data);
+		}
+	})
+}
+
+function search(){
+	$("#showTerritory").html("<h3 style='color:red;'>Loading.......</h3>");
+	var url='admincp.php?mod=stat&act=alliance&dotype=territory'+'&selectServer='+$("#selectServer").val();
+	$.get(url,function(data){
+		//alert(data);
+		$("#showTerritory").html(data);
+		/* if (data == 'no') {
+			alert("联盟名称不存在");
+		} else {
+			$("#showStat").html(data);
+		} */
+	});
+}
+
+function edit(uid) {
+	var rank=prompt("需要修改为的职位","");
+	if(rank && rank>0 && rank<6){
+		$.get('admincp.php?mod=stat&act=alliance&dotype=update_rank&alUid='+uid+'&rank='+ rank,function(data){
+			if (data == 'ok') {
+				alert('Success,请刷新确认!');
+			}
+		});
+	}else{
+		alert("输入有误")
+	}
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+function change_alliname(uid) {
+	var alliname=prompt("需要修改为的名称","");
+	alliname = jQuery.trim(alliname);
+	if(!isEmpty(alliname) && alliname.length >=3 && alliname.length<=20){
+		$.get('admincp.php?mod=stat&act=alliance&dotype=changename&alUid='+uid+'&alliname='+ alliname,function(data){
+			if (data == 'ok') {
+				alert('Success,请刷新确认!');
+			}
+		});
+	}else{
+		alert("输入有误,[3,20]字符")
+	}
+}
+
+</script>
+
+<!--{template footer}-->

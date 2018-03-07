@@ -1,0 +1,278 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "137用户注册推送配置";?>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red">$displayid</font></div>
+<div>
+<a href="javascript:void(changeId(1))">注册1天</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeId(3))">注册3天</a>
+&nbsp;&nbsp;|&nbsp;&nbsp;
+<a href="javascript:void(changeId(7))">注册7天</a>
+&nbsp;&nbsp;<font style="color: #FF0000" id="displayid">{$displayid}</font>
+<br>
+
+</div>
+
+<div id="addDiv">
+	<form action="admincp.php?mod=op&act=137login" method="post" name="getaccount" enctype="multipart/form-data">
+		<input class="display:none;" type="hidden" value="{$id}" id="idType" name="idType" />
+		<input class="display:none;" type="hidden" value="" id="type" name="type" />
+		<br>
+		<table class="listTable" cellspacing=1 padding=0 style="width: 80%; text-align: left">
+			<tr><td>发送时间</td><td><input class="input-large focused" id="startTime" name="startTime" type="text" value="{$data['time']}" style="width: 60px;" maxlength="5" value="12:00" readonly="readonly"/>(输入时间00:00到23:59 UTC时间)</td></tr>
+			<tr><td width="8%">标题&nbsp;&nbsp;</td>
+				<td>
+					<table id="titleTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr><td width="8%">英语</td><td><input class="input-large focused" id="txttitleEn" name="txttitleEn" style="width: 90%;" type="text" value="{$data['title']['en']}" maxlength=40 /></td></tr>
+						<tr><td>简体中文</td><td><input class="input-large focused" id="txttitleZh_Hans" name="txttitleZh_Hans" style="width: 90%;" type="text" value="{$data['title']['zh_Hans']}" maxlength=40 /></td></tr>
+						<tr><td>繁体中文</td><td><input class="input-large focused" id="txttitleZh_Hant" name="txttitleZh_Hant" style="width: 90%;" type="text" value="{$data['title']['zh_Hant']}" maxlength=40 /></td></tr>
+						<tr><td>韩语</td><td><input class="input-large focused" id="txttitleKo" name="txttitleKo" type="text" style="width: 90%;" value="{$data['title']['ko']}" maxlength=40 /></td></tr>
+						<tr><td>泰语</td><td><input class="input-large focused" id="txttitleTh" name="txttitleTh" type="text" style="width: 90%;" value="{$data['title']['th']}" maxlength=40 /></td></tr>
+						<tr><td>德语</td><td><input class="input-large focused" id="txttitleDe" name="txttitleDe" type="text" style="width: 90%;" value="{$data['title']['de']}" maxlength=40 /></td></tr>
+						<tr><td>俄语</td><td><input class="input-large focused" id="txttitleRu" name="txttitleRu" type="text" style="width: 90%;" value="{$data['title']['ru']}" maxlength=40 /></td></tr>
+						<tr><td>葡语</td><td><input class="input-large focused" id="txttitlePt" name="txttitlePt" type="text" style="width: 90%;" value="{$data['title']['pt']}" maxlength=40 /></td></tr>
+						<tr><td>日语</td><td><input class="input-large focused" id="txttitleJa" name="txttitleJa" type="text" style="width: 90%;" value="{$data['title']['ja']}" maxlength=40 /></td></tr>
+						<tr><td>西班牙语</td><td><input class="input-large focused" id="txttitleEs" name="txttitleEs" type="text" style="width: 90%;" value="{$data['title']['es']}" maxlength=40 /></td></tr>
+						<tr><td>法语</td><td><input class="input-large focused" id="txttitleFr" name="txttitleFr" type="text" style="width: 90%;" value="{$data['title']['fr']}" maxlength=40 /></td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>内容&nbsp;&nbsp;</td>
+				<td>
+					<table id="contentTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr><td width="8%">英语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentEn" name="txtcontentEn" rows="2">$data['contents']['en']</textarea></td></tr>
+						<tr><td>简体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentZh_Hans" name="txtcontentZh_Hans" rows="2">$data['contents']['zh_Hans']</textarea></td></tr>
+						<tr><td>繁体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentZh_Hant" name="txtcontentZh_Hant" rows="2">$data['contents']['zh_Hant']</textarea></td></tr>
+						<tr><td>韩语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentKo" name="txtcontentKo" rows="2">$data['contents']['ko']</textarea></td></tr>
+						<tr><td>泰语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentTh" name="txtcontentTh" rows="2">$data['contents']['th']</textarea></td></tr>
+						<tr><td>德语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentDe" name="txtcontentDe" rows="2">$data['contents']['de']</textarea></td></tr>
+						<tr><td>俄语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentRu" name="txtcontentRu" rows="2">$data['contents']['ru']</textarea></td></tr>
+						<tr><td>葡语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentPt" name="txtcontentPt" rows="2">$data['contents']['pt']</textarea></td></tr>
+						<tr><td>日语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentJa" name="txtcontentJa" rows="2">$data['contents']['ja']</textarea></td></tr>
+						<tr><td>西班牙语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentEs" name="txtcontentEs" rows="2">$data['contents']['es']</textarea></td></tr>
+						<tr><td>法语</td><td><textarea style="width: 90%;" class="input-xlarge" id="txtcontentFr" name="txtcontentFr" rows="2">$data['contents']['fr']</textarea></td></tr>
+					</table>
+				</td>
+			</tr>	
+			<tr><td>PUSH消息<br>(36字符内)</td>
+				<td>
+					<table id="infoTable" class="smallTable" style="width: 100%;border:0px;">
+						<tr><td width="8%">英语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationEn" name="notificationEn" rows="2">$data['notification']['en']</textarea></td></tr>
+						<tr><td>简体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationZh_Hans" name="notificationZh_Hans" rows="2">$data['notification']['zh_Hans']</textarea></td></tr>
+						<tr><td>繁体中文</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationZh_Hant" name="notificationZh_Hant" rows="2">$data['notification']['zh_Hant']</textarea></td></tr>
+						<tr><td>韩语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationKo" name="notificationKo" rows="2">$data['notification']['ko']</textarea></td></tr>
+						<tr><td>泰语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationTh" name="notificationTh" rows="2">$data['notification']['th']</textarea></td></tr>
+						<tr><td>德语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationDe" name="notificationDe" rows="2">$data['notification']['de']</textarea></td></tr>
+						<tr><td>俄语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationRu" name="notificationRu" rows="2">$data['notification']['ru']</textarea></td></tr>
+						<tr><td>葡语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationPt" name="notificationPt" rows="2">$data['notification']['pt']</textarea></td></tr>
+						<tr><td>日语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationJa" name="notificationJa" rows="2">$data['notification']['ja']</textarea></td></tr>
+						<tr><td>西班牙语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationEs" name="notificationEs" rows="2">$data['notification']['es']</textarea></td></tr>
+						<tr><td>法语</td><td><textarea style="width: 90%;" class="input-xlarge" id="notificationFr" name="notificationFr" rows="2">$data['notification']['fr']</textarea></td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr><td>奖励</td>
+			<td>
+				<table id="rewardTable" class="smallTable" style="width: 100%;border:0px;">
+					<tr><td width="8%">金币</td><td><input id="reward_gold" name="reward_gold" type="text" value="{$data['reward']['gold']}" maxlength=40 /></td></tr>
+					<tr><td>木材</td><td><input id="reward_wood" name="reward_wood" type="text" value="{$data['reward']['wood']}" maxlength=40 /></td></tr>
+					<tr><td>粮食</td><td><input id="reward_food" name="reward_food" type="text" value="{$data['reward']['food']}" maxlength=40 /></td></tr>
+					<tr><td>秘银</td><td><input id="reward_stone" name="reward_stone" type="text" value="{$data['reward']['stone']}" maxlength=40 /></td></tr>
+					<tr><td>铁矿</td><td><input id="reward_iron" name="reward_iron" type="text" value="{$data['reward']['iron']}" maxlength=40 /></td></tr>
+				</table>
+			</td>
+			</tr>
+			<tr><td>奖励-道具<br/><font color="red">多个ID用'|'分隔<br/>数量也对应用'|'分开</font></td>
+			<td>
+				<table id="rewardTable2" class="smallTable" style="width: 100%;border:0px;">
+					<tr><td width="8%">道具ID</td><td><input id="reward_goods" name="reward_goods" style="width: 90%;" type="text" value="{$data['reward']['goodsName']}" maxlength=40 /></td></tr>
+					<tr><td>数量</td><td><input id="reward_goodsNum" name="reward_goodsNum" style="width: 90%;" type="text" value="{$data['reward']['goodsNum']}" maxlength=40 /></td></tr>
+				</table>
+			</td>
+			</tr>
+		<tr>
+			<td></td>
+			<td>
+				<button type="button" class="btn btn-info" name="btn_set" onclick="checksubmit('add')">添加</button>
+				<button type="reset" class="btn">重置</button>
+			</td>
+		</tr>
+		</table>
+	</form>
+</div>
+<script type="text/javascript">
+// $("#startTime").datetimepicker({showSecond: false, showMillisec: false,  timeFormat: 'HH:mm'});
+function changeId(type){
+	document.getElementById('idType').value = type;
+	//document.getElementById('displayid').innerText = '选中的ID为:'+type;
+	//document.getElementById('type').value = "serach";
+	document.getaccount.submit();
+}
+function isEmpty(value){
+	if(value == null || value ==""){
+		return true;
+	}else{
+		return false;
+	}
+}
+function checksubmit(type){
+	if(type == 'add'){
+		var i=0;
+		var id=  $('#idType').val();
+		var startTime= $('#startTime').val();
+		var enTitle = $('#txttitleEn').val();
+		var enContents = $('#txtcontentEn').val();
+		var zh_HansTitle = $('#txttitleZh_Hans').val();
+		var zh_HansContents = $('#txtcontentZh_Hans').val();
+		var zh_HantTitle = $('#txttitleZh_Hant').val();
+		var zh_HantContents = $('#txtcontentZh_Hant').val();
+		var koTitle = $('#txttitleKo').val();
+		var koContents = $('#txttitleKo').val();
+		var thTitle = $('#txttitleTh').val();
+		var thContents = $('#txttitleTh').val();
+		var deTitle = $('#txttitleDe').val();
+		var deContents = $('#txttitleDE').val();
+		var ruTitle = $('#txttitleRu').val();
+		var ruContents = $('#txttitleRu').val();
+		var ptTitle = $('#txttitlePt').val();
+		var ptContents = $('#txttitlePt').val();
+		var jaTitle = $('#txttitleJa').val();
+		var jaContents = $('#txttitleJa').val();
+		var gold = $('#reward_gold').val();
+		var wood = $('#reward_wood').val();
+		var food = $('#reward_food').val();
+		var stone = $('#reward_stone').val();
+		var iron = $('#reward_iron').val();
+		var goodsNum =$("#reward_goodsNum").val();
+		var goods = $("#reward_goods").val();
+		startTime=jQuery.trim(startTime);
+		enTitle=jQuery.trim(enTitle);
+		enContents = jQuery.trim(enContents);
+		zh_HansTitle=jQuery.trim(zh_HansTitle);
+		zh_HansContents = jQuery.trim(zh_HansContents);
+		zh_HantTitle=jQuery.trim(zh_HantTitle);
+		zh_HantContents = jQuery.trim(zh_HantContents);
+		koTitle=jQuery.trim(koTitle);
+		koContents = jQuery.trim(koContents);
+		thTitle=jQuery.trim(thTitle);
+		thContents = jQuery.trim(thContents);
+		deTitle=jQuery.trim(deTitle);
+		deContents = jQuery.trim(deContents);
+		ruTitle=jQuery.trim(ruTitle);
+		ruContents = jQuery.trim(ruContents);
+		ptTitle=jQuery.trim(ptTitle);
+		ptContents = jQuery.trim(ptContents);
+		jaTitle=jQuery.trim(jaTitle);
+		jaContents = jQuery.trim(jaContents);
+		gold = jQuery.trim(gold);
+		wood = jQuery.trim(wood);
+		//total =total+Number(wood);
+		food = jQuery.trim(food);
+		//total =total+Number(food);
+		stone = jQuery.trim(stone);
+		//total =total+Number(stone);
+		iron = jQuery.trim(iron);
+		//total =total+Number(iron);
+		if(!isEmpty(gold)){
+			i++;
+		}
+		if(!isEmpty(wood)){
+			i++;
+		}
+		if(!isEmpty(food)){
+			i++;
+		}
+		if(!isEmpty(stone)){
+			i++;
+		}
+		if(!isEmpty(iron)){
+			i++;
+		}
+		if(!isEmpty(goods)){
+			var nums = goods.split("|");
+			$.each(nums, function (index, val){ 
+				if(!isEmpty(val)){
+					i++;
+				}
+			});
+		}
+		if(isEmpty(id)){
+			alert("<?php echo "please choose 1 or 3 or 7";?>");
+			return false;
+		}
+		if(!isEmpty(goodsNum)){
+			var nums = goodsNum.split("|");
+			var n=0;
+			$.each(nums, function (index, val){ 
+				val = jQuery.trim(val);
+				if(Number(val)>10){
+					alert("<?php echo "the number of each goodsNum should be less than 10";?>");
+					checkEn();
+					n=1;
+					$("#reward_goodsNum").focus();
+					return false;
+				}
+			});
+			if(n==1){
+		        return false;
+		    }
+				//total = total+Number(val); });
+		}
+		if(isEmpty(startTime)){
+			alert("<?php echo "please input start time";?>");
+			$("#startTime").focus();
+			return false;
+		}
+		if(isEmpty(enTitle)){
+			alert("<?php echo "please input english title";?>");
+			checkEn();
+			$("#txttitleEn").focus();
+			return false;
+		}
+		if(isEmpty(enContents)){
+			alert("<?php echo "please input english contents";?>");
+			checkEn();
+			$("#txtcontentEn").focus();
+			return false;
+		}
+		if(gold>1000){
+			alert("<?php echo "the number of gold should be less than 1000";?>");
+			checkEn();
+			$("#reward_gold").focus();
+			return false;
+		}
+		if(wood>10){
+			alert("<?php echo "the number of wood should be less than 10";?>");
+			checkEn();
+			$("#reward_wood").focus();
+			return false;
+		}
+		if(food>10){
+			alert("<?php echo "the number of food should be less than 10";?>");
+			checkEn();
+			$("#reward_food").focus();
+			return false;
+		}
+		if(stone>10){
+			alert("<?php echo "the number of stone should be less than 10";?>");
+			checkEn();
+			$("#reward_stone").focus();
+			return false;
+		}
+		if(iron>10){
+			alert("<?php echo "the number of iron should be less than 10";?>");
+			checkEn();
+			$("#reward_iron").focus();
+			return false;
+		}
+		if(i>10){
+			alert("<?php echo "the number of species should be less than 10";?>");
+			checkEn();
+			$("#reward_goods").focus();
+			return false;
+		}
+	}
+	document.getElementById('type').value = type;
+	document.getaccount.submit();
+}
+
+</script>
+<!--{template footer}-->

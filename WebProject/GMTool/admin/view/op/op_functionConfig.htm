@@ -1,0 +1,46 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo $title;?><font color="red"></font></div>
+
+
+<div style="height:1000px">
+	<table class="listTable" cellspacing=1 padding=0 style="width: 100%;">
+		<tr class="listTr" style="background-color: aliceblue;">
+			<td>服务器</td>
+			<td>攻击保护</td>
+		</tr>
+		<!--{loop $allServerAct $severKey $actStat}-->
+			<tr class="listTr" onMouseOver="this.style.background='#ffff99'" onMouseOut="this.style.background='#fff';">
+				<td>$severKey</td>
+				<td id="{$severKey}_attackProtection"><a href="javascript:void(edit('{$severKey}_attackProtection','{$actStat['attackProtection']}'))">$actStat['attackProtection']</a></td>
+			</tr>
+		<!--{/loop}-->
+	</table>
+</div>
+<script type="text/javascript">
+
+<!-- 更新时间的函数-->
+var serverKey = null;
+function edit(server,actStat) {
+	doClear();
+	serverKey = server;
+	var str='<form id="form1" style="margin:0">更新新数据: <input class="input-medium" name="num" type="text" id="new'+server+'" value="'+actStat+'"><br/>当前:'+actStat+' <input type="button" id="savebtn" value="保存" onclick=save(new'+server+')> <input type="button" id="cancelbtn" value="取消" onclick="rightinfo()"></form>';
+	right=document.getElementById(server);
+	right.innerHTML=str;
+}
+var count = 0;
+function doClear(){
+	count++;
+	if(count>=2)
+	{
+		alert('一次只能修改一项,请把未完成的项保存');
+		rightinfo();
+	}
+}
+function rightinfo() {
+	self.location = 'admincp.php?mod=op&act=functionConfig';
+}
+function save(num){
+	self.location = 'admincp.php?mod=op&act=functionConfig&type=modify&server='+serverKey+'&newStat='+num.value;
+}
+</script>
+<!--{template footer}-->

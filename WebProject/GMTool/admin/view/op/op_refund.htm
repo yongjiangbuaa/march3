@@ -1,0 +1,237 @@
+<!--{template header}-->
+<div class="alert alert-info">
+	根据订单号查询订单的详细信息<font color="red">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $headAlert;?></font>
+</div>
+<form action="admincp.php?mod=op&act=refund" method="post"
+	  name="getaccount">
+	<div class="row-fluid">
+		<div class="span11">
+			<br> 订单序列 服:订单号
+			<br>
+			<textarea class="input-xlarge" id="serverAndorderIds"
+					  style="width: 600px;" name="serverAndorderIds" rows="6" placeholder="36:订单号1,订单号2,订单号3,订单号3,...">$serverAndorderIds</textarea>
+			<br> <span>UID&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+				<span><input type="text" id="uid" name="uid" value='{$uid}' /></span>
+			开始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+			<!-- <span>订单号&nbsp&nbsp&nbsp</span>
+<span><input type="text" id="orderId" name="orderId" value='{$orderId}'></input></span> -->
+			<input class="display:none;" type="hidden" value="" id="action" 	name="action" />
+			<input class="btn js-btn btn-primary" type="button" value="查询" id="btn_view" name="btn_view" onclick="check_submit('view')" />
+			<input type="checkbox" id="readfail"  name="readfail" value="true" 	<!--{if $readfail}-->checked="checked"<!--{/if}-->>只看失败
+			<p id="serverAndorderIdsP">
+				<font size="3" color="red">订单序列和UID不能同时为空!</font>
+			</p>
+		</div>
+	</div>
+	<br />
+	<!--{if $showDataRefund}-->
+	<table class="table table-striped"
+		   style="TABLE-LAYOUT: fixed; WORD-WRAP: break-word; word-break: break-all; width: auto;">
+		<tbody>
+		<tr>
+
+			<th align="center">Uid</th>
+			<th align="center">退单总额</th>
+			<th align="center">退单数</th>
+			<th align="center">操作</th>
+		</tr>
+		<!--{loop $dataRefund $uid $value}-->
+		<tr>
+			<td>$value['uid']</td>
+			<td>$value['sumSpend']</td>
+			<td>$value['nums']</td>
+			<td><input class="btn js-btn btn-primary" type="button"
+					   value="封号" id="ban" name="ban" onclick="banUser('{$value['uid']}')" /></td>
+		</tr>
+		<!--{/loop}-->
+		</tbody>
+	</table>
+	<!--{/if}-->
+	<!--{if $showData}-->
+	<table class="table table-striped"
+		   style="TABLE-LAYOUT: fixed; WORD-WRAP: break-word; word-break: break-all; width: auto;">
+		<tr>
+			<th align="center">服务器</th>
+			<th align="center">Uid</th>
+			<th align="center">订单号</th>
+			<th align="center">支付渠道</th>
+			<th align="center">支付时间</th>
+			<th align="center">礼包Id</th>
+			<th align="center">礼包名称</th>
+			<th align="center">礼包物品</th>
+			<th align="center">支付金额</th>
+			<th align="center">支付等级</th>
+			<th align="center">是否已退款</th>
+			<th align="center">是否足够</th>
+			<!--{if $btnFlag}-->
+			<td><input class="btn js-btn btn-primary" type="button"
+					   value="批量扣除" id="btn_all" name="btn_all"
+					   onclick="deduction_all('{$refundStr}')" /></td>
+			<!--{else}-->
+			<th align="center">操作</th>
+			<!--{/if}-->
+		</tr>
+
+		<!--{loop $data $serverKey $value}-->
+		<!--{loop $value $orderIdKey $dbData}-->
+		<tr>
+			<td>$serverKey</td>
+			<td>$dbData['uid']</td>
+			<td>$dbData['orderId']</td>
+			<td>$dbData['pf']</td>
+			<td>$dbData['time']</td>
+			<td>$dbData['productId']</td>
+			<td>$dbData['packageName']</td>
+			<td>$dbData['packageItemName']</td>
+			<td>$dbData['spend']</td>
+			<td>$dbData['payLevel']</td>
+			<td>$dbData['status']</td>
+			<td title="$dbData['ishavemsg']"><!--{if $dbData['ishave'] == 1}-->不够<!--{else}-->足够<!--{/if}--></td>
+			<!--{if $dbData['btn']}-->
+			<td></td>
+			<!--{elseif $dbData['statusName']}-->
+			<td>未收到礼包</td>
+			<!--{else}-->
+			<td><input class="btn js-btn btn-primary" type="button"
+					   value="扣除道具" id="btn_deduct" name="btn_deduct"
+					   onclick="deduction_submit('deduct','{$serverKey}','{$dbData['uid']}','{$dbData['orderId']}','{$dbData['productId']}','{$dbData['time']}')" /></td>
+			<!--{/if}-->
+		</tr>
+		<!--{/loop}-->
+		<!--{/loop}-->
+	</table>
+	<!--{/if}-->
+
+</form>
+<script type="text/javascript">
+
+	function isEmpty(value){
+		if(value == null || value ==""){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	/* function isCommit(){
+	 var inputOrderId = $('#orderId').val();
+	 inputOrderId = jQuery.trim(inputOrderId);
+	 var serverAndorderIds = $('#serverAndorderIds').val();
+	 serverAndorderIds = jQuery.trim(serverAndorderIds);
+	 if(isEmpty(inputOrderId)&&isEmpty(serverAndorderIds)){
+	 alert("请输入订单号或者订单序列!");
+	 $("#orderId").focus();
+	 return false;
+	 }
+	 return true;
+	 } */
+	function isCommit(){
+		var uid = $('#uid').val();
+		uid = jQuery.trim(uid);
+		var serverAndorderIds = $('#serverAndorderIds').val();
+		serverAndorderIds = jQuery.trim(serverAndorderIds);
+		if(isEmpty(uid)&&isEmpty(serverAndorderIds)){
+			alert("请输入订单序列或者UID!");
+			$("#uid").focus();
+			return false;
+		}
+		return true;
+	}
+	function check_submit(type) {
+		if(type=='view')
+		{
+			if(isCommit()){
+				document.getElementById('btn_view').disabled=true;
+				document.getElementById('action').value = type;
+				document.getaccount.submit();
+			}
+		}
+	}
+
+	function check_ban_button(type){
+		if(type=='view')
+		{
+			if(isCommint()){
+				document.getElementById('ban').disabled=true;
+			}
+		}
+	}
+	function deduction_submit(type,server,uid,orderId,productId,time){
+		if(confirm('是否确认要扣除道具'))
+		{
+			document.getElementById('btn_view').disabled=true;
+			document.getElementById('btn_deduct').disabled=true;
+			$.get('admincp.php?mod=op&act=refund&deduct='+type+'&server='+server+'&uid='+uid+'&orderId='+orderId+'&productId='+productId+'&time='+time,function(data){
+				alert(data);
+				check_submit('view');
+			});
+		}
+	}
+	function deduction_all(infoStr){
+		if(confirm('是否确认要扣除以下所有的订单'))
+		{
+			document.getElementById('btn_view').disabled=true;
+			document.getElementById('btn_all').disabled=true;
+			var typeValue=document.getElementsByName("btn_deduct");
+			for(var i=0;i<typeValue.length;i++)
+			{
+				typeValue[i].disabled=true;
+			}
+			$.post('admincp.php?mod=op&act=refund&deductAll=all&'+Math.random(),{infoStr:infoStr},function(data){
+				alert(data);
+				check_submit('view');
+			});
+		}
+	}
+	function banUser(uid){
+		if(confirm('是否确认要封掉'+uid))
+		{
+			document.getElementById('ban').disabled=true;
+			$.get('admincp.php?mod=op&act=batchBan&banReason=7&type=ban&uidStr='+uid+'&'+Math.random(),function(data){
+				alert(data);
+				check_ban_button('view');
+			});
+		}
+	}
+	$(document).ready(function(){
+		var txtVal=$('#serverAndorderIds').val();
+		var uidVal=$('#uid').val();
+		if (txtVal===''&&uidVal==='') {
+			$('#btn_view').attr('disabled',"true");
+			$("#serverAndorderIdsP").show();
+		}else{
+			$('#btn_view').removeAttr('disabled');
+			$("#serverAndorderIdsP").hide();
+		}
+
+		$("#serverAndorderIds").blur(function(){
+			var txtVal=$('#serverAndorderIds').val();
+			var uidVal=$('#uid').val();
+			if (txtVal===''&&uidVal==='') {
+				$('#btn_view').attr('disabled',"true");
+				$("#serverAndorderIdsP").show();
+			}else{
+				$('#btn_view').removeAttr('disabled');
+				$("#serverAndorderIdsP").hide();
+			}
+		});
+		$("#uid").blur(function(){
+			var txtVal=$('#serverAndorderIds').val();
+			var uidVal=$('#uid').val();
+			if (txtVal===''&&uidVal==='') {
+				$('#btn_view').attr('disabled',"true");
+				$("#serverAndorderIdsP").show();
+			}else{
+				$('#btn_view').removeAttr('disabled');
+				$("#serverAndorderIdsP").hide();
+			}
+		});
+	});
+
+
+	init();
+	function init(){
+		$("#startDate").datetimepicker();
+	}
+
+</script>
+<!--{template footer}-->

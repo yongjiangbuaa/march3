@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sdk-description name="PHP SDK" xmlns="http://www.w3school.com.cn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3school.com.cn sdk-description.xsd">
+<version name="1.3.1.0">
+	<download>
+		<fileset dir="framework"/>
+		<fileset dir="game"/>
+		<fileset dir="public"/>
+		<fileset dir="statistics"/>
+		<fileset dir="util"/>
+		<fileset dir="resource"/>
+		<fileset file="index.php"/>
+		<fileset file="changelog.xml"/>
+		<fileset file="sdk-description.xml"/>
+	</download>
+	<config dir="game/config"> 
+    </config>
+    <resource dir="resource">
+    </resource>
+    <services>
+        <service name="publication">
+            <service name="gdp" version="1.0"/>
+            <service name="language" version="1.0"/>
+        </service>
+        <service name="operation" >
+            <service name="statistics" version="1.0"/>
+        </service>
+        <service name="cloud">
+            <service name="persistence" version="1.0"/>
+        </service>
+        <service name="gameengine">
+            <service name="core" version="1.3"/>
+            <service name="user" version="1.0"/>
+            <service name="itemspec" version="1.0"/>
+            <service name="action" version="1.0"/>
+        </service>
+    </services>
+	<modules>
+		<module name="Action" required="false" choose="false">
+			<package>service.action</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="ItemSpec" required="true" choose="true">
+			<package>service.item</package>
+			<resource>/resource/locale/language</resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Quest" required="false" choose="false">
+			<package>service.quest</package>
+			<resource>/resource/quest</resource>
+			<config></config>
+			<listener id="QuestUpdateListener" class="service.quest.QuestUpdateListener"></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="Tutorial" required="false" choose="false">
+			<package>service.tutorial</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+		<module name="User" required="true" choose="true">
+			<package>service.user</package>
+			<resource></resource>
+			<config></config>
+			<listener id="" class=""></listener>
+			<initiator id="" class=""></initiator>
+		</module>
+	</modules>
+</version>
+</sdk-description>

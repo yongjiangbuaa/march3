@@ -1,0 +1,65 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "注册用户日新增付费数及持续付费数";?><font color="red"></font></div>
+<div id="tip" style="width:200px;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+<form action="admincp.php?mod=pay&act=new_user_data" method="post" name="getaccount">
+<div class="row-fluid">
+<div class="span11">
+查询结束时间<input class="input-medium" id="date" name='date' type="text" value='$date' size="50"/>
+<input class="btn js-btn btn-primary" type="button" value="按左侧时间查询" name="btn_view" onclick="getThisHour()" />
+<input class="btn js-btn btn-primary" id="next" style="visibility:hidden" type="button" value="前一天" name="btn_view" onclick="getPrevHour()" />
+<input class="btn js-btn btn-primary" id="now" style="visibility:hidden" type="button" value="再次查询展示日期" name="btn_view" onclick="getData()" />
+<input class="btn js-btn btn-primary" id="prev" style="visibility:hidden" type="button" value="后一天" name="btn_view" onclick="getNextHour()" />
+</div>
+</div>
+</form>
+<div id='show' style="width:100%;float:left;height:450px;"></div>
+
+
+<script type="text/javascript">
+hourFix = 0;
+updateData = 1;
+function getNextHour(){
+	hourFix++;
+	getData();
+}
+function getPrevHour(){
+	hourFix--;
+	getData();
+}
+function getThisHour(){
+	hourFix = 0;
+	getData();
+}
+function getData(){
+	document.getElementById('next').style.visibility = "visible";
+	document.getElementById('now').style.visibility = "visible";
+	document.getElementById('prev').style.visibility = "visible";
+	var url ='admincp.php?mod=pay&act=new_user_data&getData=true';
+	if(document.getElementById('date').value){
+		url += '&date=' + document.getElementById('date').value;
+	}
+	url += '&hourFix=' + hourFix;
+	if(updateData)
+		url += '&updateData=1';
+	xmlHttp=getAjax();
+	xmlHttp.onreadystatechange = getAction;
+	xmlHttp.open("GET",url,true);
+	xmlHttp.send(null);
+}
+function getAction(){
+	right=document.getElementById('show');
+	if(xmlHttp.readyState==4){
+		if (xmlHttp.status==200){
+			if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+				showLogin();
+				return;
+			}
+			updateData = 0;
+			right.innerHTML=xmlHttp.responseText;
+			return;
+		}
+	}
+}
+$("#date").datetimepicker();
+</script>
+<!--{template footer}-->

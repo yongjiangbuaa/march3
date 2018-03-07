@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:database xmlns:tns="http://www.iw.com/sns/platform/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Group id="1301000">
+    <ItemSpec id="1301001" level="1" clevel="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="100000" maxnum="1" des="指挥中心"/>
+    <ItemSpec id="1301002" level="2" clevel="1" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="200000" maxnum="1"/>
+    <ItemSpec id="1301003" level="3" clevel="2" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="300000" maxnum="1"/>
+    <ItemSpec id="1301004" level="4" clevel="2" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="400000" maxnum="1"/>
+    <ItemSpec id="1301005" level="5" clevel="3" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="500000" maxnum="1"/>
+    <ItemSpec id="1301006" level="6" clevel="3" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="600000" maxnum="1"/>
+    <ItemSpec id="1301007" level="7" clevel="4" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="700000" maxnum="1"/>
+    <ItemSpec id="1301008" level="8" clevel="4" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="800000" maxnum="1"/>
+    <ItemSpec id="1301009" level="9" clevel="5" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="900000" maxnum="1"/>
+    <ItemSpec id="1301010" level="10" clevel="5" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1000000" maxnum="1"/>
+    <ItemSpec id="1301011" level="11" clevel="6" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1100000" maxnum="1"/>
+    <ItemSpec id="1301012" level="12" clevel="6" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1200000" maxnum="1"/>
+    <ItemSpec id="1301013" level="13" clevel="7" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1300000" maxnum="1"/>
+    <ItemSpec id="1301014" level="14" clevel="7" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1400000" maxnum="1"/>
+    <ItemSpec id="1301015" level="15" clevel="8" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1500000" maxnum="1"/>
+    <ItemSpec id="1301016" level="16" clevel="8" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1600000" maxnum="1"/>
+    <ItemSpec id="1301017" level="17" clevel="9" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1700000" maxnum="1"/>
+    <ItemSpec id="1301018" level="18" clevel="9" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1800000" maxnum="1"/>
+    <ItemSpec id="1301019" level="19" clevel="10" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1900000" maxnum="1"/>
+    <ItemSpec id="1301020" level="20" clevel="10" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="2000000" maxnum="1"/>
+    <ItemSpec id="1302001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="1" maxnum="1" des="科技中心" building1="1301001"/>
+    <ItemSpec id="1302002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="1" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1302003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="1" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1302004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="1" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1302005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="1" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1302006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="1" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1302007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="1" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1302008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="1" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1302009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="1" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1302010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1302011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1302012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1302013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1302014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1302015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1302016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1302017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1302018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1302019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1302020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="1" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1303001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="100" maxnum="3" des="石油采集厂" building1="1301001"/>
+    <ItemSpec id="1303002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="200" maxnum="3" building1="1301002"/>
+    <ItemSpec id="1303003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="300" maxnum="3" building1="1301003"/>
+    <ItemSpec id="1303004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="400" maxnum="3" building1="1301004"/>
+    <ItemSpec id="1303005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="500" maxnum="3" building1="1301005"/>
+    <ItemSpec id="1303006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="600" maxnum="3" building1="1301006"/>
+    <ItemSpec id="1303007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="700" maxnum="3" building1="1301007"/>
+    <ItemSpec id="1303008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="800" maxnum="3" building1="1301008"/>
+    <ItemSpec id="1303009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="900" maxnum="3" building1="1301009"/>
+    <ItemSpec id="1303010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1000" maxnum="3" building1="1301010"/>
+    <ItemSpec id="1303011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1100" maxnum="3" building1="1301011"/>
+    <ItemSpec id="1303012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1200" maxnum="3" building1="1301012"/>
+    <ItemSpec id="1303013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1300" maxnum="3" building1="1301013"/>
+    <ItemSpec id="1303014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1400" maxnum="3" building1="1301014"/>
+    <ItemSpec id="1303015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1500" maxnum="3" building1="1301015"/>
+    <ItemSpec id="1303016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1600" maxnum="3" building1="1301016"/>
+    <ItemSpec id="1303017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1700" maxnum="3" building1="1301017"/>
+    <ItemSpec id="1303018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1800" maxnum="3" building1="1301018"/>
+    <ItemSpec id="1303019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1900" maxnum="3" building1="1301019"/>
+    <ItemSpec id="1303020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="2000" maxnum="3" building1="1301020"/>
+    <ItemSpec id="1304001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="100" maxnum="3" des="粮食加工厂" building1="1301001" building2="1303001"/>
+    <ItemSpec id="1304002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="200" maxnum="3" building1="1301002"/>
+    <ItemSpec id="1304003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="300" maxnum="3" building1="1301003"/>
+    <ItemSpec id="1304004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="400" maxnum="3" building1="1301004"/>
+    <ItemSpec id="1304005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="500" maxnum="3" building1="1301005"/>
+    <ItemSpec id="1304006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="600" maxnum="3" building1="1301006"/>
+    <ItemSpec id="1304007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="700" maxnum="3" building1="1301007"/>
+    <ItemSpec id="1304008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="800" maxnum="3" building1="1301008"/>
+    <ItemSpec id="1304009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="900" maxnum="3" building1="1301009"/>
+    <ItemSpec id="1304010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1000" maxnum="3" building1="1301010"/>
+    <ItemSpec id="1304011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1100" maxnum="3" building1="1301011"/>
+    <ItemSpec id="1304012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1200" maxnum="3" building1="1301012"/>
+    <ItemSpec id="1304013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1300" maxnum="3" building1="1301013"/>
+    <ItemSpec id="1304014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1400" maxnum="3" building1="1301014"/>
+    <ItemSpec id="1304015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1500" maxnum="3" building1="1301015"/>
+    <ItemSpec id="1304016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1600" maxnum="3" building1="1301016"/>
+    <ItemSpec id="1304017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1700" maxnum="3" building1="1301017"/>
+    <ItemSpec id="1304018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1800" maxnum="3" building1="1301018"/>
+    <ItemSpec id="1304019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1900" maxnum="3" building1="1301019"/>
+    <ItemSpec id="1304020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="2000" maxnum="3" building1="1301020"/>
+    <ItemSpec id="1305001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="100" maxnum="3" des="矿物勘探厂" building1="1301001"/>
+    <ItemSpec id="1305002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="200" maxnum="3" building1="1301002"/>
+    <ItemSpec id="1305003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="300" maxnum="3" building1="1301003"/>
+    <ItemSpec id="1305004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="400" maxnum="3" building1="1301004"/>
+    <ItemSpec id="1305005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="500" maxnum="3" building1="1301005"/>
+    <ItemSpec id="1305006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="600" maxnum="3" building1="1301006"/>
+    <ItemSpec id="1305007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="700" maxnum="3" building1="1301007"/>
+    <ItemSpec id="1305008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="800" maxnum="3" building1="1301008"/>
+    <ItemSpec id="1305009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="900" maxnum="3" building1="1301009"/>
+    <ItemSpec id="1305010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1000" maxnum="3" building1="1301010"/>
+    <ItemSpec id="1305011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1100" maxnum="3" building1="1301011"/>
+    <ItemSpec id="1305012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1200" maxnum="3" building1="1301012"/>
+    <ItemSpec id="1305013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1300" maxnum="3" building1="1301013"/>
+    <ItemSpec id="1305014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1400" maxnum="3" building1="1301014"/>
+    <ItemSpec id="1305015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1500" maxnum="3" building1="1301015"/>
+    <ItemSpec id="1305016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1600" maxnum="3" building1="1301016"/>
+    <ItemSpec id="1305017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1700" maxnum="3" building1="1301017"/>
+    <ItemSpec id="1305018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1800" maxnum="3" building1="1301018"/>
+    <ItemSpec id="1305019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1900" maxnum="3" building1="1301019"/>
+    <ItemSpec id="1305020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="2000" maxnum="3" building1="1301020"/>
+    <ItemSpec id="1306001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="7200" maxnum="1" des="军事学院" building1="1301001" para2="4" para3="6"/>
+    <ItemSpec id="1306002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="6900" maxnum="1" building1="1301002" para2="4" para3="6"/>
+    <ItemSpec id="1306003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="6600" maxnum="1" building1="1301003" para2="4" para3="7"/>
+    <ItemSpec id="1306004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="6300" maxnum="1" building1="1301004" para2="4" para3="7"/>
+    <ItemSpec id="1306005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="6000" maxnum="1" building1="1301005" para2="4" para3="8"/>
+    <ItemSpec id="1306006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="5700" maxnum="1" building1="1301006" para2="4" para3="8"/>
+    <ItemSpec id="1306007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="5400" maxnum="1" building1="1301007" para2="4" para3="9"/>
+    <ItemSpec id="1306008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="5100" maxnum="1" building1="1301008" para2="4" para3="9"/>
+    <ItemSpec id="1306009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="4800" maxnum="1" building1="1301009" para2="4" para3="10"/>
+    <ItemSpec id="1306010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="4500" maxnum="1" building1="1301010" para2="4" para3="10"/>
+    <ItemSpec id="1306011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="4200" maxnum="1" building1="1301011" para2="4" para3="10"/>
+    <ItemSpec id="1306012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="3900" maxnum="1" building1="1301012" para2="4" para3="10"/>
+    <ItemSpec id="1306013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="3600" maxnum="1" building1="1301013" para2="4" para3="10"/>
+    <ItemSpec id="1306014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="3300" maxnum="1" building1="1301014" para2="4" para3="10"/>
+    <ItemSpec id="1306015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="3000" maxnum="1" building1="1301015" para2="4" para3="10"/>
+    <ItemSpec id="1306016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="2700" maxnum="1" building1="1301016" para2="4" para3="10"/>
+    <ItemSpec id="1306017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="2400" maxnum="1" building1="1301017" para2="4" para3="10"/>
+    <ItemSpec id="1306018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="2100" maxnum="1" building1="1301018" para2="4" para3="10"/>
+    <ItemSpec id="1306019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1800" maxnum="1" building1="1301019" para2="4" para3="10"/>
+    <ItemSpec id="1306020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="1500" maxnum="1" building1="1301020" para2="4" para3="10"/>
+    <ItemSpec id="1307001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="1" des="军备中心" building1="1301001" building2="1306001"/>
+    <ItemSpec id="1307002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1307003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1307004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1307005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1307006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1307007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1307008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1307009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1307010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1307011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1307012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1307013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1307014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1307015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1307016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1307017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1307018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1307019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1307020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1308001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="1" maxnum="1" des="陆军研究中心" building1="1301001"/>
+    <ItemSpec id="1308002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="1" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1308003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="1" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1308004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="1" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1308005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="1" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1308006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="1" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1308007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="1" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1308008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="1" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1308009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="1" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1308010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1308011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1308012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1308013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1308014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1308015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1308016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1308017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1308018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1308019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1308020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="1" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1309001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="1" maxnum="1" des="海军研究中心" building1="1301001"/>
+    <ItemSpec id="1309002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="1" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1309003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="1" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1309004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="1" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1309005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="1" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1309006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="1" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1309007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="1" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1309008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="1" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1309009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="1" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1309010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1309011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1309012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1309013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1309014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1309015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1309016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1309017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1309018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1309019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1309020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="1" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1310001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="1" maxnum="1" des="空军研究中心" building1="1301001"/>
+    <ItemSpec id="1310002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="1" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1310003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="1" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1310004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="1" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1310005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="1" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1310006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="1" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1310007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="1" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1310008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="1" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1310009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="1" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1310010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1310011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1310012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1310013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1310014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1310015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1310016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1310017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1310018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1310019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1310020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="1" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1311001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="10000" maxnum="1" des="物资仓库" building1="1301001" building2="1312001"/>
+    <ItemSpec id="1311002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="20000" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1311003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="30000" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1311004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="40000" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1311005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="50000" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1311006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="60000" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1311007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="70000" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1311008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="80000" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1311009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="90000" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1311010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="100000" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1311011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="110000" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1311012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="120000" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1311013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="130000" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1311014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="140000" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1311015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="150000" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1311016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="160000" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1311017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="170000" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1311018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="180000" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1311019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="190000" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1311020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="200000" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1312001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="10000" maxnum="1" des="军火库" building1="1301001" building2="1305001" para2="100"/>
+    <ItemSpec id="1312002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="20000" maxnum="1" building1="1301002" para2="200"/>
+    <ItemSpec id="1312003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="30000" maxnum="1" building1="1301003" para2="300"/>
+    <ItemSpec id="1312004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="40000" maxnum="1" building1="1301004" para2="400"/>
+    <ItemSpec id="1312005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="50000" maxnum="1" building1="1301005" para2="500"/>
+    <ItemSpec id="1312006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="60000" maxnum="1" building1="1301006" para2="600"/>
+    <ItemSpec id="1312007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="70000" maxnum="1" building1="1301007" para2="700"/>
+    <ItemSpec id="1312008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="80000" maxnum="1" building1="1301008" para2="800"/>
+    <ItemSpec id="1312009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="90000" maxnum="1" building1="1301009" para2="900"/>
+    <ItemSpec id="1312010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="100000" maxnum="1" building1="1301010" para2="1000"/>
+    <ItemSpec id="1312011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="110000" maxnum="1" building1="1301011" para2="1100"/>
+    <ItemSpec id="1312012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="120000" maxnum="1" building1="1301012" para2="1200"/>
+    <ItemSpec id="1312013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="130000" maxnum="1" building1="1301013" para2="1300"/>
+    <ItemSpec id="1312014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="140000" maxnum="1" building1="1301014" para2="1400"/>
+    <ItemSpec id="1312015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="150000" maxnum="1" building1="1301015" para2="1500"/>
+    <ItemSpec id="1312016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="160000" maxnum="1" building1="1301016" para2="1600"/>
+    <ItemSpec id="1312017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="170000" maxnum="1" building1="1301017" para2="1700"/>
+    <ItemSpec id="1312018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="180000" maxnum="1" building1="1301018" para2="1800"/>
+    <ItemSpec id="1312019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="190000" maxnum="1" building1="1301019" para2="1900"/>
+    <ItemSpec id="1312020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="200000" maxnum="1" building1="1301020" para2="2000"/>
+    <ItemSpec id="1313001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="500" maxnum="1" des="兵营" building1="1301001" building2="1308001" para2="20" para3="5000"/>
+    <ItemSpec id="1313002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="1000" maxnum="1" building1="1301002" para2="40" para3="10000"/>
+    <ItemSpec id="1313003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="1500" maxnum="1" building1="1301003" para2="60" para3="15000"/>
+    <ItemSpec id="1313004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="2000" maxnum="1" building1="1301004" para2="80" para3="20000"/>
+    <ItemSpec id="1313005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="2500" maxnum="1" building1="1301005" para2="100" para3="25000"/>
+    <ItemSpec id="1313006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="3000" maxnum="1" building1="1301006" para2="120" para3="30000"/>
+    <ItemSpec id="1313007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="3500" maxnum="1" building1="1301007" para2="140" para3="35000"/>
+    <ItemSpec id="1313008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="4000" maxnum="1" building1="1301008" para2="160" para3="40000"/>
+    <ItemSpec id="1313009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="4500" maxnum="1" building1="1301009" para2="180" para3="45000"/>
+    <ItemSpec id="1313010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="5000" maxnum="1" building1="1301010" para2="200" para3="50000"/>
+    <ItemSpec id="1313011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="5500" maxnum="1" building1="1301011" para2="220" para3="55000"/>
+    <ItemSpec id="1313012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="6000" maxnum="1" building1="1301012" para2="240" para3="60000"/>
+    <ItemSpec id="1313013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="6500" maxnum="1" building1="1301013" para2="260" para3="65000"/>
+    <ItemSpec id="1313014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="7000" maxnum="1" building1="1301014" para2="280" para3="70000"/>
+    <ItemSpec id="1313015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="7500" maxnum="1" building1="1301015" para2="300" para3="75000"/>
+    <ItemSpec id="1313016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="8000" maxnum="1" building1="1301016" para2="320" para3="80000"/>
+    <ItemSpec id="1313017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="8500" maxnum="1" building1="1301017" para2="340" para3="85000"/>
+    <ItemSpec id="1313018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="9000" maxnum="1" building1="1301018" para2="360" para3="90000"/>
+    <ItemSpec id="1313019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="9500" maxnum="1" building1="1301019" para2="380" para3="95000"/>
+    <ItemSpec id="1313020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="10000" maxnum="1" building1="1301020" para2="400" para3="100000"/>
+    <ItemSpec id="1314001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1="25" maxnum="2" des="军事中心" building1="1301001" building2="1324001" para2="1"/>
+    <ItemSpec id="1314002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1="50" maxnum="2" building1="1301002" para2="2"/>
+    <ItemSpec id="1314003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1="75" maxnum="2" building1="1301003" para2="3"/>
+    <ItemSpec id="1314004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1="100" maxnum="2" building1="1301004" para2="4"/>
+    <ItemSpec id="1314005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1="125" maxnum="2" building1="1301005" para2="5"/>
+    <ItemSpec id="1314006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1="150" maxnum="2" building1="1301006" para2="6"/>
+    <ItemSpec id="1314007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1="175" maxnum="2" building1="1301007" para2="7"/>
+    <ItemSpec id="1314008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1="200" maxnum="2" building1="1301008" para2="8"/>
+    <ItemSpec id="1314009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1="225" maxnum="2" building1="1301009" para2="9"/>
+    <ItemSpec id="1314010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="250" maxnum="2" building1="1301010" para2="10"/>
+    <ItemSpec id="1314011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="275" maxnum="2" building1="1301011" para2="11"/>
+    <ItemSpec id="1314012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="300" maxnum="2" building1="1301012" para2="12"/>
+    <ItemSpec id="1314013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="325" maxnum="2" building1="1301013" para2="13"/>
+    <ItemSpec id="1314014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="350" maxnum="2" building1="1301014" para2="14"/>
+    <ItemSpec id="1314015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="375" maxnum="2" building1="1301015" para2="15"/>
+    <ItemSpec id="1314016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="400" maxnum="2" building1="1301016" para2="16"/>
+    <ItemSpec id="1314017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="425" maxnum="2" building1="1301017" para2="17"/>
+    <ItemSpec id="1314018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="450" maxnum="2" building1="1301018" para2="18"/>
+    <ItemSpec id="1314019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="475" maxnum="2" building1="1301019" para2="19"/>
+    <ItemSpec id="1314020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="500" maxnum="2" building1="1301020" para2="20"/>
+    <ItemSpec id="1315001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="2" des="防御中心" building1="1301001" building2="1324001"/>
+    <ItemSpec id="1315002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="2" building1="1301002"/>
+    <ItemSpec id="1315003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="2" building1="1301003"/>
+    <ItemSpec id="1315004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="2" building1="1301004"/>
+    <ItemSpec id="1315005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="2" building1="1301005"/>
+    <ItemSpec id="1315006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="2" building1="1301006"/>
+    <ItemSpec id="1315007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="2" building1="1301007"/>
+    <ItemSpec id="1315008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="2" building1="1301008"/>
+    <ItemSpec id="1315009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="2" building1="1301009"/>
+    <ItemSpec id="1315010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="2" building1="1301010"/>
+    <ItemSpec id="1315011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="2" building1="1301011"/>
+    <ItemSpec id="1315012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="2" building1="1301012"/>
+    <ItemSpec id="1315013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="2" building1="1301013"/>
+    <ItemSpec id="1315014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="2" building1="1301014"/>
+    <ItemSpec id="1315015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="2" building1="1301015"/>
+    <ItemSpec id="1315016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="2" building1="1301016"/>
+    <ItemSpec id="1315017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="2" building1="1301017"/>
+    <ItemSpec id="1315018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="2" building1="1301018"/>
+    <ItemSpec id="1315019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="2" building1="1301019"/>
+    <ItemSpec id="1315020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="2" building1="1301020"/>
+    <ItemSpec id="1316001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="2" des="商业中心" building1="1301001" building2="1311001"/>
+    <ItemSpec id="1316002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="2" building1="1301002"/>
+    <ItemSpec id="1316003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="2" building1="1301003"/>
+    <ItemSpec id="1316004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="2" building1="1301004"/>
+    <ItemSpec id="1316005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="2" building1="1301005"/>
+    <ItemSpec id="1316006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="2" building1="1301006"/>
+    <ItemSpec id="1316007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="2" building1="1301007"/>
+    <ItemSpec id="1316008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="2" building1="1301008"/>
+    <ItemSpec id="1316009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="2" building1="1301009"/>
+    <ItemSpec id="1316010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="2" building1="1301010"/>
+    <ItemSpec id="1316011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="2" building1="1301011"/>
+    <ItemSpec id="1316012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="2" building1="1301012"/>
+    <ItemSpec id="1316013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="2" building1="1301013"/>
+    <ItemSpec id="1316014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="2" building1="1301014"/>
+    <ItemSpec id="1316015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="2" building1="1301015"/>
+    <ItemSpec id="1316016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="2" building1="1301016"/>
+    <ItemSpec id="1316017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="2" building1="1301017"/>
+    <ItemSpec id="1316018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="2" building1="1301018"/>
+    <ItemSpec id="1316019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="2" building1="1301019"/>
+    <ItemSpec id="1316020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="2" building1="1301020"/>
+    <ItemSpec id="1317001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="2" des="政治中心" building1="1301001" building2="1323001"/>
+    <ItemSpec id="1317002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="2" building1="1301002"/>
+    <ItemSpec id="1317003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="2" building1="1301003"/>
+    <ItemSpec id="1317004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="2" building1="1301004"/>
+    <ItemSpec id="1317005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="2" building1="1301005"/>
+    <ItemSpec id="1317006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="2" building1="1301006"/>
+    <ItemSpec id="1317007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="2" building1="1301007"/>
+    <ItemSpec id="1317008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="2" building1="1301008"/>
+    <ItemSpec id="1317009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="2" building1="1301009"/>
+    <ItemSpec id="1317010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="2" building1="1301010"/>
+    <ItemSpec id="1317011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="2" building1="1301011"/>
+    <ItemSpec id="1317012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="2" building1="1301012"/>
+    <ItemSpec id="1317013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="2" building1="1301013"/>
+    <ItemSpec id="1317014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="2" building1="1301014"/>
+    <ItemSpec id="1317015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="2" building1="1301015"/>
+    <ItemSpec id="1317016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="2" building1="1301016"/>
+    <ItemSpec id="1317017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="2" building1="1301017"/>
+    <ItemSpec id="1317018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="2" building1="1301018"/>
+    <ItemSpec id="1317019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="2" building1="1301019"/>
+    <ItemSpec id="1317020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="2" building1="1301020"/>
+    <ItemSpec id="1318001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="0" des="防御设施" building1="1301001"/>
+    <ItemSpec id="1318002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="0" building1="1301002"/>
+    <ItemSpec id="1318003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="0" building1="1301003"/>
+    <ItemSpec id="1318004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="0" building1="1301004"/>
+    <ItemSpec id="1318005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="0" building1="1301005"/>
+    <ItemSpec id="1318006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="0" building1="1301006"/>
+    <ItemSpec id="1318007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="0" building1="1301007"/>
+    <ItemSpec id="1318008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="0" building1="1301008"/>
+    <ItemSpec id="1318009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="0" building1="1301009"/>
+    <ItemSpec id="1318010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="0" building1="1301010"/>
+    <ItemSpec id="1318011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="0" building1="1301011"/>
+    <ItemSpec id="1318012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="0" building1="1301012"/>
+    <ItemSpec id="1318013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="0" building1="1301013"/>
+    <ItemSpec id="1318014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="0" building1="1301014"/>
+    <ItemSpec id="1318015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="0" building1="1301015"/>
+    <ItemSpec id="1318016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="0" building1="1301016"/>
+    <ItemSpec id="1318017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="0" building1="1301017"/>
+    <ItemSpec id="1318018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="0" building1="1301018"/>
+    <ItemSpec id="1318019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="0" building1="1301019"/>
+    <ItemSpec id="1318020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="0" building1="1301020"/>
+    <ItemSpec id="1319001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="0" des="商业设施" building1="1301001"/>
+    <ItemSpec id="1319002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="0" building1="1301002"/>
+    <ItemSpec id="1319003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="0" building1="1301003"/>
+    <ItemSpec id="1319004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="0" building1="1301004"/>
+    <ItemSpec id="1319005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="0" building1="1301005"/>
+    <ItemSpec id="1319006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="0" building1="1301006"/>
+    <ItemSpec id="1319007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="0" building1="1301007"/>
+    <ItemSpec id="1319008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="0" building1="1301008"/>
+    <ItemSpec id="1319009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="0" building1="1301009"/>
+    <ItemSpec id="1319010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="0" building1="1301010"/>
+    <ItemSpec id="1319011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="0" building1="1301011"/>
+    <ItemSpec id="1319012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="0" building1="1301012"/>
+    <ItemSpec id="1319013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="0" building1="1301013"/>
+    <ItemSpec id="1319014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="0" building1="1301014"/>
+    <ItemSpec id="1319015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="0" building1="1301015"/>
+    <ItemSpec id="1319016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="0" building1="1301016"/>
+    <ItemSpec id="1319017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="0" building1="1301017"/>
+    <ItemSpec id="1319018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="0" building1="1301018"/>
+    <ItemSpec id="1319019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="0" building1="1301019"/>
+    <ItemSpec id="1319020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="0" building1="1301020"/>
+    <ItemSpec id="1320001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="0" des="政治设施" building1="1301001"/>
+    <ItemSpec id="1320002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="0" building1="1301002"/>
+    <ItemSpec id="1320003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="0" building1="1301003"/>
+    <ItemSpec id="1320004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="0" building1="1301004"/>
+    <ItemSpec id="1320005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="0" building1="1301005"/>
+    <ItemSpec id="1320006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="0" building1="1301006"/>
+    <ItemSpec id="1320007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="0" building1="1301007"/>
+    <ItemSpec id="1320008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="0" building1="1301008"/>
+    <ItemSpec id="1320009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="0" building1="1301009"/>
+    <ItemSpec id="1320010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="0" building1="1301010"/>
+    <ItemSpec id="1320011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="0" building1="1301011"/>
+    <ItemSpec id="1320012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="0" building1="1301012"/>
+    <ItemSpec id="1320013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="0" building1="1301013"/>
+    <ItemSpec id="1320014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="0" building1="1301014"/>
+    <ItemSpec id="1320015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="0" building1="1301015"/>
+    <ItemSpec id="1320016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="0" building1="1301016"/>
+    <ItemSpec id="1320017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="0" building1="1301017"/>
+    <ItemSpec id="1320018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="0" building1="1301018"/>
+    <ItemSpec id="1320019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="0" building1="1301019"/>
+    <ItemSpec id="1320020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="0" building1="1301020"/>
+    <ItemSpec id="1321001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="0" des="军火设施" building1="1301001"/>
+    <ItemSpec id="1321002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="0" building1="1301002"/>
+    <ItemSpec id="1321003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="0" building1="1301003"/>
+    <ItemSpec id="1321004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="0" building1="1301004"/>
+    <ItemSpec id="1321005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="0" building1="1301005"/>
+    <ItemSpec id="1321006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="0" building1="1301006"/>
+    <ItemSpec id="1321007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="0" building1="1301007"/>
+    <ItemSpec id="1321008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="0" building1="1301008"/>
+    <ItemSpec id="1321009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="0" building1="1301009"/>
+    <ItemSpec id="1321010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="0" building1="1301010"/>
+    <ItemSpec id="1321011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="0" building1="1301011"/>
+    <ItemSpec id="1321012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="0" building1="1301012"/>
+    <ItemSpec id="1321013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="0" building1="1301013"/>
+    <ItemSpec id="1321014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="0" building1="1301014"/>
+    <ItemSpec id="1321015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="0" building1="1301015"/>
+    <ItemSpec id="1321016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="0" building1="1301016"/>
+    <ItemSpec id="1321017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="0" building1="1301017"/>
+    <ItemSpec id="1321018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="0" building1="1301018"/>
+    <ItemSpec id="1321019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="0" building1="1301019"/>
+    <ItemSpec id="1321020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="0" building1="1301020"/>
+    <ItemSpec id="1322001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" para1=".1" maxnum="1" des="大使馆" building1="1301001"/>
+    <ItemSpec id="1322002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" para1=".2" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1322003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" para1=".3" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1322004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" para1=".4" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1322005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" para1=".5" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1322006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" para1=".6" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1322007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" para1=".7" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1322008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" para1=".8" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1322009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" para1=".9" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1322010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" para1="1" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1322011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" para1="1.1" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1322012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" para1="1.2" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1322013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" para1="1.3" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1322014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" para1="1.4" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1322015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" para1="1.5" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1322016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" para1="1.6" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1322017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" para1="1.7" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1322018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" para1="1.8" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1322019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" para1="1.9" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1322020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" para1="2" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1323001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="1" des="贸易中心" building1="1301001" building2="1322001"/>
+    <ItemSpec id="1323002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="1" building1="1301002"/>
+    <ItemSpec id="1323003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="1" building1="1301003"/>
+    <ItemSpec id="1323004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="1" building1="1301004"/>
+    <ItemSpec id="1323005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="1" building1="1301005"/>
+    <ItemSpec id="1323006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="1" building1="1301006"/>
+    <ItemSpec id="1323007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="1" building1="1301007"/>
+    <ItemSpec id="1323008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="1" building1="1301008"/>
+    <ItemSpec id="1323009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="1" building1="1301009"/>
+    <ItemSpec id="1323010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="1" building1="1301010"/>
+    <ItemSpec id="1323011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="1" building1="1301011"/>
+    <ItemSpec id="1323012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="1" building1="1301012"/>
+    <ItemSpec id="1323013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="1" building1="1301013"/>
+    <ItemSpec id="1323014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="1" building1="1301014"/>
+    <ItemSpec id="1323015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="1" building1="1301015"/>
+    <ItemSpec id="1323016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="1" building1="1301016"/>
+    <ItemSpec id="1323017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="1" building1="1301017"/>
+    <ItemSpec id="1323018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="1" building1="1301018"/>
+    <ItemSpec id="1323019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="1" building1="1301019"/>
+    <ItemSpec id="1323020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="1" building1="1301020"/>
+    <ItemSpec id="1324001" level="1" gold="10" mineral="100" oil="100" food="100" pop="10" addcexp="10" addpexp="10" time="60" maxnum="2" des="训练中心" building1="1301001" building2="1307001"/>
+    <ItemSpec id="1324002" level="2" gold="20" mineral="200" oil="200" food="200" pop="20" addcexp="20" addpexp="20" time="120" maxnum="2" building1="1301002"/>
+    <ItemSpec id="1324003" level="3" gold="30" mineral="300" oil="300" food="300" pop="30" addcexp="30" addpexp="30" time="180" maxnum="2" building1="1301003"/>
+    <ItemSpec id="1324004" level="4" gold="40" mineral="400" oil="400" food="400" pop="40" addcexp="40" addpexp="40" time="240" maxnum="2" building1="1301004"/>
+    <ItemSpec id="1324005" level="5" gold="50" mineral="500" oil="500" food="500" pop="50" addcexp="50" addpexp="50" time="300" maxnum="2" building1="1301005"/>
+    <ItemSpec id="1324006" level="6" gold="60" mineral="600" oil="600" food="600" pop="60" addcexp="60" addpexp="60" time="360" maxnum="2" building1="1301006"/>
+    <ItemSpec id="1324007" level="7" gold="70" mineral="700" oil="700" food="700" pop="70" addcexp="70" addpexp="70" time="420" maxnum="2" building1="1301007"/>
+    <ItemSpec id="1324008" level="8" gold="80" mineral="800" oil="800" food="800" pop="80" addcexp="80" addpexp="80" time="480" maxnum="2" building1="1301008"/>
+    <ItemSpec id="1324009" level="9" gold="90" mineral="900" oil="900" food="900" pop="90" addcexp="90" addpexp="90" time="540" maxnum="2" building1="1301009"/>
+    <ItemSpec id="1324010" level="10" gold="100" mineral="1000" oil="1000" food="1000" pop="100" addcexp="100" addpexp="100" time="600" maxnum="2" building1="1301010"/>
+    <ItemSpec id="1324011" level="11" gold="110" mineral="1100" oil="1100" food="1100" pop="110" addcexp="110" addpexp="110" time="660" maxnum="2" building1="1301011"/>
+    <ItemSpec id="1324012" level="12" gold="120" mineral="1200" oil="1200" food="1200" pop="120" addcexp="120" addpexp="120" time="720" maxnum="2" building1="1301012"/>
+    <ItemSpec id="1324013" level="13" gold="130" mineral="1300" oil="1300" food="1300" pop="130" addcexp="130" addpexp="130" time="780" maxnum="2" building1="1301013"/>
+    <ItemSpec id="1324014" level="14" gold="140" mineral="1400" oil="1400" food="1400" pop="140" addcexp="140" addpexp="140" time="840" maxnum="2" building1="1301014"/>
+    <ItemSpec id="1324015" level="15" gold="150" mineral="1500" oil="1500" food="1500" pop="150" addcexp="150" addpexp="150" time="900" maxnum="2" building1="1301015"/>
+    <ItemSpec id="1324016" level="16" gold="160" mineral="1600" oil="1600" food="1600" pop="160" addcexp="160" addpexp="160" time="960" maxnum="2" building1="1301016"/>
+    <ItemSpec id="1324017" level="17" gold="170" mineral="1700" oil="1700" food="1700" pop="170" addcexp="170" addpexp="170" time="1020" maxnum="2" building1="1301017"/>
+    <ItemSpec id="1324018" level="18" gold="180" mineral="1800" oil="1800" food="1800" pop="180" addcexp="180" addpexp="180" time="1080" maxnum="2" building1="1301018"/>
+    <ItemSpec id="1324019" level="19" gold="190" mineral="1900" oil="1900" food="1900" pop="190" addcexp="190" addpexp="190" time="1140" maxnum="2" building1="1301019"/>
+    <ItemSpec id="1324020" level="20" gold="200" mineral="2000" oil="2000" food="2000" pop="200" addcexp="200" addpexp="200" time="1200" maxnum="2" building1="1301020"/>
+  </Group>
+</tns:database>

@@ -1,0 +1,136 @@
+<!--{template header}-->
+<script language="javascript" src="include/highcharts/highcharts.js"></script>
+<form action="admincp.php?mod=stat&act=online_daily_graph" method="post" name="getaccount">
+<div class="alert alert-info"><?php echo "查看登陆用户注册日期分布";?><font color="red"></font></div>
+
+$serverDiv
+
+<div class="row-fluid">
+<div class="span11">
+请选择登陆日期<input id="date" name='date' type="text" value='{$rDate}' class="input-medium"/>
+<input class="btn js-btn btn-primary" type="button" value="点击开始查询" id="btn_view" name="btn_view" onclick="search()" />
+</div>
+</div>
+</form>
+<div id="chart" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+<!-- {if $legoinArr} -->
+	<script type="text/javascript">
+		var showData = [];
+		var xCategories = [];
+		var svData = [];
+	</script>
+	<!--{loop $legoinArr  $regDay $count}-->
+		<script type="text/javascript">
+		xCategories.push('$dayLang[$regDay]');
+		svData.push($count);
+		</script>
+	<!--{/loop}-->
+	<script type="text/javascript">
+		showData.push({
+					"type":"column",
+					"name":"人数",
+					"data":svData});
+	</script>
+	<script type="text/javascript">
+	var chart;
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'chart',
+			type: 'column',
+			plotBorderWidth: 0,
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+		},
+		title: {
+			align: 'right',
+			text: ''
+		},
+		subtitle: {
+			text: '活跃用户已注册天数'
+		},
+		xAxis: {
+			title: {
+				text: '注册时间'
+			},
+			allowDecimals: false,
+			categories: xCategories,
+		},
+		yAxis: {
+			title: {
+				text: '人数'
+			},
+			min: 0,
+			startOnTick: true,
+			showFirstLabel: true,
+		},
+		legend: {
+				enabled: true
+		},
+		plotOptions: {
+			series: {
+				marker: {
+					enabled: false,
+					states: {
+						hover: {
+							enabled: true
+						}
+					}
+				},
+				dataLabels: {
+					enabled: true,
+					rotation: 0,
+					color: '#FFFFFF',
+					align: 'center',
+					x: 0,
+					y: -1,
+					formatter: function() {
+						return '<tspan style="fill:'+ this.series.color + '" dy="16" x="5">' + this.y +'</tspan>';
+					},
+				},
+				pointWidth: parseInt(800/svData.length)
+			}
+		},
+		credits:{
+			enabled:false
+		},
+		series: showData
+	});
+	</script>
+	<!--{loop $legoinArr  $regDay $count}-->
+	$dayLang[$regDay]: $count<br />
+	<!--{/loop}-->
+<!-- {/if} -->
+
+
+<script type="text/javascript">
+$("#date").datetimepicker();
+function serverall(){
+	var currentObj = document.getElementById('all_server');
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(objId[0]=='server'){
+			objs[i].checked = currentObj.checked;
+		}
+	}	
+}
+function checkserverall(){
+	document.getElementById('all_server').checked = true;
+	var objs=document.getElementsByTagName("input");
+	for(i=0;i<objs.length;i++){
+		var objId = objs[i].id.split('_');
+		if(!objs[i].checked&&objId[0]=='server')
+		{
+			document.getElementById('all_server').checked = false;
+			break;
+		}
+	}
+}
+function search(){
+	document.getElementById('btn_view').disabled=true;
+	document.getaccount.submit();
+}
+</script>
+
+<!--{template footer}-->

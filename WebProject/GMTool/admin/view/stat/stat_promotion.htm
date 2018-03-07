@@ -1,0 +1,43 @@
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "竞技场晋级赛";?><font color="red"></font></div>
+<div id="tip" style="width:auto;height:auto;padding: 10px;border:1px solid #cccccc;background-color:#ffffdd;position:absolute;visibility:hidden"></div>
+$serverDiv
+起始时间<input class="input-medium focused" id="startDate" name="startDate" type="text" placeholder="点击选择日期" value="{$startDate}">
+结束时间<input class="input-medium focused" id="endDate" name="endDate" type="text" placeholder="点击选择日期" value="{$endDate}">
+玩家id <input class="input focused" id="user_id" name="user_id" type="text" placeholder="玩家uid" value="{$userId}">
+统计类型:<select name="statType" id="statType">$options</select>
+<input class="btn js-btn btn-primary" type="button" onclick="search()" id="btn_view" name="btn_view" value="查询数据">
+<br/>
+<hr/>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+<script type="text/javascript">
+    function search(){
+        document.getElementById('btn_view').disabled=true;
+        var url = 'mod=stat&act=promotion&dotype=search&startDate='+$('#startDate').val()+'&endDate='+$('#endDate').val()+'&statType='+$("#statType").val()+'&selectServer='+$('#selectServer').val()+ '&user_id=' + $("#user_id").val();
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("POST",'admincp.php',true);
+        xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlHttp.send(url);
+    }
+    init();
+    function init(){
+        $("#startDate,#endDate").datetimepicker();
+    }
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                showLogin(getLogData);
+                return;
+            }
+            right.innerHTML=xmlHttp.responseText;
+            document.getElementById('btn_view').disabled=false;
+                document.getaccount.submit();
+                return;
+            }
+        }
+    }
+</script>

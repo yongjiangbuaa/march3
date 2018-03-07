@@ -1,0 +1,50 @@
+<!--{template header}-->
+<input type="button" value="Refresh" name="btn_edit" onclick="update()" />
+<table class="table table-striped" style="TABLE-LAYOUT:fixed;WORD-WRAP:break-word;word-break:break-all;width:700px">
+<tbody>
+	<tr>
+	<th align="center" width="50px">服务器</th>
+	<th align="center" width="40px">状态</th>
+	<th align="center" width="250px">日志</th>
+	</tr>
+	<!--{loop $configData $server $serverData}-->
+		<tr>
+			<td style="vertical-align: middle;">$server</td>
+			<td style="vertical-align: middle;"><div id="div_status_{$server}"></div></td>
+			<td><div id="div_log_{$server}"></div></td>
+		</tr>
+	<!--{/loop}-->
+	</tbody>
+</table>
+
+<script type="text/javascript"> 
+function update() {
+	for (var i=56;i>=1;i--)
+	{
+		$.ajax({ 
+	          type : "post", 
+	          url : 'admincp.php?mod=server&act=onekey&action=monitor&sid='+i, 
+	          data : "", 
+	          async : true, 
+	          dataType: "json",
+	          success : function(data){ 
+				  $( "#div_status_s"+data['sid'] ).html( data['status'] );
+				  if (data['status'] == 'OK'){
+					  $( "#div_status_s"+data['sid'] ).css("background-color","greenyellow");
+				  }else if(data['status'] == 'Stopping'){
+					  $( "#div_status_s"+data['sid'] ).css("background-color","orange");
+				  }else{
+					  $( "#div_status_s"+data['sid'] ).css("background-color","red");
+				  }
+				  $( "#div_log_s"+data['sid'] ).html( data['log'] );
+	          } 
+	    }); 
+		/* jQuery.post('admincp.php?mod=server&act=onekey&action=monitor&sid='+i,'',function( data ) {
+			  $( "#div_status_s"+data['sid'] ).html( data['status'] );
+			  $( "#div_log_s"+data['sid'] ).html( data['log'] );
+		},'json'); */
+	}
+};
+</script>
+
+<!--{template footer}-->
