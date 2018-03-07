@@ -300,7 +300,7 @@ if ($type) {
 	}
 	if(!$result['error'] && $result['ret']['data']){
 		$item = $result['ret']['data'][0];
-
+        $item['useruid'] = $useruid;
 //		echo print_r($item);
 //		$item['invite']=$result_cat7[0]['invite']==null?0:$result_cat7[0]['invite'];
 		$item['name']=str_replace(' ', '&nbsp;', $item['name']);
