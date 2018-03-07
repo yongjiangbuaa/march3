@@ -9,11 +9,11 @@ $sensitiveArray=array('INTO','OUTFILE','INFILE','GRANT','ALTER','UPDATE','INSERT
 $redisKey='mysql:task';
 $logPath='/data/htdocs/bgtask/sqlTask_error.log';
 
-define('GLOBAL_DB_SERVER_IP', '10.82.60.173');
-define('GLOBAL_DB_SERVER_USER', 'gow');
-define('GLOBAL_DB_SERVER_PWD', 'ZPV48MZH6q9V8oVNtu');
-define('GAME_DB_SERVER_USER', 'gow');
-define('GAME_DB_SERVER_PWD', 'ZPV48MZH6q9V8oVNtu');
+define('GLOBAL_DB_SERVER_IP', '127.0.0.1');
+define('GLOBAL_DB_SERVER_USER', 'march');
+define('GLOBAL_DB_SERVER_PWD', 'hdli54T5P');
+define('GAME_DB_SERVER_USER', 'march');
+define('GAME_DB_SERVER_PWD', 'hdli54T5P');
 
 //define('GLOBAL_DB_SERVER_IP', '10.1.16.211');
 //define('GLOBAL_DB_SERVER_USER', 'cok');

@@ -294,12 +294,6 @@ if ($type) {
     $sql = "select u.*
      	    from userprofile u 
      	    where u.uid = '{$useruid}'";
-/**    $sql = "select u.*,sp.*,l.*,al.*,p.*,uw.*,u.level,u.uid useruid,u.appVersion ,u.phoneDevice,u.pf currentPf,u.deviceId deviceId, if(vip.score > 0 ,vip.score,0) vipscore,vip.vipEndTime,am.accPoint,c.wood,c.food,c.iron
-     	    from userprofile u left join alliance_member am on u.uid = am.uid left join user_resource c on u.uid = c.uid left join user_lord l on u.uid = l.uid
-    		    left join stat_phone sp on u.uid = sp.uid left join user_world uw on u.uid = uw.uid
-     	    left join worldpoint p on uw.pointId = p.id  left join user_vip vip on u.uid = vip.uid
-     	    left JOIN alliance al on u.allianceId=al.uid
-     	    where u.uid = '{$useruid}'";**/
 	if ($type == 'viewmaster'){
 		$result = $page->execute($sql, 3, true);
 	}else{

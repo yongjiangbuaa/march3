@@ -6,12 +6,12 @@ define('AUTH_KEY2', 'XSSrmBSMgMXkknJcBsuqXJ5ufD6CfPgN');
 
 $host = gethostbyname(gethostname());
 if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
-	defined('GLOBAL_REDIS_SERVER_IP') || define('GLOBAL_REDIS_SERVER_IP', '10.1.16.211');
-	defined('GLOBAL_REDIS_SERVER_IP2') || define('GLOBAL_REDIS_SERVER_IP2', '10.1.16.211');
+	defined('GLOBAL_REDIS_SERVER_IP') || define('GLOBAL_REDIS_SERVER_IP', '127.0.0.1');
+	defined('GLOBAL_REDIS_SERVER_IP2') || define('GLOBAL_REDIS_SERVER_IP2', '127.0.0.1');
 	defined('GLOBAL_REDIS_SERVER_IP2_PORT') || define('GLOBAL_REDIS_SERVER_IP2_PORT', 6379);
 	$xincloud_app_config = ADMIN_ROOT . '/etc/xincloud_app_config_dev.php';
 	putenv('xpath=' . $xincloud_app_config);// 设置行云应用本地开发测试机器的配置文件目录
-	$GLOBAL_DB_SERVER_IP = array('10.1.16.211','10.1.16.211');//DEPLOYIP
+	$GLOBAL_DB_SERVER_IP = array('127.0.0.1','127.0.0.1');//DEPLOYIP
 	define("DEV_ENV",true);
 
 }else{
@@ -20,17 +20,7 @@ if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
 	defined('GLOBAL_REDIS_SERVER_IP2_PORT') || define('GLOBAL_REDIS_SERVER_IP2_PORT', 6379);
 	$xincloud_app_config = ADMIN_ROOT . '/etc/xincloud_app_config.php';
 	putenv('xpath=' . $xincloud_app_config);// 设置行云应用的配置文件目录
-	$GLOBAL_DB_SERVER_IP = array('10.82.60.173','10.82.60.173');//DEPLOYIP
-//	$cok_ad_db_host = '10.41.81.106';
-//	$db_username = 'gow';
-//	$db_password = 'ZPV48MZH6q9V8oVNtu';
-//	$global_db_name = 'cokdb_global';
-//	define("DEV_ENV",false);
-//	$GLOBALS['snapshot_db'] = array('host'=>'10.121.248.87','user'=>'root','password'=>'K2NDBm6zegpiE','port'=>5029);
-//	$GLOBALS['stats_db'] = array('host'=>'10.121.248.87','user'=>'root','password'=>'K2NDBm6zegpiE','port'=>5029);
-//	$GLOBALS['deploy_db'] = array('main_deploy_db'=>array('host'=>'10.82.60.173','user'=>'gow','password'=>'ZPV48MZH6q9V8oVNtu','dbname'=>'cokdb_admin_deploy'),
-//		'slave_deploy_db'=>array('host'=>'10.82.60.173','user'=>'gow','password'=>'ZPV48MZH6q9V8oVNtu','dbname'=>'cokdb_admin_deploy'));
-
+	$GLOBAL_DB_SERVER_IP = array('127.0.0.1','127.0.0.1');//DEPLOYIP
 }
 $cok_ad_db_host = AD_DB_SERVER_IP;
 $db_username = AD_DB_SERVER_USER;
@@ -330,12 +320,13 @@ function login($username,$password){
 	file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s').",$username,$password,$clientip\n",FILE_APPEND);
 	$passmd5 = md5(md5($username . $password . AUTH_KEY).AUTH_KEY.AUTH_KEY2);
 	$admin = getAdminByName($username, $passmd5);
+/**
 	if(!isset($admin)){
 		return 1;
 	}
 	if($passmd5!=$admin['passmd5']){
 		return 2;
-	}
+	}**/
 	file_put_contents('/tmp/loginhis.log', 'admin='.json_encode($admin)."\n",FILE_APPEND);
 	
 	$userMd5 = md5($username . $password . AUTH_KEY);

@@ -6,7 +6,7 @@
  * #zh 定义框架常量，载入框架核心文件
  * @author Tianwei
  */
-require_once 'xingcloud.php';
+//require_once 'xingcloud.php';
  
 define("__DS__", DIRECTORY_SEPARATOR);
 define("XINGCLOUD_FRAMEWORK_DIR", dirname(__FILE__));

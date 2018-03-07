@@ -77,17 +77,19 @@ class BasePage
 			}else{
 				$host_info['host'] = GLOBAL_DB_SLAVE_IP;
 			}
-			$host_info['port'] = 3306;
-			$host_info['db'] = GLOBAL_DB_DBNAME;
-			$host_info['user'] = GLOBAL_DB_SERVER_USER;
-			$host_info['password'] = GLOBAL_DB_SERVER_PWD;
+			$host_info['host'] = '127.0.0.1';
+			$host_info['port'] = 3306; 
+			$host_info['db'] = 'march_global'; 
+			$host_info['user'] = 'march';
+			$host_info['password'] = 'hdli54T5P';
 		}else {
 			if (!empty($server)) {
 				$appid = $server;
 			} else {
 				$appid = $this->getAppId();
 			}
-			$sid = substr($appid, 1);
+			$sid = 1;//substr($appid, 1);
+/**
 			$db_info = get_db_info($sid);
 			$host_info = array();
 			if ($mainDB) {
@@ -95,10 +97,12 @@ class BasePage
 			} else {
 				$host_info['host'] = $db_info['slave_ip_inner'];
 			}
-			$host_info['port'] = $db_info['port'];
-			$host_info['db'] = $db_info['dbname'];
-			$host_info['user'] = GAME_DB_SERVER_USER;
-			$host_info['password'] = GAME_DB_SERVER_PWD;
+**/
+			$host_info['host'] = '127.0.0.1';
+			$host_info['port'] = 3306; 
+			$host_info['db'] = 'march'; 
+			$host_info['user'] = 'march';
+			$host_info['password'] = 'hdli54T5P';
 		}
 
 		return $host_info;
@@ -182,6 +186,7 @@ class BasePage
 	}
 
 	public function execute($sql,$type,$mainDB = false){
+			file_put_contents('/tmp/loginhis.log', 'sql='.$sql."\n",FILE_APPEND);
 		if($type == 2 || $type == null){
 			$mainDB = true;
 		}

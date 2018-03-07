@@ -2,7 +2,6 @@
 //header("HTTP/1.1 301 Moved Permanently");
 //header("Location: http://gm.coq.elexapp.com/ifadmin/admin/admincp.php?" . $_SERVER['QUERY_STRING']);
 //exit();
-file_put_contents('/tmp/loginhis.log', "adminid=$adminid \n username=".$invalid['username']."\n groupid=".$invalid['groupid']."\n auth=".$invalid['auth']."\n",FILE_APPEND);
 error_reporting(E_ALL ^ E_WARNING ^ E_NOTICE ^ E_DEPRECATED ^ E_USER_DEPRECATED);
 //ini_set('display_errors',true);
 //error_reporting(0);
@@ -189,7 +188,7 @@ if($resetServer){
 //		$GLOBALS['snapshot_db'] = array('host'=>'SNAPSHOTIP2
 //','user'=>'root','password'=>'DBPWD','port'=>5029);
 //}
-
+file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')." $adminid $clientip $module $action $paras\n",FILE_APPEND);
 if (isset($_POST['username']) || isset($_POST['useruid']) || isset($_POST['userplat']))
 {
 	$username = trim($_POST['username']);
@@ -229,7 +228,7 @@ if (empty($_COOKIE['u']) || strpos($_COOKIE['u'], 'COKKGGC')!==false) {
 	$privileges['edit'] = false;
 	$privileges['export'] = false;
 }
-
+file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')." $adminid $clientip $module $action $paras\n",FILE_APPEND);
 // 根据$servers生成显示的服务器列表
 // $serverinfoXml = loadXml('serverinfo','chance');
 $titleServers = array();
