@@ -22,10 +22,10 @@ if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
 	putenv('xpath=' . $xincloud_app_config);// 设置行云应用的配置文件目录
 	$GLOBAL_DB_SERVER_IP = array('127.0.0.1','127.0.0.1');//DEPLOYIP
 }
-$cok_ad_db_host = AD_DB_SERVER_IP;
-$db_username = AD_DB_SERVER_USER;
-$db_password = AD_DB_SERVER_PWD;
-$global_db_name = GLOBAL_DB_DBNAME;
+$cok_ad_db_host = '127.0.0.1';
+$db_username = 'march';
+$db_password = '';
+$global_db_name = 'march_global';
 define("DEV_ENV",true);
 $GLOBALS['snapshot_db'] = array('host'=>STATS_DB_SERVER_IP,'user'=>STATS_DB_SERVER_USER,'password'=>STATS_DB_SERVER_PWD,'port'=>5029);
 $GLOBALS['stats_db'] = array('host'=>STATS_DB_SERVER_IP,'user'=>STATS_DB_SERVER_USER,'password'=>STATS_DB_SERVER_PWD,'port'=>5029);

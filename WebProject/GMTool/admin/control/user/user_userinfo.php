@@ -199,10 +199,10 @@ if($_REQUEST['dochangename']){
 		exit("ERROR: 该用户名[".$name."]已经存在!");
 	}
 	
-	$sql = "select pointid from user_world where uid='$uid'";
-	$result = $page->execute($sql, 3);
-	$pointid = $result['ret']['data'][0]['pointid'];
-	$currserver = $page->getAppId();
+//	$sql = "select pointid from user_world where uid='$uid'";
+//	$result = $page->execute($sql, 3);
+//	$pointid = $result['ret']['data'][0]['pointid'];
+/*	$currserver = 1;//$page->getAppId();
 	$serverinfo = $servers[$currserver];
 	if ($currserver == 'test' || $currserver == 'localhost') {
 		$t = explode(':', $serverinfo['webbase']);//http://IPIPIP:8080/gameservice/
@@ -219,14 +219,12 @@ if($_REQUEST['dochangename']){
 		exit('connect redis error!');
 	}
 	$rd_json = $redis->hGet($rediskey, $pointid);
-// 	echo $rd_json."\r\n";
 	if (!empty($rd_json)) {
 		$rd_arr = json_decode($rd_json, true);
 		$rd_arr['o'] = $name;
 		$rd_json = json_encode($rd_arr);
-// 		echo $rd_json."\r\n";
 		$redis->hSet($rediskey, $pointid, $rd_json);
-	}
+	}*/
 
 	$sql = "select name from userprofile where uid='$uid'";
 	$result = $page->execute($sql, 3, true);
@@ -240,7 +238,7 @@ if($_REQUEST['dochangename']){
 
 	cobar_changeUserName($uid, $oldName, $name);
 
-	$toUser = $uid;
+	/*$toUser = $uid;
 	$sendTime = microtime(true)*1000;
 	$title = addslashes("Rename Explanation Email");//
 	$contents = addslashes("My lord,
@@ -254,10 +252,11 @@ Clash of Kings studio");
 	$rewardStatus = 0;
 	$sql = "insert into mail (uid, toUser, fromUser, fromName, status, type, rewardStatus, saveFlag, title, contents, rewardId, createTime, itemIdFlag, reply,srctype) values ('$mailUid', '$toUser', '', 'system', 0, 13, $rewardStatus, 0, '$title', '$contents', '$reward', $sendTime, 0, 1,106)";
 	$page->execute($sql,2);
-	sendReward($mailUid);
+	sendReward($mailUid);*/
 	
     adminLogUser($adminid,$uid,$currentServer,array('name'=>$name));
-	exit('操作成功！已给玩家发送解释邮件，且赠送改名卡');
+//	exit('操作成功！已给玩家发送解释邮件，且赠送改名卡');
+    exit('操作成功！');
 }
 function sendReward($mailUid){
 	$page = new BasePage();
