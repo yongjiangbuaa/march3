@@ -21,12 +21,11 @@ $dbArray = array(
 //	'vipscore' => array('name'=>'VIP积分',),
 //	'vipstatus' => array('name'=>'VIP激活状态','uneditable'=>1,),
 //	'accPoint' => array('name'=>'个人联盟荣誉',),
-//	'paidGold' => array('name'=>'充值金币',),
-//	'payTotal' => array('name'=>'总充值金币',),
-//	'glory' => array('name'=>'荣誉值',),
-//	'country' => array('name'=>'国家'),
-//	'regTime' => array('name'=>'注册时间',),
-//	// 'openedSystem' => array('name'=>'开启功能',),
+	'paidGold' => array('name'=>'充值值金币',),
+//	'glory' => array('name'=>'荣誉值',)、,
+	'country' => array('name'=>'国家'),
+	'regTime' => array('name'=>'注册时间',),
+//	// 'openedSystem' => array('na、me'=>'开启功能',),
 //	'gmFlag' => array('name'=>'GM标记(1gm,2mod,3gm带标识,4smod,5实习mod)',),
 //	'banTime' => array('name'=>'封号结束时间',),
 //	'chatBanTime' => array('name'=>'禁言结束时间',),
@@ -138,75 +137,75 @@ if ($type) {
 //						exit('success ,please refresh the web');
 						continue;
 					}
-					if(substr($key, 6) == 'vipscore') {
-
-						$sql = "update user_vip set score='$value' where uid='$oraUid'";
-						$page->execute($sql,2);
-						adminLogUser($adminid,$oraUid,$currentServer,"modify vipscore from $oldvipscore to $value");
-						continue;
-					}
-					if(substr($key, 6) == 'accPoint') {//修改联盟荣誉值
-						$sql = "update alliance_member set accPoint='$value' where uid='$oraUid'";
-						$page->execute($sql,2);
-						adminLogUser($adminid,$oraUid,$currentServer,"modify accPoint from $oldaccPoint to $value");
-						continue;
-					}
-					if(substr($key, 6) == 'glory') {//修改荣誉值
-						$sql = "update user_glory set glory='$value' where uid='$oraUid'";
-						$page->execute($sql,2);
-						adminLogUser($adminid,$oraUid,$currentServer,"modify glory from $oldGlory to $value");
-						continue;
-					}
-					if(in_array(substr($key, 6),array('banTime','chatBanTime','noticeBanTime'))){
-						$value = strtotime($value)*1000;
-						if (substr($key, 6) == 'banTime'){
-							$banReasonTime=$value;
-						}
-						if (substr($key, 6) == 'chatBanTime'){
-							$account_list = cobar_getAccountInfoByGameuids($oraUid);
-							$deviceId = $account_list[0]['deviceId'];
-						    $result['ret']['data'] = cobar_getAllAccountList('device', $deviceId);
-							
-							if(count($result['ret']['data']) > 1){
-								foreach ($result['ret']['data'] as $curRow){
-									$data = $curRow;
-									$logItem['服务器'] = 's'.$data['server'];
-									$logItem['UID'] = $data['gameUid'];
-
-									$page->webRequest('kickuser',array('uid'=>$logItem['UID']));
-									$sql="update userprofile set chatBanTime=$value where uid='".$logItem['UID']."'";
-									$page->executeServer($logItem['服务器'], $sql, 2);
-									$ban = $value - time()*1000;
-									if ($ban < 0) {
-										$ban = 0;
-									}
-									$sendBy = $page->getAdmin();
-									$page->webRequest('gmchatban', array('uid'=>$logItem['UID'], 'time'=>$ban, 'gmName'=>$sendBy, 'reason'=>"modify_profile", 'content'=>'0'));
-								}
-							}
-						}
-					}
-					if(substr($key, 6) == 'gmFlag'){
-						$gmflag =$value;
-					}
-					
-					// added by duzhigao
-					if(substr($key, 6) == 'stamina') {
-						$stamina = $value;
-						continue;
-					}
-					//更新名字等都从这走
+//					if(substr($key, 6) == 'vipscore') {
+//
+//						$sql = "update user_vip set score='$value' where uid='$oraUid'";
+//						$page->execute($sql,2);
+//						adminLogUser($adminid,$oraUid,$currentServer,"modify vipscore from $oldvipscore to $value");
+//						continue;
+//					}
+//					if(substr($key, 6) == 'accPoint') {//修改联盟荣誉值
+//						$sql = "update alliance_member set accPoint='$value' where uid='$oraUid'";
+//						$page->execute($sql,2);
+//						adminLogUser($adminid,$oraUid,$currentServer,"modify accPoint from $oldaccPoint to $value");
+//						continue;
+//					}
+//					if(substr($key, 6) == 'glory') {//修改荣誉值
+//						$sql = "update user_glory set glory='$value' where uid='$oraUid'";
+//						$page->execute($sql,2);
+//						adminLogUser($adminid,$oraUid,$currentServer,"modify glory from $oldGlory to $value");
+//						continue;
+//					}
+//					if(in_array(substr($key, 6),array('banTime','chatBanTime','noticeBanTime'))){
+//						$value = strtotime($value)*1000;
+//						if (substr($key, 6) == 'banTime'){
+//							$banReasonTime=$value;
+//						}
+//						if (substr($key, 6) == 'chatBanTime'){
+//							$account_list = cobar_getAccountInfoByGameuids($oraUid);
+//							$deviceId = $account_list[0]['deviceId'];
+//						    $result['ret']['data'] = cobar_getAllAccountList('device', $deviceId);
+//
+//							if(count($result['ret']['data']) > 1){
+//								foreach ($result['ret']['data'] as $curRow){
+//									$data = $curRow;
+//									$logItem['服务器'] = 's'.$data['server'];
+//									$logItem['UID'] = $data['gameUid'];
+//
+//									$page->webRequest('kickuser',array('uid'=>$logItem['UID']));
+//									$sql="update userprofile set chatBanTime=$value where uid='".$logItem['UID']."'";
+//									$page->executeServer($logItem['服务器'], $sql, 2);
+//									$ban = $value - time()*1000;
+//									if ($ban < 0) {
+//										$ban = 0;
+//									}
+//									$sendBy = $page->getAdmin();
+//									$page->webRequest('gmchatban', array('uid'=>$logItem['UID'], 'time'=>$ban, 'gmName'=>$sendBy, 'reason'=>"modify_profile", 'content'=>'0'));
+//								}
+//							}
+//						}
+//					}
+//					if(substr($key, 6) == 'gmFlag'){
+//						$gmflag =$value;
+//					}
+//
+//					// added by duzhigao
+//					if(substr($key, 6) == 'stamina') {
+//						$stamina = $value;
+//						continue;
+//					}
+//					//更新名字等都从这走
 					$replace[] = substr($key, 6) . " = '{$value}'";
-
-
-					if(substr($key, 6) == 'platformId'){
-						$sql = "select * from userprofile where platformId = '{$value}'";
-						$result = $page->execute($sql);
-						if(!$result['error'] && $result['ret']['data']){
-							$error_msg = '关联数据冲突';
-							$flag = false;
-						}
-					}
+//
+//
+//					if(substr($key, 6) == 'platformId'){
+//						$sql = "select * from userprofile where platformId = '{$value}'";
+//						$result = $page->execute($sql);
+//						if(!$result['error'] && $result['ret']['data']){
+//							$error_msg = '关联数据冲突';
+//							$flag = false;
+//						}
+//					}
 					if(substr($key, 6) == 'gold'){
 						//$replace[] = "gmFlag = 1";
 						$changeGold = $value;
@@ -290,12 +289,12 @@ if ($type) {
 			}
 			
 			// added by duzhigao
-			if($stamina){
-				$uSql = "update user_world set attMonsterStamina = '{$stamina}' where uid = '{$useruid}'";
-				if($flag){
-					$result_stamina = $page->execute($uSql,2);
-				}
-			}
+//			if($stamina){
+//				$uSql = "update user_world set attMonsterStamina = '{$stamina}' where uid = '{$useruid}'";
+//				if($flag){
+//					$result_stamina = $page->execute($uSql,2);
+//				}
+//			}
 		}
 		
 		
@@ -357,15 +356,8 @@ if ($type) {
 // 		$result = $page->execute($sql);
 // 	}
 	//unactive 封号
-	if($type == 'unactive' || $type == 'active')
+	/*if($type == 'unactive' || $type == 'active')
 	{
-// 		if($username){
-// 			$sql = "select uid from userprofile where name = '{$username}'";
-// 			$tmp = $page->execute($sql);
-// 			$uid = $tmp['ret']['data'][0]['uid'];
-// 		}else{
-// 			$uid = $useruid;
-// 		}
 
 		$uid = $useruid;
 		$opeDate=date('Y-m-d H:i:s');
@@ -420,24 +412,21 @@ if ($type) {
 			$page->execute($taskSql, 2);
 		}
 		if($uid){
-// 			$sql = "update account_new set active = $active where gameUid = '{$uid}'";
-// 			$result = $page->globalExecute($sql);
 			cobar_query_global_db_cobar("update account_new set active = $active where gameUid = '{$uid}'");
-
             adminLogUser($adminid,$uid,$currentServer,array('active'=>$active));
 		}
-	}
+	}*/
 	
-	if($type == 'unactiveAll' || $type == 'activeAll')
+	/*if($type == 'unactiveAll' || $type == 'activeAll')
 	{
 			$uid = $useruid;
 			$opeDate=date('Y-m-d H:i:s');
 			$active = 0;
-			
+
 			$account_list = cobar_getAccountInfoByGameuids($uid);
 			$deviceId = $account_list[0]['deviceId'];
 			$result['ret']['data'] = cobar_getAllAccountList('device', $deviceId);
-			
+
 			if(count($result['ret']['data']) < 1){
 				var_dump($result['ret']['data']);
 				$headAlert = 'no data';
@@ -447,62 +436,62 @@ if ($type) {
 				foreach ($result['ret']['data'] as $curRow){
 					$sql="update userprofile set banTime=9223372036854775806 where uid ='".$curRow['gameUid']."';";
 					$page->executeServer('s'.$curRow['server'], $sql, 2);
-					
+
 					$ret = $page->webRequest('kickuser',array('uid'=>$curRow['gameUid']),'s'.$curRow['server']);
-					
+
 					$reason=$_REQUEST['unactiveReason']?$_REQUEST['unactiveReason']:'没有填写原因';
 					$reasonSql="insert into banTime_reason(serverId,uid,operator,reason,opeDate,status) values('s".$curRow['server']."','".$curRow['gameUid']."','$operator','$reason','$opeDate',1) ON DUPLICATE KEY UPDATE operator='$operator',reason='$reason',opeDate='$opeDate',status=1;";
 					$page->globalExecute($reasonSql, 2);
-					
+
 					$time=time()*1000;
 					$uuid=md5($curRow['server'].$curRow['gameUid'].$time);
 					$sql="insert into ban_record(uuid,serverId,uid,time,operator,reason,opDate) values('$uuid',".$curRow['server'].",'".$curRow['gameUid']."',$time,'$operator','$reason','$opeDate')";
 					$page->globalExecute($sql, 2);
-					
+
 //					$taskSql="update user_task set id=CONCAT(id,'_ban') where uid='".$curRow['gameUid']."' and state=0 limit 1;";
 //					$page->executeServer('s'.$curRow['server'],$taskSql, 2);
-					
+
 					$sql = "select pointid from user_world where uid='".$curRow['gameUid']."'";
 					$result = $page->executeServer('s'.$curRow['server'], $sql, 3);
 					$pointid = $result['ret']['data'][0]['pointid'];
-					
+
 					$serverinfo = $servers['s'.$curRow['server']];
 					$ip = $serverinfo['ip_inner'];
 					$rediskey = 'world'.$curRow['server'];
 					$redissfs = new Redis();
 					$redissfs->connect($ip,6379);
 					$redissfs->hDel($rediskey, $pointid);
-					
+
 					$sql="update worldpoint set pointType=8 where id=$pointid;";
 					$re = $page->executeServer('s'.$curRow['server'],$sql,2);
-					
+
 					cobar_query_global_db_cobar("update account_new set active = $active where gameUid = '".$curRow['gameUid']."';");
-					
+
 					adminLogUser($adminid,$curRow['gameUid'],'s'.$curRow['server'],array('active'=>$active));
 				}
 			}else {
 				foreach ($result['ret']['data'] as $curRow){
 					$sql="update userprofile set banTime=0 where uid ='".$curRow['gameUid']."';";
 					$page->executeServer('s'.$curRow['server'], $sql, 2);
-					
+
 					$time=time()*1000;
 					$uuid=md5($curRow['server'].$curRow['gameUid'].$time);
 					$sql="insert into ban_record(uuid,serverId,uid,time,operator,reason,opDate) values('$uuid',".$curRow['server'].",'".$curRow['gameUid']."',$time,'$operator','解封','$opeDate')";
 					$page->globalExecute($sql, 2);
-					
+
 					$sql="update banTime_reason set status=0 where serverId='s".$curRow['server']."' and uid='".$curRow['gameUid']."';";
 					$page->globalExecute($sql, 2);
-					
+
 					$taskSql="update user_task set id=SUBSTRING_INDEX(id,'_ban',1) where uid='".$curRow['gameUid']."' and state=0 and id like '%_ban';";
 					$page->executeServer('s'.$curRow['server'],$taskSql, 2);
-					
+
 					cobar_query_global_db_cobar("update account_new set active = $active where gameUid = '".$curRow['gameUid']."';");
-						
+
 					adminLogUser($adminid,$curRow['gameUid'],'s'.$curRow['server'],array('active'=>$active));
 				}
 			}
-			
-		}
+
+		}*/
 	
 	//其他表数据先取，防止uid取不到
 // 	if($username)

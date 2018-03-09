@@ -29,14 +29,14 @@
 			<td>$item[$dbName]</td>
 			<!--{if $dbData['uneditable']}-->
 				<!--{if $dbName == 'uid'  && !$activeFlag }-->
-					<td><input class="btn js-btn btn-danger" type="button" value="冻结帐号" name="btn_del" onclick="check_submit('unactive')" />|
+					<!--<td><input class="btn js-btn btn-danger" type="button" value="冻结帐号" name="btn_del" onclick="check_submit('unactive')" />|
 						<input class="btn js-btn btn-danger" type="button" value="冻结所有帐号" name="btn_del" onclick="check_submit('unactiveAll')" />
 						&nbsp;&nbsp;原因<input type="text" id="unactiveReason" name="unactiveReason" class="input-large" value="">
-					</td>
+					</td>-->
 				<!--{elseif $dbName == 'uid' }-->
-					<td><input class="btn js-btn btn-danger" type="button" value="激活帐号" name="btn_del" onclick="check_submit('active')" />|
+				<!--<td><input class="btn js-btn btn-danger" type="button" value="激活帐号" name="btn_del" onclick="check_submit('active')" />|
 						<input class="btn js-btn btn-danger" type="button" value="激活所有帐号" name="btn_del" onclick="check_submit('activeAll')" />
-					</td>
+					</td>-->
 				<!--{elseif $dbName == 'parseRegisterId' && $item[$dbName]}-->
 					<td><a href='admincp.php?mod=op&act=push_execute&deviceToken=$item[$dbName]' target='_blank'>发送推送消息</a></td>
 				<!--{else}-->
