@@ -517,6 +517,7 @@ if ($type) {
 	if(!$result['error'] && $result['ret']['data']){
 		$item = $result['ret']['data'][0];
 		$item['name']=str_replace(' ', '&nbsp;', $item['name']);
+        $useruid = $item['uid'];
 		$countrySql = "select uid, country from stat_reg where uid='{$item['uid']}';";
 
 		$countryResult = $page->execute($countrySql,3);
