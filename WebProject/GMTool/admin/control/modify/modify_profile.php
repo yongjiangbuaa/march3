@@ -9,33 +9,35 @@ if($_REQUEST['useruid'])
 	$useruid = trim($_REQUEST['useruid']);
 $dbArray = array(
 	'uid' => array('name'=>'uid','uneditable'=>1,'note'=>''),
-	'name' => array('name'=>'名字',),
-	'level' => array('name'=>'等级',),
+    'name' => array('name'=>'名字',),
+    'level' => array('name'=>'等级',),
+    'heart' => array('name'=>'红心',),
+    'star' => array('name'=>'星星',),
+    'gold' => array('name'=>'金币',),
 	'exp' => array('name'=>'经验',),
-	'stamina' => array('name' => '体力'),	// added by duzhigao
-	'alliancename' => array('name'=>'联盟','uneditable'=>1),
-	'VIP' => array('name'=>'VIP等级','uneditable'=>1,),
-	'vipscore' => array('name'=>'VIP积分',),
-	'vipstatus' => array('name'=>'VIP激活状态','uneditable'=>1,),
-	'accPoint' => array('name'=>'个人联盟荣誉',),
-	'gold' => array('name'=>'金币',),
-	'paidGold' => array('name'=>'充值金币',),
-	'payTotal' => array('name'=>'总充值金币',),
-	'glory' => array('name'=>'荣誉值',),
-	'country' => array('name'=>'国家'),
-	'regTime' => array('name'=>'注册时间',),
-	// 'openedSystem' => array('name'=>'开启功能',),
-	'gmFlag' => array('name'=>'GM标记(1gm,2mod,3gm带标识,4smod,5实习mod)',),
-	'banTime' => array('name'=>'封号结束时间',),
-	'chatBanTime' => array('name'=>'禁言结束时间',),
-	'noticeBanTime' => array('name'=>'禁封大喇叭结束时间',),
-	'parseRegisterId' => array('name'=>'推送帐号信息','uneditable'=>1,),
-	// 'platformId' => array('name'=>'关联帐号',),
-	'model' => array('name'=>'机型','uneditable'=>1,),
-	'version' => array('name'=>'手机版本','uneditable'=>1,),
-	'width' => array('name'=>'屏幕宽','uneditable'=>1,),
-	'height' => array('name'=>'屏幕高','uneditable'=>1,),
-	'isBusinessman'=>array('name'=>'资源商标识(0:普通用户;1:资源商)',),
+//	'stamina' => array('name' => '体力'),	// added by duzhigao
+//	'alliancename' => array('name'=>'联盟','uneditable'=>1),
+//	'VIP' => array('name'=>'VIP等级','uneditable'=>1,),
+//	'vipscore' => array('name'=>'VIP积分',),
+//	'vipstatus' => array('name'=>'VIP激活状态','uneditable'=>1,),
+//	'accPoint' => array('name'=>'个人联盟荣誉',),
+//	'paidGold' => array('name'=>'充值金币',),
+//	'payTotal' => array('name'=>'总充值金币',),
+//	'glory' => array('name'=>'荣誉值',),
+//	'country' => array('name'=>'国家'),
+//	'regTime' => array('name'=>'注册时间',),
+//	// 'openedSystem' => array('name'=>'开启功能',),
+//	'gmFlag' => array('name'=>'GM标记(1gm,2mod,3gm带标识,4smod,5实习mod)',),
+//	'banTime' => array('name'=>'封号结束时间',),
+//	'chatBanTime' => array('name'=>'禁言结束时间',),
+//	'noticeBanTime' => array('name'=>'禁封大喇叭结束时间',),
+//	'parseRegisterId' => array('name'=>'推送帐号信息','uneditable'=>1,),
+//	// 'platformId' => array('name'=>'关联帐号',),
+//	'model' => array('name'=>'机型','uneditable'=>1,),
+//	'version' => array('name'=>'手机版本','uneditable'=>1,),
+//	'width' => array('name'=>'屏幕宽','uneditable'=>1,),
+//	'height' => array('name'=>'屏幕高','uneditable'=>1,),
+//	'isBusinessman'=>array('name'=>'资源商标识(0:普通用户;1:资源商)',),
 );
 
 //require_once ADMIN_ROOT . "/include/PHPMailer/PHPMailerAutoload.php";
@@ -509,14 +511,15 @@ if ($type) {
 // 		$sql = "select sp.*,if(vip.score > 0 ,vip.score,0) vipscore,vip.vipEndTime,a.alliancename,u.* from userprofile u left join stat_phone sp on u.uid = sp.uid  left join user_vip vip on u.uid = vip.uid left JOIN alliance a on u.allianceId=a.uid where u.uid = '{$useruid}'";
 
 	// modified by duzhigao, join table user_world, for setting stamina
-	$sql = "select sp.*,if(vip.score > 0 ,vip.score,0) vipscore,vip.vipEndTime,am.accPoint,ug.glory,a.alliancename,uw.attMonsterStamina as stamina,u.*
-from userprofile u
-left join stat_phone sp on u.uid = sp.uid
-left join user_vip vip on u.uid = vip.uid
-left join alliance_member am on u.uid = am.uid
-left join user_glory ug on u.uid = ug.uid
-left JOIN alliance a on u.allianceId=a.uid
-LEFT JOIN user_world uw on u.uid=uw.uid where u.uid = '{$useruid}'";
+//	$sql = "select sp.*,if(vip.score > 0 ,vip.score,0) vipscore,vip.vipEndTime,am.accPoint,ug.glory,a.alliancename,uw.attMonsterStamina as stamina,u.*
+//from userprofile u
+//left join stat_phone sp on u.uid = sp.uid
+//left join user_vip vip on u.uid = vip.uid
+//left join alliance_member am on u.uid = am.uid
+//left join user_glory ug on u.uid = ug.uid
+//left JOIN alliance a on u.allianceId=a.uid
+//LEFT JOIN user_world uw on u.uid=uw.uid where u.uid = '{$useruid}'";
+    $sql = "select * from userprofile where uid = '{$useruid}'";
 
 	$result = $page->execute($sql);
 	if(!$result['error'] && $result['ret']['data']){

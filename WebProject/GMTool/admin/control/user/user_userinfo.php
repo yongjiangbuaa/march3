@@ -49,7 +49,7 @@ $dbArray = array(
     'star' => array('name'=>'星星',),
     'gold' => array('name'=>'金币',),
 	'exp' => array('name'=>'经验',),
-	'alliancename' => array('name'=>'联盟',),
+/*	'alliancename' => array('name'=>'联盟',),
 	'VIP' => array('name'=>'VIP等级',),
 	'vipscore' => array('name'=>'VIP积分',),
 	'vipstatus' => array('name'=>'VIP激活状态',),
@@ -66,11 +66,11 @@ $dbArray = array(
 	'iron' => array('name'=>'铁矿',),
 	'food' => array('name'=>'粮食',),
 	'silver' => array('name'=>'银币',),
-	// 'country' => array('name'=>'国家',),
+	// 'country' => array('name'=>'国家',),*/
 	'deviceId' => array('name'=>'设备Id'),
 	'regTime' => array('name'=>'注册时间',),
 	'lastOnlineTime' => array('name'=>'上次登陆时间',),
-	'offLineTime' => array('name'=>'离线时间',),
+//	'offLineTime' => array('name'=>'离线时间',),
 	// 'openedSystem' => array('name'=>'开启功能',),
 	'gmFlag' => array('name'=>'GM标记',),
 	'country' => array('name'=>'国家',),
@@ -88,10 +88,10 @@ $dbArray = array(
     'googleAccountName' => array('name'=>'Google账户名',),
     'facebookAccount' => array('name'=>'绑定Facebook账户',),
     'facebookAccountName' => array('name'=>'Facebook账户名',),
-    'chatBanTime' => array('name'=>'禁言结束时间',),
-	'noticeBanTime' => array('name'=>'禁封大喇叭结束时间',),
-	'banTime'=>array('name'=>'禁止登陆'),
-	'isBusinessman'=>array('name'=>'资源商标识(0:普通用户;1:资源商)'),
+//    'chatBanTime' => array('name'=>'禁言结束时间',),
+//	'noticeBanTime' => array('name'=>'禁封大喇叭结束时间',),
+//	'banTime'=>array('name'=>'禁止登陆'),
+//	'isBusinessman'=>array('name'=>'资源商标识(0:普通用户;1:资源商)'),
 );
 $headLine = "查看玩家信息";
 $headAlert = "";
