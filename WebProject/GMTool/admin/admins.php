@@ -234,6 +234,10 @@ function get_ad_connection(){
 }
 
 function query_from_db($dbInfo,$sql) {
+    file_put_contents('/tmp/loginhis.log', "dbinfo=$dbInfo \n sql=".$sql."\n",FILE_APPEND);
+
+
+    
 	$mysqli = get_mysqli_connection($dbInfo);
 	if(mysqli_connect_error()){
 		$msg = sprintf("connect to %s:%d fail use %s. errno %s: %s", $dbInfo['host'], $dbInfo['port'], $dbInfo['user'],

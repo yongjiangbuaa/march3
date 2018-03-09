@@ -236,8 +236,8 @@ if($_REQUEST['dochangename']){
 	$sql = "update userprofile set name='$name' where uid='$uid'";
 	$result =  $page->execute($sql, 2, true);
 
-	$sql = "update worldpoint set ownerName='$name' where ownerId='$uid'";
-	$result = $page->execute($sql, 2, true);
+//	$sql = "update worldpoint set ownerName='$name' where ownerId='$uid'";
+//	$result = $page->execute($sql, 2, true);
 
 	cobar_changeUserName($uid, $oldName, $name);
 
