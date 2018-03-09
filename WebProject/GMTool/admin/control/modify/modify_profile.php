@@ -262,13 +262,13 @@ if ($type) {
 		if(!$result['error'] && $result['ret']['data']){
 			$userId = $result['ret']['data'][0]['uid'];
 			//先踢下线，然后更新数据库
-			$ret = $page->webRequest('kickuser',array('uid'=>$userId));
-			if($ret != 'ok') {
-				$replace = array();
-				$headAlert = 'kickuser error';
-				// added by duzhigao
-				$stamina = null;
-			}
+//			$ret = $page->webRequest('kickuser',array('uid'=>$userId));
+//			if($ret != 'ok') {
+//				$replace = array();
+//				$headAlert = 'kickuser error';
+//				// added by duzhigao
+//				$stamina = null;
+//			}
 			if($replace){
 				$ori = $result['ret']['data'][0]['gold'];
 				$change = $changeGold - $ori;
