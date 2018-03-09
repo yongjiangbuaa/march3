@@ -251,12 +251,12 @@ if ($type) {
 			$replace[] = "modGoldGetTimeInterval = 0";
 			$replace[] = "modGoldAmount = 0";
 		}
-// 		if($username)
-// 			$sql = "select * from userprofile where name = '{$username}'";
-// 		else
-// 			$sql = "select * from userprofile where uid = '{$useruid}'";
+ 		if($username)
+ 			$sql = "select * from userprofile where name = '{$username}'";
+ 		else
+ 			$sql = "select * from userprofile where uid = '{$useruid}'";
 
-		$sql = "select * from userprofile where uid = '{$useruid}'";
+//		$sql = "select * from userprofile where uid = '{$useruid}'";
 
 		$result = $page->execute($sql,3);
 		if(!$result['error'] && $result['ret']['data']){
@@ -519,7 +519,10 @@ if ($type) {
 //left join user_glory ug on u.uid = ug.uid
 //left JOIN alliance a on u.allianceId=a.uid
 //LEFT JOIN user_world uw on u.uid=uw.uid where u.uid = '{$useruid}'";
-    $sql = "select * from userprofile where uid = '{$useruid}'";
+    if($username)
+        $sql = "select * from userprofile where name = '{$username}'";
+    else
+        $sql = "select * from userprofile where uid = '{$useruid}'";
 
 	$result = $page->execute($sql);
 	if(!$result['error'] && $result['ret']['data']){

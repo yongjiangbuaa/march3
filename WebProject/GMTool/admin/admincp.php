@@ -87,7 +87,7 @@ if ($needLogin) {
 	$adminid = "admin";
 
 
-	file_put_contents('/tmp/loginhis.log', "adminid=$adminid \n username=".$invalid['username']."\n groupid=".$invalid['groupid']."\n auth=".$invalid['auth']."\n",FILE_APPEND);
+//	file_put_contents('/tmp/loginhis.log', "adminid=$adminid \n username=".$invalid['username']."\n groupid=".$invalid['groupid']."\n auth=".$invalid['auth']."\n",FILE_APPEND);
 //	if(!$adminid){
 //		include ("./control/admin/admin_login.php");
 //		exit();
