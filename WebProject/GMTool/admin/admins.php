@@ -234,7 +234,7 @@ function get_ad_connection(){
 }
 
 function query_from_db($dbInfo,$sql) {
-    file_put_contents('/tmp/loginhis.log', "cobar query db : \n sql=".$sql."\n",FILE_APPEND);
+    file_put_contents('/tmp/loginhis.log', "cobar query db :dbInfo=".var_export($dbInfo,true)." \n sql=".$sql."\n",FILE_APPEND);
 
 
     

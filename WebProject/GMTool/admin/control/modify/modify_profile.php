@@ -114,7 +114,7 @@ if ($type) {
 	
 	if($username){
 		$account_list = cobar_getAllAccountList('name', $username);
-        file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')."account_list= ".var_export($account_list,true)."\n",FILE_APPEND);
+        file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')."  account_list= ".var_export($account_list,true)."\n",FILE_APPEND);
 		$useruid=$account_list[0]['gameUid'];
 	}
 	if($type == 'edit') 
