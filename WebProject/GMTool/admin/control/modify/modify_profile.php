@@ -297,7 +297,7 @@ if ($type) {
 //			}
 		}
 		
-		
+		/**
 		$opeDate=date('Y-m-d H:i:s');
 		if($banReasonTime && ($banReasonTime>(time()*1000))){
 			//踢下线
@@ -345,7 +345,7 @@ if ($type) {
         if(!empty($replace) && $flag){
             $action_params = $replace;
             adminLogUser($adminid,$userId,$currentServer,$action_params);
-        }
+        }**/
 	}
 // 	if($type == 'delete') 
 // 	{
