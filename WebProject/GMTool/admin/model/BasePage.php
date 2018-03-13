@@ -186,7 +186,7 @@ class BasePage
 	}
 
 	public function execute($sql,$type,$mainDB = false){
-			file_put_contents('/tmp/loginhis.log', 'sql='.$sql."\n",FILE_APPEND);
+//			file_put_contents('/tmp/loginhis.log', 'sql='.$sql."\n",FILE_APPEND);
 		if($type == 2 || $type == null){
 			$mainDB = true;
 		}
@@ -379,9 +379,9 @@ class BasePage
 		$ret = json_decode( $result, true );
 		if(!is_array($ret)){
 			if (is_array($params) && count($params) > 0) {
-			file_put_contents('/tmp/curlcalllog.log', $url."\n".http_build_query($params)."\n".$result."\n", FILE_APPEND);
+//			file_put_contents('/tmp/curlcalllog.log', $url."\n".http_build_query($params)."\n".$result."\n", FILE_APPEND);
 			}else{
-			file_put_contents('/tmp/curlcalllog.log', $url."\n".urlencode($params)."\n".$result."\n", FILE_APPEND);
+//			file_put_contents('/tmp/curlcalllog.log', $url."\n".urlencode($params)."\n".$result."\n", FILE_APPEND);
 			}
 			$realRet['error'] = 'error';
 			$realRet['errorInfo'] = print_r($result,true);

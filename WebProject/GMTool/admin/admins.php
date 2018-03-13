@@ -321,7 +321,7 @@ function randItemWithWeight($weights){
 
 function login($username,$password){
 	$clientip = get_ipxx();
-	file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s').",$username,$password,$clientip\n",FILE_APPEND);
+//	file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s').",$username,$password,$clientip\n",FILE_APPEND);
 	$passmd5 = md5(md5($username . $password . AUTH_KEY).AUTH_KEY.AUTH_KEY2);
 	$admin = getAdminByName($username, $passmd5);
 /**
@@ -331,7 +331,7 @@ function login($username,$password){
 	if($passmd5!=$admin['passmd5']){
 		return 2;
 	}**/
-	file_put_contents('/tmp/loginhis.log', 'admin='.json_encode($admin)."\n",FILE_APPEND);
+//	file_put_contents('/tmp/loginhis.log', 'admin='.json_encode($admin)."\n",FILE_APPEND);
 	
 	$userMd5 = md5($username . $password . AUTH_KEY);
 	$expire = time()+360000000;
@@ -364,8 +364,8 @@ function invalid(){
 		return true;
 	}
 	$data = json_decode(stripcslashes($_COOKIE['u_info']),true);//这里会有用户的权限
-	file_put_contents('/tmp/loginhis.log', "cookie u_info=".$_COOKIE['u_info']."\n",FILE_APPEND);
-	file_put_contents('/tmp/loginhis.log', " decode=$data\n json_last_error=".json_last_error()."\n",FILE_APPEND);
+	/*file_put_contents('/tmp/loginhis.log', "cookie u_info=".$_COOKIE['u_info']."\n",FILE_APPEND);
+	file_put_contents('/tmp/loginhis.log', " decode=$data\n json_last_error=".json_last_error()."\n",FILE_APPEND)*/;
 	//{"uid":"22","username":"testname","passmd5":"12412312321","language":"zh_CN","auth":"1200,1200,9900,200,500,300,329,333,1100,400,1400,700,600,900,903,902","groupid":"39","addtime":"1457932492","lastactive":1484113878,"admincomment":"\u540e\u53f0\u7ba1\u7406\u5f00\u53d1"}
 	//密码为空
 	if(md5($username . AUTH_KEY) == $a1){

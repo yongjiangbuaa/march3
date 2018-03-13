@@ -12,7 +12,7 @@ if(isset($_POST['user']) && isset($_POST['password'])){
 	else{
 		$prev_url = $_SESSION['prev_url'];
 		if(empty($prev_url) || $prev_url == 'mod=admin&act=login'){
-			file_put_contents('/tmp/loginhis.log', 'new_url=admincp.php'."\n",FILE_APPEND);
+//			file_put_contents('/tmp/loginhis.log', 'new_url=admincp.php'."\n",FILE_APPEND);
 			header('Location:admincp.php');
 		}
 		else{
@@ -25,7 +25,7 @@ if(isset($_POST['user']) && isset($_POST['password'])){
 					$new_url[] = $temp;
 				}
 			}
-			file_put_contents('/tmp/loginhis.log', 'new_url='.implode('&', $new_url)."\n",FILE_APPEND);
+//			file_put_contents('/tmp/loginhis.log', 'new_url='.implode('&', $new_url)."\n",FILE_APPEND);
 			header("Location:admincp.php?" . implode('&', $new_url));
 		}
 		exit();
