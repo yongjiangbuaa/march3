@@ -24,7 +24,7 @@ if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
 }
 $cok_ad_db_host = '127.0.0.1';
 $db_username = 'march';
-$db_password = '';
+$db_password = 'hdli54T5P';
 $global_db_name = 'march_global';
 define("DEV_ENV",true);
 $GLOBALS['snapshot_db'] = array('host'=>STATS_DB_SERVER_IP,'user'=>STATS_DB_SERVER_USER,'password'=>STATS_DB_SERVER_PWD,'port'=>5029);
