@@ -258,6 +258,7 @@ function query_from_db($dbInfo,$sql) {
 		$result->free();
 	}
 	$mysqli->close();
+    file_put_contents('/tmp/loginhis.log', "cobar query db :data=".var_export($data,true)." \n sql=".$sql."\n",FILE_APPEND);
 	return $data;
 
 }
