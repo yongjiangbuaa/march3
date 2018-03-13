@@ -7,6 +7,7 @@ if($_REQUEST['username'])
 	$username = trim($_REQUEST['username']);
 if($_REQUEST['useruid'])
 	$useruid = trim($_REQUEST['useruid']);
+file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')."userid=$useruid request【useruid】= ".$_REQUEST['useruid']."\n",FILE_APPEND);
 $dbArray = array(
 	'uid' => array('name'=>'uid','uneditable'=>1,'note'=>''),
     'name' => array('name'=>'名字',),
@@ -113,6 +114,7 @@ if ($type) {
 	
 	if($username){
 		$account_list = cobar_getAllAccountList('name', $username);
+        file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s')."account_list= ".var_export($account_list,true)."\n",FILE_APPEND);
 		$useruid=$account_list[0]['gameUid'];
 	}
 	if($type == 'edit') 
@@ -278,7 +280,7 @@ if ($type) {
 				$tmp .= implode(',', $replace);
 // 				if($_POST['username'])
 // 					$updateSql .= $tmp . " where name = '{$username}'";
-// 				else 
+// 				else
 // 					$updateSql .= $tmp . " where uid = '{$useruid}'";
 
 				$updateSql .= $tmp . " where uid = '{$useruid}'";
