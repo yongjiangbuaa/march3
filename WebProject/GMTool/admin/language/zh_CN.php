@@ -6,7 +6,7 @@
 
 class Lang
 {
-	const main_title = 'IK2后台管理系统';
+	const main_title = '后台管理系统';
 	
 	//
 	// 一些通用文字

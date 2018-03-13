@@ -3,7 +3,7 @@ global $MALANG;
 
 $MALANG = array(
 		/***************************************系统参数*********************************************/
-		"system_name" => "COQ后台管理系统",
+		"system_name" => "后台管理系统",
 		"system_model_not_exsit" => "该模块不存在!",
 		"system_model_access_denied" => "您没有权限访问该模块，请与管理员联系!",
 		"system_header_hello" => "您好",
@@ -15,7 +15,7 @@ $MALANG = array(
 		"system_model_admin" => "普通管理员",
 		"system_index_page" => "管理首页",
 		"system_safe_logout" => "安全退出",
-		"system_welcom_index" => "欢迎使用IK2后台管理系统",
+		"system_welcom_index" => "欢迎使用后台管理系统",
 		"system_action" => "操  作",
 		"system_platform" => "平  台",
 		
