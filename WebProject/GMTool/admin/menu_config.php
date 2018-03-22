@@ -628,7 +628,7 @@ $branchMenu = array(
 		'stat'=>array(
 //				'fiveonlinedata'=>array('permission'=>STAT_FIVEONLINEDATA,'lang'=>'menu_stat_fiveonlinedata'),
 				'dau'=>array('permission'=>STAT_DAU,'lang'=>'menu_stat_dau'),
-				'dauCurve'=>array('permission'=>STAT_DAUCURVE, 'lang'=>'menu_stat_dauCurve'),
+//				'dauCurve'=>array('permission'=>STAT_DAUCURVE, 'lang'=>'menu_stat_dauCurve'),
 				'registerdata'=>array('permission'=>STAT_REGISTER_DATA,'lang'=>'menu_stat_register'),
 				'regremain'=>array('permission'=>STAT_REGREMAIN,'lang'=>'menu_stat_regremain'),
 				'regCurve'=>array('permission'=>STAT_REGCURVE,'lang'=>'menu_stat_regCurve'),
@@ -652,7 +652,7 @@ $branchMenu = array(
 // 				'mix'=>array('permission'=>STAT_MIX,'lang'=>'menu_stat_mix'),
 // 				'useraction'=>array('permission'=>STAT_USERACTION,'lang'=>'menu_stat_useraction'),
 //				'world_resource'=>array('permission'=>STAT_WORLD_RESOURCE,'lang'=>'menu_stat_world_resource'),
-				'online_daily_graph'=>array('permission'=>STAT_ONLINE_DAILY_GRAPH,'lang'=>'menu_stat_online_daily_graph'),
+//				'online_daily_graph'=>array('permission'=>STAT_ONLINE_DAILY_GRAPH,'lang'=>'menu_stat_online_daily_graph'),
 //				'storegoods'=>array('permission'=>STAT_STOREGOODS,'lang'=>'menu_stat_storegoods'),
 //				'versions'=>array('permission'=>STAT_VERSIONS,'lang'=>'menu_stat_versions'),
 //				'alliance'=>array('permission'=>STAT_ALLIANCE,'lang'=>'menu_stat_alliance'),
