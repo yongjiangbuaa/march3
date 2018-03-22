@@ -284,6 +284,7 @@ define('MODIFY_PROFILE',501);
 define('MODIFY_GENERAL',502);
 define('MODIFY_BUILDING',503);
 define('MODIFY_GOODS',504);
+define('MODIFY_STORY',529);
 define('MODIFY_CITY',505);
 define('MODIFY_QUEUE',506);
 define('MODIFY_LORD',507);
@@ -744,6 +745,7 @@ $branchMenu = array(
 				// 'general'=>array('permission'=>MODIFY_GENERAL,'lang'=>'menu_modify_general'),
 //				'building'=>array('permission'=>MODIFY_BUILDING,'lang'=>'menu_modify_building'),
 				'goods'=>array('permission'=>MODIFY_GOODS,'lang'=>'menu_modify_goods'),
+                'story'=>array('permission'=>MODIFY_STORY,'lang'=>'menu_modify_story'),
 //				'hero'=>array('permission'=>MODIFY_HERO,'lang'=>'menu_modify_hero'),
 //				'glomour'=>array('permission'=>MODIFY_GLOMOUR,'lang'=>'menu_modify_glomour'),
 //				'egg'=>array('permission'=>MODIFY_EGG,'lang'=>'menu_modify_egg'),

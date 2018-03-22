@@ -228,6 +228,7 @@ $MALANG = array(
 		"menu_modify_general"=>"将军",
 		"menu_modify_building"=>"建筑",
 		"menu_modify_goods"=>"物品",
+    	"menu_modify_goods"=>"剧情",
 		"menu_modify_glomour"=>"魅力值",
 		"menu_modify_egg"=>"臭鸡蛋|厌恶值",
 		"menu_modify_equip"=>"装备",
