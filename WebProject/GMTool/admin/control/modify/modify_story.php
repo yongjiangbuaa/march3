@@ -47,7 +47,7 @@ if($type){
 			$storyId = trim($_REQUEST['storyId']);
 		}
 		if($useruid){
-            $sql = "select * from $db where ownerId = '$useruid' and storyId = {$storyId}";
+            $sql = "select * from $db where ownerId = '$useruid'";
             $tmpItems = $page->execute($sql);
             if($tmpItems['ret']['data'][0]['uuid'])
                 $sql = "update $db set storyId = {$storyId} where uuid = '{$tmpItems['ret']['data'][0]['uuid']}'";
