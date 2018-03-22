@@ -626,7 +626,7 @@ $branchMenu = array(
 				'google'=>array('permission'=>PAY_GOOGLE,'lang'=>'menu_pay_google'),
 		),
 		'stat'=>array(
-				'fiveonlinedata'=>array('permission'=>STAT_FIVEONLINEDATA,'lang'=>'menu_stat_fiveonlinedata'),
+//				'fiveonlinedata'=>array('permission'=>STAT_FIVEONLINEDATA,'lang'=>'menu_stat_fiveonlinedata'),
 				'dau'=>array('permission'=>STAT_DAU,'lang'=>'menu_stat_dau'),
 				'dauCurve'=>array('permission'=>STAT_DAUCURVE, 'lang'=>'menu_stat_dauCurve'),
 				'registerdata'=>array('permission'=>STAT_REGISTER_DATA,'lang'=>'menu_stat_register'),
