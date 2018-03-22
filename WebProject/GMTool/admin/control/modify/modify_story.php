@@ -21,9 +21,6 @@ $typelanguage = array(
     2=>'add',3=>'edit',5=>'delete',
 );
 
-if(PRODUCT_SEVER_TYPE ===0 ){
-	$clearall= '<input class="btn js-btn btn-primary" type="submit" value="一键清空(删除所有背包物品)" name="clear" style="color:#FF0000;"/>';
-}
 
 if($type){
     $k = 'item_'.$typelanguage[$type];
