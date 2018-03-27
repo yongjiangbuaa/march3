@@ -76,7 +76,8 @@ if (isset($_REQUEST['sql'])) {
 		$sql = $_REQUEST['sql'];
 		$data = array();
 		$affectLines = 0;
-
+		//硬编码去查一个服
+        $selectedServers[] = 1;
 		if (empty($task)) {
 			if ($snapshot) {//分2种(stat_allserver查一次 或者snaphost循环查询)
 				if (stripos($sql, 'stat_allserver.') !== false || stripos($sql, 'coklog_function.') !== false) {

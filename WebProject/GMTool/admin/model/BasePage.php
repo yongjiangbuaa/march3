@@ -88,6 +88,7 @@ class BasePage
 			} else {
 				$appid = $this->getAppId();
 			}
+			//硬编码去查1服
 			$sid = 1;//substr($appid, 1);
 
 			$db_info = get_db_info($sid);
