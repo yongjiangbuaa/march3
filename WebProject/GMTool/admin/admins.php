@@ -325,13 +325,13 @@ function login($username,$password){
 //	file_put_contents('/tmp/loginhis.log', date('Y-m-d H:i:s').",$username,$password,$clientip\n",FILE_APPEND);
 	$passmd5 = md5(md5($username . $password . AUTH_KEY).AUTH_KEY.AUTH_KEY2);
 	$admin = getAdminByName($username, $passmd5);
-/**
+
 	if(!isset($admin)){
 		return 1;
 	}
 	if($passmd5!=$admin['passmd5']){
 		return 2;
-	}**/
+	}
 //	file_put_contents('/tmp/loginhis.log', 'admin='.json_encode($admin)."\n",FILE_APPEND);
 	
 	$userMd5 = md5($username . $password . AUTH_KEY);
