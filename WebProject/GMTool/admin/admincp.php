@@ -157,6 +157,7 @@ if(!$action){
 }
 $curTime = sprintf("%s ",date('Y-m-d H:i:s')); //在下边设置了时区?上海??
 global $servers;
+file_put_contents('/tmp/loginhis.log', 'servers ='.var_export($servers,true)."\n",FILE_APPEND);
 $resetServer = false;
 if(isset($_GET['Gserver'])){
 	$currentServer = $_GET['Gserver'];//getGPC('Gserver',"string");//$_REQUEST['server'];
