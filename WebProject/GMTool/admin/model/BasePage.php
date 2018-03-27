@@ -90,7 +90,7 @@ class BasePage
 			}
 			//硬编码去查1服
 			$sid = 1;//substr($appid, 1);
-
+/**
 			$db_info = get_db_info($sid);
 			$host_info = array();
 			if ($mainDB) {
@@ -98,9 +98,7 @@ class BasePage
 			} else {
 				$host_info['host'] = $db_info['slave_ip_inner'];
 			}
-
-			file_put_contents('/tmp/loginhis.log', 'host_info from config='.var_export($host_info,true)."\n",FILE_APPEND);
-
+**/
 			$host_info['host'] = '127.0.0.1';
 			$host_info['port'] = 3306; 
 			$host_info['db'] = 'march'; 
