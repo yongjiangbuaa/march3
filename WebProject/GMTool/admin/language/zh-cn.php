@@ -437,7 +437,7 @@ $MALANG = array(
 		"menu_help" => "系统帮助",
 		"menu_help_index"=>"使用帮助",
 		"menu_help_dev"=>"开发文档",
-
+    	"menu_server_log" => "日志TAIL",
 		"menu_server_manage" => "服务器",
 		"menu_server_config" => "导量配置",
 		"menu_server_pf_config" => "特殊渠道导量配置",

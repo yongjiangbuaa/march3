@@ -331,7 +331,7 @@ define('SERVER_DETECT',704);
 define('SERVER_LOG',705);
 define('SERVER_ONEKEY',706);
 define('SERVER_DEPLOYRULE', 707);
-//define('SERVER_DEPLOYXML',708);
+define('SERVER_LOG',708);
 define('SERVER_SERVERINFO',709);
 define('SERVER_STRATEGY',710);
 define('SERVER_COUNTRYAMOUNT',711);
@@ -774,6 +774,7 @@ $branchMenu = array(
 
 		),
 		'server'=>array(
+		        'log'=>array('permission'=>SERVER_LOG,'lang'=>'menu_server_log'),
 				'serverInfo'=>array('permission'=>SERVER_SERVERINFO,'lang'=>'menu_server_serverInfo'),
 				'countryAmount'=>array('permission'=>SERVER_COUNTRYAMOUNT,'lang'=>'menu_server_countryAmount'),
 				'strategy'=>array('permission'=>SERVER_STRATEGY,'lang'=>'menu_server_strategy'),
