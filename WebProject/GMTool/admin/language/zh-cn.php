@@ -446,7 +446,6 @@ $MALANG = array(
 		"menu_server_xml" => "resource目录管理",
 		"menu_server_shutdown" => "停服通知",
         "menu_server_detect" => "监控设置",
-		"menu_server_log" => "用户日志",
 		"menu_server_onekey" => "TEST",
 		"menu_server_deployrule" => "发布流程",
 		'menu_server_serverInfo'=>'导量概况',
