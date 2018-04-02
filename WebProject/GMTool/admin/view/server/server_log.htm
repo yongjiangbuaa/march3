@@ -1,47 +1,38 @@
-<html><head></head><body>
-<div id="feed"></div>
+<!--{template header}-->
+<div class="alert alert-info"><?php echo "log：";?><font color="red">输入uid查看最新log</font></div>
+<input class=""  name="organicNums" id="organicNums"/>UID
+<input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="查看">
+<div id='show2' style="float:left;width:105%;height:auto"></div>
+<div id='show' style="float:left;width:105%;height:auto"></div>
+
+
 <script type="text/javascript">
-    var refreshtime=5000;
-    function tc()
-    {
-        asyncAjax("GET","/ifadmin/admin/tailLog.php",Math.random(),display,{});
-        setTimeout(tc,refreshtime);
+    function getLogData(){
+        document.getElementById('btn_view').disabled=true;
+        document.getElementById('show').innerHTML = 'loading';
+        document.getElementById('show2').innerHTML = '';
+        var uid = document.getElementById("uid");
+        var url = 'mod=server&act=log&uid='+$('#uid').val();
+        xmlHttp=getAjax();
+        xmlHttp.onreadystatechange = getAction;
+        xmlHttp.open("POST",'admincp.php',true);
+        xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xmlHttp.send(url);
     }
-    function display(xhr,cdat)
-    {
-        if(xhr.readyState==4 && xhr.status==200)
-        {
-            document.getElementById("feed").innerHTML=xhr.responseText;
-        }
-    }
-    function asyncAjax(method,url,qs,callback,callbackData)
-    {
-        var xmlhttp=new XMLHttpRequest();
-        //xmlhttp.cdat=callbackData;
-        if(method=="GET")
-        {
-            url+="?"+qs;
-        }
-        var cb=callback;
-        callback=function()
-        {
-            var xhr=xmlhttp;
-            //xhr.cdat=callbackData;
-            var cdat2=callbackData;
-            cb(xhr,cdat2);
-            return;
-        }
-        xmlhttp.open(method,url,true);
-        xmlhttp.onreadystatechange=callback;
-        if(method=="POST"){
-            xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-            xmlhttp.send(qs);
-        }
-        else
-        {
-            xmlhttp.send(null);
+    function getAction(){
+        right=document.getElementById('show');
+        if(xmlHttp.readyState==4){
+            if (xmlHttp.status==200){
+                if(xmlHttp.responseText.length == <?php echo MAIN_PAGE_LENGTH;?>){
+                    showLogin(getLogData);
+                    return;
+                }
+                right.innerHTML=xmlHttp.responseText;
+                document.getElementById('btn_view').disabled=false;
+                return;
+            }
         }
     }
-    tc();
+
 </script>
-</body></html>
+<!--{template footer}-->
