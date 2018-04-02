@@ -1,6 +1,7 @@
 <!--{template header}-->
 <div class="alert alert-info"><?php echo "log：";?><font color="red">输入uid查看最新log</font></div>
-<input class=""  name="organicNums" id="organicNums"/>UID
+<span>UID</span>
+<span><input type="text" id="uid" name="uid" value='{$uid}'></input></span><br/>
 <input class="btn js-btn btn-primary" type="button" onclick="getLogData()" id="btn_view" name="btn_view" value="查看">
 <div id='show2' style="float:left;width:105%;height:auto"></div>
 <div id='show' style="float:left;width:105%;height:auto"></div>
