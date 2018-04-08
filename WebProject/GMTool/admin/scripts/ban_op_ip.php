@@ -24,7 +24,7 @@ echo '----ban_op_ip start-------'.date('Ymd H:i:s').PHP_EOL;
 global $servers;
 
 $client = new Redis();
-$client->connect('127.0.0.1', 6379, 3);
+$client->connect('10.173.2.11', 6379, 3);
 
 $key = 'op_banIP';
 

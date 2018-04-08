@@ -31,7 +31,7 @@ foreach ($servers as $sid) {
 
 $client = new Redis();
 $redis_key = 'referrer_mailbug';
-$r = $client->connect("127.0.0.1", 6379, 3);//conn 3 sec timeout.
+$r = $client->connect("10.173.2.11", 6379, 3);//conn 3 sec timeout.
 if ($r === false) {
 	file_put_contents("/tmp/admail_reward.log", "connect redis false $gameUid  $referrer " . time() . PHP_EOL, FILE_APPEND);
 } else {

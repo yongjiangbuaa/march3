@@ -17,7 +17,7 @@ echo '----start---' . date('Ymd H:i:s').PHP_EOL;
 while (true) {
     do {
         $client = new Redis();
-        if (!$client->connect('127.0.0.1', 6379, 3)) {
+        if (!$client->connect('10.173.2.11', 6379, 3)) {
             sleep(5);
             break;
         }

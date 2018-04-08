@@ -814,7 +814,7 @@ $branchMenu = array(
 		),
 );
 
-if ($host == '127.0.0.1' || $host == '10.1.16.211' || $host == 'URLIP') {
+if ($host == '10.173.2.11' || $host == '10.1.16.211' || $host == 'URLIP') {
 // 	unset($branchMenu['standard']['onlineMail']);
 // 	unset($branchMenu['standard']['confirmVersion']);
 // 	unset($branchMenu['standard']['updatePlan']);

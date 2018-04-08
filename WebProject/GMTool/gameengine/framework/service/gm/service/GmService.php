@@ -5,7 +5,7 @@
 import ( 'module.services.XAbstractService' );
 
 $host = gethostbyname(gethostname());
-if ($host == '10.1.16.211' || $host == '127.0.0.1') {
+if ($host == '10.1.16.211' || $host == '10.173.2.11') {
     defined('PRODUCT_SEVER_TYPE') || define('PRODUCT_SEVER_TYPE', 0);//inner test
 }elseif ($host == '91-87'){
     defined('PRODUCT_SEVER_TYPE') || define('PRODUCT_SEVER_TYPE', 9);//online

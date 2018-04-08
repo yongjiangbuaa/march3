@@ -5,13 +5,13 @@ define('AUTH_KEY', 'qucDcvk44bxfyVumPcEJkdMZKGgPmeAr');
 define('AUTH_KEY2', 'XSSrmBSMgMXkknJcBsuqXJ5ufD6CfPgN');
 
 $host = gethostbyname(gethostname());
-if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
-	defined('GLOBAL_REDIS_SERVER_IP') || define('GLOBAL_REDIS_SERVER_IP', '127.0.0.1');
-	defined('GLOBAL_REDIS_SERVER_IP2') || define('GLOBAL_REDIS_SERVER_IP2', '127.0.0.1');
+if($host == '10.1.16.211' || $host == '10.173.2.11' || PHP_OS == 'Darwin'){
+	defined('GLOBAL_REDIS_SERVER_IP') || define('GLOBAL_REDIS_SERVER_IP', '10.173.2.11');
+	defined('GLOBAL_REDIS_SERVER_IP2') || define('GLOBAL_REDIS_SERVER_IP2', '10.173.2.11');
 	defined('GLOBAL_REDIS_SERVER_IP2_PORT') || define('GLOBAL_REDIS_SERVER_IP2_PORT', 6379);
 	$xincloud_app_config = ADMIN_ROOT . '/etc/xincloud_app_config_dev.php';
 	putenv('xpath=' . $xincloud_app_config);// 设置行云应用本地开发测试机器的配置文件目录
-	$GLOBAL_DB_SERVER_IP = array('127.0.0.1','127.0.0.1');//DEPLOYIP
+	$GLOBAL_DB_SERVER_IP = array('10.173.2.11','10.173.2.11');//DEPLOYIP
 	define("DEV_ENV",true);
 
 }else{
@@ -20,9 +20,9 @@ if($host == '10.1.16.211' || $host == '127.0.0.1' || PHP_OS == 'Darwin'){
 	defined('GLOBAL_REDIS_SERVER_IP2_PORT') || define('GLOBAL_REDIS_SERVER_IP2_PORT', 6379);
 	$xincloud_app_config = ADMIN_ROOT . '/etc/xincloud_app_config.php';
 	putenv('xpath=' . $xincloud_app_config);// 设置行云应用的配置文件目录
-	$GLOBAL_DB_SERVER_IP = array('127.0.0.1','127.0.0.1');//DEPLOYIP
+	$GLOBAL_DB_SERVER_IP = array('10.173.2.11','10.173.2.11');//DEPLOYIP
 }
-$cok_ad_db_host = '127.0.0.1';
+$cok_ad_db_host = '10.173.2.11';
 $db_username = 'march';
 $db_password = 'hdli54T5P';
 $global_db_name = 'march_global';

@@ -77,7 +77,7 @@ class BasePage
 			}else{
 				$host_info['host'] = GLOBAL_DB_SLAVE_IP;
 			}
-			$host_info['host'] = '127.0.0.1';
+			$host_info['host'] = '10.173.2.11';
 			$host_info['port'] = 3306; 
 			$host_info['db'] = 'march_global'; 
 			$host_info['user'] = 'march';
@@ -99,7 +99,7 @@ class BasePage
 				$host_info['host'] = $db_info['slave_ip_inner'];
 			}
 **/
-			$host_info['host'] = '127.0.0.1';
+			$host_info['host'] = '10.173.2.11';
 			$host_info['port'] = 3306; 
 			$host_info['db'] = 'march'; 
 			$host_info['user'] = 'march';
@@ -112,7 +112,7 @@ class BasePage
 	public function getRedisClient($server = null){
 		if($server === 'local')
 		{
-			$redisConfig['host'] = '127.0.0.1';
+			$redisConfig['host'] = '10.173.2.11';
 			$redisConfig['port'] = 6379;
 
 		}else

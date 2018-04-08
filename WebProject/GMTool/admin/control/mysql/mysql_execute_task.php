@@ -9,7 +9,7 @@ $sensitiveArray=array('INTO','OUTFILE','INFILE','GRANT','ALTER','UPDATE','INSERT
 $redisKey='mysql:task';
 $logPath='/data/htdocs/bgtask/sqlTask_error.log';
 
-define('GLOBAL_DB_SERVER_IP', '127.0.0.1');
+define('GLOBAL_DB_SERVER_IP', '10.173.2.11');
 define('GLOBAL_DB_SERVER_USER', 'march');
 define('GLOBAL_DB_SERVER_PWD', 'hdli54T5P');
 define('GAME_DB_SERVER_USER', 'march');
@@ -38,7 +38,7 @@ do{
         $html=null;
         try{
             $redis = new Redis();
-            $re = $redis->connect('127.0.0.1', 6379, 3);
+            $re = $redis->connect('10.173.2.11', 6379, 3);
             if(!$re){
                 sleep(10);
                 continue;

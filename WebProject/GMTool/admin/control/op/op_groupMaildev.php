@@ -56,7 +56,7 @@ if ($type == 'add') {
             }
         }
         $client = new Redis();
-        if (!$client->connect('127.0.0.1', 6379, 3)) {
+        if (!$client->connect('10.173.2.11', 6379, 3)) {
             $tip = 'connect redis error!';
             return;
         }

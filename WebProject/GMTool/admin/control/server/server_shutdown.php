@@ -69,7 +69,7 @@ if (count($selectServer) > 0) {
 $rediskey = 'server.restart.time';
 $client = new Redis();
 //$client->connect ('10.1.16.211');
-$client->connect ('127.0.0.1');
+$client->connect ('10.173.2.11');
 $_time = $_REQUEST['restart_time'];
 if(empty($_time) && $_REQUEST['parm1'] == 1){
 	$client->delete($rediskey);

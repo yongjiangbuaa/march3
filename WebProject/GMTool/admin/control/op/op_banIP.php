@@ -47,7 +47,7 @@ if ($_REQUEST['action'] && $_REQUEST['action'] != 'search') {
 			$rediskey = 'op_banIP';
 
 			$client = new Redis();
-			if (!$client->connect('127.0.0.1', 6379, 3)) {
+			if (!$client->connect('10.173.2.11', 6379, 3)) {
 				$headAlert = '连接redis失败';
 			} else {
 				// 批量插入

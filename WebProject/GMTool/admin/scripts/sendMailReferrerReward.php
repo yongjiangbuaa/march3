@@ -20,7 +20,7 @@ $redis_key_tmp = 'referrer_mail_tmp';
 $mailItem = require ADMIN_ROOT . '/scripts/sendMail_referrer_config.php';
 
 $client = new Redis();
-$ret = $client->connect('127.0.0.1',6379);
+$ret = $client->connect('10.173.2.11',6379);
 if($ret === false){
 	trackLog('connect redis error'.date('Y-m-d H:i:s'));
 	return;
